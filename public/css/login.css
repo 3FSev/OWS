@@ -1,0 +1,74 @@
+/* Body */
+body {
+    background-image: url('assets/ormeco-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Logo */
+.logo {
+    max-width: 100px;
+}
+
+/* Header Text */
+.header-text {
+    color: #1A5D1A;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.green-text {
+    color: black;
+    font-weight: bold;
+}
+
+/* Text Color */
+.text-grey {
+    color: grey;
+}
+
+/* Input Fields */
+.input-field {
+    height: 40px;
+}
+
+/* Login Button */
+.login-button {
+    background-color: #285430;
+    border-color: #285430;
+    border: none;
+    height: 45px;
+    color: white;
+}
+
+.login-button:hover {
+    background-color: #3a7845;
+    border-color: #3a7845;
+}
+
+/* Sign Up Link */
+.sign-up-text {
+    color: rgb(51, 51, 51);
+}
+
+.sign-up-link {
+    color: #538653;
+    text-decoration: none;
+}
+
+.sign-up-link:hover {
+    text-decoration: underline;
+}
+.input-field{
+    border-right: none;
+}
+
+.input-group-text{
+ background-color: transparent;
+}
+.input-group-icon .input-group-append .input-group-text {
+    right: 10px;
+  }
