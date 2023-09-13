@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Manage Deparment</title>
+  <title>Manage District</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -116,7 +116,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-user nav-icon"></i>
               <p>
                 Manage User
@@ -125,19 +125,22 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link ">                
+                <a href="./index.html" class="nav-link ">
+                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>Create User</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./index2.html" class="nav-link ">
+                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>Unverified User</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">           
+                <a href="./index3.html" class="nav-link">
+                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>User List</p>
                 </a>
@@ -145,7 +148,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-building"></i>
               <p>
                 Manage Department 
@@ -153,7 +156,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-map-marker-alt"></i>
               <p>
                 Manage Districts
@@ -204,7 +207,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Department</h1>
+            <h1 class="m-0">Manage District</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -218,59 +221,28 @@
         <div class="row">
             <div class="col-12">
               <div class="card">
-                <div class="card-header">
-                  <div class="d-flex justify-content-between align-items-center">
-                      <h2 class="card-title">Department List</h2>
-                      <div class="card-tools">
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                              <i class="fas fa-plus-circle" style="color: #ffffff;"></i>&nbsp;
-                              <span>Add</span>
-                          </button>
-                      </div>
-                  </div>
-                  <div class="modal fade" id="modal-default">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h4 class="modal-title">Add New Department</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                  </button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Deparment Name</label>
-                                 <input class="form-control" type="text" placeholder="Department Name">
-                                </div>
-                              </div>
-                              <div class="modal-footer justify-content-between">
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Confirm</button>
-                              </div>
-                          </div>
-                          <!-- /.modal-content -->
-                      </div>
-                      <!-- /.modal-dialog -->
-                  </div>
-              </div>
-
-                
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
                       <th>Name</th>
+                      <th>Email</th>
+                      <th>Department</th>
+                      <th>Role</th>
                       <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
+                      <td>Eubert</td>
+                      <td>eubert@gmail.com</td>
+                      <td>Others</td>
                       <td>Sample</td>
                       <td>
                         <div class="text-center">
-                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
-                            <i class="fas fa-pencil-alt" style="color: white;"></i>
+                        <button class="btn btn-success">
+                        <i class="fas fa-check-circle"></i>
                         </button>
                         <button class="btn btn-danger">
                         <i class="fas fa-trash"></i>
@@ -280,10 +252,13 @@
                     </tr>
                     <tr>
                       <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
-                        <i class="fas fa-pencil-alt" style="color: white;"></i>
+                        <button class="btn btn-success">
+                        <i class="fas fa-check-circle"></i>
                         </button>
                         <button class="btn btn-danger">
                         <i class="fas fa-trash"></i>
@@ -292,11 +267,16 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>Sample</td>
+                      <td>Trident</td>
+                      <td>Internet
+                        Explorer 5.5
+                      </td>
+                      <td>Win 95+</td>
+                      <td>5.5</td>
                       <td>
                         <div class="text-center">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
-                        <i class="fas fa-pencil-alt" style="color: white;"></i>
+                        <button class="btn btn-success">
+                        <i class="fas fa-check-circle"></i>
                         </button>
                         <button class="btn btn-danger">
                         <i class="fas fa-trash"></i>
@@ -310,30 +290,6 @@
                 <!-- /.card-body -->
               </div>
             </div>
-            {{--  <div class="modal fade" id="#modal-edit">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h4 class="modal-title">Add New Department</h4>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="form-group">
-                          <label class="col-form-label-md">Deparment Name</label>
-                         <input class="form-control" type="text" placeholder="Department Name">
-                        </div>
-                      </div>
-                      <div class="modal-footer justify-content-between">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Confirm</button>
-                      </div>
-                  </div>
-                  <!-- /.modal-content -->
-              </div>
-              <!-- /.modal-dialog -->
-          </div>  --}}
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -397,11 +353,11 @@
 
 
 <script>
-    $(function () {
+    $(function () { 
       $('#example2').DataTable({
         "paging": true,
-        "lengthChange": false,
-        "searching": false,
+        "lengthChange": true,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": false,
