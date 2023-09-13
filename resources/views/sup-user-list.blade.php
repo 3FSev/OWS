@@ -218,9 +218,6 @@
         <div class="row">
             <div class="col-12">
               <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Show</h3>
-                </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
@@ -241,7 +238,7 @@
                       <td>Sample</td>
                       <td>
                         <div class="text-center">
-                          <button class="btn btn-warning">
+                          <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
                             <i class="fas fa-pencil-alt" style="color: white;"></i>
                         </button>
                         <button class="btn btn-danger">
@@ -257,7 +254,7 @@
                       <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-warning">
+                        <button class="btn btn-warning" >
                         <i class="fas fa-pencil-alt" style="color: white;"></i>
                         </button>
                         <button class="btn btn-danger">
@@ -286,6 +283,46 @@
                     </tr>
                     </tbody>
                   </table>
+                  <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit Add User Information</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label class="col-form-label-md">Name</label>
+                               <input class="form-control" type="text" placeholder="Name">
+                              </div>
+                              <div class="form-group">
+                                <label class="col-form-label-md">Username</label>
+                               <input class="form-control" type="text" placeholder="Username">
+                              </div>
+                              <div class="form-group">
+                                <label class="col-form-label-md">Role</label>
+                               <input class="form-control" type="text" placeholder="Role ">
+                              </div>
+                              <div class="form-group">
+                                <label class="col-form-label-md">District</label>
+                               <input class="form-control" type="text" placeholder="District">
+                              </div>
+                              <div class="form-group">
+                                <label class="col-form-label-md">Password</label>
+                               <input class="form-control" type="password" placeholder="Password">
+                              </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Confirm</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -361,21 +398,17 @@
 
 
 <script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
+  $(function () { 
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
     });
-  </script>
+  });
+</script>
 </body>
 </html>

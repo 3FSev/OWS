@@ -221,9 +221,6 @@
         <div class="row">
             <div class="col-12">
               <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Show</h3>
-                </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
@@ -364,15 +361,11 @@
 
 
 <script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $(function () { 
       $('#example2').DataTable({
         "paging": true,
-        "lengthChange": false,
-        "searching": false,
+        "lengthChange": true,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": false,
