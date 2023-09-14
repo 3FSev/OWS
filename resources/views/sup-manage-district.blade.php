@@ -81,6 +81,11 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-widget="dropdown" href="#">
+          <i class="fas fa-user"></i>
+        </a>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -116,7 +121,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user nav-icon"></i>
               <p>
                 Manage User

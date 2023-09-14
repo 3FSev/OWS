@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Unverified User</title>
+  <title>Restore Item</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -46,7 +46,6 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Notifications Dropdown Menu -->
@@ -81,6 +80,7 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+      {{--  Log out  --}}
       <li class="nav-item dropdown">
         <a class="nav-link" data-widget="dropdown" href="#">
           <i class="fas fa-user"></i>
@@ -121,7 +121,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user nav-icon"></i>
               <p>
                 Manage User
@@ -137,7 +137,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
+                <a href="./index2.html" class="nav-link">
                   {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>Unverified User</p>
@@ -177,23 +177,23 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-undo"></i>
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-undo "></i>
               <p>
                 Restore Data
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <li class="nav-item ">
+                <a href="pages/UI/general.html" class="nav-link ">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>Items</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="pages/UI/icons.html" class="nav-link active">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>User Accounts</p>
                 </a>
               </li>
@@ -212,7 +212,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Unverified Users</h1>
+            <h1 class="m-0">Restore Item</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -227,31 +227,39 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
+                <div class="card-header bg-success">
+                  <h5 class="m-0">Deleted Section</h5>
+                </div>     
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Department</th>
-                      <th>Role</th>
+                      <th>Item Code</th>
+                      <th>Item Name</th>
+                      <th>Status</th>
+                      <th>Quantity</th>
+                      <th>Unit</th>
+                      <th>Category</th>
+                      <th>Unit Cost</th>
+                      <th>Total Cost</th>
                       <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                      <td>Eubert</td>
-                      <td>eubert@gmail.com</td>
-                      <td>Others</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
                       <td>Sample</td>
                       <td>
                         <div class="text-center">
                         <button class="btn btn-success">
-                        <i class="fas fa-check-circle"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
+                            Restore&nbsp;<i class="fas fa-undo"></i>
+                        </button
                         </div>                      
                       </td>
                     </tr>
@@ -260,31 +268,31 @@
                       <td>Sample</td>
                       <td>Sample</td>
                       <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
                       <td>
                         <div class="text-center">
                         <button class="btn btn-success">
-                        <i class="fas fa-check-circle"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
+                          Restore&nbsp;<i class="fas fa-undo"></i>
                         </button>  
                         </div>     
                       </td>
                     </tr>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 5.5
-                      </td>
-                      <td>Win 95+</td>
-                      <td>5.5</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
                       <td>
                         <div class="text-center">
                         <button class="btn btn-success">
-                        <i class="fas fa-check-circle"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
+                          Restore&nbsp;<i class="fas fa-undo"></i>
                         </button>  
                         </div>  
                       </td>

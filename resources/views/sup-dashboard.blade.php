@@ -77,6 +77,11 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-widget="dropdown" href="#">
+          <i class="fas fa-user"></i>
+        </a>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -88,7 +93,7 @@
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
     <a href="index3.html" class="brand-link">
-      <img src="assets/ormeco-logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="assets/ormeco-logo.png" alt="Ormeco Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <div class="ml-2">
       <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
       <p class="brand-text font-weight-light">Managemen System</p>
