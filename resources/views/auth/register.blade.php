@@ -1,5 +1,5 @@
 <html lang="en">
-@include('theme/login-theme')
+@include('theme/login-register-theme')
 <body>
     <div class="container login-container">
         <form action="" method="get">
@@ -73,6 +73,8 @@
                         </div>
                     </div>
                     <button type="submit" class="btn-lg btn-block login-button">Register</button>
+                    <p class="mt-3 text-center sign-up-text">There is already an account.
+                        <a href="{{ url('/register') }}" class="sign-up-link">Login</a></p>
                 </div>
             </div>
         </form>
