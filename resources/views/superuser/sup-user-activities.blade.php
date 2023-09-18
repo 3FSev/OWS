@@ -1,43 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Manage District</title>
+  @include('theme/superuser-theme')
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-  <!--  Data table  -->
-  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-</head>
+  <title>User Activities</title>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTELogo" height="60" width="60">
+    <div>
+      <h5 class="pt-3"><strong>Loading...</strong></h5>
+    </div>
   </div>
-
+  
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -97,7 +74,7 @@
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
     <a href="index3.html" class="brand-link">
-      <img src="assets/ormeco-logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <div class="ml-2">
       <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
       <p class="brand-text font-weight-light">Managemen System</p>
@@ -113,7 +90,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link ">
+            <a href="{{ route('dashboard.sup') }}" class="nav-link">
               <i class="nav-icon fas fa-home nav-icon"></i>
               <p>
                 Dashboard
@@ -129,22 +106,22 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('create.sup') }}" class="nav-link ">
+                        {{--  <i class="far fa-circle nav-icon"></i>  --}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <p>Create User</p>
+                    </a>
+                </li>
               <li class="nav-item">
-                <a href="./index.html" class="nav-link ">
-                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>Create User</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link ">
+                <a href="{{ route('unverified.sup') }}" class="nav-link ">
                   {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>Unverified User</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="{{ route('userlist.sup') }}" class="nav-link ">
                   {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>User List</p>
@@ -153,7 +130,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('manageDept.sup') }}" class="nav-link ">
               <i class="nav-icon fas fa-building"></i>
               <p>
                 Manage Department 
@@ -161,7 +138,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="{{ route('manageDist.sup') }}" class="nav-link">
               <i class="nav-icon fas fa-map-marker-alt"></i>
               <p>
                 Manage Districts
@@ -169,7 +146,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('userActivities.sup') }}" class="nav-link active">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 User Activities
@@ -186,13 +163,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="{{ route('restoreItems.sup') }}" class="nav-link">
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>Items</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="{{ route('restoreAccounts.sup') }}" class="nav-link">
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>User Accounts</p>
                 </a>
@@ -212,7 +189,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage District</h1>
+            <h1 class="m-0">User Acivities</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -231,62 +208,30 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Email</th>
+                      <th>User id</th>
                       <th>Department</th>
-                      <th>Role</th>
-                      <th>Action</th>
+                      <th>Activity</th>
+                      <th>Time</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                      <td>Eubert</td>
-                      <td>eubert@gmail.com</td>
-                      <td>Others</td>
                       <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                        <button class="btn btn-success">
-                        <i class="fas fa-check-circle"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>                      
-                      </td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
                     </tr>
                     <tr>
                       <td>Sample</td>
                       <td>Sample</td>
                       <td>Sample</td>
-                      <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                        <button class="btn btn-success">
-                        <i class="fas fa-check-circle"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>     
-                      </td>
+                      <td>Sample</td>           
                     </tr>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 5.5
-                      </td>
-                      <td>Win 95+</td>
-                      <td>5.5</td>
-                      <td>
-                        <div class="text-center">
-                        <button class="btn btn-success">
-                        <i class="fas fa-check-circle"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>  
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td> 
                       </td>
                     </tr>
                     </tbody>
@@ -299,6 +244,7 @@
     </section>
     <!-- /.content -->
   </div>
+  <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -308,67 +254,19 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
-<!-- datatable -->
-<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../../plugins/jszip/jszip.min.js"></script>
-<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
 
 <script>
-    $(function () { 
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
+  $(function () { 
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
     });
-  </script>
+  });
+</script>
 </body>
 </html>
