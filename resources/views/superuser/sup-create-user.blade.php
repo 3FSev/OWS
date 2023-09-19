@@ -1,5 +1,5 @@
 <html lang="en">
-@include('theme/superuser-theme')
+  @include('theme/plugins-theme')
 <title>Create User</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">

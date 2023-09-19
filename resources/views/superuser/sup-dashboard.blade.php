@@ -1,5 +1,5 @@
 <html>
-@include('theme/superuser-theme')
+  @include('theme/plugins-theme')
 <title>Dashboard</title>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

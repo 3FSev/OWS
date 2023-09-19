@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('theme/superuser-theme')
+@include('theme/plugins-theme')
 
 <title>Manage Department</title>
 
