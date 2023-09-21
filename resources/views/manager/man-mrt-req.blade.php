@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  @include('theme/plugins-theme')
-
-  <title>User Activities</title>
-
+<html>
+@include('theme/plugins-theme')
+<title>MRT Request</title>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
@@ -12,9 +9,8 @@
     <img class="animation__shake" src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTELogo" height="60" width="60">
     <div>
       <h5 class="pt-3"><strong>Loading...</strong></h5>
-    </div>
+    </div> 
   </div>
-  
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -80,7 +76,7 @@
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
     <a href="index3.html" class="brand-link">
-      <img src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <div class="ml-2">
       <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
       <p class="brand-text font-weight-light">Managemen System</p>
@@ -96,92 +92,39 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{ route('dashboard.sup') }}" class="nav-link">
-              <i class="nav-icon fas fa-home nav-icon"></i>
+            <a href="{{ route('stockList.man') }}" class="nav-link ">
+              <i class="nav-icon fas fa-box nav-icon"></i>
               <p>
-                Dashboard
+                Stock List
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user nav-icon"></i>
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-envelope nav-icon"></i>
               <p>
-                Manage User
+                Request Approval
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('create.sup') }}" class="nav-link ">
+                    <a href="{{ route('WivRequest.man') }}" class="nav-link ">
                         {{--  <i class="far fa-circle nav-icon"></i>  --}}
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <p>Create User</p>
+                        <p>WIV Request</p>
                     </a>
                 </li>
               <li class="nav-item">
-                <a href="{{ route('unverified.sup') }}" class="nav-link ">
+                <a href="{{ route('MrtRequest.man') }}" class="nav-link active">
                   {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>Unverified User</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('userlist.sup') }}" class="nav-link ">
-                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>User List</p>
+                  <p>MRT Request</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('manageDept.sup') }}" class="nav-link ">
-              <i class="nav-icon fas fa-building"></i>
-              <p>
-                Manage Department 
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('manageDist.sup') }}" class="nav-link">
-              <i class="nav-icon fas fa-map-marker-alt"></i>
-              <p>
-                Manage Districts
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('userActivities.sup') }}" class="nav-link active">
-              <i class="nav-icon fas fa-file"></i>
-              <p>
-                User Activities
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fas fa-undo"></i>
-              <p>
-                Restore Data
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('restoreItems.sup') }}" class="nav-link">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>Items</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('restoreAccounts.sup') }}" class="nav-link">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>User Accounts</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -195,7 +138,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">User Acivities</h1>
+            <h1 class="m-0">Material Return Ticket</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -207,60 +150,80 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                      <th>User id</th>
-                      <th>Department</th>
-                      <th>Activity</th>
-                      <th>Time</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>           
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td> 
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.card-body -->
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-header bg-success">
+                <h5 class="m-0">MRT Request Details</h5>
+              </div>     
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>Employee Name</th>
+                    <th>Department</th>
+                    <th>MRT Number</th>
+                    <th>MRT Date</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>
+                      <div class="text-center">
+                      <a href="{{ route('MrtReview.man') }}" class="btn btn-primary">
+                        View
+                        &nbsp;<i class="far fa-eye"></i>
+                      </a>
+                      </div>                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>
+                      <div class="text-center">
+                      <a href="{{ route('MrtReview.man') }}" class="btn btn-primary">
+                        View
+                        &nbsp;<i class="far fa-eye"></i>
+                      </a>  
+                      </div>     
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>
+                      <div class="text-center">
+                      <a href="{{ route('MrtReview.man') }}" class="btn btn-primary">
+                        View
+                        &nbsp;<i class="far fa-eye"></i>
+                      </a>  
+                      </div>  
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
               </div>
+              <!-- /.card-body -->
             </div>
+          </div>
+      </div><!-- /.container-fluid -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
-
-
+</body>
 <script>
   $(function () { 
     $('#example2').DataTable({
@@ -274,5 +237,4 @@
     });
   });
 </script>
-</body>
 </html>
