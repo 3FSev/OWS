@@ -57,10 +57,16 @@
         </a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link" data-widget="dropdown" href="#">
-          <i class="fas fa-user"></i>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fas fa-user"></i>
         </a>
-      </li>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
+                <span>Logout</span>
+                <i class="fas fa-sign-out-alt"  style="color: grey;"></i>
+            </a>
+        </div>
+    </li>
     </ul>
   </nav>
   <!-- /.navbar -->
