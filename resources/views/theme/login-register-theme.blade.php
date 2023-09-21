@@ -1,5 +1,5 @@
 <title>Ormeco Warehouse Management System</title>
-<link rel="icon" href="assets/ormeco-logo.png">
+<link rel="icon" href="{{ asset('assets/ormeco-logo.png') }}">
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
