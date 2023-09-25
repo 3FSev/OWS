@@ -297,34 +297,35 @@
                     </tr>
                     </tbody>
                   </table>
+                  <div class="modal fade" id="modal-edit">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit Department Name</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label class="col-form-label-md">Deparment Name</label>
+                               <input class="form-control" type="text" placeholder="Department Name">
+                              </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Confirm</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
                 </div>
                 <!-- /.card-body -->
               </div>
             </div>
-            {{--  <div class="modal fade" id="#modal-edit">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h4 class="modal-title">Add New Department</h4>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="form-group">
-                          <label class="col-form-label-md">Deparment Name</label>
-                         <input class="form-control" type="text" placeholder="Department Name">
-                        </div>
-                      </div>
-                      <div class="modal-footer justify-content-between">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Confirm</button>
-                      </div>
-                  </div>
-                  <!-- /.modal-content -->
-              </div>
-              <!-- /.modal-dialog -->
-          </div>  --}}
+        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
