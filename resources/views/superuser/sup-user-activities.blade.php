@@ -1,39 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Superuser Dashboard</title>
+  @include('theme/plugins-theme')
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-</head>
+  <title>User Activities</title>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTELogo" height="60" width="60">
+    <div>
+      <h5 class="pt-3"><strong>Loading...</strong></h5>
+    </div>
   </div>
-
+  
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -78,10 +59,16 @@
         </a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link" data-widget="dropdown" href="#">
-          <i class="fas fa-user"></i>
+        <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fas fa-user"></i>
         </a>
-      </li>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
+                <span>Logout</span>
+                <i class="fas fa-sign-out-alt"  style="color: grey;"></i>
+            </a>
+        </div>
+    </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -93,7 +80,7 @@
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
     <a href="index3.html" class="brand-link">
-      <img src="assets/ormeco-logo.png" alt="Ormeco Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <div class="ml-2">
       <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
       <p class="brand-text font-weight-light">Managemen System</p>
@@ -109,7 +96,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{ route('dashboard.sup') }}" class="nav-link">
               <i class="nav-icon fas fa-home nav-icon"></i>
               <p>
                 Dashboard
@@ -125,22 +112,22 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('create.sup') }}" class="nav-link ">
+                        {{--  <i class="far fa-circle nav-icon"></i>  --}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <p>Create User</p>
+                    </a>
+                </li>
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>Create User</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="{{ route('unverified.sup') }}" class="nav-link ">
                   {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>Unverified User</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="{{ route('userlist.sup') }}" class="nav-link ">
                   {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>User List</p>
@@ -149,7 +136,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('manageDept.sup') }}" class="nav-link ">
               <i class="nav-icon fas fa-building"></i>
               <p>
                 Manage Department 
@@ -157,7 +144,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('manageDist.sup') }}" class="nav-link">
               <i class="nav-icon fas fa-map-marker-alt"></i>
               <p>
                 Manage Districts
@@ -165,7 +152,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('userActivities.sup') }}" class="nav-link active">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 User Activities
@@ -182,13 +169,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="{{ route('restoreItems.sup') }}" class="nav-link">
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>Items</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="{{ route('restoreAccounts.sup') }}" class="nav-link">
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>User Accounts</p>
                 </a>
@@ -208,7 +195,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">User Acivities</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -220,38 +207,45 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Registered Accounts</p>
+            <div class="col-12">
+              <div class="card">
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                      <th>User id</th>
+                      <th>Department</th>
+                      <th>Activity</th>
+                      <th>Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                    </tr>
+                    <tr>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>           
+                    </tr>
+                    <tr>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td> 
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
               </div>
-              <div class="icon">
-                <i class="fas fa-user-check"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-                <p>Unregistered Accounts</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-  
-          <!-- ./col -->
-        </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -266,39 +260,19 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+  $(function () { 
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
 </script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
 </body>
 </html>

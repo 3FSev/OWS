@@ -1,5 +1,5 @@
 <html lang="en">
-@include('theme/login-theme')
+@include('theme/login-regsiter-theme')
 <body>
     <div class="container login-container">
         <form action="" method="get">
