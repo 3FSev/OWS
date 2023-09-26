@@ -136,7 +136,7 @@
             <a href="{{ route('manageDept.sup') }}" class="nav-link">
               <i class="nav-icon fas fa-building"></i>
               <p>
-                Manage Department 
+                Manage Department
               </p>
             </a>
           </li>
