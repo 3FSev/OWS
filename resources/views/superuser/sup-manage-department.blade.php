@@ -40,17 +40,7 @@
             <span class="float-right text-muted text-sm">3 mins</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          <a href="#" class="dropdown-item dropdown-footer">View</a>
         </div>
       </li>
       <li class="nav-item">
@@ -248,7 +238,7 @@
                 
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <table id="example2" class="table table-bordered table-hover">
+                  <table id="noSearchBox" class="table table-bordered table-hover">
                     <thead>
                     <tr>
                       <th>Name</th>
@@ -263,7 +253,7 @@
                           <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
                             <i class="fas fa-pencil-alt" style="color: white;"></i>
                         </button>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger toastsDefaultDangerDepartmentName">
                         <i class="fas fa-trash"></i>
                         </button>  
                         </div>                      
@@ -276,7 +266,7 @@
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
                         <i class="fas fa-pencil-alt" style="color: white;"></i>
                         </button>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger toastsDefaultDanger">
                         <i class="fas fa-trash"></i>
                         </button>  
                         </div>     
@@ -289,7 +279,7 @@
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
                         <i class="fas fa-pencil-alt" style="color: white;"></i>
                         </button>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger toastsDefaultDanger">
                         <i class="fas fa-trash"></i>
                         </button>  
                         </div>  
@@ -297,6 +287,30 @@
                     </tr>
                     </tbody>
                   </table>
+                  <div class="modal fade" id="modal-edit">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit Department Name</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label class="col-form-label-md">Deparment Name</label>
+                               <input class="form-control" type="text" placeholder="Department Name">
+                              </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary toastsConfirmEditDepertment">Confirm</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -340,13 +354,13 @@
 
 <script>
     $(function () {
-      $('#example2').DataTable({
+      $('#noSearchBox').DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,
         "ordering": true,
         "info": true,
-        "autoWidth": false,
+        "autoWidth": true,
         "responsive": true,
       });
     });

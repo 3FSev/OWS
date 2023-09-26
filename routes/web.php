@@ -33,7 +33,7 @@ Route::get('/superuser/sup-manage-department', [SuperUserController::class, 'Man
 Route::get('/superuser/sup-manage-districts', [SuperUserController::class, 'ManageDistricts'])->name('manageDist.sup');
 Route::get('/superuser/sup-user-activities', [SuperUserController::class, 'UserActivities'])->name('userActivities.sup');
 Route::get('/superuser/sup-restore-item', [SuperUserController::class, 'RestoreItem'])->name('restoreItems.sup');
-Route::get('/superuser/sup-restore-accounts', [SuperUserController::class, 'RestoreItem'])->name('restoreAccounts.sup');
+Route::get('/superuser/sup-restore-accounts', [SuperUserController::class, 'RestoreAccounts'])->name('restoreAccounts.sup');
 //</ route for superuser >
 
 // <route for manager>

@@ -38,17 +38,7 @@
             <span class="float-right text-muted text-sm">3 mins</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          <a href="#" class="dropdown-item dropdown-footer">View</a>
         </div>
       </li>
       <li class="nav-item">
@@ -227,10 +217,10 @@
                       <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success toastsApproveAccount">
                         <i class="fas fa-check-circle"></i>
                         </button>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger toastsDeleteAccount">
                         <i class="fas fa-trash"></i>
                         </button>  
                         </div>                      
@@ -243,13 +233,13 @@
                       <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success">
-                        <i class="fas fa-check-circle"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>     
+                          <button class="btn btn-success toastsApproveAccount">
+                          <i class="fas fa-check-circle"></i>
+                          </button>
+                          <button class="btn btn-danger toastsDeleteAccount">
+                          <i class="fas fa-trash"></i>
+                          </button>  
+                          </div>   
                       </td>
                     </tr>
                     <tr>
@@ -261,13 +251,13 @@
                       <td>5.5</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success">
-                        <i class="fas fa-check-circle"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>  
+                          <button class="btn btn-success toastsApproveAccount">
+                          <i class="fas fa-check-circle"></i>
+                          </button>
+                          <button class="btn btn-danger toastsDefaultDanger">
+                          <i class="fas fa-trash"></i>
+                          </button>  
+                          </div>  
                       </td>
                     </tr>
                     </tbody>
@@ -290,6 +280,7 @@
 
 
 <script>
+  {{--  datatable  --}}
     $(function () { 
       $('#example2').DataTable({
         "paging": true,

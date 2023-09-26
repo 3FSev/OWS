@@ -39,17 +39,7 @@
             <span class="float-right text-muted text-sm">3 mins</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          <a href="#" class="dropdown-item dropdown-footer">View</a>
         </div>
       </li>
       <li class="nav-item">
@@ -240,7 +230,7 @@
                       <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success toastsRestoreItem">
                             Restore&nbsp;<i class="fas fa-undo"></i>
                         </button
                         </div>                      
@@ -257,7 +247,7 @@
                       <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success toastsRestoreItem">
                           Restore&nbsp;<i class="fas fa-undo"></i>
                         </button>  
                         </div>     
@@ -274,7 +264,7 @@
                         <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success toastsRestoreItem">
                           Restore&nbsp;<i class="fas fa-undo"></i>
                         </button>  
                         </div>  
