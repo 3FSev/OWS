@@ -65,6 +65,7 @@
 
 <!-- DataTables  & Plugins -->
 <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables/jquery.Datatable.js"></script>
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
@@ -77,4 +78,9 @@
 <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-<link rel="stylesheet" href="{{ asset('css/tableformat.css')}}">
+
+<!-- Toastr -->
+<script src="{{ asset('../../plugins/toastr/toastr.min.js') }}"></script>
+<script src="{{ asset('../../plugins/toastr/toast.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('../../plugins/sweetalert2/sweetalert2.min.js') }}"></script>
