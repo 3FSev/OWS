@@ -1,8 +1,105 @@
+{{-- @extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Register') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <select name="department" id="department" class="js-input form-control" required>
+                                <option value="" disabled selected>Department</option>
+                                @foreach($departments as $id => $name)
+                                    <option value="{{ $id }}">{{ $name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <select name="department" id="department" class="js-input form-control" required>
+                                <option value="" disabled selected>District</option>
+                                @foreach($districts as $id => $name)
+                                    <option value="{{ $id }}">{{ $name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection --}}
+
 <html lang="en">
 @include('theme/login-register-theme')
 <body>
     <div class="container login-container">
-        <form action="" method="get">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
             <div class="row justify-content-center align-items-center vh-100">
                 <!-- Align vertically and take full viewport height -->
                 <div class="col-md-5">
@@ -12,59 +109,78 @@
                         <p class="mt-1 text-md text-grey">Sign in</p>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="name" class="form-control input-field" placeholder="Full Name">
+                        <input id="name" type="text" class="form-control input-field @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Full Name" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                         @enderror
                     </div>
+
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control input-field" placeholder="Email">
+                        <input id="email" type="email" class="form-control input-field @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" autocomplete="email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                         @enderror
                     </div>
+
                     <div class="input-group mb-3">
-                        <select name="district" class="form-control">
-                            <option value="" selected disabled>District</option>
-                            <option value="1">District I</option>
-                            <option value="2">District II</option>
-                            <option value="3">District III</option>
-                            <option value="4">District IV</option>
-                            <option value="5">District V</option>
-                            <option value="6">District VI</option>
-                            <option value="7">District VII</option>
-                            <option value="8">District VIII</option>
+                        <select name="district" id="district" class="form-control" required>
+                            <option value="" disabled selected>District</option>
+                            @foreach($districts as $id => $name)
+                                <option value="{{ $id }}">{{ $name }}</option>
+                            @endforeach
                         </select>
+                        @error('district')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                         @enderror
                     </div>
+
                     <div class="input-group mb-3">
-                        <select name="Department" class="form-control">
-                            <option value="" selected disabled>Department</option>
-                            <option value="OGM">OGM</option>
-                            <option value="CPD">CPD</option>
-                            <option value="FSD">FSD</option>
-                            <option value="PGD">PGD</option>
-                            <option value="ISD">ISD</option>
-                            <option value="ASD">ASD</option>
-                            <option value="IAD">IAD</option>
-                            <option value="TSD">TSD</option>
-                            <option value="BOD">BOD</option>
+                        <select name="department" id="department" class="form-control" required>
+                            <option value="" disabled selected>Department</option>
+                            @foreach($departments as $id => $name)
+                                <option value="{{ $id }}">{{ $name }}</option>
+                            @endforeach
                         </select>
+                        @error('department')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                         @enderror
                     </div>
+
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control input-field"  placeholder="Password">
+                        <input id="password" type="password" class="form-control input-field @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span toggle="#password-field"
                                     class="fa fa-fw field-icon toggle-password fa-eye"></span>
                             </div>
                         </div>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                         @enderror
                     </div>
+
                     <div class="input-group mb-5">
-                        <input type="password" name="confirm password" class="form-control input-field"  placeholder="Confirm Password">
+                        <input id="password-confirm" type="password" class="form-control input-field" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span toggle="#password-field"
@@ -72,9 +188,9 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn-lg btn-block login-button">Register</button>
+                    <button type="submit" class="btn-lg btn-block login-button">{{ __('Register') }}</button>
                     <p class="mt-3 text-center sign-up-text">There is already an account.
-                        <a href="{{ url('/register') }}" class="sign-up-link">Login</a></p>
+                        <a href="{{ url('/login') }}" class="sign-up-link">Login</a></p>
                 </div>
             </div>
         </form>

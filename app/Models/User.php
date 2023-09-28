@@ -20,6 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'district_id',
+        'department_id',
         'password',
     ];
 
@@ -42,4 +44,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'dept_id');
+    }
+
+    public function wivs()
+    {
+        return $this->belongsTo(Wiv::class);
+    }
+
+    public function mrt()
+    {
+        return $this->belongsTo(Mrt::class);
+    }
 }

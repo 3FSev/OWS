@@ -46,3 +46,7 @@ Route::get('/manager/man-wiv-req', [ManagerController::class, 'WIVrequest'])->na
 Route::get('/manager/man-mrt-req', [ManagerController::class, 'MRTrequest'])->name('MrtRequest.man');
     Route::get('/manager/mrt-review', [ManagerController::class, 'MRTreview'])->name('MrtReview.man');
 // </route for manager>
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
