@@ -218,13 +218,11 @@
                     <div class="form-group">
                       <label>Email</label>
                       <input type="email" class="form-control" style="width: 100%;" placeholder="Email Address">
-                      </input>
                     </div>
 
                     <div class="form-group">
                         <label>Password</label>
                         <input type="Password" class="form-control" style="width: 100%;" placeholder="Password">
-                        </input>
                     </div>
                     <!-- /.form-group -->
                   </div>

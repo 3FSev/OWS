@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SuperUserController extends Controller
 {
     public function Dashboard()
     {
-        return view('superuser.sup-dashboard');
+        $verefied_count = User::whereNotNull('approved_at')->count();
+        $unverefied_count = User::whereNull('approved_at')->count();
+        return view('superuser.sup-dashboard', compact('verefied_count', 'unverefied_count'));
     }
     public function CreateUser()
     {
@@ -16,11 +19,13 @@ class SuperUserController extends Controller
     }
     public function UnverifiedUser()
     {
-        return view('superuser.sup-unverified-user');
+        $users = User::whereNull('approved_at')->get();
+        return view('superuser.sup-unverified-user', compact('users'));
     }
     public function UserList()
     {
-        return view('superuser.sup-user-list');
+        $users = User::whereNotNull('approved_at')->get();
+        return view('superuser.sup-user-list', compact('users'));
     }
     public function ManageDepartment()
     {

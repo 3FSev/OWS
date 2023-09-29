@@ -15,26 +15,18 @@ use App\Http\Controllers\SuperUserController;
 |
 */
 
-// Register
-Route::get('/register', function () {
-    return view('auth.register');
-});
-
-Route::get('/dashboard', function () {
-    return view('superuser.sup-dashboard');
-});
-
 // <route for superuser>
-Route::get('/superuser/sup-dashboard', [SuperUserController::class, 'Dashboard'])->name('dashboard.sup');
-Route::get('/superuser/sup-create-user', [SuperUserController::class, 'CreateUser'])->name('create.sup');
-Route::get('/superuser/sup-unverified-user', [SuperUserController::class, 'UnverifiedUser'])->name('unverified.sup');
-Route::get('/superuser/sup-user-list', [SuperUserController::class, 'UserList'])->name('userlist.sup');
-Route::get('/superuser/sup-manage-department', [SuperUserController::class, 'ManageDepartment'])->name('manageDept.sup');
-Route::get('/superuser/sup-manage-districts', [SuperUserController::class, 'ManageDistricts'])->name('manageDist.sup');
-Route::get('/superuser/sup-user-activities', [SuperUserController::class, 'UserActivities'])->name('userActivities.sup');
-Route::get('/superuser/sup-restore-item', [SuperUserController::class, 'RestoreItem'])->name('restoreItems.sup');
-Route::get('/superuser/sup-restore-accounts', [SuperUserController::class, 'RestoreItem'])->name('restoreAccounts.sup');
-//</ route for superuser >
+Route::middleware(['auth','superuser'])->group(function(){
+    Route::get('sup-dashboard', [SuperUserController::class, 'Dashboard'])->name('dashboard.sup');
+    Route::get('sup-create-user', [SuperUserController::class, 'CreateUser'])->name('create.sup');
+    Route::get('sup-unverified-user', [SuperUserController::class, 'UnverifiedUser'])->name('unverified.sup');
+    Route::get('sup-user-list', [SuperUserController::class, 'UserList'])->name('userlist.sup');
+    Route::get('sup-manage-department', [SuperUserController::class, 'ManageDepartment'])->name('manageDept.sup');
+    Route::get('sup-manage-districts', [SuperUserController::class, 'ManageDistricts'])->name('manageDist.sup');
+    Route::get('sup-user-activities', [SuperUserController::class, 'UserActivities'])->name('userActivities.sup');
+    Route::get('sup-restore-item', [SuperUserController::class, 'RestoreItem'])->name('restoreItems.sup');
+    Route::get('sup-restore-accounts', [SuperUserController::class, 'RestoreItem'])->name('restoreAccounts.sup');
+});
 
 // <route for manager>
 Route::get('/man-dashboard', function () {

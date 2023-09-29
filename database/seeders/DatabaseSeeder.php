@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'SuperUser',
                 'email' => 'whouse.superuser@gmail.com',
                 'password' => bcrypt('ormeco.admin'),
-                'roles_id' => 3,
+                'role_id' => 3,
                 'department_id' => 1,
                 'district_id' => 1,
                 'approved_at' =>  Carbon::now()

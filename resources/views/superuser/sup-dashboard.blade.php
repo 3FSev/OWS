@@ -81,7 +81,7 @@
       <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <div class="ml-2">
       <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
-      <p class="brand-text font-weight-light">Managemen System</p>
+      <p class="brand-text font-weight-light">Management Systemt</p>
     </div>
     </a>
   </div>
@@ -210,7 +210,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{$verefied_count}}</h3>
 
                 <p>Registered Accounts</p>
               </div>
@@ -225,7 +225,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{$unverefied_count}}</h3>
                 <p>Unregistered Accounts</p>
               </div>
               <div class="icon">
