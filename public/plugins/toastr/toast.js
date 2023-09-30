@@ -98,7 +98,7 @@ $(function() {
       })
     });
 
-      // Manager(Page:Stock List ) Edit Items
+      // Manager(Page:Account Setting ) Edit Items
       $('.toastUpdateAccDetails').click(function() {
         $(document).Toasts('create', {
           class: 'bg-success',
@@ -108,6 +108,15 @@ $(function() {
         })
       });
   
+      // Manager(Page:Change Password ) Edit Items
+      $('.toastChangePassword').click(function() {
+        $(document).Toasts('create', {
+          class: 'bg-success',
+          title: 'Successful',
+          subtitle: '',
+          body: 'Your password is successfully updated.'
+        })
+      });
 
 
   });
