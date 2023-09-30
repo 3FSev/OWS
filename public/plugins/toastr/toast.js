@@ -118,5 +118,16 @@ $(function() {
         })
       });
 
+       // Employee(Page:Return Item Request ) Edit Items
+       $('.toastReturnItemReq').click(function() {
+        $(document).Toasts('create', {
+          class: 'bg-success',
+          title: 'Successful',
+          subtitle: '',
+          body: 'Returned item request is successfully in proccess.'
+        })
+      });
+     
+
 
   });
