@@ -111,7 +111,7 @@
                 </div>
                 <!-- /.form-group -->
                 <div class="d-flex justify-content-end mt-5">
-                    <button class="btn bg-primary text-white text-bold"><i class="fas fa-check mr-1"></i> Save</button>
+                    <button class="btn bg-primary text-white text-bold toastChangePassword"><i class="fas fa-check mr-1"></i> Save</button>
                 </div>
             </div>
             
