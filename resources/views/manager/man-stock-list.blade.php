@@ -10,7 +10,7 @@
     @include('theme/navbar')
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-green elevation-4">
+  <aside class="main-sidebar sidebar-dark-green elevation-4 sidebar-custom">
  
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
@@ -92,8 +92,8 @@
           <div class="col-12">
             <div class="card">
               <!-- /.card-header -->
-              <div class="card-header bg-success">
-                <h5 class="m-0">Items</h5>
+              <div class="card-header card-header-custom">
+                <h5 class="m-0 text-bold">Item Details</h5>
               </div>     
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
@@ -123,7 +123,7 @@
                     <td>
                       <div class="text-center">
                         <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
-                          <i class="fas fa-pencil-alt" style="color: white;"></i>
+                          <i class="icon-custom fas fa-pencil-alt" style="color: white;"></i>
                       </button>
                       </div>                      
                     </td>

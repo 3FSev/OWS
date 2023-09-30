@@ -10,7 +10,7 @@
   @include('theme/navbar')
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-green elevation-4">
+  <aside class="main-sidebar sidebar-dark-green elevation-4 sidebar-custom">
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
     <a href="index3.html" class="brand-link">
@@ -90,8 +90,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header bg-success">
-                        <h5 class="m-0">Review WIV Request</h5>
+            
+                    <div class="card-header card-header-custom">
+                        <h5 class="m-0 text-bold">Review WIV Request</h5>
                     </div>
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mt-2">
@@ -109,40 +110,40 @@
                           </div>
                       </div>
 
-                      <table class="table own-table mt-3 ">
-                        <thead class="own-thead bg-gray">
-                          <tr class="own-tr">
-                            <th class="own-th" scope="col">Item</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">RIV</th>
-                            <th scope="col">RIV Date</th>
-                            <th scope="col">PO</th>
-                            <th scope="col">PO Date</th>
-                            <th scope="col">RR</th>
-                            <th scope="col">RR Date</th>
+                      <table class="table table-custom mt-3 ">
+                        <thead class="thead-custom ">
+                          <tr>
+                            <th class="th-custom" scope="col">Item</th>
+                            <th class="th-custom" scope="col">Quantity</th>
+                            <th class="th-custom" scope="col">RIV</th>
+                            <th class="th-custom" scope="col">RIV Date</th>
+                            <th class="th-custom" scope="col">PO</th>
+                            <th class="th-custom" scope="col">PO Date</th>
+                            <th class="th-custom" scope="col">RR</th>
+                            <th class="th-custom" scope="col">RR Date</th>
                           </tr>
                         </thead>
                         <tbody>
                           <!-- Add your table rows here -->
-                          <tr class="own-tr">
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td" ><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled ></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                          <tr class="tr-custom">
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom" ><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled ></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
                           </tr>
-                          <tr class="own-tr">
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled ></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                            <td class="own-td"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                          <tr class="tr-custom">
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled ></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                            <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
                           </tr>
                         </tbody>
                       </table>

@@ -11,7 +11,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-green elevation-4">
+  <aside class="main-sidebar sidebar-dark-green elevation-4 sidebar-custom">
     <!-- Brand Logo -->
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
@@ -93,8 +93,8 @@
           <div class="col-12">
             <div class="card">
               <!-- /.card-header -->
-              <div class="card-header bg-success">
-                <h5 class="m-0">MRT Request Details</h5>
+              <div class="card-header card-header-custom">
+                <h5 class="m-0 text-bold">MRT Request Details</h5>
               </div>     
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">

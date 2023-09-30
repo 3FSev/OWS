@@ -10,7 +10,7 @@
   @include('theme/navbar')
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-green elevation-4">
+  <aside class="main-sidebar sidebar-dark-green elevation-4 sidebar-custom">
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
     <a href="index3.html" class="brand-link">
@@ -90,8 +90,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header bg-success">
-                        <h5 class="m-0">Review  MRT Request</h5>
+                  <!-- /.card-header -->
+                    <div class="card-header card-header-custom">
+                        <h5 class="m-0 text-bold">Review  MRT Request</h5>
                     </div>
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mt-2">
@@ -109,22 +110,22 @@
                           </div>
                       </div>
 
-                      <table class="table table-bordered mt-3 ">
-                        <thead class="bg-gray">
-                          <tr>
-                            <th scope="col">Item Name</th>
-                            <th scope="col">Quantity</th>
+                      <table class="table mrt-table-custom mt-3 ">
+                        <thead class="mrt-thead-custom">
+                          <tr class="mrt-tr">
+                            <th class="mrt-th" scope="col">Item Name</th>
+                            <th class="mrt-th" scope="col">Quantity</th>
                           </tr>
                         </thead>
                         <tbody>
                           <!-- Add your table rows here -->
-                          <tr>
-                            <td>Sample</td>
-                            <td>Sample</td>
+                          <tr class=" mrt-tr">
+                            <td class="mrt-td">Sample</td>
+                            <td class="mrt-td">Sample</td>
                           </tr>
-                          <tr>
-                            <td>Sample</td>
-                            <td>Sample</td>
+                          <tr class="mrt-tr">
+                            <td class="mrt-td">Sample</td>
+                            <td class="mrt-td">Sample</td>
                           </tr>
                         </tbody>
                       </table>
