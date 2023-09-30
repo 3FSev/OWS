@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuperUserController;
@@ -40,6 +41,16 @@ Route::get('/manager/man-mrt-req', [ManagerController::class, 'MRTrequest'])->na
 Route::get('/manager/man-acc-settings', [ManagerController::class, 'AccountSettings'])->name('AccSetting.man');   
 Route::get('/manager/man-change-pswd', [ManagerController::class, 'ChangePassword'])->name('ChangePswd.man');   
 // </route for manager>
+
+// <route for employee>
+Route::get('/em-pending-wiv', function () {
+    return view('employee.em-pending-wiv');
+});
+Route::get('/employee/em-pending-wiv', [EmployeeController::class, 'PendingWIV'])->name('PendingWiv.em');   
+Route::get('/employee/em-pending-mrt', [EmployeeController::class, 'PendingRIV'])->name('PendingRiv.em');   
+Route::get('/employee/em-list', [EmployeeController::class, 'ListView'])->name('ListView.em');
+Route::get('/employee/em-item-req', [EmployeeController::class, 'ItemRequest'])->name('ItemReq.em');   
+Route::get('/employee/em-return-item-req', [EmployeeController::class, 'ReturnItemReq'])->name('ReturnItemReq.em');   
 
 Auth::routes();
 
