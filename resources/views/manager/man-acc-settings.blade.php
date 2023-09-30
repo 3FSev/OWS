@@ -93,7 +93,7 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-header bg-success">
-                <h5 class="m-0">Account Dettails</h5>
+                <h5 class="m-0">Account Details</h5>
               </div>     
               <div class="card-body">
                 <!-- /.form-group -->
@@ -112,7 +112,7 @@
                 <!-- /.form-group -->
                 <div class="d-flex justify-content-end mt-5"> 
                     <button class="btn bg-warning text-white text-bold mr-2"><i class="fas fa-pencil-alt text-white mr-1"></i> Edit</button>
-                    <button class="btn bg-success text-white text-bold"><i class="fas fa-check mr-1"></i> Update</button>
+                    <button class="btn bg-success text-white text-bold toastUpdateAccDetails"><i class="fas fa-check mr-1"></i> Update</button>
                 </div>
             </div>
             
