@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->integer('freight')->nullable();
             $table->integer('extended_cost')->nullable();
+            $table->softDeletes();
         });
     }
 
