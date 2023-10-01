@@ -113,15 +113,12 @@
                 <div class="d-flex justify-content-end mt-5">
                     <button class="btn bg-primary text-white text-bold toastChangePassword"><i class="fas fa-check mr-1"></i> Save</button>
                 </div>
-            </div>
-            
-            
+              </div>
               </div>
               <!-- /.card-body -->
             </div>
-          </div>
-      </div><!-- /.container-fluid -->
-      </div><!-- /.container-fluid -->
+          </div><!-- /.container-fluid -->
+      </div>
     </section>
     <!-- /.content -->
   </div>
