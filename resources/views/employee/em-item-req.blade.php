@@ -10,16 +10,15 @@
     @include('theme/navbar')
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-green elevation-4 sidebar-custom">
+    <aside class="main-sidebar sidebar-dark-green elevation-4 ">
       <!-- Brand Logo -->
       <div class="d-flex align-items-center">
-      <a href="index3.html" class="brand-link">
-        <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <div class="ml-2">
-        <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
-        <p class="brand-text font-weight-light">Managemen System</p>
-      </div>
-      </a>
+        <a href="#" class="brand-link" style="display: flex; align-items: center;">
+          <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image-xl img-circle elevation-3">
+          <div class="brand-text-custom">
+            <span class="brand-text font-weight-light">Warehouse<br>Management System</span>
+          </div>
+        </a>
       </div>
   
       <!-- Sidebar -->
