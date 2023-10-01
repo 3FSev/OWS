@@ -10,7 +10,7 @@
     @include('theme/navbar')
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-green elevation-4">
+    <aside class="main-sidebar sidebar-dark-green elevation-4 sidebar-custom">
       <!-- Brand Logo -->
       <div class="d-flex align-items-center">
       <a href="index3.html" class="brand-link">

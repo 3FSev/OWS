@@ -5,12 +5,12 @@
 <div class="wrapper">
 
     <!-- Preloader -->
-    @include('theme/preloader')
+    @include('theme/preloader') 
     <!-- Navbar -->
     @include('theme/navbar')
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-green elevation-4">
+    <aside class="main-sidebar sidebar-dark-green elevation-4 sidebar-custom">
       <!-- Brand Logo -->
       <div class="d-flex align-items-center">
       <a href="index3.html" class="brand-link">
@@ -111,7 +111,7 @@
               <!-- /.card-header -->
               <div class="card-header">
               <div class="d-flex justify-content-between align-items-center">
-                <h2 class="card-title">Returned Item</h2>
+                <h2 class="card-title text-bold">Returned Item</h2>
                 <div class="card-tools">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                         <i class="fas fa-cube" style="color: #ffffff;"></i>&nbsp;
