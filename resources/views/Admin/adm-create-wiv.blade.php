@@ -185,29 +185,32 @@
                   <h5 class="m-0 text-bold">Item Request</h5>
                 </div>
                 <div class="card-body">
-                  <div class="d-flex flex-column flex-md-row align-items-md-center mt-2">
-                    <div class="mb-3">
+                  <div class="d-flex flex-wrap justify-content-between align-items-center mt-2">
+                    <div class="mb-3 col-md-3">
                       <label for="employee-name">Employee Name</label>
-                      <select class="form-control">
-                        <option value="option1" disabled>Employee Name/option>
+                      <select class="form-control input-box-custom">
+                        <option value="option1" disabled>Eubert Cris S. Novencido</option>
                         <option value="option1">Option 1</option>
                         <option value="option2">Option 2</option>
                       </select>
                     </div>
-                    <div class="mb-3">
-                      <label for="wiv-number">Distric</label>
-                      <input class="form-control" type="number">
+                    <div class="mb-3 col-md-3">
+                      <label for="District">District</label>
+                      <select class="form-control input-box-custom">
+                        <option value="option1" disabled>District I</option>
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                      </select>
                     </div>
-                    <div class="mb-3">
-                      <label for="wiv-date">WIV Number</label>
-                      <input class="form-control" type="text">
+                    <div class="mb-3 col-md-3">
+                      <label for="wiv-number">WIV Number</label>
+                      <input class="form-control input-box-custom" type="text">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-3">
                       <label for="wiv-date">WIV Date</label>
-                      <input class="form-control" type="date">
+                      <input class="form-control input-box-custom" type="date">
                     </div>
-                  </div>
-                  
+                  </div>                  
                   <table class="table table-custom mt-3 ">
                     <thead class="thead-custom ">
                       <tr>
@@ -219,32 +222,57 @@
                         <th class="th-custom" scope="col">PO Date</th>
                         <th class="th-custom" scope="col">RR</th>
                         <th class="th-custom" scope="col">RR Date</th>
+                        <th class="th-custom" scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <!-- Add your table rows here -->
                       <tr class="tr-custom">
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom" ><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled ></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
+                        <td>
+                          <button class="btn btn-danger toastDeleteItem">
+                            <i class="fas fa-trash"></i>
+                          </button>
+                        </td>
                       </tr>
                       <tr class="tr-custom">
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled ></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
+                        <td>
+                          <button class="btn btn-danger toastDeleteItem">
+                            <i class="fas fa-trash"></i>
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+                  <div class="form-group text-right">
+                    <div class="d-flex justify-content-end">
+                        <a href="" class="btn btn-primary mr-2">
+                            <i class="fas fa-plus-circle mr-1"></i>  Add
+                        </a>
+                        <a href="" class="btn btn-success mr-2">
+                            <i class="fas fa-check mr-1"></i>  Confirm
+                        </a>
+                        <a href="" class="btn btn-danger">
+                            <i class="fas fa-times mr-1"></i>  Reset
+                        </a>
+                    </div>
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -257,18 +285,4 @@
     <!-- /.content-wrapper -->
   </div>
 </body>
-<script>
-  $(function() {
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
-
 </html>

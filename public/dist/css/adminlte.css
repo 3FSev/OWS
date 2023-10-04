@@ -53061,14 +53061,12 @@ a.text-muted:hover {
 }
 
 .table-custom {
-  border: 1px solid #a6a6a6; 
+  border: 1px solid #bababa;
 }
 
-.table-custom .th-custom,
-.table-custom .tr-custom,
-.tr-rr .td-rr
+.table-custom .th-custom, .table-custom .tr-custom, .tr-rr .td-rr
 {
-  border: 1px solid #a6a6a6; 
+  border: 1px solid #bababa; 
 }
 
 .mrt-thead-custom {
@@ -53079,9 +53077,7 @@ a.text-muted:hover {
   color: #000;
 }
 
-.mrt-th,
-.mrt-td,
-.mrt-tr {
+.mrt-th, .mrt-td, .mrt-tr {
   border: 1px solid #a6a6a6; 
 }
 
@@ -53098,3 +53094,8 @@ a.text-muted:hover {
 }
 
 /* admin */
+
+/* adm-create-mrt */
+/* .quantity-column{
+  width: 100px;
+} */
