@@ -1,18 +1,17 @@
 <html>
 @include('theme/plugins-theme')
-<title>MRT Request</title>
+<title>Account Setting</title>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
-  @include('theme/preloader')
-  <!-- Navbar -->
-  @include('theme/navbar')
-  <!-- /.navbar -->
+    <!-- Preloader -->
+    @include('theme/preloader')
+    <!-- Navbar -->
+    @include('theme/navbar')
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-green elevation-4 ">
-
+ 
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
       <a href="#" class="brand-link" style="display: flex; align-items: center;">
@@ -31,7 +30,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{ route('stockList.man') }}" class="nav-link ">
+            <a href="{{ route('stockList.man') }}" class="nav-link">
               <i class="nav-icon fas fa-box nav-icon"></i>
               <p>
                 Stock List
@@ -39,7 +38,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-envelope nav-icon"></i>
               <p>
                 Request Approval
@@ -48,14 +47,14 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('WivRequest.man') }}" class="nav-link ">
+                    <a href="{{ route('WivRequest.man') }}" class="nav-link">
                         {{--  <i class="far fa-circle nav-icon"></i>  --}}
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <p>WIV Request</p>
                     </a>
                 </li>
               <li class="nav-item">
-                <a href="{{ route('MrtRequest.man') }}" class="nav-link active">
+                <a href="{{ route('MrtRequest.man') }}" class="nav-link">
                   {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>MRT Request</p>
@@ -77,8 +76,8 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Material Return Ticket</h1>
-          </div><!-- /.col -->
+            <h1 class="m-0">Account Settings</h1>
+          </div><!-- /.col -->s
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -93,69 +92,32 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-header card-header-custom">
-                <h5 class="m-0 text-bold">MRT Request Details</h5>
+                <h5 class="m-0 text-bold">Account Details</h5>
               </div>     
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>Employee Name</th>
-                    <th>Department</th>
-                    <th>MRT Number</th>
-                    <th>MRT Date</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('MrtReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>
-                      </div>                      
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('MrtReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
-                      </div>     
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('MrtReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
-                      </div>  
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
+                <div class="card-body">
+                  <!-- /.form-group -->
+                  <div class="form-group">
+                      <label>Full Name</label>
+                      <input class="form-control" type="text" placeholder="Full Name">
+                  </div>
+                  <div class="form-group">
+                      <label>Email</label>
+                      <input type="email" class="form-control" style="width: 100%;" placeholder="Email Address">
+                  </div>
+                  <div class="form-group">
+                      <label>Department</label>
+                      <input type="Password" class="form-control" style="width: 100%;" placeholder="Password">
+                  </div>
+                  <!-- /.form-group -->
+                  <div class="d-flex justify-content-end mt-5"> 
+                      <button class="btn bg-warning edit-btn text-white text-bold mr-2"><i class="fas fa-pencil-alt text-white mr-1"></i> Edit</button>
+                      <button class="btn bg-success text-white text-bold toastUpdateAccDetails"><i class="fas fa-check mr-1"></i> Update</button>
+                  </div>
+                </div>
               </div>
               <!-- /.card-body -->
             </div>
-          </div>
-      </div><!-- /.container-fluid -->
+         </div><!-- /.container-fluid -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -163,17 +125,4 @@
   <!-- /.content-wrapper -->
 </div>
 </body>
-<script>
-  $(function () { 
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
 </html>

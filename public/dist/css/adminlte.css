@@ -10956,7 +10956,7 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
 }
 
 .layout-navbar-fixed .wrapper .sidebar-dark-green .brand-link:not([class*="navbar"]) {
-  background-color: #343a40;
+  background-color: #fff;
 }
 
 .layout-navbar-fixed .wrapper .sidebar-light-green .brand-link:not([class*="navbar"]) {
@@ -11621,7 +11621,7 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
 .layout-top-nav .wrapper .main-header .brand-image {
   margin-top: -.5rem;
   margin-right: .2rem;
-  height: 33px;
+  height: 100px;
 }
 
 .layout-top-nav .wrapper .main-sidebar {
@@ -12504,6 +12504,15 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   padding: 0;
   border-bottom: none;
 }
+.brand-text{
+  font-size: 19px;
+  color:white;
+} 
+.brand-text:hover{
+  color: #b3b3b3;
+  text-decoration: none;
+} 
+
 
 .brand-link .brand-image {
   float: left;
@@ -12525,8 +12534,9 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .brand-link .brand-image-xl {
   line-height: .8;
-  max-height: 40px;
+  max-height: 50px;
   width: auto;
+  margin-right: 9px;
 }
 
 .brand-link .brand-image-xl.single {
@@ -12862,7 +12872,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 [class*="sidebar-dark-"] {
-  background-color: #343a40;
+  background-color: #285430;
 }
 
 [class*="sidebar-dark-"] .user-panel a:hover {
@@ -45891,11 +45901,12 @@ blockquote.quote-gray-dark h6 {
 
 .bg-warning {
   background-color: #ffc107 !important;
+
 }
 
 .bg-warning,
 .bg-warning > a {
-  color: #1f2d3d !important;
+  color: #fff !important;
 }
 
 .bg-warning.btn:hover {
@@ -53010,3 +53021,80 @@ a.text-muted:hover {
   border-color: #4b545c !important;
 }
 /*# sourceMappingURL=adminlte.css.map */
+
+/* custome css */
+
+/* <superuser> */
+/* icon-password */
+.input-field{
+  border-right: none;
+}
+.input-group-text{
+  background-color: transparent;
+ }
+ 
+ .input-group-icon .input-group-append .input-group-text {
+     right: 10px;
+ }
+ /** </superuser>*/
+
+.item-name-input{
+  width: 350px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.quantity-input{
+  width: 65px;
+}
+
+.card-header-custom{
+  background: #79AC78;
+}
+
+/* < custome */
+.thead-custom{
+  background:#E7E9FF;
+}
+.table-head-title{
+  color: #0000;
+}
+
+.table-custom {
+  border: 1px solid #a6a6a6; 
+}
+
+.table-custom .th-custom,
+.table-custom .tr-custom,
+.tr-rr .td-rr
+{
+  border: 1px solid #a6a6a6; 
+}
+
+.mrt-thead-custom {
+  background-color: #D9D9D9;
+  border: 1px solid #000; 
+}
+.mrt-th {
+  color: #000;
+}
+
+.mrt-th,
+.mrt-td,
+.mrt-tr {
+  border: 1px solid #a6a6a6; 
+}
+
+.brand-text-custom{
+  margin:0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.icon .icon-custom {
+  font-size: 10px;
+}
+
+/* admin */

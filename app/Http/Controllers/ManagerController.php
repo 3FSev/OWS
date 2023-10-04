@@ -32,4 +32,15 @@ class ManagerController extends Controller
     {
         return view('manager.mrt-review');
     }
+
+    public function AccountSettings()
+    {
+        return view('manager.man-acc-settings');
+    }
+    
+    public function ChangePassword()
+    {
+        return view('manager.man-change-pswd');
+    }
+
 }

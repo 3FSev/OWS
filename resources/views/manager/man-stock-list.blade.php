@@ -4,86 +4,24 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTELogo" height="60" width="60">
-    <div>
-      <h5 class="pt-3"><strong>Loading...</strong></h5>
-    </div> 
-  </div>
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fas fa-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                <span>Logout</span>
-                <i class="fas fa-sign-out-alt"  style="color: grey;"></i>
-            </a>
-        </div>
-    </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+    <!-- Preloader -->
+    @include('theme/preloader')
+    <!-- Navbar -->
+    @include('theme/navbar')
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-green elevation-4"
-   {{--  style="background-color: #285430"  --}}
-   >
+  <aside class="main-sidebar sidebar-dark-green elevation-4 ">
+ 
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <div class="ml-2">
-      <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
-      <p class="brand-text font-weight-light">Managemen System</p>
+      <a href="#" class="brand-link" style="display: flex; align-items: center;">
+        <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image-xl img-circle elevation-3">
+        <div class="brand-text-custom">
+          <span class="brand-text font-weight-light">Warehouse<br>Management System</span>
+        </div>
+      </a>
     </div>
-    </a>
-  </div>
-
+    
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar Menu -->
@@ -153,8 +91,8 @@
           <div class="col-12">
             <div class="card">
               <!-- /.card-header -->
-              <div class="card-header bg-success">
-                <h5 class="m-0">Items</h5>
+              <div class="card-header card-header-custom">
+                <h5 class="m-0 text-bold">Item Details</h5>
               </div>     
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
@@ -184,7 +122,7 @@
                     <td>
                       <div class="text-center">
                         <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
-                          <i class="fas fa-pencil-alt" style="color: white;"></i>
+                          <i class="icon-custom fas fa-pencil-alt" style="color: white;"></i>
                       </button>
                       </div>                      
                     </td>
@@ -200,7 +138,7 @@
                     <td>Sample</td>
                     <td>
                       <div class="text-center">
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+                        <button class="btn btn-warning">
                           <i class="fas fa-pencil-alt" style="color: white;"></i>
                       </button>  
                     </td>
@@ -216,7 +154,7 @@
                     <td>Sample</td>
                     <td>
                       <div class="text-center">
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+                        <button class="btn btn-warning">
                           <i class="fas fa-pencil-alt" style="color: white;"></i>
                       </button>
                     </td>
@@ -278,7 +216,7 @@
                         </div>
                           <div class="modal-footer justify-content-between">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Confirm</button>
+                              <button type="button" class="btn btn-primary toastEditItem">Confirm</button>
                           </div>
                       </div>
                       <!-- /.modal-content -->

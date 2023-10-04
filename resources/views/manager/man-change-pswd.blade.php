@@ -1,16 +1,17 @@
 <html>
 @include('theme/plugins-theme')
-<title>WIV Request</title>
+<title>Change Password</title>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
-  @include('theme/preloader')
-  <!-- Navbar -->
-  @include('theme/navbar')
+    <!-- Preloader -->
+    @include('theme/preloader')
+    <!-- Navbar -->
+    @include('theme/navbar')
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-green elevation-4">
+  <aside class="main-sidebar sidebar-dark-green elevation-4 ">
+ 
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
       <a href="#" class="brand-link" style="display: flex; align-items: center;">
@@ -29,7 +30,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{ route('stockList.man') }}" class="nav-link ">
+            <a href="{{ route('stockList.man') }}" class="nav-link">
               <i class="nav-icon fas fa-box nav-icon"></i>
               <p>
                 Stock List
@@ -37,7 +38,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-envelope nav-icon"></i>
               <p>
                 Request Approval
@@ -46,14 +47,14 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('WivRequest.man') }}" class="nav-link active">
+                    <a href="{{ route('WivRequest.man') }}" class="nav-link">
                         {{--  <i class="far fa-circle nav-icon"></i>  --}}
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <p>WIV Request</p>
                     </a>
                 </li>
               <li class="nav-item">
-                <a href="{{ route('MrtRequest.man') }}" class="nav-link ">
+                <a href="{{ route('MrtRequest.man') }}" class="nav-link">
                   {{--  <i class="far fa-circle nav-icon"></i>  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <p>MRT Request</p>
@@ -75,7 +76,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Warehouse Issued Voucher Request</h1>
+            <h1 class="m-0">Change Password</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -91,87 +92,36 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-header card-header-custom">
-                <h5 class="m-0 text-bold">WIV Request Details</h5>
+                <h5 class="m-0 text-bold">Password Details</h5>
               </div>     
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>Employee Name</th>
-                    <th>Department</th>
-                    <th>WIV Number</th>
-                    <th>WIV Date</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('WivReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>
-                      </div>                      
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('WivReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
-                      </div>     
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('WivReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
-                      </div>  
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
+                <!-- /.form-group -->
+                <div class="form-group">
+                    <label>Old Password</label>
+                    <input class="form-control" type="text" placeholder="Old Password">
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="email" class="form-control" style="width: 100%;" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="Password" class="form-control" style="width: 100%;" placeholder="Password">
+                </div>
+                <!-- /.form-group -->
+                <div class="d-flex justify-content-end mt-5">
+                    <button class="btn bg-primary text-white text-bold toastChangePassword"><i class="fas fa-check mr-1"></i> Save</button>
+                </div>
+              </div>
               </div>
               <!-- /.card-body -->
             </div>
-          </div>
-      </div><!-- /.container-fluid -->
-      </div><!-- /.container-fluid -->
+          </div><!-- /.container-fluid -->
+      </div>
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 </div>
 </body>
-<script>
-  $(function () { 
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
 </html>

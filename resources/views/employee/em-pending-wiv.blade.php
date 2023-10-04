@@ -1,13 +1,13 @@
 <html>
 @include('theme/plugins-theme')
-<title>WIV Request</title>
+<title>Pending WIV</title>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
-  @include('theme/preloader')
-  <!-- Navbar -->
-  @include('theme/navbar')
+    <!-- Preloader -->
+    @include('theme/preloader')
+    <!-- Navbar -->
+    @include('theme/navbar')
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-green elevation-4">
@@ -28,38 +28,57 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="{{ route('stockList.man') }}" class="nav-link ">
-              <i class="nav-icon fas fa-box nav-icon"></i>
+          <li class="nav-item ">
+            <a class="nav-link active">
+              <i class="nav-icon fas fa-hand-paper nav-icon"></i>
               <p>
-                Stock List
+                Accountability
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="{{ route('PendingWiv.em') }}" class="nav-link active">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <p>Pending WIV </p>
+                  </a>
+              </li>
+            <li class="nav-item">
+              <a href="{{ route('PendingRiv.em') }}" class="nav-link ">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p>Pending MRT</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('ListView.em') }}" class="nav-link ">  
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p>List</p>
+              </a>
+            </li>
+          </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-envelope nav-icon"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-thumbs-up nav-icon"></i>
               <p>
                 Request Approval
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('WivRequest.man') }}" class="nav-link active">
-                        {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <p>WIV Request</p>
-                    </a>
-                </li>
               <li class="nav-item">
-                <a href="{{ route('MrtRequest.man') }}" class="nav-link ">
-                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>MRT Request</p>
-                </a>
+                  <a href="{{ route('ItemReq.em') }}" class="nav-link">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <p>Item Request</p>
+                  </a>
               </li>
-            </ul>
+            <li class="nav-item">
+              <a href="{{ route('ReturnItemReq.em') }}" class="nav-link">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p>Returned Item Request</p>
+              </a>
+            </li>
+          </ul>
           </li>
         </ul>
       </nav>
@@ -75,7 +94,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Warehouse Issued Voucher Request</h1>
+            <h1 class="m-0">Pending Warehouse Issued Voucher</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -91,16 +110,18 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-header card-header-custom">
-                <h5 class="m-0 text-bold">WIV Request Details</h5>
+                <h5 class="m-0 text-bold">Pending WIV List</h5>
               </div>     
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Employee Name</th>
-                    <th>Department</th>
                     <th>WIV Number</th>
-                    <th>WIV Date</th>
+                    <th>Date</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Cost</th>
+                    <th>Total Cost</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -110,12 +131,13 @@
                     <td>Sample</td>
                     <td>Sample</td>
                     <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
                     <td>
                       <div class="text-center">
-                      <a href="{{ route('WivReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>
+                      <button class="btn btn-primary">
+                          Accept <i class="fas fa-check ml-2"></i>
+                      </button
                       </div>                      
                     </td>
                   </tr>
@@ -124,27 +146,14 @@
                     <td>Sample</td>
                     <td>Sample</td>
                     <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>           
                     <td>
                       <div class="text-center">
-                      <a href="{{ route('WivReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
+                      <button class="btn btn-primary">
+                        Accept<i class="fas fa-check ml-2"></i>
+                      </button>  
                       </div>     
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('WivReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
-                      </div>  
                     </td>
                   </tr>
                   </tbody>
@@ -153,7 +162,7 @@
               <!-- /.card-body -->
             </div>
           </div>
-      </div><!-- /.container-fluid -->
+    </div><!-- /.container-fluid -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
