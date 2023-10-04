@@ -138,7 +138,7 @@
                     <td>Sample</td>
                     <td>
                       <div class="text-center">
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+                        <button class="btn btn-warning">
                           <i class="fas fa-pencil-alt" style="color: white;"></i>
                       </button>  
                     </td>
@@ -154,7 +154,7 @@
                     <td>Sample</td>
                     <td>
                       <div class="text-center">
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+                        <button class="btn btn-warning">
                           <i class="fas fa-pencil-alt" style="color: white;"></i>
                       </button>
                     </td>
