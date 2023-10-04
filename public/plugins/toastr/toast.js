@@ -127,6 +127,16 @@ $(function() {
           body: 'Returned item request is successfully in proccess.'
         })
       });
+
+      // Admin(Page:Item List ) Delete Item
+      $('.toastDeleteItem').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-danger',
+        title: 'Successful',
+        subtitle: '',
+        body: 'Item is successfully in deleted.'
+      })
+    });
      
 
 

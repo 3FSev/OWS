@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Route;
@@ -40,7 +41,7 @@ Route::get('/manager/man-mrt-req', [ManagerController::class, 'MRTrequest'])->na
     Route::get('/manager/mrt-review', [ManagerController::class, 'MRTreview'])->name('MrtReview.man');
 Route::get('/manager/man-acc-settings', [ManagerController::class, 'AccountSettings'])->name('AccSetting.man');   
 Route::get('/manager/man-change-pswd', [ManagerController::class, 'ChangePassword'])->name('ChangePswd.man');   
-// </route for manager>
+
 
 // <route for employee>
 Route::get('/em-pending-wiv', function () {
@@ -51,6 +52,28 @@ Route::get('/employee/em-pending-mrt', [EmployeeController::class, 'PendingRIV']
 Route::get('/employee/em-list', [EmployeeController::class, 'ListView'])->name('ListView.em');
 Route::get('/employee/em-item-req', [EmployeeController::class, 'ItemRequest'])->name('ItemReq.em');   
 Route::get('/employee/em-return-item-req', [EmployeeController::class, 'ReturnItemReq'])->name('ReturnItemReq.em');   
+
+
+// <route for Admin>
+Route::get('/adm-dashboard', function () {
+    return view('admin.adm-dashboard');
+});
+Route::get('/admin/adm-dashboard', [AdminController::class, 'Dashboard'])->name('Dashboard.adm');
+Route::get('/admin/adm-employee', [AdminController::class, 'Employee'])->name('Employee.adm');
+Route::get('/admin/adm-accountable-items', [AdminController::class, 'AccountableItems'])->name('AccountableItems.adm');
+Route::get('/admin/adm-create-rr', [AdminController::class, 'CreateRR'])->name('CreateRR.adm');
+Route::get('/admin/adm-rr-list', [AdminController::class, 'RRList'])->name('RRList.adm');
+Route::get('/admin/adm-rr-edit-list', [AdminController::class, 'EditRRList'])->name('EditRRList.adm');
+Route::get('/admin/adm-item-list', [AdminController::class, 'ItemList'])->name('ItemList.adm');
+Route::get('/admin/adm-create-wiv', [AdminController::class, 'CreateWIV'])->name('CreateWIV.adm');
+Route::get('/admin/adm-wiv-list', [AdminController::class, 'WIVList'])->name('WIVList.adm');
+Route::get('/admin/adm-create-mrt', [AdminController::class, 'CreateMRT'])->name('CreateMRT.adm');
+Route::get('/admin/adm-mrt-list', [AdminController::class, 'MRTList'])->name('MRTList.adm');
+Route::get('/admin/adm-item-request', [AdminController::class, 'ItemRequest'])->name('ItemRequest.adm');
+Route::get('/admin/adm-return-item-req', [AdminController::class, 'ReturnItemRequest'])->name('ReturnItemRequest.adm');
+Route::get('/admin/adm-reports', [AdminController::class, 'Reports'])->name('Reports.adm');
+
+
 
 Auth::routes();
 
