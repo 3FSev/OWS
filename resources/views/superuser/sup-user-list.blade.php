@@ -6,74 +6,7 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTELogo" height="60"
-                width="60">
-            <div>
-                <h5 class="pt-3"><strong>Loading...</strong></h5>
-            </div>
-        </div>
-
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fas fa-user"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                            <span>Logout</span>
-                            <i class="fas fa-sign-out-alt" style="color: grey;"></i>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-
+@include('superuser/nav-bar')
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-green elevation-4" {{--  style="background-color: #285430"  --}}>
             <!-- Brand Logo -->
@@ -233,8 +166,8 @@
                                               <td>{{$user->department->name}}</td>
                                               <td>
                                                   <div class="text-center">
-                                                      <button class="btn btn-warning" data-toggle="modal"
-                                                          data-target="#modal-default">
+                                                      <button class="btn btn-warning edit-user" data-toggle="modal"
+                                                          data-target="#modal-default" data-user-id="{{ $user->id }}">
                                                           <i class="fas fa-pencil-alt" style="color: white;"></i>
                                                       </button>
                                                       <button class="btn btn-danger">
@@ -259,26 +192,50 @@
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label class="col-form-label-md">Name</label>
-                                                        <input class="form-control" type="text" placeholder="Name">
+                                                        <input class="form-control" type="text" placeholder="Name" id="edit-name" value="{{ $user->name }}">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-form-label-md">Username</label>
-                                                        <input class="form-control" type="text" placeholder="Username">
+                                                        <label class="col-form-label-md">Email</label>
+                                                        <input class="form-control" type="text" placeholder="Email" id="edit-email" value="{{ $user->email }}">
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label-md">Role</label>
-                                                        <input class="form-control" type="text" placeholder="Role ">
+                                                        <select class="form-control" id="edit-role">
+                                                            <option value="">Select a Role</option>
+                                                            @foreach ($roles as $role)
+                                                                <option value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : '' }}>
+                                                                    {{ $role->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label-md">District</label>
-                                                        <input class="form-control" type="text" placeholder="District">
+                                                        <select class="form-control" id="edit-district">
+                                                            <option value="">Select a District</option>
+                                                            @foreach ($districts as $district)
+                                                                <option value="{{ $district->id }}" {{ $user->district_id == $district->id ? 'selected' : '' }}>
+                                                                    {{ $district->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label-md">Department</label>
+                                                        <select class="form-control" id="edit-department">
+                                                            <option value="">Select a Department</option>
+                                                            @foreach ($departments as $department)
+                                                                <option value="{{ $department->id }}" {{ $user->department_id == $department->id ? 'selected' : '' }}>
+                                                                    {{ $department->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label-md">Password</label>
-                                                        <input class="form-control" type="password"
-                                                            placeholder="Password">
+                                                        <input class="form-control" type="password" placeholder="Password" id="edit-password" value="{{ $user->password }}">
                                                     </div>
-                                                </div>
+                                                </div>                                                
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-default"
                                                         data-dismiss="modal">Close</button>
@@ -309,16 +266,71 @@
 
 <script>
     $(function () {
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
+    $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+
+    // Handle click event on the edit button
+    $('.edit-user').click(function () {
+        var userId = $(this).data('user-id');
+
+        // Make an AJAX request to fetch user data
+        $.ajax({
+            url: '/sup-get-user/' + userId,
+            type: 'GET',
+            success: function (data) {
+                // Populate modal fields with user data
+                $('#edit-name').val(data.name);
+                $('#edit-email').val(data.email);
+                $('#edit-password').val(data.password);
+
+                // Update the Role dropdown selected option
+                var roleSelect = $('#edit-role');
+                roleSelect.empty();
+                $.each(data.roles, function (key, value) {
+                    var option = $('<option>').text(value.name).attr('value', value.id);
+                    if (value.id === data.role_id) {
+                        option.attr('selected', 'selected');
+                    }
+                    roleSelect.append(option);
+                });
+
+                // Update the District dropdown selected option
+                var districtSelect = $('#edit-district');
+                districtSelect.empty();
+                $.each(data.districts, function (key, value) {
+                    var option = $('<option>').text(value.name).attr('value', value.id);
+                    if (value.id === data.district_id) {
+                        option.attr('selected', 'selected');
+                    }
+                    districtSelect.append(option);
+                });
+
+                // Update the Department dropdown selected option
+                var departmentSelect = $('#edit-department');
+                departmentSelect.empty();
+                $.each(data.departments, function (key, value) {
+                    var option = $('<option>').text(value.name).attr('value', value.id);
+                    if (value.id === data.department_id) {
+                        option.attr('selected', 'selected');
+                    }
+                    departmentSelect.append(option);
+                });
+            },
+            error: function () {
+                alert('Error fetching user data');
+            }
         });
     });
+});
 </script>
+
+
 
 </html>

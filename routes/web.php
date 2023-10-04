@@ -25,7 +25,17 @@ Route::middleware(['auth','superuser'])->group(function(){
     Route::get('sup-manage-districts', [SuperUserController::class, 'ManageDistricts'])->name('manageDist.sup');
     Route::get('sup-user-activities', [SuperUserController::class, 'UserActivities'])->name('userActivities.sup');
     Route::get('sup-restore-item', [SuperUserController::class, 'RestoreItem'])->name('restoreItems.sup');
-    Route::get('sup-restore-accounts', [SuperUserController::class, 'RestoreItem'])->name('restoreAccounts.sup');
+    Route::get('sup-restore-accounts', [SuperUserController::class, 'RestoreAccounts'])->name('restoreAccounts.sup');
+
+    Route::get('sup-unverified-user/{user_id}/approve', [SuperUserController::class, 'approve'])->name('approve.user');
+    Route::get('sup-restore-account/{user_id}/restore', [SuperUserController::class, 'restore'])->name('restore.user');
+    Route::get('sup-restore-item/{item_id}/restore', [SuperUserController::class, 'restore_item'])->name('restore.user');
+    Route::get('sup-get-user/{user_id}', [SuperUserController::class, 'getUserData'])->name('get.user.data');
+
+
+    Route::delete('sup-unverified-user/{user_id}/destroy', [SuperUserController::class, 'destroy'])->name('destroy.user');
+
+    Route::post('sup-create-user', [SuperUserController::class, 'store'])->name('superuser.create.user');
 });
 
 // <route for manager>
