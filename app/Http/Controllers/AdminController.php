@@ -72,8 +72,17 @@ class AdminController extends Controller
     }
 
     // manage reports
-    public function Reports(){
+    public function WIVReport(){
 
-        return view('admin.adm-item-request');
+        return view('admin.adm-WIV-reports');
+    }
+
+    public function MRTReport(){
+
+        return view('admin.adm-MRT-reports');
+    }
+    public function RRReport(){
+
+        return view('admin.adm-RR-reports');
     }
  }

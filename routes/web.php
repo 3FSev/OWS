@@ -81,9 +81,9 @@ Route::get('/admin/adm-create-mrt', [AdminController::class, 'CreateMRT'])->name
 Route::get('/admin/adm-mrt-list', [AdminController::class, 'MRTList'])->name('MRTList.adm');
 Route::get('/admin/adm-item-request', [AdminController::class, 'ItemRequest'])->name('ItemRequest.adm');
 Route::get('/admin/adm-return-item-req', [AdminController::class, 'ReturnItemRequest'])->name('ReturnItemRequest.adm');
-Route::get('/admin/adm-reports', [AdminController::class, 'Reports'])->name('Reports.adm');
-
-
+Route::get('/admin/adm-WIV-reports', [AdminController::class, 'WIVReports'])->name('WIVReports.adm');
+Route::get('/admin/adm-MRT-reports', [AdminController::class, 'MRTReports'])->name('MRTReports.adm');
+Route::get('/admin/adm-RR-reports', [AdminController::class, 'RRReports'])->name('RRReports.adm');
 
 Auth::routes();
 

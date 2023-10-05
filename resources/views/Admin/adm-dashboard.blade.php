@@ -145,12 +145,32 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="{{ route('Reports.adm') }}" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>
                 <p>
                   Reports
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('WIVReports.adm') }}" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>WIV</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('MRTReports.adm') }}" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>MRT</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('RRReports.adm') }}" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>RR</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
