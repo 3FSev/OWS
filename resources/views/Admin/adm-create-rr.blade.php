@@ -149,6 +149,7 @@
                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>
                 <p>
                   Reports
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
