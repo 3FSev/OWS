@@ -143,14 +143,43 @@ $(function() {
 
 // Employee Module
        // Employee(Page:Return Item Request ) Edit Items
-       $('.toastReturnItemReq').click(function() {
-        $(document).Toasts('create', {
-          class: 'bg-success',
-          title: 'Successful',
-          subtitle: '',
-          body: 'Returned item request is successfully in proccess.'
-        })
-      });
+      $('.toastReturnItemReq').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'Returned item request is successfully in proccess.'
+      })
+    });
+
+    // Pending WIV
+    $('.toastRecieveWIV').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',  
+        title: 'Successful',
+        subtitle: '',
+        body: 'The item has been successfully received.'
+      })
+    });
+    // Item Request
+    $('.toastItemRequest').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',  
+        title: 'Successful',
+        subtitle: '',
+        body: 'The item has been successfully requested.'
+      })
+    });
+    // Return Item Request
+    $('.toastReturnItemRequest').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',  
+        title: 'Successful',
+        subtitle: '',
+        body: 'The return item has been successfully requested.'
+      })
+    });
+  
 
 // Admin Module
       // (Page:Create RR ) Delete Item
