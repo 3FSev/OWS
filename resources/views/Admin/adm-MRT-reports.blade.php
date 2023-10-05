@@ -3,7 +3,7 @@
 @include('theme/preloader')
 @include('theme/navbar')
 
-<title>Recieve Report List</title>
+<title>MRT Reports</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -44,7 +44,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active">
+              <a class="nav-link">
                 <i class="nav-icon fas fa-box-archive nav-icon "></i>
                 <p>
                   Manage Stock
@@ -59,7 +59,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('RRList.adm') }}" class="nav-link active">
+                  <a href="{{ route('RRList.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>RR List</p>
                   </a>
@@ -74,8 +74,8 @@
             </li>
 
             <li class="nav-item">
-              <a  class="nav-link">
-                <i class="nav-icon fa-solid fa-ticket nav-icon"></i>
+              <a class="nav-link ">
+                <i class="nav-icon fa-solid fa-ticket nav-icon "></i>
                 <p>
                   Manage WIV
                   <i class="fas fa-angle-left right"></i>
@@ -107,13 +107,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('CreateMRT.adm') }}" class="nav-link">
+                  <a href="{{ route('CreateMRT.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Create MRT</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('MRTList.adm') }}" class="nav-link">
+                  <a href="{{ route('MRTList.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>MRT List</p>
                   </a>
@@ -130,13 +130,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('ItemRequest.adm') }}" class="nav-link">
+                  <a href="{{ route('ItemRequest.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Item Request</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link">
+                  <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Return Item Request</p>
                   </a>
@@ -144,7 +144,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <a class="nav-link active">
                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>
                 <p>
                   Reports
@@ -153,13 +153,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('WIVReports.adm') }}" class="nav-link">
+                  <a href="{{ route('WIVReports.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>WIV</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('MRTReports.adm') }}" class="nav-link">
+                  <a href="{{ route('MRTReports.adm') }}" class="nav-link active">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>MRT</p>
                   </a>
@@ -186,7 +186,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Recieving Report List</h1>
+              {{--  <h1 class="m-0">Material Returned Ticket</h1>  --}}
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -201,23 +201,29 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                {{--  <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">Recieve Report List</h5>
-                </div>  --}}
+                <div class="card-header ">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="card-title text-bold">Material Returned Ticket Report</h1>
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-primary m-1">
+                        <i class="fa-solid fa-print mr-2 text-white"></i>
+                        <span>Print</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Item Name</th>
-                        <th>Unit</th>
-                        <th>Delivered</th>
-                        <th>Acceptance</th>
-                        <th>Unit Cost</th>
-                        <th>External Cost</th>
-                        <th>Freigth Cost</th>
+                        <th>MRT Number</th>
+                        <th>Employee Name</th>
+                        <th>Department</th>
+                        <th>Item Description</th>
+                        <th>Quantity</th>
                         <th>Total Cost</th>
-                        <th>Date</th>
-                        <th>Action</th>
+                        <th>Status</th>
+                        <th>Date Issuance</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -230,12 +236,6 @@
                         <td>Sample</td>
                         <td>Sample</td>
                         <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <a href="{{ route('EditRRList.adm') }}" class="btn btn-warning">
-                            <i class="fas fa-pencil-alt text-white"></i>
-                          </a>
-                        </td>
                       </tr>
                       <tr>
                         <td>Sample</td>
@@ -246,12 +246,6 @@
                         <td>Sample</td>
                         <td>Sample</td>
                         <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <a href="{{ route('EditRRList.adm') }}" class="btn btn-warning" >
-                            <i class="fas fa-pencil-alt text-white"></i>
-                          </a>
-                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -260,7 +254,6 @@
               </div>
             </div>
           </div><!-- /.container-fluid -->
-        </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
     </div>
