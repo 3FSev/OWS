@@ -248,10 +248,10 @@
                 <!-- /.card-body -->
                 <div class="form-group text-right">
                   <div class="d-flex justify-content-end">
-                      <a href="" class="btn btn-primary mr-2">
+                      <a href="{{ route('RRList.adm') }}" class="btn btn-primary mr-2">
                           <i class="fas fa-arrow-left mr-1"></i>  Back
                       </a>
-                      <a href="" class="btn btn-success mr-2">
+                      <a href="#" class="btn btn-success  mr-2">
                           <i class="fas fa-check mr-1"></i>  Update
                       </a>
                   </div>

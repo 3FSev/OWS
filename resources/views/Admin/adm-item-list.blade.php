@@ -231,16 +231,15 @@
                         <td>Sample</td>
                         <td>
                             <div class="text-center">
-                                <button class="btn btn-warning" data-toggle="modal"
-                                    data-target="#modal-default">
+                                <a href="{{route('EditItemList.adm')}}" class="btn btn-warning">
                                     <i class="fas fa-pencil-alt text-white"></i>
-                                </button>
-                                <button class="btn btn-danger toastDeleteItem">
+                                </a>
+                                <a class="btn btn-danger toastDeleteItem">
                                     <i class="fas fa-trash"></i>
-                                </button>
-                                <button class="btn btn-primary">
+                                </a>
+                                <a class="btn btn-primary">
                                     <i class="fa-solid fa-print"></i>
-                                </button>
+                                </a>
                             </div>
                         </td>
                       </tr>
@@ -254,82 +253,21 @@
                         <td>Sample</td>
                         <td>Sample</td>
                         <td>
-                            <div class="text-center">
-                                <button class="btn btn-warning">
-                                    <i class="fas fa-pencil-alt text-white"></i>
-                                </button>
-                                <button class="btn btn-danger toastDeleteItem">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                                <button class="btn btn-primary">
-                                    <i class="fa-solid fa-print"></i>
-                                </button>
-                            </div>
+                          <div class="text-center">
+                            <a href="{{route('EditItemList.adm')}}" class="btn btn-warning">
+                                <i class="fas fa-pencil-alt text-white"></i>
+                            </a>
+                            <a class="btn btn-danger toastDeleteItem">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            <a class="btn btn-primary">
+                                <i class="fa-solid fa-print"></i>
+                            </a>
+                        </div>
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                  <div class="modal fade" id="modal-default">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Edit Items</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="row">
-                              <div class="col-md-6"> 
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Item Code</label>
-                                 <input class="form-control" type="text" placeholder="Item Code">
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Item Name</label>
-                                 <input class="form-control" type="text" placeholder="Item Name">
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Status</label>
-                                 <input class="form-control" type="text" placeholder="Status ">
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Quantity</label>
-                                 <input class="form-control" type="text" placeholder="Quantity">
-                                </div>
-                              </div>
-  
-                              <div class="col-md-6">
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Unit</label>
-                                 <input class="form-control" type="text" placeholder="Unit">
-                                </div>
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Category</label>
-                                  <select class="form-control">
-                                    <option value="unit">Sample 1</option>
-                                    <option value="category1">Sample 2</option>
-                                    <option value="category2">Sample 3</option>
-                                    <option value="category2">Sample 4</option>
-                                  </select>
-                                </div>                            
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Unit Cost</label>
-                                 <input class="form-control" type="text" placeholder="Unit Cost">
-                                </div>
-                              </div>
-                            </div>
-  
-                          </div>
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary toastEditItem">Confirm</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
                 </div>
                 <!-- /.card-body -->
               </div>

@@ -218,6 +218,7 @@
                             <th>Total Cost</th>
                             <th>Unit</th>
                             <th>Return Date</th>
+                            <th>Action</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -231,6 +232,14 @@
                               <td>Sample</td>
                               <td>Sample</td>
                               <td>Sample</td>
+                              <td>
+                                <div class="text-center">
+                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
+                                  {{--  Review &nbsp; --}}
+                                   <i class="far fa-eye"></i>
+                                  </a>
+                                </div>  
+                              </td>
                           </tr>
                           <tr>
                               <td>Sample</td>
@@ -242,6 +251,14 @@
                               <td>Sample</td>
                               <td>Sample</td>
                               <td>Sample</td>
+                              <td>
+                                <div class="text-center">
+                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
+                                  {{--  Review&nbsp;< --}}
+                                 <i class="far fa-eye"></i>
+                                  </a>
+                                </div>
+                              </td>
                           </tr>
                       </tbody>
                     </table>

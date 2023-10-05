@@ -237,23 +237,23 @@
                           <tr>
                               <th class="th-custom" scope="col">Item Name</th>
                               <th class="th-custom quantity-input" scope="col">Quantity</th>
-                              <th class="th-custom" scope="col">RIV</th>
+                              <th class="th-custom" scope="col">Action</th>
                           </tr>
                       </thead>
                       <tbody>
                           <!-- Add your table rows here -->
                           <tr class="tr-rr">
                               <td class="td-rr">
-                                  <select class="form-control" name="Full Name" id="">
+                                  <select class="form-control" name="Full Name" >
                                       <option value="Sample Full Name">Sample Full Name</option>
                                       <option value="Sample Full Name">Sample Full Name</option>
                                   </select>
                               </td>
-                              <td class="td-rr"><input class="form-control " type="number"
+                              <td class="td-rr"><input class="form-control" type="number"
                                       placeholder="sample"></td>
                               <td>
                                 <div>
-                                    <button class="btn btn-danger toastDeleteItem">
+                                    <button class="btn btn-danger mt-1">
                                         <i class="fas fa-trash"></i>
                                     </button>  
                                 </div>
@@ -261,15 +261,15 @@
                           </tr>
                           <tr class="tr-rr">
                               <td class="td-rr">
-                                  <select class="form-control" name="Full Name" id="">
+                                  <select class="form-control" name="Full Name">
                                       <option value="Sample Full Name">Sample Full Name</option>
                                       <option value="Sample Full Name">Sample Full Name</option>
                                   </select>
                               </td>
-                              <td class="td-rr"><input class="form-control " type="number"
+                              <td class="td-rr"><input class="form-control" type="number"
                                       placeholder="sample"></td>
                               <td class="td-rr">
-                                  <button class="btn btn-danger toastDeleteItem ">
+                                  <button class="btn btn-danger mt-1 ">
                                       <i class="fas fa-trash"></i>
                                   </button>
                               </td>
@@ -280,13 +280,13 @@
               </div>
                   <div class="form-group text-right">
                     <div class="d-flex justify-content-end">
-                        <a href="" class="btn btn-primary mr-2">
+                        <a href="#" class="btn btn-primary mr-2">
                             <i class="fas fa-plus-circle mr-1"></i>  Add
                         </a>
-                        <a href="" class="btn btn-success mr-2">
+                        <a href="#" class="btn btn-success mr-2 toastCreateMRT">
                             <i class="fas fa-check mr-1"></i>  Confirm
                         </a>
-                        <a href="" class="btn btn-danger">
+                        <a href="#" class="btn btn-danger">
                             <i class="fas fa-times mr-1"></i>  Reset
                         </a>
                     </div>

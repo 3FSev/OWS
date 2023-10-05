@@ -187,7 +187,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Create Recieving fReport</h1>
+              <h1 class="m-0">Create Recieving Report</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -298,8 +298,8 @@
                       <a href="" class="btn btn-primary mr-2">
                           <i class="fas fa-plus-circle mr-1"></i>  Add
                       </a>
-                      <a href="" class="btn btn-success mr-2">
-                          <i class="fas fa-check mr-1"></i>  Confirm
+                      <a href="#" class="btn btn-success mr-2 toastCreateRR">
+                          <i class="fas fa-check mr-1 "></i> Confirm
                       </a>
                       <a href="" class="btn btn-danger">
                           <i class="fas fa-times mr-1"></i>  Reset

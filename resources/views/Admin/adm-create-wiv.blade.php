@@ -66,7 +66,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('ItemList.adm') }}" class="nav-link active">
+                  <a href="{{ route('ItemList.adm') }}" class="nav-link">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Item List</p>
                   </a>
@@ -258,7 +258,7 @@
                         <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
                         <td class="td-custom"><input class="form-control" type="text" placeholder="sample"></td>
                         <td>
-                          <button class="btn btn-danger toastDeleteItem">
+                          <button class="btn btn-danger mt-1 ">
                             <i class="fas fa-trash"></i>
                           </button>
                         </td>
@@ -273,7 +273,7 @@
                         <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
                         <td class="td-custom"><input class="form-control" type="text" placeholder="sample" ></td>
                         <td>
-                          <button class="btn btn-danger toastDeleteItem">
+                          <button class="btn btn-danger mt-1 ">
                             <i class="fas fa-trash"></i>
                           </button>
                         </td>
@@ -287,7 +287,7 @@
                         <a href="" class="btn btn-primary mr-2">
                             <i class="fas fa-plus-circle mr-1"></i>  Add
                         </a>
-                        <a href="" class="btn btn-success mr-2">
+                        <a href="#" class="btn btn-success mr-2 toastCreateWIV">
                             <i class="fas fa-check mr-1"></i>  Confirm
                         </a>
                         <a href="" class="btn btn-danger">

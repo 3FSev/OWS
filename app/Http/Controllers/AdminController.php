@@ -40,6 +40,10 @@ class AdminController extends Controller
 
         return view('admin.adm-item-list');
     }
+    public function EditItemList(){
+
+        return view('admin.adm-edit-item-list');
+    }
 
     // manage wiv
     public function CreateWIV(){
@@ -69,6 +73,11 @@ class AdminController extends Controller
     public function ReturnItemRequest(){
 
         return view('admin.adm-return-item-req');
+    }   
+   
+    public function ReviewReturnItemRequest(){
+
+        return view('admin.adm-review-return-item');
     }
 
     // manage reports
