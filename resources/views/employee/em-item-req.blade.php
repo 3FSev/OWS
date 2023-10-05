@@ -113,7 +113,7 @@
                 <h2 class="card-title text-bold">Request Item</h2>
                 <div class="card-tools">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-                        <i class="fas fa-plus-circle" style="color: #ffffff;"></i>&nbsp;
+                        <i class="fas fa-plus-circle mr-1 text-white"></i>
                         <span>Request Item</span>
                     </button>
                 </div>
@@ -194,7 +194,7 @@
               <!-- /.card-body -->
             </div>
           </div>
-    </div><!-- /.container-fluid -->
+        </div><!-- /.container-fluid -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
