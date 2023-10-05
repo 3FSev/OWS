@@ -11,7 +11,10 @@ class ManagerController extends Controller
     {
         return view('manager.man-stock-list');
     }
-
+    public function EditItem()
+    {
+        return view('manager.man-edit-items');
+    }
     //
     public function WIVrequest()
     {

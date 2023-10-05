@@ -1,14 +1,12 @@
 <html>
 @include('theme/plugins-theme')
+@include('theme/preloader')
+@include('theme/navbar')
+
 <title>Review MRT Request</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-
-    <!-- Preloader -->
-    @include('theme/preloader')
-    <!-- Navbar -->
-    @include('theme/navbar')
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-green elevation-4 ">
@@ -110,7 +108,7 @@
                       </div>
                     </div>
                   </div>
-                  {{--  <div class="row justify-content-center">
+                  {{-- <div class="row justify-content-center">
                     <div class="col-8 table-responsive">
                       <table class="table table-striped">
                         <thead>
@@ -154,24 +152,21 @@
                           </tr>
                           <tr class="mrt-tr">
                             <td class="mrt-td">Sample</td>
-                            <td class="mrt-td" >1</td>
+                            <td class="mrt-td">1</td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
-
-
                 </div>
               </div>
-
               <div class="form-group text-right">
                 <div class="d-flex justify-content-end">
                   <a href="{{ route('MrtRequest.man') }}" class="btn btn-primary mr-2">
                     <i class="fas fa-arrow-left"></i> Back
                   </a>
-                  <a href="" class="btn btn-success mr-2">
-                    <i class="fas fa-check"></i> Approve
+                  <a href="#" class="btn btn-success mr-2 toastApproveMRT">
+                    <i class="fas fa-check "></i> Approve
                   </a>
                   <a href="" class="btn btn-danger">
                     <i class="fas fa-times"></i> Decline

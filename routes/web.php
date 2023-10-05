@@ -45,6 +45,7 @@ Route::get('/man-dashboard', function () {
     return view('manager.man-stock-list');
 });
 Route::get('/manager/man-stock-list', [ManagerController::class, 'StockList'])->name('stockList.man');
+Route::get('/manager/man-edit-items', [ManagerController::class, 'EditItem'])->name('EditItem.man');
 Route::get('/manager/man-wiv-req', [ManagerController::class, 'WIVrequest'])->name('WivRequest.man');
     Route::get('/manager/wiv-review', [ManagerController::class, 'WIVreview'])->name('WivReview.man');
 Route::get('/manager/man-mrt-req', [ManagerController::class, 'MRTrequest'])->name('MrtRequest.man');

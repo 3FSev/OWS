@@ -100,6 +100,27 @@ $(function() {
       })
     });
 
+    // wiv-review approve btn
+    $('.toastApproveWiv').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'The WIV request has been successfully approved.'
+      })
+    });
+
+    // mrt-review approve btn
+    $('.toastApproveMRT').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'The MRT request has been successfully approved.'
+      })
+    });
+
+
     // (Page:Account Setting ) Edit Items
     $('.toastUpdateAccDetails').click(function() {
       $(document).Toasts('create', {
