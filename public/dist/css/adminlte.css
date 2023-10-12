@@ -53060,28 +53060,21 @@ a.text-muted:hover {
   color: #0000;
 }
 
-.table-custom {
-  border: 1px solid #a6a6a6; 
-}
-
-.table-custom .th-custom,
-.table-custom .tr-custom,
-.tr-rr .td-rr
+.table-custom,.table-custom .th-custom, .table-custom .tr-custom,
+.tr-rr .td-rr,.mrt-table-custom
 {
-  border: 1px solid #a6a6a6; 
+  border: 1px solid #bababa; 
 }
 
 .mrt-thead-custom {
-  background-color: #D9D9D9;
-  border: 1px solid #000; 
+  background-color: #E7E9FF;
+  border: 1px solid #bababa; 
 }
 .mrt-th {
   color: #000;
 }
 
-.mrt-th,
-.mrt-td,
-.mrt-tr {
+.mrt-th, .mrt-td, .mrt-tr {
   border: 1px solid #a6a6a6; 
 }
 
@@ -53098,3 +53091,8 @@ a.text-muted:hover {
 }
 
 /* admin */
+
+/* adm-create-mrt */
+/* .quantity-column{
+  width: 100px;
+} */

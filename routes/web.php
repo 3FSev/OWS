@@ -45,6 +45,7 @@ Route::get('/man-dashboard', function () {
     return view('manager.man-stock-list');
 });
 Route::get('/manager/man-stock-list', [ManagerController::class, 'StockList'])->name('stockList.man');
+Route::get('/manager/man-edit-items', [ManagerController::class, 'EditItem'])->name('EditItem.man');
 Route::get('/manager/man-wiv-req', [ManagerController::class, 'WIVrequest'])->name('WivRequest.man');
     Route::get('/manager/wiv-review', [ManagerController::class, 'WIVreview'])->name('WivReview.man');
 Route::get('/manager/man-mrt-req', [ManagerController::class, 'MRTrequest'])->name('MrtRequest.man');
@@ -75,15 +76,17 @@ Route::get('/admin/adm-create-rr', [AdminController::class, 'CreateRR'])->name('
 Route::get('/admin/adm-rr-list', [AdminController::class, 'RRList'])->name('RRList.adm');
 Route::get('/admin/adm-rr-edit-list', [AdminController::class, 'EditRRList'])->name('EditRRList.adm');
 Route::get('/admin/adm-item-list', [AdminController::class, 'ItemList'])->name('ItemList.adm');
+Route::get('/admin/adm-edit-item-list', [AdminController::class, 'EditItemList'])->name('EditItemList.adm');
 Route::get('/admin/adm-create-wiv', [AdminController::class, 'CreateWIV'])->name('CreateWIV.adm');
 Route::get('/admin/adm-wiv-list', [AdminController::class, 'WIVList'])->name('WIVList.adm');
 Route::get('/admin/adm-create-mrt', [AdminController::class, 'CreateMRT'])->name('CreateMRT.adm');
 Route::get('/admin/adm-mrt-list', [AdminController::class, 'MRTList'])->name('MRTList.adm');
 Route::get('/admin/adm-item-request', [AdminController::class, 'ItemRequest'])->name('ItemRequest.adm');
 Route::get('/admin/adm-return-item-req', [AdminController::class, 'ReturnItemRequest'])->name('ReturnItemRequest.adm');
-Route::get('/admin/adm-reports', [AdminController::class, 'Reports'])->name('Reports.adm');
-
-
+Route::get('/admin/adm-review-return-item-req', [AdminController::class, 'ReviewReturnItemRequest'])->name('ReviewReturnItemRequest.adm');
+Route::get('/admin/adm-WIV-reports', [AdminController::class, 'WIVReports'])->name('WIVReports.adm');
+Route::get('/admin/adm-MRT-reports', [AdminController::class, 'MRTReports'])->name('MRTReports.adm');
+Route::get('/admin/adm-RR-reports', [AdminController::class, 'RRReports'])->name('RRReports.adm');
 
 Auth::routes();
 

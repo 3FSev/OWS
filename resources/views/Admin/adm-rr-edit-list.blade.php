@@ -144,13 +144,34 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="{{ route('Reports.adm') }}" class="nav-link">
+              <a class="nav-link">
                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>
                 <p>
                   Reports
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
             </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('WIVReports.adm') }}" class="nav-link">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <p>WIV</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('MRTReports.adm') }}" class="nav-link">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <p>MRT</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('RRReports.adm') }}" class="nav-link">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <p>RR</p>
+                </a>
+              </li>
+            </ul>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -227,10 +248,10 @@
                 <!-- /.card-body -->
                 <div class="form-group text-right">
                   <div class="d-flex justify-content-end">
-                      <a href="" class="btn btn-primary mr-2">
+                      <a href="{{ route('RRList.adm') }}" class="btn btn-primary mr-2">
                           <i class="fas fa-arrow-left mr-1"></i>  Back
                       </a>
-                      <a href="" class="btn btn-success mr-2">
+                      <a href="#" class="btn btn-success  mr-2">
                           <i class="fas fa-check mr-1"></i>  Update
                       </a>
                   </div>

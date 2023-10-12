@@ -145,12 +145,33 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="{{ route('Reports.adm') }}" class="nav-link">
+              <a class="nav-link">
                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>
                 <p>
                   Reports
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('WIVReports.adm') }}" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>WIV</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('MRTReports.adm') }}" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>MRT</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('RRReports.adm') }}" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>RR</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -166,7 +187,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Create Recieve Report</h1>
+              <h1 class="m-0">Create Recieving Report</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -284,15 +305,15 @@
                       <a href="" class="btn btn-primary mr-2">
                           <i class="fas fa-plus-circle mr-1"></i>  Add
                       </a>
-                      <a href="" class="btn btn-success mr-2">
-                          <i class="fas fa-check mr-1"></i>  Confirm
+                      <a href="#" class="btn btn-success mr-2 toastCreateRR">
+                          <i class="fas fa-check mr-1 "></i> Confirm
                       </a>
                       <a href="" class="btn btn-danger">
-                          <i class="fas fa-times mr-1"></i>  Reject
+                          <i class="fas fa-times mr-1"></i>  Reset
                       </a>
                   </div>
               </div>
-              </div>
+            </div>
           </div>
           </div><!-- /.container-fluid -->
         </div><!-- /.container-fluid -->

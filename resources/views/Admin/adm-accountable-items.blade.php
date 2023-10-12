@@ -144,12 +144,33 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="{{ route('Reports.adm') }}" class="nav-link">
+              <a class="nav-link">
                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>
                 <p>
                   Reports
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('WIVReports.adm') }}" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>WIV</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('MRTReports.adm') }}" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>MRT</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('RRReports.adm') }}" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>RR</p>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -181,14 +202,12 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-header bg-default">
-                  <h5 class="m-0 ">Employee Name: Sample Name</h5>
+                  <div class="d-flex">
+                    <p class="m-0 text-bold text-lg mr-1">Employee Name:</p>
+                    <p class="m-0 text-lg">Sample Name</p>
+                  </div>
                 </div>
                 <div class="card-body">
-                    {{--  <div class="mt-2 mb-2">
-                        <label for="employee-name">Employee Name:</label>
-                        <span id="employee-name">Sample Full Name</span>
-                    </div>  --}}
-
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
@@ -216,8 +235,16 @@
                 </div>
                 <!-- /.card-body -->
               </div>
+
+              <div class="form-group text-right">
+                <div class="d-flex justify-content-left">
+                    <a href="{{ route('Employee.adm') }}" class="btn btn-primary mr-2">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                </div>
             </div>
-          </div><!-- /.container-fluid -->
+            </div>
+          </div>
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->

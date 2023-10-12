@@ -1,13 +1,12 @@
 <html>
 @include('theme/plugins-theme')
+@include('theme/preloader')
+@include('theme/navbar') 
+
 <title>WIV Request</title>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-  <!-- Preloader -->
-  @include('theme/preloader')
-  <!-- Navbar -->
-  @include('theme/navbar')
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-green elevation-4">

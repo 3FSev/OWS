@@ -6,8 +6,8 @@ $(function() {
       timer: 3000
     });
 
-
-    // Superuser(Page:Unverified User) Approve  User Account
+// Supper User Module
+    // (Page:Unverified User) Approve  User Account
     $('.toastsApproveAccount').click(function() {
       $(document).Toasts('create', {
         class: 'bg-success',
@@ -17,7 +17,7 @@ $(function() {
       })
     });
 
-    //(Page:Unverified User) Delete User Account
+    // (Page:Unverified User) Delete User Account
     $('.toastsDeleteAccount').click(function() {
       $(document).Toasts('create', {
         class: 'bg-danger',
@@ -27,7 +27,7 @@ $(function() {
       })
     });
 
-    
+
   // (Page:Manage Department ) Confirm Edit Department
     $('.toastsConfirmEditDepertment').click(function() {
       $(document).Toasts('create', {
@@ -38,7 +38,7 @@ $(function() {
       })
     });
 
-    // Delete Department Name
+    // :Delete Department Name
     $('.toastsDefaultDangerDepartmentName').click(function() {
       $(document).Toasts('create', {
         class: 'bg-danger',
@@ -48,46 +48,48 @@ $(function() {
       })
     });
 
-      // (Page:Manage District ) Confirm Edit District
-      $('.toastsConfirmEditDistrict').click(function() {
-        $(document).Toasts('create', {
-          class: 'bg-success',
-          title: 'Successful',
-          subtitle: '',
-          body: 'The District Name is successfully modified.'
-        })
-      });
-  
-     // (Page:Manage District ) Confirm Delete District
-      $('.toastsDeleteDistrict').click(function() {
-        $(document).Toasts('create', {
-          class: 'bg-danger',
-          title: 'Deleted',
-          subtitle: '',
-          body: 'The District Name is successfully deleted.'
-        })
-      });
-
-      // (Page:Restore Item ) Confirm Edit District
-      $('.toastsRestoreItem').click(function() {
+    // (Page:Manage District ) Confirm Edit District
+    $('.toastsConfirmEditDistrict').click(function() {
       $(document).Toasts('create', {
         class: 'bg-success',
         title: 'Successful',
         subtitle: '',
-        body: 'The User Account is successfully modified.'
+        body: 'The District Name is successfully modified.'
       })
     });
 
-    // (Page:Restore Account ) Confirm Delete District
-    $('.toastRestoreAccounts').click(function() {
-      $(document).Toasts('create', {
-        class: 'bg-success',
-        title: 'Successful',
-        subtitle: '',
-        body: 'The User Account is successfully restored.'
-      })
-    });
+    // (Page:Manage District ) Confirm Delete District
+    $('.toastsDeleteDistrict').click(function() {
+    $(document).Toasts('create', {
+      class: 'bg-danger',
+      title: 'Deleted',
+      subtitle: '',
+      body: 'The District Name is successfully deleted.'
+    })
+  });
+      
+    // (Page:Restore Item )
+    $('.toastsRestoreItem').click(function() {
+    $(document).Toasts('create', {
+      class: 'bg-success',
+      title: 'Successful',
+      subtitle: '',
+      body: 'The User Account is successfully modified.'
+    })
+  });
 
+  // (Page:Restore Account ) Confirm Delete District
+  $('.toastRestoreAccounts').click(function() {
+    $(document).Toasts('create', {
+      class: 'bg-success',
+      title: 'Successful',
+      subtitle: '',
+      body: 'The User Account is successfully restored.'
+    })
+  });
+
+
+// Manager Module
     // Manager(Page:Stock List ) Edit Items
     $('.toastEditItem').click(function() {
       $(document).Toasts('create', {
@@ -98,37 +100,100 @@ $(function() {
       })
     });
 
-      // Manager(Page:Account Setting ) Edit Items
-      $('.toastUpdateAccDetails').click(function() {
-        $(document).Toasts('create', {
-          class: 'bg-success',
-          title: 'Successful',
-          subtitle: '',
-          body: 'The items is successfully modified.'
-        })
-      });
-  
-      // Manager(Page:Change Password ) Edit Items
-      $('.toastChangePassword').click(function() {
-        $(document).Toasts('create', {
-          class: 'bg-success',
-          title: 'Successful',
-          subtitle: '',
-          body: 'Your password is successfully updated.'
-        })
-      });
+    // wiv-review approve btn
+    $('.toastApproveWiv').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'The WIV request has been successfully approved.'
+      })
+    });
 
+    // mrt-review approve btn
+    $('.toastApproveMRT').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'The MRT request has been successfully approved.'
+      })
+    });
+
+
+    // (Page:Account Setting ) Edit Items
+    $('.toastUpdateAccDetails').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'The items is successfully modified.'
+      })
+    });
+
+    // (Page:Change Password ) Edit Items
+    $('.toastChangePassword').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'Your password is successfully updated.'
+      })
+    });
+
+// Employee Module
        // Employee(Page:Return Item Request ) Edit Items
-       $('.toastReturnItemReq').click(function() {
+      $('.toastReturnItemReq').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'Returned item request is successfully in proccess.'
+      })
+    });
+
+    // Pending WIV
+    $('.toastRecieveWIV').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',  
+        title: 'Successful',
+        subtitle: '',
+        body: 'The item has been successfully received.'
+      })
+    });
+    // Item Request
+    $('.toastItemRequest').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',  
+        title: 'Successful',
+        subtitle: '',
+        body: 'The item has been successfully requested.'
+      })
+    });
+    // Return Item Request
+    $('.toastReturnItemRequest').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',  
+        title: 'Successful',
+        subtitle: '',
+        body: 'The return item has been successfully requested.'
+      })
+    });
+  
+
+// Admin Module
+      // (Page:Create RR ) Delete Item
+      $('.FF').click(function() {
         $(document).Toasts('create', {
           class: 'bg-success',
           title: 'Successful',
           subtitle: '',
-          body: 'Returned item request is successfully in proccess.'
+          body: 'Recieving Report is successfully created.'
         })
       });
-
-      // Admin(Page:Item List ) Delete Item
+     
+      
+      // (Page:Item List ) Delete Item
       $('.toastDeleteItem').click(function() {
       $(document).Toasts('create', {
         class: 'bg-danger',
@@ -137,7 +202,37 @@ $(function() {
         body: 'Item is successfully in deleted.'
       })
     });
-     
+
+    // (Page:Create  WIV) Delete Item
+    $('.toastCreateWIV').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'WIV has been successfully created'
+      })
+    });
+
+    // (Page:Create  MRT) Delete Item
+    $('.toastCreateMRT').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'MRT has been successfully created'
+      })
+    });
+
+    // (Page:Create  WIV) Delete Item
+    $('.toastProcessMRT').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success',
+        title: 'Successful',
+        subtitle: '',
+        body: 'MRT was successfully in process'
+      })
+    });
+  
 
 
   });

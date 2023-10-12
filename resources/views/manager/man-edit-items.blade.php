@@ -3,7 +3,7 @@
 @include('theme/preloader')
 @include('theme/navbar')
 
-<title>Stock List</title>
+<title>Edit Item</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -76,7 +76,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Stock List</h1>
+              <h1 class="m-0">Edit Item Detials</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -91,69 +91,76 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">Item Details</h5>
-                </div>
+                {{-- <div class="card-header card-header-custom">
+                <h5 class="m-0 text-bold">Item Details</h5>
+              </div>       --}}
                 <div class="card-body">
-                  <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>Item Code</th>
-                        <th>Item Name</th>
-                        <th>Status</th>
-                        <th>Quantity </th>
-                        <th>Unit</th>
-                        <th>Category</th>
-                        <th>Unit Cost</th>
-                        <th>Total Price</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                            <a href="{{ route('EditItem.man') }}" class="btn btn-warning">
-                              <i class="icon-custom fas fa-pencil-alt" style="color: white;"></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                            <a href="{{ route('EditItem.man') }}" class="btn btn-warning">
-                              <i class="fas fa-pencil-alt" style="color: white;"></i>
-                            </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="col-form-label-md">Item Code</label>
+                        <input class="form-control" type="text" placeholder="Item Code">
+                      </div>
+                      <div class="form-group">
+                        <label class="col-form-label-md">Item Name</label>
+                        <input class="form-control" type="text" placeholder="Item Name">
+                      </div>
+                      <div class="form-group">
+                        <label class="col-form-label-md">Status</label>
+                        <input class="form-control" type="text" placeholder="Status ">
+                      </div>
+                      <div class="form-group">
+                        <label class="col-form-label-md">Quantity</label>
+                        <input class="form-control" type="text" placeholder="Quantity">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="col-form-label-md">Unit</label>
+                        <input class="form-control" type="text" placeholder="Unit">
+                      </div>
+                      <div class="form-group">
+                        <label class="col-form-label-md">Category</label>
+                        <select class="form-control">
+                          <option value="unit">Sample 1</option>
+                          <option value="category1">Sample 2</option>
+                          <option value="category2">Sample 3</option>
+                          <option value="category2">Sample 4</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-form-label-md">Unit Cost</label>
+                        <input class="form-control" type="text" placeholder="Unit Cost">
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <!-- /.card-body -->
+              </div>
+              <!-- /.card-body -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <a href="{{ route('stockList.man') }}" class="btn btn-primary">
+                      <i class="fas fa-arrow-left mr-1"></i> Back
+                    </a>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <a href="#" class="btn btn-success toastEditItem">
+                      <i class="fas fa-check mr-1"></i> Update
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
+        </div>
     </div>
-    <!-- /.content-wrapper -->
+  </div><!-- /.container-fluid -->
+  </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
   </div>
 </body>
 <script>

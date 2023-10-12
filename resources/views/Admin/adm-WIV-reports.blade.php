@@ -1,10 +1,9 @@
-
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
 @include('theme/navbar')
 
-<title>Return Item Request</title>
+<title>WIV Reports</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -75,7 +74,7 @@
             </li>
 
             <li class="nav-item">
-              <a  class="nav-link ">
+              <a class="nav-link ">
                 <i class="nav-icon fa-solid fa-ticket nav-icon "></i>
                 <p>
                   Manage WIV
@@ -122,7 +121,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link active">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
                 <p>
                   Manage Request
@@ -137,7 +136,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link active">
+                  <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Return Item Request</p>
                   </a>
@@ -145,7 +144,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <a class="nav-link active">
                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>
                 <p>
                   Reports
@@ -154,7 +153,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('WIVReports.adm') }}" class="nav-link">
+                  <a href="{{ route('WIVReports.adm') }}" class="nav-link active">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>WIV</p>
                   </a>
@@ -187,7 +186,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Return Item Request</h1>
+              {{--  <h1 class="m-0">Warehouse Issued Voucher Report</h1>  --}}
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -202,73 +201,59 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                {{--  <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">Return Item Request</h5>
-                </div>  --}}
-                <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover">
-                      <thead>
-                          <tr>
-                            <th>MRT Number</th>
-                            <th>Employee Name</th>
-                            <th>Item Description</th>
-                            <th>Quantity</th>
-                            <th>Item Name</th>
-                            <th>Category</th>
-                            <th>Total Cost</th>
-                            <th>Unit</th>
-                            <th>Return Date</th>
-                            <th>Action</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>
-                                <div class="text-center">
-                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
-                                  {{--  Review &nbsp; --}}
-                                   <i class="far fa-eye"></i>
-                                  </a>
-                                </div>  
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>
-                                <div class="text-center">
-                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
-                                  {{--  Review&nbsp;< --}}
-                                 <i class="far fa-eye"></i>
-                                  </a>
-                                </div>
-                              </td>
-                          </tr>
-                      </tbody>
-                    </table>
+                <div class="card-header ">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="card-title text-bold">Warehouse Issued Voucher Report</h1>
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-primary m-1">
+                        <i class="fa-solid fa-print mr-2 text-white"></i>
+                        <span>Print</span>
+                      </button>
+                    </div>
                   </div>
-              </div>
+                </div>
+                <div class="card-body">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>WIV Number</th>
+                        <th>Employee Name</th>
+                        <th>Department</th>
+                        <th>Item Description</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Total Cost</th>
+                        <th>Date Issuance</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                      </tr>
+                      <tr>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                 <!-- /.card-body -->
               </div>
             </div>
           </div><!-- /.container-fluid -->
-        </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
     </div>
@@ -276,16 +261,17 @@
   </div>
 </body>
 <script>
-    $(function() {
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
+  $(function() {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
     });
-  </script>
+  });
+</script>
+
 </html>
