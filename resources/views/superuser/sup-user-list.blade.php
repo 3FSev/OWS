@@ -190,6 +190,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
+                                                    <input type="hidden" id="user-id">
                                                     <div class="form-group">
                                                         <label class="col-form-label-md">Name</label>
                                                         <input class="form-control" type="text" placeholder="Name" id="edit-name" value="{{ $user->name }}">
@@ -200,10 +201,10 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label-md">Role</label>
-                                                        <select class="form-control" id="edit-role">
-                                                            <option value="">Select a Role</option>
+                                                        <select class="form-control" id="edit-role" required>
+                                                            <option value="" disabled selected>Select a Role</option>
                                                             @foreach ($roles as $role)
-                                                                <option value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : '' }}>
+                                                                <option value="{{ $role->id }}">
                                                                     {{ $role->name }}
                                                                 </option>
                                                             @endforeach
@@ -211,10 +212,10 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label-md">District</label>
-                                                        <select class="form-control" id="edit-district">
-                                                            <option value="">Select a District</option>
+                                                        <select class="form-control" id="edit-district" required>
+                                                            <option value="" disabled selected>Select a District</option>
                                                             @foreach ($districts as $district)
-                                                                <option value="{{ $district->id }}" {{ $user->district_id == $district->id ? 'selected' : '' }}>
+                                                                <option value="{{ $district->id }}">
                                                                     {{ $district->name }}
                                                                 </option>
                                                             @endforeach
@@ -222,10 +223,10 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label-md">Department</label>
-                                                        <select class="form-control" id="edit-department">
-                                                            <option value="">Select a Department</option>
+                                                        <select class="form-control" id="edit-department" required>
+                                                            <option value="" disabled selected>Select a Department</option>
                                                             @foreach ($departments as $department)
-                                                                <option value="{{ $department->id }}" {{ $user->department_id == $department->id ? 'selected' : '' }}>
+                                                                <option value="{{ $department->id }}">
                                                                     {{ $department->name }}
                                                                 </option>
                                                             @endforeach
@@ -233,9 +234,9 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label-md">Password</label>
-                                                        <input class="form-control" type="password" placeholder="Password" id="edit-password" value="{{ $user->password }}">
+                                                        <input class="form-control" type="password" placeholder="Password" id="edit-password">
                                                     </div>
-                                                </div>                                                
+                                                </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-default"
                                                         data-dismiss="modal">Close</button>
@@ -280,6 +281,9 @@
     $('.edit-user').click(function () {
         var userId = $(this).data('user-id');
 
+        // Set the user ID in the hidden input field
+        $('#user-id').val(userId);
+
         // Make an AJAX request to fetch user data
         $.ajax({
             url: '/sup-get-user/' + userId,
@@ -288,40 +292,6 @@
                 // Populate modal fields with user data
                 $('#edit-name').val(data.name);
                 $('#edit-email').val(data.email);
-                $('#edit-password').val(data.password);
-
-                // Update the Role dropdown selected option
-                var roleSelect = $('#edit-role');
-                roleSelect.empty();
-                $.each(data.roles, function (key, value) {
-                    var option = $('<option>').text(value.name).attr('value', value.id);
-                    if (value.id === data.role_id) {
-                        option.attr('selected', 'selected');
-                    }
-                    roleSelect.append(option);
-                });
-
-                // Update the District dropdown selected option
-                var districtSelect = $('#edit-district');
-                districtSelect.empty();
-                $.each(data.districts, function (key, value) {
-                    var option = $('<option>').text(value.name).attr('value', value.id);
-                    if (value.id === data.district_id) {
-                        option.attr('selected', 'selected');
-                    }
-                    districtSelect.append(option);
-                });
-
-                // Update the Department dropdown selected option
-                var departmentSelect = $('#edit-department');
-                departmentSelect.empty();
-                $.each(data.departments, function (key, value) {
-                    var option = $('<option>').text(value.name).attr('value', value.id);
-                    if (value.id === data.department_id) {
-                        option.attr('selected', 'selected');
-                    }
-                    departmentSelect.append(option);
-                });
             },
             error: function () {
                 alert('Error fetching user data');

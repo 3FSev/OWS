@@ -191,9 +191,9 @@
                             <th class="th-custom" scope="col">Reference</th>
                             <th class="th-custom" scope="col">RIV</th>
                             <th class="th-custom" scope="col">CS</th>
-                            <th class="th-custom" scope="col">AOC Date</th>
+                            <th class="th-custom" scope="col">AOC</th>
                             <th class="th-custom" scope="col">PO</th>
-                            <th class="th-custom" scope="col">CV Date</th>
+                            <th class="th-custom" scope="col">CV</th>
                             <th class="th-custom" scope="col">DR</th>
                             <th class="th-custom" scope="col">Inv</th>
                             <th class="th-custom" scope="col">OR</th>
@@ -213,7 +213,14 @@
                             <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
                           </tr>
                           <tr class="tr-rr">
-                            <td class="td-rr"><input class="form-control" type="text" placeholder="Date"></td>
+                            <td class="td-rr">
+                              <div class="input-group">
+                                  <input type="text" class="form-control datepicker" placeholder="Date">
+                                  <div class="input-group-append">
+                                      <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                  </div>
+                              </div>
+                            </td>
                             <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
                             <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
                             <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
@@ -232,7 +239,7 @@
                       <label class="mb-0">Address</label>
                       <input class="form-control item-name-input" type="text" >
                     </div>
-                    
+
                     <table class="table table-custom">
                       <thead class="thead-custom ">
                         <tr class="tr-custom">
@@ -296,3 +303,10 @@
   </div>
 </body>
 </html>
+
+<script>
+  $(document).ready(function() {
+      // Initialize the date picker for elements with the "datepicker" class
+      $('.datepicker').datepicker();
+  });
+</script>
