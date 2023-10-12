@@ -53091,8 +53091,9 @@ a.text-muted:hover {
 }
 
 /* admin */
-
-/* adm-create-mrt */
-/* .quantity-column{
-  width: 100px;
-} */
+/* datepicker style*/
+.datepicker td,th{
+  text-align: center;
+  padding: 9px 10px;
+  font-size: 14px;
+}

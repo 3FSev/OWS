@@ -236,11 +236,11 @@
                           <tr class="tr-rr">
                             <td class="td-rr">
                               <div class="input-group">
-                                  <input type="text" class="form-control datepicker" placeholder="Date">
-                                  <div class="input-group-append">
-                                      <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                  </div>
-                              </div>
+                                <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker">
+                                <div class="input-group-append" id="datepicker-icon">
+                                    <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
+                                </div>
+                            </div>                            
                             </td>
                             <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
                             <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
@@ -322,12 +322,18 @@
     </div>
     <!-- /.content-wrapper -->
   </div>
-</body>
-</html>
-
-<script>
-  $(document).ready(function() {
-      // Initialize the date picker for elements with the "datepicker" class
-      $('.datepicker').datepicker();
+  <script>
+    $(document).ready(function () {
+      // Initialize the date picker
+      $('#datepicker').datepicker({
+          autoclose: true
+      });
+  
+      // Add a click event handler to the icon
+      $('#datepicker-icon').on('click', function () {
+          $('#datepicker').datepicker('show');
+      });
   });
 </script>
+</body>
+</html>
