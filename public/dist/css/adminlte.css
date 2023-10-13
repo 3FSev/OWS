@@ -53092,8 +53092,17 @@ a.text-muted:hover {
 
 /* admin */
 /* datepicker style*/
+.datepicker{
+  border-right: none;
+}
+/* .datepicker-icon{
+  border-left: none;
+} */
 .datepicker td,th{
   text-align: center;
   padding: 9px 10px;
   font-size: 14px;
+}
+.datepicker-icon{
+  margin:0px;
 }
