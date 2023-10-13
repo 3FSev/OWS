@@ -240,16 +240,72 @@
                                 <div class="input-group-append" id="datepicker-icon">
                                     <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
                                 </div>
-                            </div>                            
+                              </div>
                             </td>
-                            <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                            <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                            <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                            <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                            <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                            <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                            <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                            <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
+                            <td class="td-rr">
+                              <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker">
+                                <div class="input-group-append" id="datepicker-icon">
+                                    <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="td-rr">
+                              <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker">
+                                <div class="input-group-append" id="datepicker-icon">
+                                    <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="td-rr">
+                              <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker">
+                                <div class="input-group-append" id="datepicker-icon">
+                                    <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="td-rr">
+                              <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker">
+                                <div class="input-group-append" id="datepicker-icon">
+                                    <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="td-rr">
+                              <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker">
+                                <div class="input-group-append" id="datepicker-icon">
+                                    <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="td-rr">
+                              <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker">
+                                <div class="input-group-append" id="datepicker-icon">
+                                    <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="td-rr">
+                              <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker">
+                                <div class="input-group-append" id="datepicker-icon">
+                                    <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="td-rr">
+                              <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker">
+                                <div class="input-group-append" id="datepicker-icon">
+                                    <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon"></i></span>
+                                </div>
+                              </div>
+                            </td>
                           </tr>
                         </tbody>
                       </table>
