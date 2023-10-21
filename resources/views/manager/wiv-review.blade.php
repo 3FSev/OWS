@@ -60,6 +60,13 @@
                     <p>MRT Request</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{ route('RRrequest.man') }}" class="nav-link">
+                    {{-- <i class="far fa-circle nav-icon"></i>  --}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>RR Request</p>
+                  </a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -147,19 +154,21 @@
                   </table>
                 </div>
               </div>
-              <div class="form-group text-right">
-                <div class="d-flex justify-content-end">
-                  <a href="{{ route('WivRequest.man') }}" class="btn btn-primary mr-2">
+              <div class="form-group">
+                <div class="d-flex justify-content-between">
+                  <a href="{{ route('WivRequest.man') }}" class="btn btn-primary">
                     <i class="fas fa-arrow-left"></i> Back
                   </a>
-                  <a href="#" class="btn btn-success mr-2 toastApproveWiv">
-                    <i class="fas fa-check"></i> Approve
-                  </a>
-                  <a href="" class="btn btn-danger">
-                    <i class="fas fa-times"></i> Decline
-                  </a>
+                  <div>
+                    <a href="#" class="btn btn-success toastApproveMRT">
+                      <i class="fas fa-check"></i> Approve
+                    </a>
+                    <a href="" class="btn btn-danger">
+                      <i class="fas fa-times"></i> Decline
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </div> 
             </div>
           </div>
         </div>

@@ -59,6 +59,13 @@
                   <p>MRT Request</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('RRrequest.man') }}" class="nav-link">
+                  {{-- <i class="far fa-circle nav-icon"></i>  --}}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <p>RR Request</p>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>

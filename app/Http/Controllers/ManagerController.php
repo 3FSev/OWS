@@ -36,6 +36,16 @@ class ManagerController extends Controller
         return view('manager.mrt-review');
     }
 
+    public function RRrequest()
+    {
+        return view('manager.man-rr-request');
+    }
+
+    public function RR_review()
+    {
+        return view('manager.man-rr-review');
+    }
+    
     public function AccountSettings()
     {
         return view('manager.man-acc-settings');

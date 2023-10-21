@@ -50,6 +50,8 @@ Route::get('/manager/man-wiv-req', [ManagerController::class, 'WIVrequest'])->na
     Route::get('/manager/wiv-review', [ManagerController::class, 'WIVreview'])->name('WivReview.man');
 Route::get('/manager/man-mrt-req', [ManagerController::class, 'MRTrequest'])->name('MrtRequest.man');
     Route::get('/manager/mrt-review', [ManagerController::class, 'MRTreview'])->name('MrtReview.man');
+Route::get('/manager/man-rr-req', [ManagerController::class, 'RRrequest'])->name('RRrequest.man');
+    Route::get('/manager/man-rr-review', [ManagerController::class, 'RR_review'])->name('RRreview.man');
 Route::get('/manager/man-acc-settings', [ManagerController::class, 'AccountSettings'])->name('AccSetting.man');   
 Route::get('/manager/man-change-pswd', [ManagerController::class, 'ChangePassword'])->name('ChangePswd.man');   
 
