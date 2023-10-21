@@ -99,44 +99,43 @@
                 </div>     
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                      <th>Employee Name</th>
-                      <th>Department</th>
-                      <th>RIV Number</th>
-                      <th>RIV Date</th>
-                      <th>Action</th>
-                    </tr>
+                    <thead class="">
+                      <tr>
+                        <th>Reference</th>
+                        <th>RIV</th>
+                        <th>CS</th>
+                        <th>AOC</th>
+                        <th>PO</th>
+                        <th>CV</th>
+                        <th>DR</th>
+                        <th>Inv</th>
+                        <th>OR</th>
+                        <th>Date</th>
+                        <th >Action</th>
+                      </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                        <a href="{{ route('RRreview.man') }}" class="btn btn-primary">
-                          View
-                          &nbsp;<i class="far fa-eye"></i>
-                        </a>
-                        </div>                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                        <a href="{{ route('RRreview.man') }}" class="btn btn-primary">
-                          View
-                          &nbsp;<i class="far fa-eye"></i>
-                        </a>  
-                        </div>     
-                      </td>
-                    </tr>
+                      <!-- Add your table rows here -->
+                      <tr>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>
+                          <div class="text-center">
+                          <a href="{{ route('RRreview.man') }}" class="btn btn-primary">
+                            View
+                            &nbsp;<i class="far fa-eye"></i>
+                          </a>
+                          </div>                      
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
