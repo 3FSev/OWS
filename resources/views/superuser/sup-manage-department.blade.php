@@ -185,8 +185,8 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Action</th>
+                      <th class="text-left">Name</th>
+                      <th class="text-left">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -283,6 +283,12 @@
         "info": true,
         "autoWidth": false,
         "responsive": true,
+        "columnDefs": [
+          {
+              "targets": [1], // index of the "Action" column
+              "width": "150px" // set the desired width
+          }
+      ]
       });
     });
   </script>

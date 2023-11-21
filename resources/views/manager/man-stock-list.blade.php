@@ -155,6 +155,157 @@
     </div>
     <!-- /.content-wrapper -->
   </div>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-header bg-success">
+                <h5 class="m-0">Items</h5>
+              </div>     
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>Item Code</th>
+                    <th>Item Name</th>
+                    <th>Status</th>
+                    <th>Quantity </th>
+                    <th>Unit</th>
+                    <th>Category</th>
+                    <th>Unit Cost</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>
+                      <div class="text-center">
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+                          <i class="fas fa-pencil-alt" style="color: white;"></i>
+                      </button>
+                      </div>                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>
+                      <div class="text-center">
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+                          <i class="fas fa-pencil-alt" style="color: white;"></i>
+                      </button>  
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>Sample</td>
+                    <td>
+                      <div class="text-center">
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+                          <i class="fas fa-pencil-alt" style="color: white;"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <div class="modal fade" id="modal-default">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h4 class="modal-title">Edit Items</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              
+                            <div class="col-md-6"> 
+                              <div class="form-group">
+                                <label class="col-form-label-md">Item Code</label>
+                               <input class="form-control" type="text" placeholder="Item Code">
+                              </div>
+                              <div class="form-group">
+                                <label class="col-form-label-md">Item Name</label>
+                               <input class="form-control" type="text" placeholder="Item Name">
+                              </div>
+                              <div class="form-group">
+                                <label class="col-form-label-md">Status</label>
+                               <input class="form-control" type="text" placeholder="Status ">
+                              </div>
+                              <div class="form-group">
+                                <label class="col-form-label-md">Quantity</label>
+                               <input class="form-control" type="text" placeholder="Quantity">
+                              </div>
+                            </div>
+
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="col-form-label-md">Unit</label>
+                               <input class="form-control" type="text" placeholder="Unit">
+                              </div>
+                              <div class="form-group">
+                                <label class="col-form-label-md">Category</label>
+                                <select class="form-control">
+                                  <option value="unit">Sample 1</option>
+                                  <option value="category1">Sample 2</option>
+                                  <option value="category2">Sample 3</option>
+                                  <option value="category2">Sample 4</option>
+                                </select>
+                              </div>                            
+                              <div class="form-group">
+                                <label class="col-form-label-md">Unit Cost</label>
+                               <input class="form-control" type="text" placeholder="Unit Cost">
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                          <div class="modal-footer justify-content-between">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary toastEditItem">Confirm</button>
+                          </div>
+                      </div>
+                      <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+              </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+          </div>
+      </div><!-- /.container-fluid -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+</div>
 </body>
 <script>
   $(function() {

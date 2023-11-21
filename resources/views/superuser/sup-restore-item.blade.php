@@ -174,7 +174,7 @@
                         <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success toastsRestoreItem">
                           Restore&nbsp;<i class="fas fa-undo"></i>
                         </button>  
                         </div>  
