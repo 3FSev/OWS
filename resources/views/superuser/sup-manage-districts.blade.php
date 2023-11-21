@@ -1,68 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  @include('theme/plugins-theme')
+@include('theme/plugins-theme')
 
-<title>Manage Districts</title>
+<title>Manage District</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTELogo" height="60" width="60">
-    <div>
-      <h5 class="pt-3"><strong>Loading...</strong></h5>
-    </div>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">View</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fas fa-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                <span>Logout</span>
-                <i class="fas fa-sign-out-alt"  style="color: grey;"></i>
-            </a>
-        </div>
-    </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
+  @include('superuser/nav-bar')
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-green elevation-4"
    {{--  style="background-color: #285430"  --}}
@@ -126,7 +70,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('manageDept.sup') }}" class="nav-link ">
+            <a href="{{ route('manageDept.sup') }}" class="nav-link active">
               <i class="nav-icon fas fa-building"></i>
               <p>
                 Manage Department 
@@ -134,7 +78,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('manageDist.sup') }}" class="nav-link active">
+            <a href="{{ route('manageDist.sup') }}" class="nav-link">
               <i class="nav-icon fas fa-map-marker-alt"></i>
               <p>
                 Manage Districts
@@ -185,7 +129,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage District</h1>
+            <h1 class="m-0">Manage Department</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -199,30 +143,61 @@
         <div class="row">
             <div class="col-12">
               <div class="card">
+                <div class="card-header">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <h2 class="card-title">Districts List</h2>
+                      <div class="card-tools">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                              <i class="fas fa-plus-circle" style="color: #ffffff;"></i>&nbsp;
+                              <span>Add</span>
+                          </button>
+                      </div>
+                  </div>
+                  <div class="modal fade" id="modal-default">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h4 class="modal-title">Add New Department</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="form-group">
+                                  <label class="col-form-label-md">Deparment Name</label>
+                                 <input class="form-control" type="text" placeholder="Department Name">
+                                </div>
+                              </div>
+                              <div class="modal-footer justify-content-between">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Confirm</button>
+                              </div>
+                          </div>
+                          <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                  </div>
+              </div>
+
+                
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Department</th>
-                      <th>Role</th>
-                      <th>Action</th>
+                      <th class="text-left">Name</th>
+                      <th class="text-left">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                      <td>Eubert</td>
-                      <td>eubert@gmail.com</td>
-                      <td>Others</td>
                       <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success toastsConfirmEditDistrict">
-                        <i class="fas fa-check-circle"></i>
+                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
+                            <i class="fas fa-pencil-alt" style="color: white;"></i>
                         </button>
-                        <button class="btn btn-danger toastsDeleteDistrict">
+                        <button class="btn btn-danger">
                         <i class="fas fa-trash"></i>
                         </button>  
                         </div>                      
@@ -230,33 +205,25 @@
                     </tr>
                     <tr>
                       <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success toastsConfirmEditDistrict">
-                        <i class="fas fa-check-circle"></i>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
+                        <i class="fas fa-pencil-alt" style="color: white;"></i>
                         </button>
-                        <button class="btn btn-danger toastsDeleteDistrict">
+                        <button class="btn btn-danger">
                         <i class="fas fa-trash"></i>
                         </button>  
                         </div>     
                       </td>
                     </tr>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 5.5
-                      </td>
-                      <td>Win 95+</td>
-                      <td>5.5</td>
+                      <td>Sample</td>
                       <td>
                         <div class="text-center">
-                        <button class="btn btn-success toastsConfirmEditDistrict">
-                        <i class="fas fa-check-circle"></i>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
+                        <i class="fas fa-pencil-alt" style="color: white;"></i>
                         </button>
-                        <button class="btn btn-danger toastsDeleteDistrict">
+                        <button class="btn btn-danger">
                         <i class="fas fa-trash"></i>
                         </button>  
                         </div>  
@@ -264,10 +231,35 @@
                     </tr>
                     </tbody>
                   </table>
+                  <div class="modal fade" id="modal-edit">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit Department Name</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label class="col-form-label-md">Deparment Name</label>
+                               <input class="form-control" type="text" placeholder="Department Name">
+                              </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Confirm</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
                 </div>
                 <!-- /.card-body -->
               </div>
             </div>
+        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -281,17 +273,22 @@
 </div>
 <!-- ./wrapper -->
 
-
 <script>
-    $(function () { 
+    $(function () {
       $('#example2').DataTable({
         "paging": true,
-        "lengthChange": true,
-        "searching": true,
+        "lengthChange": false,
+        "searching": false,
         "ordering": true,
         "info": true,
         "autoWidth": false,
         "responsive": true,
+        "columnDefs": [
+          {
+              "targets": [1], // index of the "Action" column
+              "width": "150px" // set the desired width
+          }
+      ]
       });
     });
   </script>
