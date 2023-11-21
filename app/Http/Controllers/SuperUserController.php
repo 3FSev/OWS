@@ -40,11 +40,13 @@ class SuperUserController extends Controller
     }
     public function ManageDepartment()
     {
-        return view('superuser.sup-manage-department');
+        $departments = Department::all();
+        return view('superuser.sup-manage-department', compact('departments'));
     }
     public function ManageDistricts()
     {
-        return view('superuser.sup-manage-districts');
+        $districts = District::all();
+        return view('superuser.sup-manage-districts', compact('districts'));
     }
     public function UserActivities()
     {
@@ -82,6 +84,38 @@ class SuperUserController extends Controller
         return redirect()->back()->with('success','User created successfully');
     }
 
+    public function storeDepartment(Request $request){
+        $department = new Department();
+        $department->name = $request->input('department');
+        $department->save();
+
+        return redirect()->back();
+    }
+
+    public function storeDistrict(Request $request){
+        $district = new District();
+        $district->name = $request->input('district');
+        $district->save();
+
+        return redirect()->back();
+    }
+
+    public function updateDistrict(Request $request, $id){
+        $district = District::findOrFail($id);
+        $district->name = $request->input('districtName');
+        $district->save();
+
+        return redirect()->back();
+    }
+
+    public function updateDepartment(Request $request, $id){
+        $department = Department::findOrFail($id);
+        $department->name = $request->input('departmentName');
+        $department->save();
+
+        return redirect()->back();
+    }
+
     public function approve($user_id)
     {
         $user = User::withTrashed()->findOrFail($user_id);
@@ -102,6 +136,20 @@ class SuperUserController extends Controller
         $user = User::findOrFail($user_id);
         $user->delete();
         return redirect()->back()->with('warning','User deleted successfully');
+    }
+
+    public function destroyDepartment($department_id)
+    {
+        $department = Department::findOrFail($department_id);
+        $department->delete();
+        return redirect()->back()->with('warning','Department deleted successfully');
+    }
+
+    public function destroyDistrict($district_id)
+    {
+        $district = District::findOrFail($district_id);
+        $district->delete();
+        return redirect()->back()->with('warning','District deleted successfully');
     }
 
     public function restore($user_id)

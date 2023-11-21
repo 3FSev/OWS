@@ -17,7 +17,7 @@
       <img src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <div class="ml-2">
       <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
-      <p class="brand-text font-weight-light">Managemen System</p>
+      <p class="brand-text font-weight-light">Management System</p>
     </div>
     </a>
   </div>
@@ -145,7 +145,7 @@
               <div class="card">
                 <div class="card-header">
                   <div class="d-flex justify-content-between align-items-center">
-                      <h2 class="card-title">Department List</h2>
+                      <h2 class="card-title">Departments List</h2>
                       <div class="card-tools">
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                               <i class="fas fa-plus-circle" style="color: #ffffff;"></i>&nbsp;
@@ -162,16 +162,19 @@
                                       <span aria-hidden="true">&times;</span>
                                   </button>
                               </div>
-                              <div class="modal-body">
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Deparment Name</label>
-                                 <input class="form-control" type="text" placeholder="Department Name">
+                              <form method="POST" action="{{route('superuser.create.department')}}" class="container-fluid" autocomplete="off">
+                                @csrf
+                                <div class="modal-body">
+                                  <div class="form-group">
+                                    <label class="col-form-label-md">Department Name</label>
+                                  <input class="form-control" name="department" type="text" placeholder="Department Name">
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="modal-footer justify-content-between">
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Confirm</button>
-                              </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Confirm</button>
+                                </div>
+                              </form>
                           </div>
                           <!-- /.modal-content -->
                       </div>
@@ -179,7 +182,6 @@
                   </div>
               </div>
 
-                
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
@@ -190,45 +192,25 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
-                            <i class="fas fa-pencil-alt" style="color: white;"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
-                        <i class="fas fa-pencil-alt" style="color: white;"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>     
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
-                        <i class="fas fa-pencil-alt" style="color: white;"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>  
-                      </td>
-                    </tr>
+                      @foreach ($departments as $department)
+                      <tr data-id="{{ $department->id }}">
+                          <td>{{ $department->name }}</td>
+                          <td>
+                              <div class="text-center">
+                                  <button type="button" class="btn btn-warning btn-edit" data-toggle="modal" data-target="#modal-edit">
+                                      <i class="fas fa-pencil-alt" style="color: white;"></i>
+                                  </button>
+                                  <form method="POST" action="{{ route('destroy.department', $department->id) }}" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button onclick="return confirm('Are You Sure')" type="submit" class="btn btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                              </div>
+                          </td>
+                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                   <div class="modal fade" id="modal-edit">
@@ -240,16 +222,19 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                              <div class="form-group">
-                                <label class="col-form-label-md">Deparment Name</label>
-                               <input class="form-control" type="text" placeholder="Department Name">
+                            <form id="editForm" method="POST" action="{{ route('department.update', ['id' => '__department_id__']) }}">
+                              @csrf
+                              <div class="modal-body">
+                                  <div class="form-group">
+                                      <label class="col-form-label-md">Department Name</label>
+                                      <input name="departmentName" id="departmentNameInput" class="form-control" type="text" placeholder="Department Name">
+                                  </div>
                               </div>
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Confirm</button>
-                            </div>
+                              <div class="modal-footer justify-content-between">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary">Confirm</button>
+                              </div>
+                          </form>
                         </div>
                         <!-- /.modal-content -->
                     </div>
@@ -259,7 +244,6 @@
                 <!-- /.card-body -->
               </div>
             </div>
-        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -290,6 +274,13 @@
           }
       ]
       });
+    });
+
+    var selectedId;
+
+    $('.btn-edit').click(function () {
+        selectedId = $(this).closest('tr').data('id');
+        $('#editForm').attr('action', '{{ route("department.update", ["id" => "__department_id__"]) }}'.replace('__department_id__', selectedId));
     });
   </script>
 </body>

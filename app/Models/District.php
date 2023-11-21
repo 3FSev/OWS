@@ -10,7 +10,7 @@ class District extends Model
     use HasFactory;
 
     protected $table = 'district';
-    
+    public $timestamps = false;
     public function users()
     {
         return $this->hasMany(User::class);

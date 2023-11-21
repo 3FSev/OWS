@@ -70,7 +70,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('manageDept.sup') }}" class="nav-link active">
+            <a href="{{ route('manageDept.sup') }}" class="nav-link">
               <i class="nav-icon fas fa-building"></i>
               <p>
                 Manage Department 
@@ -78,7 +78,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('manageDist.sup') }}" class="nav-link">
+            <a href="{{ route('manageDist.sup') }}" class="nav-link active">
               <i class="nav-icon fas fa-map-marker-alt"></i>
               <p>
                 Manage Districts
@@ -129,7 +129,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Department</h1>
+            <h1 class="m-0">Manage District</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -157,21 +157,24 @@
                       <div class="modal-dialog">
                           <div class="modal-content">
                               <div class="modal-header">
-                                  <h4 class="modal-title">Add New Department</h4>
+                                  <h4 class="modal-title">Add New District</h4>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                   </button>
                               </div>
-                              <div class="modal-body">
-                                <div class="form-group">
-                                  <label class="col-form-label-md">Deparment Name</label>
-                                 <input class="form-control" type="text" placeholder="Department Name">
+                              <form method="POST" action="{{route('superuser.create.district')}}" class="container-fluid" autocomplete="off">
+                                @csrf
+                                <div class="modal-body">
+                                  <div class="form-group">
+                                    <label class="col-form-label-md">District Name</label>
+                                  <input class="form-control" name="district" type="text" placeholder="District Name">
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="modal-footer justify-content-between">
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Confirm</button>
-                              </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Confirm</button>
+                                </div>
+                              </form>
                           </div>
                           <!-- /.modal-content -->
                       </div>
@@ -179,7 +182,6 @@
                   </div>
               </div>
 
-                
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
@@ -190,66 +192,49 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
-                            <i class="fas fa-pencil-alt" style="color: white;"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>                      
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
-                        <i class="fas fa-pencil-alt" style="color: white;"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>     
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>
-                        <div class="text-center">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-edit">
-                        <i class="fas fa-pencil-alt" style="color: white;"></i>
-                        </button>
-                        <button class="btn btn-danger">
-                        <i class="fas fa-trash"></i>
-                        </button>  
-                        </div>  
-                      </td>
-                    </tr>
+                      @foreach ($districts as $district)
+                      <tr data-id="{{ $district->id }}">
+                          <td>{{ $district->name }}</td>
+                          <td>
+                              <div class="text-center">
+                                  <button type="button" class="btn btn-warning btn-edit" data-toggle="modal" data-target="#modal-edit">
+                                      <i class="fas fa-pencil-alt" style="color: white;"></i>
+                                  </button>
+                                  <form method="POST" action="{{ route('destroy.district', $district->id) }}" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button onclick="return confirm('Are You Sure')" type="submit" class="btn btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                              </div>
+                          </td>
+                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                   <div class="modal fade" id="modal-edit">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Edit Department Name</h4>
+                                <h4 class="modal-title">Edit District Name</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                              <div class="form-group">
-                                <label class="col-form-label-md">Deparment Name</label>
-                               <input class="form-control" type="text" placeholder="Department Name">
+                            <form id="editForm" method="POST" action="{{ route('district.update', ['id' => '__district_id__']) }}">
+                              @csrf
+                              <div class="modal-body">
+                                  <div class="form-group">
+                                      <label class="col-form-label-md">District Name</label>
+                                      <input name="districtName" id="districtNameInput" class="form-control" type="text" placeholder="District Name">
+                                  </div>
                               </div>
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Confirm</button>
-                            </div>
+                              <div class="modal-footer justify-content-between">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary">Confirm</button>
+                              </div>
+                          </form>
                         </div>
                         <!-- /.modal-content -->
                     </div>
@@ -259,7 +244,6 @@
                 <!-- /.card-body -->
               </div>
             </div>
-        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -291,6 +275,13 @@
       ]
       });
     });
+
+    var selectedId;
+
+  $('.btn-edit').click(function () {
+      selectedId = $(this).closest('tr').data('id');
+      $('#editForm').attr('action', '{{ route("district.update", ["id" => "__district_id__"]) }}'.replace('__district_id__', selectedId));
+  });
   </script>
 </body>
 </html>
