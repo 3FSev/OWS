@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items_rr', function (Blueprint $table) {
-            $table->unsignedBigInteger('items_id');
+        Schema::create('item_rr', function (Blueprint $table) {
+            $table->unsignedBigInteger('item_id');
             $table->unsignedBigInteger('rr_id');
+            $table->integer('delivered');
+            $table->integer('accepted');
 
-            $table->foreign('items_id')->references('id')->on('items');
+            $table->foreign('item_id')->references('id')->on('items');
             $table->foreign('rr_id')->references('id')->on('rr');
         });
     }

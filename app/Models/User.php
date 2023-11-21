@@ -66,11 +66,11 @@ class User extends Authenticatable
 
     public function wivs()
     {
-        return $this->belongsTo(Wiv::class);
+        return $this->hasMany(Wiv::class);
     }
 
-    public function mrt()
+    public function mrts()
     {
-        return $this->belongsTo(Mrt::class);
+        return $this->hasMany(Mrt::class);
     }
 }

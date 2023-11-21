@@ -98,15 +98,15 @@
                   <div class="d-flex justify-content-between align-items-center mt-2">
                     <div>
                       <label for="employee-name">Employee Name:</label>
-                      <span id="employee-name">Sample Full Name</span>
+                      <span id="employee-name">{{$wiv->user->name}}</span>
                     </div>
                     <div>
                       <label for="wiv-number">WIV Number:</label>
-                      <span id="wiv-number">203914</span>
+                      <span id="wiv-number">{{$wiv->wiv_number}}</span>
                     </div>
                     <div>
                       <label for="wiv-date">WIV Date:</label>
-                      <span id="wiv-date">19/09/2023</span>
+                      <span id="wiv-date">{{$wiv->wiv_date}}</span>
                     </div>
                   </div>
 
@@ -124,25 +124,26 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- Add your table rows here -->
+                      @foreach ($wiv->items as $item)
                       <tr class="tr-custom">
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="{{$item->name}}" disabled>
                         </td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="{{$item->pivot->quantity}}" disabled>
                         </td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="{{$item->rrs->first()->riv}}" disabled>
                         </td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="{{$item->rrs->first()->riv_date}}" disabled>
                         </td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="{{$item->rrs->first()->po}}" disabled>
                         </td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="{{$item->rrs->first()->po_date}}" disabled>
                         </td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="{{$item->rrs->first()->rr_number}}" disabled>
                         </td>
-                        <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled>
+                        <td class="td-custom"><input class="form-control" type="text" placeholder="{{$item->rrs->first()->rr_date}}" disabled>
                         </td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -152,7 +153,7 @@
                   <a href="{{ route('WivRequest.man') }}" class="btn btn-primary mr-2">
                     <i class="fas fa-arrow-left"></i> Back
                   </a>
-                  <a href="#" class="btn btn-success mr-2 toastApproveWiv">
+                  <a href="{{ route('WivApprove.man', $wiv->id) }}" class="btn btn-success mr-2 toastApproveWiv">
                     <i class="fas fa-check"></i> Approve
                   </a>
                   <a href="" class="btn btn-danger">

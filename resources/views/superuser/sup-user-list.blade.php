@@ -304,3 +304,99 @@
 
 
 </html>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Create User</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-default">
+                <div class="card-header bg-success">
+                    <h3 class="card-title">User Information</h3>
+                </div>
+                <form method="POST" action="{{route('superuser.create.user')}}" class="container-fluid" autocomplete="off">
+                  @csrf
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input name="name" class="form-control" type="text" placeholder="Full Name" required>
+                                </div>
+                                <!-- /.form-group -->
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input name="email" type="email" class="form-control" style="width: 100%;"
+                                        placeholder="Email Address" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input name="password" type="Password" class="form-control" style="width: 100%;"
+                                        placeholder="Password" required>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Districts</label>
+                                    <select name="district" class="form-control select2" style="width: 100%;" required>
+                                        <option value="" disabled selected>Districts</option>
+                                        @foreach ($districts as $district)
+                                        <option value="{{$district->id}}">{{$district->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    <select name="department" class="form-control select2" style="width: 100%;" required>
+                                        <option value="" deisabled selected>Departments</option>
+                                        @foreach ($departments as $department)
+                                        <option value="{{$department->id}}">{{$department->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input name="confirm_password" type="Password" class="form-control" style="width: 100%;"
+                                        placeholder="Password" required>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="card-footer text-center space-x-px">
+                        <button type="button" class="btn btn-outline-dark">Reset</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+            
+        </div>
+      </div>
+     </div>
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -210,32 +210,27 @@
                     <thead>
                       <tr>
                         <th>Employee Name</th>
+                        <th>District</th>
+                        <th>Department</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                            <a href="{{ route('AccountableItems.adm') }}" class="btn btn-primary">
-                              View
-                              &nbsp;<i class="far fa-eye"></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                            <a href="{{ route('AccountableItems.adm') }}" class="btn btn-primary">
-                              View
-                              &nbsp;<i class="far fa-eye"></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
+                      @foreach ($users as $user)
+                        <tr>
+                          <td>{{$user->name}}</td>
+                          <td>{{$user->district->name}}</td>
+                          <td>{{$user->department->name}}</td>
+                          <td>
+                            <div class="text-center">
+                              <a href="{{ route('AccountableItems.adm') }}" class="btn btn-primary">
+                                View
+                                &nbsp;<i class="far fa-eye"></i>
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

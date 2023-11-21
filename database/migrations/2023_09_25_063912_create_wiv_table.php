@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('wiv', function (Blueprint $table) {
             $table->id();
             $table->string('wiv_number')->unique();
-            $table->timestamps();
             $table->timestamp('received_at')->nullable();
             $table->date('wiv_date');
             $table->unsignedBigInteger('user_id');
             $table->timestamp('approved_at')->nullable();
+            $table->timestamp('accepted_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
         });

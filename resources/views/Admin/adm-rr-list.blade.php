@@ -208,51 +208,27 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Item Name</th>
-                        <th>Unit</th>
-                        <th>Delivered</th>
-                        <th>Acceptance</th>
-                        <th>Unit Cost</th>
-                        <th>External Cost</th>
-                        <th>Freigth Cost</th>
-                        <th>Total Cost</th>
+                        <th>RR Number</th>
                         <th>Date</th>
+                        <th>Supplier</th>
+                        <th>Address</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($recieving_reports as $rr)
                       <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
+                        <td>{{$rr->rr_number}}</td>
+                        <td>{{$rr->rr_date}}</td>
+                        <td>{{$rr->supplier}}</td>
+                        <td>{{$rr->address}}</td>
                         <td>
                           <a href="{{ route('EditRRList.adm') }}" class="btn btn-warning">
                             <i class="fas fa-pencil-alt text-white"></i>
                           </a>
                         </td>
                       </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <a href="{{ route('EditRRList.adm') }}" class="btn btn-warning" >
-                            <i class="fas fa-pencil-alt text-white"></i>
-                          </a>
-                        </td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

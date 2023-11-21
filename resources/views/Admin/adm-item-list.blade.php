@@ -208,64 +208,40 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Item Code</th>
                         <th>Item Name</th>
                         <th>Status</th>
                         <th>Quantity</th>
-                        <th>Unit</th>   
                         <th>Category</th>
                         <th>Unit Cost</th>
-                        <th>Total Cost</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                            <div class="text-center">
-                                <a href="{{route('EditItemList.adm')}}" class="btn btn-warning">
-                                    <i class="fas fa-pencil-alt text-white"></i>
-                                </a>
-                                <a class="btn btn-danger toastDeleteItem">
+                      @foreach ($items as $item)
+                        <tr>
+                          <td>{{$item->name}}</td>
+                          <td></td>
+                          <td>{{$item->quantity}}</td>
+                          <td>{{$item->category->name}}</td>
+                          <td>{{$item->unit_cost}}</td>
+                          <td>
+                            <form method="POST" action="{{route('destroy.item', $item->id)}}"></form>
+                            @csrf
+                            @method('DELETE')
+                              <div class="text-center">
+                                  <a href="{{route('EditItemList.adm', $item->id)}}" class="btn btn-warning">
+                                      <i class="fas fa-pencil-alt text-white"></i>
+                                  </a>
+                                  <button type="submit"  class="btn btn-danger">
                                     <i class="fas fa-trash"></i>
-                                </a>
-                                <a class="btn btn-primary">
-                                    <i class="fa-solid fa-print"></i>
-                                </a>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                            <a href="{{route('EditItemList.adm')}}" class="btn btn-warning">
-                                <i class="fas fa-pencil-alt text-white"></i>
-                            </a>
-                            <a class="btn btn-danger toastDeleteItem">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                            <a class="btn btn-primary">
-                                <i class="fa-solid fa-print"></i>
-                            </a>
-                        </div>
-                        </td>
-                      </tr>
+                                  </button>
+                                  <a class="btn btn-primary">
+                                      <i class="fa-solid fa-print"></i>
+                                  </a>
+                              </div>
+                          </td>
+                        </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

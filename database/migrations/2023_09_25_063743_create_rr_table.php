@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('rr', function (Blueprint $table) {
             $table->id();
             $table->string('rr_number')->unique();
+            $table->date('rr_date')->unique();
             $table->string('supplier');
             $table->string('address');
-            $table->integer('delivered');
-            $table->integer('accepted');
             $table->string('riv')->nullable();
             $table->date('riv_date')->nullable();
             $table->string('cs')->nullable();

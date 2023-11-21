@@ -48,12 +48,15 @@
                 <span class="ml-2">Change Password</span>
             </div>
         </a>
-        <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <i class="fas fa-sign-out-alt" style="color: grey;"></i>
-                <span class="ml-2">Logout</span>
-            </div>
-        </a>
+        <a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                     <i class="fas fa-sign-out-alt" style="color: grey;"></i>
+                    {{ __('Logout') }}
+                </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          @csrf
+      </form>
     </div>
     
   </li>

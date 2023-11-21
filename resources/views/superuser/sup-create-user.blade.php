@@ -1,16 +1,18 @@
+<!DOCTYPE html>
 <html lang="en">
 @include('theme/plugins-theme')
-<title>Create User</title>
+
+<title>User List</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         @include('superuser/nav-bar')
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-green elevation-4">
+        <aside class="main-sidebar sidebar-dark-green elevation-4" {{--  style="background-color: #285430"  --}}>
             <!-- Brand Logo -->
             <div class="d-flex align-items-center">
                 <a href="index3.html" class="brand-link">
-                    <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo"
+                    <img src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTE Logo"
                         class="brand-image img-circle elevation-3" style="opacity: .8">
                     <div class="ml-2">
                         <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
@@ -45,21 +47,21 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('create.sup') }}" class="nav-link active">
+                                    <a href="{{ route('create.sup') }}" class="nav-link ">
                                         {{--  <i class="far fa-circle nav-icon"></i>  --}}
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <p>Create User</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('unverified.sup') }}" class="nav-link">
+                                    <a href="{{ route('unverified.sup') }}" class="nav-link ">
                                         {{--  <i class="far fa-circle nav-icon"></i>  --}}
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <p>Unverified User</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('userlist.sup') }}" class="nav-link">
+                                    <a href="{{ route('userlist.sup') }}" class="nav-link active">
                                         {{--  <i class="far fa-circle nav-icon"></i>  --}}
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <p>User List</p>
@@ -119,7 +121,6 @@
             </div>
             <!-- /.sidebar -->
         </aside>
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -141,15 +142,17 @@
                         <div class="card-header bg-success">
                             <h3 class="card-title">User Information</h3>
                         </div>
-                        <form method="POST" action="{{route('superuser.create.user')}}" class="container-fluid" autocomplete="off">
-                          @csrf
+                        <form method="POST" action="{{route('superuser.create.user')}}" class="container-fluid"
+                            autocomplete="off">
+                            @csrf
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Full Name</label>
-                                            <input name="name" class="form-control" type="text" placeholder="Full Name" required>
+                                            <input name="name" class="form-control" type="text" placeholder="Full Name"
+                                                required>
                                         </div>
                                         <!-- /.form-group -->
                                         <div class="form-group">
@@ -160,8 +163,8 @@
 
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input name="password" type="Password" class="form-control" style="width: 100%;"
-                                                placeholder="Password" required>
+                                            <input name="password" type="Password" class="form-control"
+                                                style="width: 100%;" placeholder="Password" required>
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
@@ -170,7 +173,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Districts</label>
-                                            <select name="district" class="form-control select2" style="width: 100%;" required>
+                                            <select name="district" class="form-control select2" style="width: 100%;"
+                                                required>
                                                 <option value="" disabled selected>Districts</option>
                                                 @foreach ($districts as $district)
                                                 <option value="{{$district->id}}">{{$district->name}}</option>
@@ -180,7 +184,8 @@
                                         <!-- /.form-group -->
                                         <div class="form-group">
                                             <label>Department</label>
-                                            <select name="department" class="form-control select2" style="width: 100%;" required>
+                                            <select name="department" class="form-control select2" style="width: 100%;"
+                                                required>
                                                 <option value="" deisabled selected>Departments</option>
                                                 @foreach ($departments as $department)
                                                 <option value="{{$department->id}}">{{$department->name}}</option>
@@ -189,8 +194,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Confirm Password</label>
-                                            <input name="confirm_password" type="Password" class="form-control" style="width: 100%;"
-                                                placeholder="Password" required>
+                                            <input name="confirm_password" type="Password" class="form-control"
+                                                style="width: 100%;" placeholder="Password" required>
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
@@ -207,15 +212,120 @@
                         </form>
                     </div>
                     <!-- /.card-body -->
+
                 </div>
-              </div>
-             </div>
-          </div><!-- /.container-fluid -->
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">User List</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>District</th>
+                                            <th>Department</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($users as $user)
+                                        <tr>
+                                            <td>{{$user->name}}</td>
+                                            <td>{{$user->email}}</td>
+                                            <td>{{$user->role->name}}</td>
+                                            <td>{{$user->district->name}}</td>
+                                            <td>{{$user->department->name}}</td>
+                                            <td>
+                                                @if ($user->deleted_at)
+                                                    <span>Deactivated</span>
+                                                @elseif ($user->approved_at)
+                                                    <span>Active</span>
+                                                @else
+                                                    <span>Not Verified</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="text-center">
+                                                    <form  method="POST" action="{{route('destroy.user', $user->id)}}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <a href="{{ route('approve.user', $user->id) }}"
+                                                            class="btn btn-success @if($user->approved_at !== null && $user->deleted_at === null) disabled @endif">
+                                                            <i class="fas fa-check" style="color: white;"></i>
+                                                        </a>
+                                                        <button onclick="return confirm('Are you sure?')"
+                                                            type="submit" class="btn btn-danger">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-      </div>
-      <!-- /.content-wrapper -->
+    </div>
+    <!-- /.content-wrapper -->
+
     </div>
 </body>
+
+<script>
+    $(function () {
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+
+</script>
+
+
 
 </html>

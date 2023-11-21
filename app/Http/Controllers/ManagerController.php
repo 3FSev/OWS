@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Wiv;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ManagerController extends Controller
@@ -18,12 +20,26 @@ class ManagerController extends Controller
     //
     public function WIVrequest()
     {
-        return view('manager.man-wiv-req');
+        $wivs = Wiv::whereNull('approved_at')->get();
+
+        return view('manager.man-wiv-req', compact('wivs'));
     }
-    public function WIVreview()
+    public function WIVreview($wiv_id)
     {
-        return view('manager.wiv-review');
+        $wiv = Wiv::with('items.rrs')->findOrFail($wiv_id);
+
+        return view('manager.wiv-review', compact('wiv'));
     }
+
+    public function WIVapprove($wiv_id)
+    {
+        $wiv = Wiv::findOrFail($wiv_id);
+        $wiv->approved_at = Carbon::now();
+        $wiv->save();
+
+        return redirect()->route('WivRequest.man')->with('success','');
+    }
+
 
     //
     public function MRTrequest()

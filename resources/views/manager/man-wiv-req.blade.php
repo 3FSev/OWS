@@ -104,48 +104,22 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('WivReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>
-                      </div>                      
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('WivReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
-                      </div>     
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('WivReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
-                      </div>  
-                    </td>
-                  </tr>
+                    @foreach ($wivs as $wiv)
+                      <tr>
+                        <td>{{$wiv->user->name}}</td>
+                        <td>{{$wiv->user->department->name}}</td>
+                        <td>{{$wiv->wiv_number}}</td>
+                        <td>{{$wiv->wiv_date}}</td>
+                        <td>
+                          <div class="text-center">
+                            <a href="{{ route('WivReview.man', $wiv->id) }}" class="btn btn-primary">
+                              View
+                              &nbsp;<i class="far fa-eye"></i>
+                            </a>                          
+                          </div>                      
+                        </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

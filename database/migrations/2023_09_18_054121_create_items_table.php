@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('item_status_id');
-            $table->integer('price')->nullable();
+            $table->integer('unit_cost')->nullable();
             $table->integer('freight')->nullable();
             $table->integer('extended_cost')->nullable();
             $table->softDeletes();

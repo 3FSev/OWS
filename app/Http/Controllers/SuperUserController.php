@@ -21,7 +21,9 @@ class SuperUserController extends Controller
     {
         $departments = Department::all();
         $districts = District::all();
-        return view('superuser.sup-create-user', compact('departments','districts'));
+        $users = User::withTrashed()->get();
+        $roles = Role::all();
+        return view('superuser.sup-create-user', compact('departments','districts','users', 'roles'));
     }
     public function UnverifiedUser()
     {
@@ -82,9 +84,17 @@ class SuperUserController extends Controller
 
     public function approve($user_id)
     {
-        $user = User::findOrFail($user_id);
+        $user = User::withTrashed()->findOrFail($user_id);
+           if ($user->approved_at === null) {
+        // Update approved_at if it's null
         $user->update(['approved_at' => now()]);
-        return redirect()->back()->with('success','User approved successfully');
+        return redirect()->back()->with('success', 'User approved successfully.');
+        }
+        if ($user->deleted_at) {
+            // Restore the user if it's soft-deleted
+            $user->restore();
+        }
+        return redirect()->back()->with('success','');
     }
 
     public function destroy($user_id)
