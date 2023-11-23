@@ -72,26 +72,25 @@
                         <input id="password" type="password" class="form-control input-field @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span toggle="#password-field"
-                                    class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                                <span toggle="#password" class="fa fa-fw field-icon toggle-password fa-eye"></span>
                             </div>
                         </div>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                         @enderror
+                        @enderror
                     </div>
-
+                    
                     <div class="input-group mb-5">
                         <input id="password-confirm" type="password" class="form-control input-field" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span toggle="#password-field"
-                                    class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                                <span toggle="#password-confirm" class="fa fa-fw field-icon toggle-password-confirm fa-eye"></span>
                             </div>
                         </div>
                     </div>
+                    
                     <button type="submit" class="btn-lg btn-block login-button">{{ __('Register') }}</button>
                     <p class="mt-3 text-center sign-up-text">There is already an account.
                         <a href="{{ url('/login') }}" class="sign-up-link">Login</a></p>
