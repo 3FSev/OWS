@@ -38,36 +38,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user nav-icon"></i>
-              <p>
-                Manage User
-                <i class="fas fa-angle-left right"></i>
-              </p>
+            <a href="{{ route('create.sup') }}" class="nav-link">
+                <i class="nav-icon fas fa-user nav-icon"></i>
+                <p>
+                    Manage User
+                </p>
             </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('create.sup') }}" class="nav-link ">
-                        {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <p>Create User</p>
-                    </a>
-                </li>
-              <li class="nav-item">
-                <a href="{{ route('unverified.sup') }}" class="nav-link ">
-                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>Unverified User</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('userlist.sup') }}" class="nav-link ">
-                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>User List</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item">
             <a href="{{ route('manageDept.sup') }}" class="nav-link ">
@@ -94,27 +70,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="{{ route('restoreItems.sup') }}" class="nav-link active">
               <i class="nav-icon fas fa-undo"></i>
               <p>
                 Restore Data
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('restoreItems.sup') }}" class="nav-link active">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>Items</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('restoreAccounts.sup') }}" class="nav-link">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>User Accounts</p>
-                </a>
-              </li>
-            </ul>
           </li>
       </nav>
       <!-- /.sidebar-menu -->
@@ -129,7 +90,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Restore Item</h1>
+            <h1 class="m-0">Restore Data</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

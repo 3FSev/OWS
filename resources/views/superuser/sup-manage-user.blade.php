@@ -12,13 +12,13 @@
             <!-- Brand Logo -->
             <div class="d-flex align-items-center">
                 <a href="#" class="brand-link" style="display: flex; align-items: center;">
-                  <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image-xl img-circle elevation-3">
-                  <div class="brand-text-custom">
-                    <span class="brand-text font-weight-light">Warehouse<br>Management System</span>
-                  </div>
+                    <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo"
+                        class="brand-image-xl img-circle elevation-3">
+                    <div class="brand-text-custom">
+                        <span class="brand-text font-weight-light">Warehouse<br>Management System</span>
+                    </div>
                 </a>
             </div>
-          
 
             <!-- Sidebar -->
             <div class="sidebar">
@@ -37,36 +37,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="{{ route('create.sup') }}" class="nav-link active">
                                 <i class="nav-icon fas fa-user nav-icon"></i>
                                 <p>
                                     Manage User
-                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('create.sup') }}" class="nav-link ">
-                                        {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Create User</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('unverified.sup') }}" class="nav-link ">
-                                        {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Unverified User</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('userlist.sup') }}" class="nav-link active">
-                                        {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>User List</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('manageDept.sup') }}" class="nav-link">
@@ -93,27 +69,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="{{ route('restoreItems.sup') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-undo"></i>
                                 <p>
                                     Restore Data
-                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('restoreItems.sup') }}" class="nav-link">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Items</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('restoreAccounts.sup') }}" class="nav-link">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>User Accounts</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -270,24 +231,24 @@
                                             <td>{{$user->department->name}}</td>
                                             <td>
                                                 @if ($user->deleted_at)
-                                                    <span>Deactivated</span>
+                                                <span>Deactivated</span>
                                                 @elseif ($user->approved_at)
-                                                    <span>Active</span>
+                                                <span>Active</span>
                                                 @else
-                                                    <span>Not Verified</span>
+                                                <span>Not Verified</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 <div class="text-center">
-                                                    <form  method="POST" action="{{route('destroy.user', $user->id)}}">
+                                                    <form method="POST" action="{{route('destroy.user', $user->id)}}">
                                                         @csrf
                                                         @method('DELETE')
                                                         <a href="{{ route('approve.user', $user->id) }}"
                                                             class="btn btn-success @if($user->approved_at !== null && $user->deleted_at === null) disabled @endif">
                                                             <i class="fas fa-check" style="color: white;"></i>
                                                         </a>
-                                                        <button onclick="return confirm('Are you sure?')"
-                                                            type="submit" class="btn btn-danger">
+                                                        <button onclick="return confirm('Are you sure?')" type="submit"
+                                                            class="btn btn-danger">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
@@ -311,7 +272,7 @@
 </body>
 
 <script>
-    $(function () {
+    $(function() {
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": true,
@@ -322,9 +283,6 @@
             "responsive": true,
         });
     });
-
 </script>
-
-
 
 </html>
