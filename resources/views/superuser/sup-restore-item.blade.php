@@ -13,14 +13,14 @@
    >
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <div class="ml-2">
-      <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
-      <p class="brand-text font-weight-light">Managemen System</p>
+      <a href="#" class="brand-link" style="display: flex; align-items: center;">
+        <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image-xl img-circle elevation-3">
+        <div class="brand-text-custom">
+          <span class="brand-text font-weight-light">Warehouse<br>Management System</span>
+        </div>
+      </a>
     </div>
-    </a>
-  </div>
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -144,8 +144,8 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                <div class="card-header bg-success">
-                  <h5 class="m-0">Deleted Section</h5>
+                <div class="card-header card-header-custom">
+                  <h5 class="m-0 font-weight-bolder">Deleted Section</h5>
                 </div>     
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
