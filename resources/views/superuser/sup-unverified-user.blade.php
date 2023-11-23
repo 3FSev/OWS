@@ -149,10 +149,11 @@
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Email</th>                                         
                                                 <th>Department</th>
                                                 <th>District</th>
                                                 <th>Role</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -164,6 +165,7 @@
                                                 <td>{{$user->department->name}}</td>
                                                 <td>{{$user->district->name}}</td>
                                                 <td>{{$user->role->name}}</td>
+                                                <td>SAMPLE</td>
                                                 <td>
                                                     <div class="text-center">
                                                         <form  method="POST" action="{{route('destroy.user', $user->id)}}">
@@ -172,6 +174,10 @@
                                                             <a href="{{ route('approve.user', $user->id) }}"
                                                                 class="btn btn-success">
                                                                 <i class="fas fa-check" style="color: white;"></i>
+                                                            </a>
+                                                            <a href="#"
+                                                                class="btn btn-success">
+                                                                <i class="fas fa-user-times" style="color: white;"></i>
                                                             </a>
                                                             <button onclick="return confirm('Are you sure?')"
                                                                 type="submit" class="btn btn-danger">
