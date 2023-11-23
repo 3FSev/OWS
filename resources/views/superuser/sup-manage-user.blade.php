@@ -2,7 +2,7 @@
 <html lang="en">
 @include('theme/plugins-theme')
 
-<title>User List</title>
+<title>Manage Users</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -86,7 +86,7 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2">
+                    <div class="row mb-1">
                         <div class="col-sm-6">
                             <h1 class="m-0">Create User</h1>
                         </div><!-- /.col -->
@@ -99,8 +99,8 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="card card-default">
-                        <div class="card-header bg-success">
-                            <h3 class="card-title">User Information</h3>
+                        <div class="card-header card-header-custom">
+                            <h3 class="card-title font-weight-bold">User Information</h3>
                         </div>
                         <form method="POST" action="{{route('superuser.create.user')}}" class="container-fluid"
                             autocomplete="off">
@@ -158,117 +158,98 @@
                                                 style="width: 100%;" placeholder="Password" required>
                                         </div>
                                         <!-- /.form-group -->
-                                    </div>
+                                    </div>                                   
                                     <!-- /.col -->
                                 </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-outline-dark">Reset</button>
+                                    <span class="mx-3"></span>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div> 
                                 <!-- /.row -->
                             </div>
                             <!-- /.row -->
-                            <div class="card-footer text-center space-x-px">
-                                <button type="button" class="btn btn-outline-dark">Reset</button>
-                                &nbsp;&nbsp;&nbsp;
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
                         </form>
                     </div>
+                    <div class="content-wapper">
+                        <div class="content-header mt-lg-4">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <h1 class="m-0">User List</h1>
+                                    </div><!-- /.col -->
+                                </div><!-- /.row -->
+                            </div><!-- /.container-fluid -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Role</th>
+                                                <th>District</th>
+                                                <th>Department</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($users as $user)
+                                            <tr>
+                                                <td>{{$user->name}}</td>
+                                                <td>{{$user->email}}</td>
+                                                <td>{{$user->role->name}}</td>
+                                                <td>{{$user->district->name}}</td>
+                                                <td>{{$user->department->name}}</td>
+                                                <td>
+                                                    @if ($user->deleted_at)
+                                                    <span>Deactivated</span>
+                                                    @elseif ($user->approved_at)
+                                                    <span>Active</span>
+                                                    @else
+                                                    <span>Not Verified</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <div class="text-center">
+                                                        <form method="POST" action="{{route('destroy.user', $user->id)}}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <a href="{{ route('approve.user', $user->id) }}"
+                                                                class="btn btn-success @if($user->approved_at !== null && $user->deleted_at === null) disabled @endif">
+                                                                <i class="fas fa-check" style="color: white;"></i>
+                                                            </a>
+                                                            <button onclick="return confirm('Are you sure?')" type="submit"
+                                                                class="btn btn-danger">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                        </div>
+                    </div>
                     <!-- /.card-body -->
-
                 </div>
         </div>
     </div>
-    </div><!-- /.container-fluid -->
-    </section>
+</div><!-- /.container-fluid -->
+</section>
     <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">User List</h1>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>District</th>
-                                            <th>Department</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($users as $user)
-                                        <tr>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->email}}</td>
-                                            <td>{{$user->role->name}}</td>
-                                            <td>{{$user->district->name}}</td>
-                                            <td>{{$user->department->name}}</td>
-                                            <td>
-                                                @if ($user->deleted_at)
-                                                <span>Deactivated</span>
-                                                @elseif ($user->approved_at)
-                                                <span>Active</span>
-                                                @else
-                                                <span>Not Verified</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <div class="text-center">
-                                                    <form method="POST" action="{{route('destroy.user', $user->id)}}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <a href="{{ route('approve.user', $user->id) }}"
-                                                            class="btn btn-success @if($user->approved_at !== null && $user->deleted_at === null) disabled @endif">
-                                                            <i class="fas fa-check" style="color: white;"></i>
-                                                        </a>
-                                                        <button onclick="return confirm('Are you sure?')" type="submit"
-                                                            class="btn btn-danger">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-
-    </div>
+</div>
+<!-- /.content-wrapper -->
 </body>
 
 <script>
