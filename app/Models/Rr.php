@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Rr extends Model
 {
@@ -39,5 +40,21 @@ class Rr extends Model
     public function items()
     {
         return $this->belongsToMany(Item::class, 'item_rr')->withPivot('delivered', 'accepted');
+    }
+
+    public function generateUniqueIdentifier()
+    {
+        $year = now()->format('y');
+
+        $latestIdentifier = DB::table('rr')
+            ->where('rr_number', 'like', $year . '-%')
+            ->max('rr_number');
+
+        $numericPart = (int)substr($latestIdentifier, -3);
+        $numericPart++;
+
+        $newIdentifier = $year . '-' . str_pad($numericPart, 3, '0', STR_PAD_LEFT);
+
+        $this->attributes['rr_number'] = $newIdentifier;
     }
 }

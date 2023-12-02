@@ -200,6 +200,8 @@
           <!-- Small boxes (Stat box) -->
           <div class="row">
             <div class="col-12">
+              <form method="POST" action="{{route('admin.create.mrt')}}" class="container-fluid" autocomplete="off">
+                @csrf
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-header card-header-custom">
@@ -209,34 +211,19 @@
                   <div class="d-flex flex-wrap justify-content-between align-items-center mt-2">
                     <div class="mb-3 col-md-3">
                       <label for="employee-name">Employee Name</label>
-                      <select class="form-control input-box-custom">
-                        <option value="option1" disabled>Eubert Cris S. Novencido</option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
+                      <select class="form-control input-box-custom" id="userSelect" name="user_id" required>
+                        <option value="" selected disabled></option>
+                        @foreach ($users as $user)
+                          <option value="{{$user->id}}">{{$user->name}}</option>
+                        @endforeach
                       </select>
                     </div>
-                    <div class="mb-3 col-md-3">
-                      <label for="District">District</label>
-                      <select class="form-control input-box-custom">
-                        <option value="option1" disabled>District I</option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                      </select>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                      <label for="wiv-number">WIV Number</label>
-                      <input class="form-control input-box-custom" type="text">
-                    </div>
-                    <div class="mb-3 col-md-3">
-                      <label for="wiv-date">WIV Date</label>
-                      <input class="form-control input-box-custom" type="date">
-                    </div>
-                  </div>                  
+                  </div>
                   <table class="table table-custom mt-3 ">
                       <thead class="thead-custom ">
                           <tr>
                               <th class="th-custom" scope="col">Item Name</th>
-                              <th class="th-custom quantity-input" scope="col">Quantity</th>
+                              <th class="th-custom" scope="col">Usable</th>
                               <th class="th-custom" scope="col">Action</th>
                           </tr>
                       </thead>
@@ -244,34 +231,17 @@
                           <!-- Add your table rows here -->
                           <tr class="tr-rr">
                               <td class="td-rr">
-                                  <select class="form-control" name="Full Name" >
-                                      <option value="Sample Full Name">Sample Full Name</option>
-                                      <option value="Sample Full Name">Sample Full Name</option>
-                                  </select>
+                                  <select class="form-control" id="itemsSelect" name="items[]" required></select>
                               </td>
-                              <td class="td-rr"><input class="form-control" type="number"
-                                      placeholder="sample"></td>
+                              <td class="td-rr">
+                                <input type="checkbox" name="usable[]">
+                            </td>
                               <td>
                                 <div>
                                     <button class="btn btn-danger mt-1">
                                         <i class="fas fa-trash"></i>
-                                    </button>  
+                                    </button>
                                 </div>
-                              </td>
-                          </tr>
-                          <tr class="tr-rr">
-                              <td class="td-rr">
-                                  <select class="form-control" name="Full Name">
-                                      <option value="Sample Full Name">Sample Full Name</option>
-                                      <option value="Sample Full Name">Sample Full Name</option>
-                                  </select>
-                              </td>
-                              <td class="td-rr"><input class="form-control" type="number"
-                                      placeholder="sample"></td>
-                              <td class="td-rr">
-                                  <button class="btn btn-danger mt-1 ">
-                                      <i class="fas fa-trash"></i>
-                                  </button>
                               </td>
                           </tr>
                       </tbody>
@@ -280,12 +250,12 @@
               </div>
                   <div class="form-group text-right">
                     <div class="d-flex justify-content-end">
-                        <a href="#" class="btn btn-primary mr-2">
+                        <a href="#" class="btn btn-primary mr-2" id="addRow">
                             <i class="fas fa-plus-circle mr-1"></i>  Add
                         </a>
-                        <a href="#" class="btn btn-success mr-2 toastCreateMRT">
-                            <i class="fas fa-check mr-1"></i>  Confirm
-                        </a>
+                        <button type="submit"  class="btn btn-success mr-2 toastCreateRR">
+                          <i class="fas fa-check mr-1"></i> Confirm
+                        </button>
                         <a href="#" class="btn btn-danger">
                             <i class="fas fa-times mr-1"></i>  Reset
                         </a>
@@ -293,6 +263,7 @@
                 </div>
                 <!-- /.card-body -->
               </div>
+            </form>
             </div>
           </div><!-- /.container-fluid -->
         </div><!-- /.container-fluid -->
@@ -303,3 +274,46 @@
   </div>
 </body>
 </html>
+<script>
+  // When a user is selected, fetch the corresponding items and update the items dropdown
+  $('#userSelect').change(function () {
+      var userId = $(this).val();
+
+      // Make an AJAX request to fetch items for the selected user
+      $.ajax({
+          url: '/get-items-for-user/' + userId, // Replace with your actual route
+          type: 'GET',
+          success: function (data) {
+              // Clear existing options
+              $('#itemsSelect').empty();
+
+              // Populate options based on the data received
+              for (var i = 0; i < data.length; i++) {
+                  $('#itemsSelect').append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+              }
+          }
+      });
+  });
+
+  // Add a new row when the "Add" button is clicked
+  $('#addRow').click(function () {
+        var tableBody = $('table tbody');
+        var newRow = tableBody.find('tr:first').clone();
+
+        // Clear the input values in the new row
+        newRow.find('select').val('');
+
+        // Add the new row to the table
+        tableBody.append(newRow);
+    });
+
+    // Delete a row when the "Delete" button is clicked
+    $('table').on('click', '.btn-danger', function () {
+        // Check if there's more than one row before deleting
+        if ($('table tbody tr').length > 1) {
+            $(this).closest('tr').remove();
+        } else {
+            alert('You cannot delete the last row.');
+        }
+    });
+</script>

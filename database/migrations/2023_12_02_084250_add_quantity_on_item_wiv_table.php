@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('item_rr', function (Blueprint $table) {
-            $table->unsignedBigInteger('item_id');
-            $table->unsignedBigInteger('rr_id');
-
-            $table->foreign('item_id')->references('id')->on('items');
-            $table->foreign('rr_id')->references('id')->on('rr');
+        Schema::table('item_wiv', function (Blueprint $table) {
+            $table->integer('quantity');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items_rr');
+        Schema::table('item_wiv', function (Blueprint $table) {
+            $table->dropColumn('quantity');
+        });
     }
 };

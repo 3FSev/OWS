@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('item_wiv', function (Blueprint $table) {
             $table->unsignedBigInteger('item_id');
             $table->unsignedBigInteger('wiv_id');
-            $table->integer('quantity');
 
             $table->foreign('item_id')->references('id')->on('items');
             $table->foreign('wiv_id')->references('id')->on('wiv');

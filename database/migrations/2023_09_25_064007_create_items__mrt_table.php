@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('items__mrt', function (Blueprint $table) {
             $table->unsignedBigInteger('item_id');
             $table->unsignedBigInteger('mrt_id');
-            $table->integer('quantity');
             $table->integer('usable');
-            $table->integer('non-usable');
 
             $table->foreign('item_id')->references('id')->on('items');
             $table->foreign('mrt_id')->references('id')->on('mrt');

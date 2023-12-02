@@ -84,7 +84,7 @@ Route::middleware(['auth','admin'])->group(function(){
     });
     Route::get('/admin/adm-dashboard', [AdminController::class, 'Dashboard'])->name('Dashboard.adm');
     Route::get('/admin/adm-employee', [AdminController::class, 'Employee'])->name('Employee.adm');
-    Route::get('/admin/adm-accountable-items', [AdminController::class, 'AccountableItems'])->name('AccountableItems.adm');
+    Route::get('/admin/adm-accountable-items/{user_id}', [AdminController::class, 'AccountableItems'])->name('AccountableItems.adm');
     Route::get('/admin/adm-create-rr', [AdminController::class, 'CreateRR'])->name('CreateRR.adm');
     Route::get('/admin/adm-rr-list', [AdminController::class, 'RRList'])->name('RRList.adm');
     Route::get('/admin/adm-rr-edit-list', [AdminController::class, 'EditRRList'])->name('EditRRList.adm');
@@ -93,6 +93,7 @@ Route::middleware(['auth','admin'])->group(function(){
     Route::get('/admin/adm-create-wiv', [AdminController::class, 'CreateWIV'])->name('CreateWIV.adm');
     Route::get('/admin/adm-wiv-list', [AdminController::class, 'WIVList'])->name('WIVList.adm');
     Route::get('/admin/adm-create-mrt', [AdminController::class, 'CreateMRT'])->name('CreateMRT.adm');
+    Route::get('/get-items-for-user/{user}', [AdminController::class, 'getItemsForUser']);
     Route::get('/admin/adm-mrt-list', [AdminController::class, 'MRTList'])->name('MRTList.adm');
     Route::get('/admin/adm-item-request', [AdminController::class, 'ItemRequest'])->name('ItemRequest.adm');
     Route::get('/admin/adm-return-item-req', [AdminController::class, 'ReturnItemRequest'])->name('ReturnItemRequest.adm');
@@ -104,6 +105,7 @@ Route::middleware(['auth','admin'])->group(function(){
 
     Route::post('admin-create-rr', [AdminController::class, 'storeRR'])->name('admin.create.rr');
     Route::post('admin-create-wiv', [AdminController::class, 'storeWIV'])->name('admin.create.wiv');
+    Route::post('admin-create-mrt', [AdminController::class, 'storeMRT'])->name('admin.create.mrt');
 
     Route::delete('/admin/adm-item-list/{item_id}/destroy', [SuperUserController::class, 'destroy'])->name('destroy.item');
 });

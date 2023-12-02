@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Item;
+use App\Models\Mrt;
 use App\Models\Rr;
 use App\Models\User;
 use App\Models\Wiv;
@@ -23,9 +24,21 @@ class AdminController extends Controller
         return view('admin.adm-employee', compact('users'));
     }
 
-    public function AccountableItems(){
+    public function AccountableItems($user_id)
+    {
+        $user = User::findOrFail($user_id);
 
-        return view('admin.adm-accountable-items');
+        //Check if the user has related Wivs
+        if ($user->wivs->isNotEmpty()) {
+            foreach ($user->wivs as $wiv) {
+                $items = $wiv->items;
+            }
+        } else {
+            //Handle the case if the user does not have related Wivs/Items
+            $items = [];
+        }
+
+        return view('admin.adm-accountable-items', compact('items','user'));
     }
 
     // manage stock
@@ -71,12 +84,12 @@ class AdminController extends Controller
         $wiv->save();
 
         $items = $request->input('item_id');
-        $quantities = $request->input('quantity');
 
         foreach ($items as $key => $item) {
-            $quantity = $quantities[$key];
-            $wiv->items()->attach($item, [
-                'quantity' => $quantity]);
+            $itemModel = Item::find($item);
+            $itemModel->decrement('quantity', 1);
+
+            $wiv->items()->attach($item);
         }
 
         return redirect()->back();
@@ -89,8 +102,49 @@ class AdminController extends Controller
 
     // manage mrt
     public function CreateMRT(){
+        $users = User::whereNotNull('approved_at')->where('role_id', 1)->get();
+        return view('admin.adm-create-mrt', compact('users'));
+    }
 
-        return view('admin.adm-create-mrt');
+    public function storeMRT(Request $request){
+        $mrt = new Mrt();
+        $mrt->generateUniqueIdentifier();
+        $mrt->mrt_date = now();
+        $mrt->user_id = $request->input('user_id');
+        $mrt->save();
+
+        // Attach items to MRT with usable status
+        foreach ($request->input('items') as $index => $itemId) {
+            $usable = isset($request->input('usable')[$index]); // Check if the checkbox is checked
+            $mrt->items()->attach($itemId, ['usable' => $usable]);
+
+            //Find wivs connected to selected item
+            $item = Item::find($itemId);
+            $wivs = $item->wivs;
+            foreach ($wivs as $wiv) {
+                $wiv->pivot->update(['quantity' => 0]);
+            }
+
+            //If usable is true, set the item's quantity to 1
+            if ($usable) {
+                $item->update(['quantity' => 1]);
+            }
+        }
+
+        return redirect()->back();
+    }
+
+    public function getItemsForUser($userId)
+    {
+        // Get all WIVs associated with the user
+        $wivs = Wiv::where('user_id', $userId)->get();
+
+        // Filter items with quantity equal to 1 in the pivot table
+        $items = $wivs->flatMap(function ($wiv) {
+            return $wiv->items->where('pivot.quantity', 1);
+        });
+
+        return response()->json($items);
     }
     public function MRTList(){
 
@@ -130,7 +184,7 @@ class AdminController extends Controller
     public function storeRR(Request $request){
         //---------- GET RR AND SAVE TO DATABASE ---------//
         $rr = new Rr();
-        $rr->rr_number = $request->input('rr_number');
+        $rr->generateUniqueIdentifier();
         $rr->riv = $request->input('riv_number');
         $rr->cs = $request->input('cs_number');
         $rr->aoc = $request->input('aoc_number');
@@ -140,7 +194,7 @@ class AdminController extends Controller
         $rr->inv = $request->input('inv_number');
         $rr->or = $request->input('or_number');
 
-        $rr->rr_date = date('Y-m-d', strtotime($request->input('rr_date')));
+        $rr->rr_date = now();
         $rr->riv_date = date('Y-m-d', strtotime($request->input('riv_date')));
         $rr->cs_date = date('Y-m-d', strtotime($request->input('cs_date')));
         $rr->aoc_date = date('Y-m-d', strtotime($request->input('aoc_date')));
@@ -155,8 +209,6 @@ class AdminController extends Controller
 
         //---------- GET ITEM FROM FORM -------------///
         $names = $request->input('name');
-        $deliveredQuantities = $request->input('delivered');
-        $acceptedQuantities = $request->input('accepted');
         $unitCosts = $request->input('unit_cost');
         $extendedCosts = $request->input('extended_cost');
         $freightCosts = $request->input('freight');
@@ -165,7 +217,7 @@ class AdminController extends Controller
         foreach ($names as $key => $name) {
             $item = new Item();
             $item->name = $name;
-            $item->quantity = $acceptedQuantities[$key];
+            $item->quantity = '1';
             $item->unit_cost = $unitCosts[$key];
             $item->extended_cost = $extendedCosts[$key];
             $item->freight = $freightCosts[$key];
@@ -173,10 +225,7 @@ class AdminController extends Controller
             $item->item_status_id = '1';
             $item->save();
 
-            $rr->items()->attach($item, [
-                'delivered' => $deliveredQuantities[$key],
-                'accepted' => $acceptedQuantities[$key]
-            ]);
+            $rr->items()->attach($item);
         }
 
         return redirect()->back();

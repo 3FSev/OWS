@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('mrt', function (Blueprint $table) {
             $table->id();
             $table->string('mrt_number')->unique();
-            $table->timestamps();
             $table->timestamp('received_at')->nullable();
             $table->date('mrt_date');
             $table->unsignedBigInteger('user_id');

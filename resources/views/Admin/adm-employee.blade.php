@@ -223,7 +223,7 @@
                           <td>{{$user->department->name}}</td>
                           <td>
                             <div class="text-center">
-                              <a href="{{ route('AccountableItems.adm') }}" class="btn btn-primary">
+                              <a href="{{ route('AccountableItems.adm', ['user_id' => $user->id]) }}" class="btn btn-primary">
                                 View
                                 &nbsp;<i class="far fa-eye"></i>
                               </a>

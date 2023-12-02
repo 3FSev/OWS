@@ -179,120 +179,116 @@
       </div>
       <!-- /.sidebar -->
     </aside>
+  <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Create Warehouse Issued Voucher</h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Create Warehouse Issued Voucher</h1>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-      <!-- /.content-header -->
-
-      <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-12">
-              <form method="POST" action="{{route('admin.create.wiv')}}" class="container-fluid" autocomplete="off">
-                @csrf
-              <div class="card">
-                <!-- /.card-header -->
-                <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">Item Request</h5>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-12">
+          <form method="POST" action="{{route('admin.create.wiv')}}" class="container-fluid" autocomplete="off">
+            @csrf
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-header card-header-custom">
+              <h5 class="m-0 text-bold">Item Request</h5>
+            </div>
+            <div class="card-body">
+              <div class="d-flex flex-wrap justify-content-between align-items-center mt-2">
+                <div class="mb-3 col-md-3">
+                  <label for="employee-name">Employee Name</label>
+                  <select class="form-control input-box-custom" name="user_id"required>
+                    <option value="" disabled selected>Name</option>
+                    @foreach ($users as $user)
+                      <option value="{{$user->id}}">{{$user->name}}</option>
+                    @endforeach
+                  </select>
                 </div>
-                <div class="card-body">
-                  <div class="d-flex flex-wrap justify-content-between align-items-center mt-2">
-                    <div class="mb-3 col-md-3">
-                      <label for="employee-name">Employee Name</label>
-                      <select class="form-control input-box-custom" name="user_id"required>
+                <div class="mb-3 col-md-3">
+                  <label for="wiv-number">WIV Number</label>
+                  <input class="form-control input-box-custom" type="text" name="wiv_number" required>
+                </div>
+                <div class="mb-3 col-md-3">
+                  <label for="wiv-date">WIV Date</label>
+                  <input class="form-control input-box-custom" type="date" name="wiv_date" required>
+                </div>
+              </div>
+              <table class="table table-custom mt-3 " id="items_table">
+                <thead class="thead-custom ">
+                  <tr>
+                    <th class="th-custom" scope="col">Item</th>
+                    <th class="th-custom" scope="col">RIV</th>
+                    <th class="th-custom" scope="col">RIV Date</th>
+                    <th class="th-custom" scope="col">PO</th>
+                    <th class="th-custom" scope="col">PO Date</th>
+                    <th class="th-custom" scope="col">RR</th>
+                    <th class="th-custom" scope="col">RR Date</th>
+                    <th class="th-custom" scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Add your table rows here -->
+                  <tr class="tr-custom">
+                    <td class="td-custom">
+                      <select class="form-control input-box-custom item-select" name=item_id[] required>
                         <option value="" disabled selected>Name</option>
-                        @foreach ($users as $user)
-                          <option value="{{$user->id}}">{{$user->name}}</option>
+                        @foreach ($items as $item)
+                          <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                       </select>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                      <label for="wiv-number">WIV Number</label>
-                      <input class="form-control input-box-custom" type="text" name="wiv_number" required>
-                    </div>
-                    <div class="mb-3 col-md-3">
-                      <label for="wiv-date">WIV Date</label>
-                      <input class="form-control input-box-custom" type="date" name="wiv_date" required>
-                    </div>
-                  </div>
-                  <table class="table table-custom mt-3 " id="items_table">
-                    <thead class="thead-custom ">
-                      <tr>
-                        <th class="th-custom" scope="col">Item</th>
-                        <th class="th-custom" scope="col">Quantity</th>
-                        <th class="th-custom" scope="col">RIV</th>
-                        <th class="th-custom" scope="col">RIV Date</th>
-                        <th class="th-custom" scope="col">PO</th>
-                        <th class="th-custom" scope="col">PO Date</th>
-                        <th class="th-custom" scope="col">RR</th>
-                        <th class="th-custom" scope="col">RR Date</th>
-                        <th class="th-custom" scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- Add your table rows here -->
-                      <tr class="tr-custom">
-                        <td class="td-custom">
-                          <select class="form-control input-box-custom item-select" name=item_id[] required>
-                            <option value="" disabled selected>Name</option>
-                            @foreach ($items as $item)
-                              <option value="{{$item->id}}">{{$item->name}}</option>
-                            @endforeach
-                          </select>
-                        </td>
-                        <td class="td-custom"><input class="form-control" type="number" name="quantity[]" required></td>
-                        <td class="td-custom"><input class="form-control riv-input" type="text" disabled></td>
-                        <td class="td-custom"><input class="form-control riv-date-input" type="text" disabled></td>
-                        <td class="td-custom"><input class="form-control po-input" type="text" disabled></td>
-                        <td class="td-custom"><input class="form-control po-date-input" type="text" disabled></td>
-                        <td class="td-custom"><input class="form-control rr-input" type="text" disabled></td>
-                        <td class="td-custom"><input class="form-control rr-date-input" type="text" disabled></td>
-                        <td>
-                          <button class="btn btn-danger mt-1">
-                            <i class="fas fa-trash"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-                  <div class="form-group text-right">
-                    <div class="d-flex justify-content-end">
-                        <a href="#" class="btn btn-primary mr-2" id="addRow">
-                            <i class="fas fa-plus-circle mr-1"></i>  Add
-                        </a>
-                        <button type="submit"  class="btn btn-success mr-2 toastCreateRR">
-                          <i class="fas fa-check mr-1"></i> Confirm
-                        </button>
-                        <a href="" class="btn btn-danger">
-                            <i class="fas fa-times mr-1"></i>  Reset
-                        </a>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-              </div>
+                    </td>
+                    <td class="td-custom"><input class="form-control riv-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control riv-date-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control po-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control po-date-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control rr-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control rr-date-input" type="text" disabled></td>
+                    <td>
+                      <button class="btn btn-danger mt-1">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-          </form>
-          </div><!-- /.container-fluid -->
-        </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-  </div>
+          </div>
+              <div class="form-group text-right">
+                <div class="d-flex justify-content-end">
+                    <a href="#" class="btn btn-primary mr-2" id="addRow">
+                        <i class="fas fa-plus-circle mr-1"></i>  Add
+                    </a>
+                    <button type="submit"  class="btn btn-success mr-2 toastCreateRR">
+                      <i class="fas fa-check mr-1"></i> Confirm
+                    </button>
+                    <a href="" class="btn btn-danger">
+                        <i class="fas fa-times mr-1"></i>  Reset
+                    </a>
+                </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+      </form>
+        </div>
+      </div><!-- /.container-fluid -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
   <script>
     // Add a new row when the "Add" button is clicked
     $('#addRow').click(function () {

@@ -204,32 +204,26 @@
                 <div class="card-header bg-default">
                   <div class="d-flex">
                     <p class="m-0 text-bold text-lg mr-1">Employee Name:</p>
-                    <p class="m-0 text-lg">Sample Name</p>
+                    <p class="m-0 text-lg">{{$user->name}}</p>
                   </div>
                 </div>
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>WIV Number</th>
                         <th>Item Name</th>
-                        <th>Quantity</th>
-                        <th>Total Cost</th>
+                        <th>Description</th>
+                        <th>Cost</th>
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($items as $item)
                       <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
+                          <td>{{$item->name}}</td>
+                          <td>{{$item->description}}</td>
+                          <td>{{$item->unit_cost}}</td>
                       </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

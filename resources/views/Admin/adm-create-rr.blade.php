@@ -209,7 +209,6 @@
                                         <table class="table table-custom">
                                             <thead class="thead-custom">
                                                 <tr class="tr-custom">
-                                                    <th class="th-custom" scope="col">Reference</th>
                                                     <th class="th-custom" scope="col">RIV</th>
                                                     <th class="th-custom" scope="col">CS</th>
                                                     <th class="th-custom" scope="col">AOC</th>
@@ -223,8 +222,6 @@
                                             <tbody>
                                                 <!-- Add your table rows here -->
                                                 <tr class="tr-rr">
-                                                    <td class="td-rr"><input class="form-control" type="text"
-                                                            placeholder="Number" name="rr_number"></td>
                                                     <td class="td-rr"><input class="form-control" type="text"
                                                             placeholder="Number" name="riv_number"></td>
                                                     <td class="td-rr"><input class="form-control" type="text"
@@ -243,16 +240,6 @@
                                                             placeholder="Number" name="or_number"></td>
                                                 </tr>
                                                 <tr class="tr-rr">
-                                                    <td class="td-rr">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control datepicker"
-                                                                placeholder="Date" id="datepicker1" name="rr_date">
-                                                            <div class="input-group-append" id="datepicker-icon1">
-                                                                <span class="input-group-text"><i class="fa fa-calendar"
-                                                                        id="datepicker-icon1"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
                                                     <td class="td-rr">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control datepicker"
@@ -348,8 +335,6 @@
                                             <thead class="thead-custom">
                                                 <tr class="tr-custom">
                                                     <th class="th-custom" scope="col">Item</th>
-                                                    <th class="th-custom" scope="col">Delivered</th>
-                                                    <th class="th-custom" scope="col">Accepted</th>
                                                     <th class="th-custom" scope="col">Unit Cost</th>
                                                     <th class="th-custom" scope="col">Extended Cost</th>
                                                     <th class="th-custom" scope="col">Freight</th>
@@ -361,10 +346,6 @@
                                                 <tr class="tr-custom">
                                                     <td class="td-custom"><input class="form-control" type="text"
                                                             name="name[]" placeholder="Name"></td>
-                                                    <td class="td-custom"><input class="form-control" type="number"
-                                                            name="delivered[]"></td>
-                                                    <td class="td-custom"><input class="form-control" type="number"
-                                                            name="accepted[]"></td>
                                                     <td class="td-custom"><input class="form-control" type="text"
                                                             name="unit_cost[]"></td>
                                                     <td class="td-custom"><input class="form-control" type="text"

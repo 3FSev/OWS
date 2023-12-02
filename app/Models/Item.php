@@ -32,13 +32,18 @@ class Item extends Model
 
     public function rrs()
     {
-        return $this->belongsToMany(Rr::class, 'item_rr')
-            ->withPivot('delivered', 'accepted');
+        return $this->belongsToMany(Rr::class, 'item_rr');
     }
 
     public function wivs()
     {
         return $this->belongsToMany(Wiv::class, 'item_wiv')
             ->withPivot('quantity');
+    }
+
+    public function mrts()
+    {
+        return $this->belongsToMany(Mrt::class, 'item_mrt')
+            ->withPivot('usable');
     }
 }

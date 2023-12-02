@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->string('description', 500)->nullable();
-            $table->integer('quantity');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('item_status_id');
+            $table->integer('quantity');
             $table->integer('unit_cost')->nullable();
             $table->integer('freight')->nullable();
             $table->integer('extended_cost')->nullable();

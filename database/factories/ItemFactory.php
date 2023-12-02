@@ -19,7 +19,8 @@ class ItemFactory extends Factory
         return [
             'name' => $this->faker->word,
             'description' => $this->faker->sentence,
-            'quantity' => $this->faker->numberBetween(1,100),
+            'item_status_id' => 1,
+            'quantity' => 1,
             'category_id' => $this->faker->numberBetween(1,7),
             'unit_cost' => $this->faker->numberBetween(1,50000),
             'freight'=> $this->faker->numberBetween(1,5000),
