@@ -23,7 +23,7 @@ class SuperUserController extends Controller
         $districts = District::all();
         $users = User::withTrashed()->get();
         $roles = Role::all();
-        return view('superuser.sup-create-user', compact('departments','districts','users', 'roles'));
+        return view('superuser.sup-manage-user', compact('departments','districts','users', 'roles'));
     }
     public function UnverifiedUser()
     {
@@ -52,9 +52,9 @@ class SuperUserController extends Controller
     {
         return view('superuser.sup-user-activities');
     }
-    public function RestoreItem()
+    public function RestoreData()
     {
-        return view('superuser.sup-restore-item');
+        return view('superuser.sup-restore-data');
     }
     public function RestoreAccounts()
     {

@@ -13,14 +13,14 @@
    >
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset('assets/ormeco-logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <div class="ml-2">
-      <span class="brand-text  font-weight-light" style="color:white;">Warehouse</span>
-      <p class="brand-text font-weight-light">Managemen System</p>
+      <a href="#" class="brand-link" style="display: flex; align-items: center;">
+        <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image-xl img-circle elevation-3">
+        <div class="brand-text-custom">
+          <span class="brand-text font-weight-light">Warehouse<br>Management System</span>
+        </div>
+      </a>
     </div>
-    </a>
-  </div>
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -38,36 +38,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user nav-icon"></i>
-              <p>
-                Manage User
-                <i class="fas fa-angle-left right"></i>
-              </p>
+            <a href="{{ route('create.sup') }}" class="nav-link">
+                <i class="nav-icon fas fa-user nav-icon"></i>
+                <p>
+                    Manage User
+                </p>
             </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('create.sup') }}" class="nav-link ">
-                        {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <p>Create User</p>
-                    </a>
-                </li>
-              <li class="nav-item">
-                <a href="{{ route('unverified.sup') }}" class="nav-link ">
-                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>Unverified User</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('userlist.sup') }}" class="nav-link ">
-                  {{--  <i class="far fa-circle nav-icon"></i>  --}}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>User List</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item">
             <a href="{{ route('manageDept.sup') }}" class="nav-link ">
@@ -94,27 +70,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="{{ route('restoreItems.sup') }}" class="nav-link active">
               <i class="nav-icon fas fa-undo"></i>
               <p>
                 Restore Data
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('restoreItems.sup') }}" class="nav-link active">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>Items</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('restoreAccounts.sup') }}" class="nav-link">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <p>User Accounts</p>
-                </a>
-              </li>
-            </ul>
           </li>
       </nav>
       <!-- /.sidebar-menu -->
@@ -129,7 +90,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Restore Item</h1>
+            <h1 class="m-0">Restore Data</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -144,8 +105,8 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                <div class="card-header bg-success">
-                  <h5 class="m-0">Deleted Section</h5>
+                <div class="card-header card-header-custom">
+                  <h5 class="m-0 font-weight-bolder">Deleted Section</h5>
                 </div>     
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">

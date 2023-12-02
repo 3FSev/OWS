@@ -11,3 +11,4 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<script src="{{ asset('plugins/password-show-hide/password-show-hide.js') }}"></script>
