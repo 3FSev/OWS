@@ -13,8 +13,7 @@
       <!-- Brand Logo -->
       <div class="d-flex align-items-center">
         <a href="#" class="brand-link" style="display: flex; align-items: center;">
-          <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo"
-            class="brand-image-xl img-circle elevation-3">
+          <img src="{{ asset('assets/ormeco-logo.png') }}" alt="Ormeco Logo" class="brand-image-xl img-circle elevation-3">
           <div class="brand-text-custom">
             <span class="brand-text font-weight-light">Warehouse<br>Management System</span>
           </div>
@@ -44,25 +43,43 @@
                 </p>
               </a>
             </li>
+            </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <a href="{{ route('CreateWIV.adm') }}" class="nav-link">
+                <i class="nav-icon fa-solid fa-ticket nav-icon"></i>
+                <p>
+                  Manage WIV
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a  href="{{ route('CreateMRT.adm') }}" class="nav-link">
+                <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
+                <p>
+                  Manage MRT
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('ItemList.adm') }}" class="nav-link">
                 <i class="nav-icon fas fa-box-archive nav-icon"></i>
                 <p>
                   Manage Stock
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('CreateRR.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Create RR </p>
+                    <p>Receiving Report</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('RRList.adm') }}" class="nav-link ">
+                  <a href="{{ route('CreateItemCategories.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>RR List</p>
+                    <p>Create Category</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -73,59 +90,11 @@
                 </li>
               </ul>
             </li>
-
             <li class="nav-item">
               <a class="nav-link">
-                <i class="nav-icon fa-solid fa-ticket nav-icon"></i>
-                <p>
-                  Manage WIV
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('CreateWIV.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Create WIV</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('WIVList.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>WIV List</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
-                <p>
-                  Manage MRT
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('CreateMRT.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Create MRT</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('MRTList.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>MRT List</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
                 <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
                 <p>
-                  Manage Request
+                  Manage Request    
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>

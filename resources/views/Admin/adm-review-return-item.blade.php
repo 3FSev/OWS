@@ -22,160 +22,129 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item ">
-                            <a href="{{ route('Dashboard.adm') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-home nav-icon"></i>
-                                <p>
-                                    Dashboard
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="{{ route('Employee.adm') }}" class="nav-link ">
-                                <i class="nav-icon fa-solid fa-user-group nav-icon"></i>
-                                <p>
-                                    Employee List
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">
-                                <i class="nav-icon fas fa-box-archive nav-icon "></i>
-                                <p>
-                                    Manage Stock
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('CreateRR.adm') }}" class="nav-link ">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Create RR </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('RRList.adm') }}" class="nav-link ">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>RR List</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('ItemList.adm') }}" class="nav-link ">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Item List</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link ">
-                                <i class="nav-icon fa-solid fa-ticket nav-icon "></i>
-                                <p>
-                                    Manage WIV
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('CreateWIV.adm') }}" class="nav-link">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Create WIV</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('WIVList.adm') }}" class="nav-link">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>WIV List</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
-                                <p>
-                                    Manage MRT
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('CreateMRT.adm') }}" class="nav-link ">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Create MRT</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('MRTList.adm') }}" class="nav-link ">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>MRT List</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
-                                <p>
-                                    Manage Request
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('ItemRequest.adm') }}" class="nav-link ">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Item Request</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link active">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Return Item Request</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie nav-icon"></i>
-                                <p>
-                                    Reports
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('WIVReports.adm') }}" class="nav-link">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>WIV</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('MRTReports.adm') }}" class="nav-link">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>MRT</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('RRReports.adm') }}" class="nav-link">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>RR</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+              <!-- Sidebar Menu -->
+              <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                  <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                  <li class="nav-item ">
+                    <a href="{{ route('Dashboard.adm') }}" class="nav-link ">
+                      <i class="nav-icon fas fa-home nav-icon"></i>
+                      <p>
+                        Dashboard
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-item ">
+                    <a href="{{ route('Employee.adm') }}" class="nav-link ">
+                      <i class="nav-icon fa-solid fa-user-group nav-icon"></i>
+                      <p>
+                        Employee List
+                      </p>
+                    </a>
+                  </li>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('CreateWIV.adm') }}" class="nav-link">
+                      <i class="nav-icon fa-solid fa-ticket nav-icon"></i>
+                      <p>
+                        Manage WIV
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a  href="{{ route('CreateMRT.adm') }}" class="nav-link ">
+                      <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
+                      <p>
+                        Manage MRT
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('ItemList.adm') }}" class="nav-link ">
+                      <i class="nav-icon fas fa-box-archive nav-icon"></i>
+                      <p>
+                        Manage Stock
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{ route('CreateRR.adm') }}" class="nav-link ">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <p>Receiving Report</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('CreateItemCategories.adm') }}" class="nav-link ">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <p>Create Category</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('ItemList.adm') }}" class="nav-link ">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <p>Item List</p>
+                        </a>
+                      </li>
                     </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active">
+                      <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
+                      <p>
+                        Manage Request    
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{ route('ItemRequest.adm') }}" class="nav-link ">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <p>Item Request</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link active">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <p>Return Item Request</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="nav-link">
+                      <i class="nav-icon fas fa-chart-pie nav-icon"></i>
+                      <p>
+                        Reports
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{ route('WIVReports.adm') }}" class="nav-link">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <p>WIV</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('MRTReports.adm') }}" class="nav-link">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <p>MRT</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('RRReports.adm') }}" class="nav-link ">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <p>RR</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
         </aside>

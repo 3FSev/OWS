@@ -44,88 +44,58 @@
                 </p>
               </a>
             </li>
+            </li>
             <li class="nav-item">
-              <a class="nav-link">
-                <i class="nav-icon fas fa-box-archive nav-icon "></i>
+              <a href="{{ route('CreateWIV.adm') }}" class="nav-link active">
+                <i class="nav-icon fa-solid fa-ticket nav-icon"></i>
+                <p>
+                  Manage WIV
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a  href="{{ route('CreateMRT.adm') }}" class="nav-link">
+                <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
+                <p>
+                  Manage MRT
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('ItemList.adm') }}" class="nav-link">
+                <i class="nav-icon fas fa-box-archive nav-icon"></i>
                 <p>
                   Manage Stock
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('CreateRR.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Create RR </p>
+                    <p>Receiving Report</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('RRList.adm') }}" class="nav-link ">
+                  <a href="{{ route('CreateItemCategories.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>RR List</p>
+                    <p>Create Category</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('ItemList.adm') }}" class="nav-link">
+                  <a href="{{ route('ItemList.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Item List</p>
                   </a>
                 </li>
               </ul>
             </li>
-
             <li class="nav-item">
-              <a  class="nav-link active">
-                <i class="nav-icon fa-solid fa-ticket nav-icon "></i>
-                <p>
-                  Manage WIV
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('CreateWIV.adm') }}" class="nav-link active">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Create WIV</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('WIVList.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>WIV List</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
-                <p>
-                  Manage MRT
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('CreateMRT.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Create MRT</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('MRTList.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>MRT List</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a class="nav-link">
                 <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
                 <p>
-                  Manage Request
+                  Manage Request    
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -145,7 +115,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <a href="" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>
                 <p>
                   Reports
@@ -186,7 +156,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Create Warehouse Issued Voucher</h1>
+          <h1 class="m-0">Manage Warehouse Issued Voucher</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -197,9 +167,9 @@
   <section class="content">
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
-      <div class="row">
+      <div class="row mb-5">
         <div class="col-12">
-          <form method="POST" action="{{route('admin.create.wiv')}}" class="container-fluid" autocomplete="off">
+          <form method="POST" action="{{route('admin.create.wiv')}}" autocomplete="off">
             @csrf
           <div class="card">
             <!-- /.card-header -->
@@ -229,37 +199,41 @@
               <table class="table table-custom mt-3 " id="items_table">
                 <thead class="thead-custom ">
                   <tr>
-                    <th class="th-custom" scope="col">Item</th>
-                    <th class="th-custom" scope="col">RIV</th>
-                    <th class="th-custom" scope="col">RIV Date</th>
-                    <th class="th-custom" scope="col">PO</th>
-                    <th class="th-custom" scope="col">PO Date</th>
-                    <th class="th-custom" scope="col">RR</th>
-                    <th class="th-custom" scope="col">RR Date</th>
-                    <th class="th-custom" scope="col">Action</th>
+                    <th class="" scope="col">Item</th>
+                    <th class="wiv-th" scope="col">Quantity</th>
+                    <th class="wiv-th" scope="col">RIV</th>
+                    <th class="wiv-th" scope="col">RIV Date</th>
+                    <th class="wiv-th" scope="col">PO</th>
+                    <th class="wiv-th" scope="col">PO Date</th>
+                    <th class="wiv-th" scope="col">RR</th>
+                    <th class="wiv-th" scope="col">RR Date</th>
+                    <th class="wiv-th" scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <!-- Add your table rows here -->
-                  <tr class="tr-custom">
-                    <td class="td-custom">
-                      <select class="form-control input-box-custom item-select" name=item_id[] required>
+                  <tr class="wiv-tr-custom">
+                    <td class="wiv-td-custom">
+                      <select class="form-control wiv-item-name input-box-custom item-select" name=item_id[] required>
                         <option value="" disabled selected>Name</option>
                         @foreach ($items as $item)
                           <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                       </select>
                     </td>
-                    <td class="td-custom"><input class="form-control riv-input" type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control riv-date-input" type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control po-input" type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control po-date-input" type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control rr-input" type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control rr-date-input" type="text" disabled></td>
-                    <td>
-                      <button class="btn btn-danger mt-1">
-                        <i class="fas fa-trash"></i>
-                      </button>
+                    <td class=""><input class="form-control wiv-quantity" type="number" name="quantity[]" required></td>
+                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
+                    <td class="c-mrt-td">
+                      <div class="c-mrt-ac-btn">
+                        <button class="btn btn-danger mt-1">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -280,12 +254,58 @@
                 </div>
             </div>
             <!-- /.card-body -->
+          </form>
           </div>
         </div>
-      </form>
+
+        <div class="row my-9">
+        <div class="col-12">
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-header card-header-custom">
+              <h5 class="m-0 text-bold">WIV List</h5>
+            </div>
+            <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>WIV Number</th>
+                      <th>Employee Name</th>
+                      <th>District</th>
+                      <th>Item Name</th>
+                      <th>Quantity</th>
+                      <th>Amount</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                    </tr>
+                    <tr>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                      <td>Sample</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+            <!-- /.card-body -->
+          </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.container-fluid -->
   </section>
   <!-- /.content -->
 </div>
@@ -332,6 +352,19 @@ $('#items_table').on('change', '.item-select', function () {
         }
     });
 });
+
+  $(function() {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
 </script>
 
 </body>

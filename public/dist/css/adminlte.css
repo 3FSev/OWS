@@ -12505,10 +12505,11 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   border-bottom: none;
 }
 .brand-text{
-  font-size: 19px;
+  font-size: 17px;
   color:white;
 } 
 .brand-text:hover{
+  text-align: center;
   color: #b3b3b3;
   text-decoration: none;
 } 
@@ -53105,4 +53106,24 @@ a.text-muted:hover {
 }
 .datepicker-icon{
   margin:0px;
+}
+ 
+/* mrt-table */
+.mrt-table-custom th:nth-child(2),
+.mrt-table-custom td:nth-child(2),
+.mrt-table-custom th:nth-child(3),
+.mrt-table-custom td:nth-child(3) {
+    width: 90px;
+}
+
+.c-mrt-td {
+  text-align: center;
+}
+.c-mrt-td .c-mrt-ac-ch-bx, .c-mrt-td  .c-mrt-ac-btn {
+  display: inline-block; 
+}
+
+/* WIV table */
+.wiv-th{
+  width:110px;
 }
