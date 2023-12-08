@@ -111,48 +111,22 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('MrtReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>
-                      </div>                      
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('MrtReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
-                      </div>     
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>
-                      <div class="text-center">
-                      <a href="{{ route('MrtReview.man') }}" class="btn btn-primary">
-                        View
-                        &nbsp;<i class="far fa-eye"></i>
-                      </a>  
-                      </div>  
-                    </td>
-                  </tr>
+                    @foreach ($mrts as $mrt)
+                      <tr>
+                        <td>{{$mrt->user->name}}</td>
+                        <td>{{$mrt->user->department->name}}</td>
+                        <td>{{$mrt->mrt_number}}</td>
+                        <td>{{$mrt->mrt_date}}</td>
+                        <td>
+                          <div class="text-center">
+                          <a href="{{ route('MrtReview.man', $mrt->id) }}" class="btn btn-primary">
+                            View
+                            &nbsp;<i class="far fa-eye"></i>
+                          </a>
+                          </div>                      
+                        </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

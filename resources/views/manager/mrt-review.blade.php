@@ -103,15 +103,15 @@
                     <div class="d-flex col-11 justify-content-between align-items-center mt-2">
                       <div>
                         <label for="employee-name">Employee Name:</label>
-                        <span id="employee-name">Sample Full Name</span>
+                        <span id="employee-name">{{$mrt->user->name}}</span>
                       </div>
                       <div>
                         <label for="wiv-number">MRT Number:</label>
-                        <span id="wiv-number">203914</span>
+                        <span id="wiv-number">{{$mrt->mrt_number}}</span>
                       </div>
                       <div>
                         <label for="wiv-date">MRT Date:</label>
-                        <span id="wiv-date">19/09/2023</span>
+                        <span id="wiv-date">{{$mrt->mrt_date}}</span>
                       </div>
                     </div>
                   </div>
@@ -153,13 +153,12 @@
                         </thead>
                         <tbody>
                           <!-- Add your table rows here -->
+                          @foreach ($mrt->items as $item)
+                              
+                          @endforeach
                           <tr class=" mrt-tr">
-                            <td class="mrt-td">Sample</td>
+                            <td class="mrt-td">{{$item->name}}</td>
                             <td class="mrt-td ">1</td>
-                          </tr>
-                          <tr class="mrt-tr">
-                            <td class="mrt-td">Sample</td>
-                            <td class="mrt-td">1</td>
                           </tr>
                         </tbody>
                       </table>

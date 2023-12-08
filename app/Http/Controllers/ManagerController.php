@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mrt;
 use App\Models\Wiv;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,15 +42,16 @@ class ManagerController extends Controller
     }
 
 
-    //
     public function MRTrequest()
     {
-        return view('manager.man-mrt-req');
+        $mrts = Mrt::whereNull('approved_at')->get();
+        return view('manager.man-mrt-req', compact('mrts'));
     }
 
-    public function MRTreview()
+    public function MRTreview($mrt_id)
     {
-        return view('manager.mrt-review');
+        $mrt = Mrt::with('items.rrs')->findOrFail($mrt_id);
+        return view('manager.mrt-review', compact('mrt'));
     }
 
     public function RRrequest()

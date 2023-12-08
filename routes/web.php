@@ -57,10 +57,10 @@ Route::middleware(['auth','manager'])->group(function(){
     Route::get('/manager/man-wiv-req', [ManagerController::class, 'WIVrequest'])->name('WivRequest.man');
     Route::get('/manager/wiv-review/{wiv_id}', [ManagerController::class, 'WIVreview'])->name('WivReview.man');
     Route::get('/manager/man-mrt-req', [ManagerController::class, 'MRTrequest'])->name('MrtRequest.man');
-        Route::get('/manager/mrt-review', [ManagerController::class, 'MRTreview'])->name('MrtReview.man');
+    Route::get('/manager/mrt-review/{mrt_id}', [ManagerController::class, 'MRTreview'])->name('MrtReview.man');
     Route::get('/manager/man-rr-req', [ManagerController::class, 'RRrequest'])->name('RRrequest.man');
     Route::get('/manager/man-rr-review', [ManagerController::class, 'RR_review'])->name('RRreview.man');
-Route::get('/manager/man-acc-settings', [ManagerController::class, 'AccountSettings'])->name('AccSetting.man');   
+    Route::get('/manager/man-acc-settings', [ManagerController::class, 'AccountSettings'])->name('AccSetting.man');   
     Route::get('/manager/man-change-pswd', [ManagerController::class, 'ChangePassword'])->name('ChangePswd.man');   
     Route::get('/manager/wiv-approve/{wiv_id}', [ManagerController::class, 'WIVapprove'])->name('WivApprove.man');
 });
