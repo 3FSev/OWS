@@ -62,6 +62,9 @@ class AdminController extends Controller
 
         return view('admin.adm-item-list', compact('items'));
     }
+    public function CreateItemCategories(){
+        return view('Admin.adm-create-items-categories');
+    }
     public function EditItemList(){
 
         return view('admin.adm-edit-item-list');

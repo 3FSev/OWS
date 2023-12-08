@@ -1,13 +1,13 @@
-
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
 @include('theme/navbar')
 
-<title>Return Item Request</title>
+<title>Dashboard</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
+
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-green elevation-4">
       <!-- Brand Logo -->
@@ -29,7 +29,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item ">
-              <a href="{{ route('Dashboard.adm') }}" class="nav-link ">
+              <a href="{{ route('Dashboard.adm') }}" class="nav-link">
                 <i class="nav-icon fas fa-home nav-icon"></i>
                 <p>
                   Dashboard
@@ -54,7 +54,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a  href="{{ route('CreateMRT.adm') }}" class="nav-link ">
+              <a  href="{{ route('CreateMRT.adm') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
                 <p>
                   Manage MRT
@@ -62,8 +62,8 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('ItemList.adm') }}" class="nav-link ">
-                <i class="nav-icon fas fa-box-archive nav-icon"></i>
+              <a href="{{ route('ItemList.adm') }}" class="nav-link active">
+                <i class="nav-icon fas fa-box-archive nav-icon "></i>
                 <p>
                   Manage Stock
                   <i class="fas fa-angle-left right"></i>
@@ -78,7 +78,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('CreateItemCategories.adm') }}" class="nav-link ">
+                  <a href="{{ route('CreateItemCategories.adm') }}" class="nav-link active">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Create Category</p>
                   </a>
@@ -92,7 +92,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active">
+              <a class="nav-link">
                 <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
                 <p>
                   Manage Request    
@@ -101,13 +101,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('ItemRequest.adm') }}" class="nav-link ">
+                  <a href="{{ route('ItemRequest.adm') }}" class="nav-link">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Item Request</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link active">
+                  <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Return Item Request</p>
                   </a>
@@ -157,7 +157,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Return Item Request</h1>
+              <h1 class="m-0">Create Item Categories</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -169,93 +169,132 @@
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <!-- /.card-header -->
-                {{--  <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">Return Item Request</h5>
-                </div>  --}}
-                <div class="card-body">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="card-title">Categories of Item List</h2>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                <i class="fas fa-plus-circle" style="color: #ffffff;"></i>&nbsp;
+                                <span>Add</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="modal-default">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add New Category</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form class="container-fluid" autocomplete="off">
+                                  @csrf
+                                  <div class="modal-body">
+                                    <div class="form-group">
+                                      <label class="col-form-label-md">Category Name</label>
+                                    <input class="form-control" name="district" type="text" placeholder="Category Name">
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer justify-content-between">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Confirm</button>
+                                  </div>
+                                </form>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                </div>
+  
+                  <!-- /.card-header -->
+                  <div class="card-body">
                     <table id="example2" class="table table-bordered table-hover">
                       <thead>
-                          <tr>
-                            <th>MRT Number</th>
-                            <th>Employee Name</th>
-                            <th>Item Description</th>
-                            <th>Quantity</th>
-                            <th>Item Name</th>
-                            <th>Category</th>
-                            <th>Total Cost</th>
-                            <th>Unit</th>
-                            <th>Return Date</th>
-                            <th>Action</th>
-                          </tr>
+                      <tr>
+                        <th class="text-left">Name</th>
+                        <th class="text-left">Action</th>
+                      </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>
+                        <tr data-id="">
+                            <td>Sample</td>
+                            <td>
                                 <div class="text-center">
-                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
-                                  {{--  Review &nbsp; --}}
-                                   <i class="far fa-eye"></i>
-                                  </a>
-                                </div>  
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>
-                                <div class="text-center">
-                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
-                                  {{--  Review&nbsp;< --}}
-                                 <i class="far fa-eye"></i>
-                                  </a>
+                                    <button type="button" class="btn btn-warning btn-edit" data-toggle="modal" data-target="#modal-edit">
+                                        <i class="fas fa-pencil-alt" style="color: white;"></i>
+                                    </button>
+                                    <form method="POST" action="" style="display:inline;">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button onclick="return confirm('Are You Sure')" type="submit" class="btn btn-danger">
+                                          <i class="fas fa-trash"></i>
+                                      </button>
+                                  </form>
                                 </div>
-                              </td>
-                          </tr>
+                            </td>
+                        </tr>
+                        {{--  @endforeach  --}}
                       </tbody>
                     </table>
+                    <div class="modal fade" id="modal-edit">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h4 class="modal-title">Edit District Name</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              <form id="editForm" method="POST" action="{{ route('district.update', ['id' => '__district_id__']) }}">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label class="col-form-label-md">District Name</label>
+                                        <input name="districtName" id="districtNameInput" class="form-control" type="text" placeholder="District Name">
+                                    </div>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Confirm</button>
+                                </div>
+                            </form>
+                          </div>
+                          <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
                   </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
               </div>
-                <!-- /.card-body -->
-              </div>
-            </div>
-          </div><!-- /.container-fluid -->
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
   </div>
-</body>
-<script>
-    $(function() {
+  <script>
+    $(function () {
       $('#example2').DataTable({
         "paging": true,
-        "lengthChange": true,
-        "searching": true,
+        "lengthChange": false,
+        "searching": false,
         "ordering": true,
         "info": true,
         "autoWidth": false,
         "responsive": true,
+        "columnDefs": [
+          {
+              "targets": [1], // index of the "Action" column
+              "width": "150px" // set the desired width
+          }
+      ]
       });
     });
   </script>
+</body>
 </html>

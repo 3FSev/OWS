@@ -88,6 +88,7 @@ Route::middleware(['auth','admin'])->group(function(){
     Route::get('/admin/adm-create-rr', [AdminController::class, 'CreateRR'])->name('CreateRR.adm');
     Route::get('/admin/adm-rr-list', [AdminController::class, 'RRList'])->name('RRList.adm');
     Route::get('/admin/adm-rr-edit-list', [AdminController::class, 'EditRRList'])->name('EditRRList.adm');
+    Route::get('/admin/adm-create-items-categories', [AdminController::class, 'CreateItemCategories'])->name('CreateItemCategories.adm');
     Route::get('/admin/adm-item-list', [AdminController::class, 'ItemList'])->name('ItemList.adm');
     Route::get('/admin/adm-edit-item-list', [AdminController::class, 'EditItemList'])->name('EditItemList.adm');
     Route::get('/admin/adm-create-wiv', [AdminController::class, 'CreateWIV'])->name('CreateWIV.adm');

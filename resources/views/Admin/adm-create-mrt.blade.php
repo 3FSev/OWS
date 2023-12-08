@@ -44,25 +44,43 @@
                 </p>
               </a>
             </li>
+            </li>
             <li class="nav-item">
-              <a class="nav-link">
-                <i class="nav-icon fas fa-box-archive nav-icon "></i>
+              <a href="{{ route('CreateWIV.adm') }}" class="nav-link">
+                <i class="nav-icon fa-solid fa-ticket nav-icon"></i>
+                <p>
+                  Manage WIV
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a  href="{{ route('CreateMRT.adm') }}" class="nav-link active">
+                <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
+                <p>
+                  Manage MRT
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('ItemList.adm') }}" class="nav-link">
+                <i class="nav-icon fas fa-box-archive nav-icon"></i>
                 <p>
                   Manage Stock
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('CreateRR.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Create RR </p>
+                    <p>Receiving Report</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('RRList.adm') }}" class="nav-link ">
+                  <a href="{{ route('CreateItemCategories.adm') }}" class="nav-link ">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>RR List</p>
+                    <p>Create Category</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -73,59 +91,11 @@
                 </li>
               </ul>
             </li>
-
             <li class="nav-item">
-              <a  class="nav-link ">
-                <i class="nav-icon fa-solid fa-ticket nav-icon "></i>
-                <p>
-                  Manage WIV
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('CreateWIV.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Create WIV</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('WIVList.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>WIV List</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
-                <p>
-                  Manage MRT
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('CreateMRT.adm') }}" class="nav-link active">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Create MRT</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('MRTList.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>MRT List</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a class="nav-link">
                 <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
                 <p>
-                  Manage Request
+                  Manage Request    
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -145,7 +115,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <a href="" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>
                 <p>
                   Reports
@@ -187,7 +157,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Create Material Return Ticket</h1>
+              <h1 class="m-0">Manage Material Return Ticket</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -195,12 +165,12 @@
       <!-- /.content-header -->
 
       <!-- Main content -->
-      <section class="content">
+      <section class="content"> 
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
-          <div class="row">
+          <div class="row mb-5">
             <div class="col-12">
-              <form method="POST" action="{{route('admin.create.mrt')}}" class="container-fluid" autocomplete="off">
+              <form method="POST" action="{{route('admin.create.mrt')}}" autocomplete="off">
                 @csrf
               <div class="card">
                 <!-- /.card-header -->
@@ -218,28 +188,47 @@
                         @endforeach
                       </select>
                     </div>
+                    <div class="mb-3 col-md-3">
+                      <label for="District">District</label>
+                      <select class="form-control input-box-custom">
+                        <option value="option1" disabled>District I</option>
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                      </select>
+                    </div>
+                    <div class="mb-3 col-md-3">
+                      <label for="wiv-number">MRT Number</label>
+                      <input class="form-control input-box-custom" type="text">
+                    </div>
+                    <div class="mb-3 col-md-3">
+                      <label for="wiv-date">MRT Date</label>
+                      <input class="form-control input-box-custom" type="date">
+                    </div>
                   </div>
-                  <table class="table table-custom mt-3 ">
-                      <thead class="thead-custom ">
-                          <tr>
-                              <th class="th-custom" scope="col">Item Name</th>
-                              <th class="th-custom" scope="col">Usable</th>
-                              <th class="th-custom" scope="col">Action</th>
+
+                  <table class="table mrt-table-custom mt-3 mb-3 ">
+                      <thead class="mrt-thead-custom">
+                          <tr class="">
+                            <th class="" scope="col">Item Name</th>
+                            <th class="c-mrt-th" scope="col">Usable</th>
+                            <th class="c-mrt-th" scope="col">Action</th>
                           </tr>
-                      </thead>
+                      </thead>  
                       <tbody>
                           <!-- Add your table rows here -->
-                          <tr class="tr-rr">
-                              <td class="td-rr">
+                          <tr class="mrt-tr-custom">
+                              <td class="c-mrt-td">
                                   <select class="form-control" id="itemsSelect" name="items[]" required></select>
                               </td>
-                              <td class="td-rr">
-                                <input type="checkbox" name="usable[]">
-                            </td>
-                              <td>
+                              <td class="c-mrt-td">
+                                <div class="c-mrt-ac">
+                                <input class="form-control" type="checkbox" name="usable[]">
                                 <div>
+                              </td>
+                              <td class="c-mrt-td">
+                                <div class="c-mrt-ac">
                                     <button class="btn btn-danger mt-1">
-                                        <i class="fas fa-trash"></i>
+                                        <i class=" fas fa-trash"></i>
                                     </button>
                                 </div>
                               </td>
@@ -264,8 +253,63 @@
                 <!-- /.card-body -->
               </div>
             </form>
+          </div>
+            
+          <div class="row my-9 mb-4" >
+            <div class="col-12">
+              <div class="card">
+                <!-- /.card-header -->
+                <div class="card-header card-header-custom">
+                  <h5 class="m-0 text-bold">MRT list</h5>
+                </div>
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>MRT Number</th>
+                          <th>Employee Name</th>
+                          <th>Department</th>
+                          <th>District</th>
+                          <th>Item Name</th>
+                          <th>Category</th>
+                          <th>Quantity</th>
+                          <th>Unit Cost</th>
+                          <th>Total Cost</th>
+                          <th>Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                        </tr>
+                        <tr>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                          <td>Sample</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+                <!-- /.card-body -->
+              </div>
             </div>
-          </div><!-- /.container-fluid -->
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
@@ -315,5 +359,17 @@
         } else {
             alert('You cannot delete the last row.');
         }
+    });
+
+    $(function() {
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
     });
 </script>
