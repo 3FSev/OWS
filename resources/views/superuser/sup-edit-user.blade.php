@@ -123,9 +123,12 @@
 
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label>Role</label>
-                                                <input name="role" type="text" class="form-control"
-                                                    style="width: 100%;" placeholder="Role" required>
+                                            <label>Role</label>
+                                            <select name="role" class="form-control select2" style="width: 100%;"
+                                                required>
+                                                <option value="" disabled selected>Role</option>
+                                                <option value="sample">Sample</option>                   
+                                            </select>
                                             </div>
                                         </div>
 
