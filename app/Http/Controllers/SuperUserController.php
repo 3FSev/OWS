@@ -38,6 +38,10 @@ class SuperUserController extends Controller
         $departments = Department::all();
         return view('superuser.sup-user-list', compact('users', 'roles', 'districts', 'departments'));
     }
+    public function EditUserList()
+    {
+        return view('superuser.sup-edit-user');
+    }
     public function ManageDepartment()
     {
         $departments = Department::all();

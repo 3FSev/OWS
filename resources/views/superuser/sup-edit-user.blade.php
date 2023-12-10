@@ -88,7 +88,7 @@
                 <div class="container-fluid">
                     <div class="row mb-1">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Manage Users</h1>
+                            <h1 class="m-0">Manage User</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -100,7 +100,7 @@
                 <div class="container-fluid">
                     <div class="card card-default">
                         <div class="card-header card-header-custom">
-                            <h3 class="card-title font-weight-bold">Create New User</h3>
+                            <h3 class="card-title font-weight-bold">Edit User Information</h3>
                         </div>
                         <form method="POST" action="{{route('superuser.create.user')}}" class="container-fluid"
                             autocomplete="off">
@@ -123,11 +123,11 @@
 
                                         <div class="form-group">
                                             <div class="form-group">
-                                                <label>Role</label>
-                                                <select name="role" class="form-control select2" style="width: 100%;"
+                                            <label>Role</label>
+                                            <select name="role" class="form-control select2" style="width: 100%;"
                                                 required>
                                                 <option value="" disabled selected>Role</option>
-                                                <option value="sample">Sample<option>                   
+                                                <option value="sample">Sample</option>                   
                                             </select>
                                             </div>
                                         </div>
@@ -136,9 +136,9 @@
                                         <select name="department" class="form-control select2" style="width: 100%;"
                                             required>
                                             <option value="" deisabled selected>Departments</option>
-                                            @foreach ($departments as $department)
-                                            <option value="{{$department->id}}">{{$department->name}}</option>
-                                            @endforeach
+                                            {{--  @foreach ($departments as $department)  --}}
+                                            {{--  <option value="{{$department->id}}">{{$department->name}}</option>  --}}
+                                            {{--  @endforeach  --}}
                                         </select>
 
                                         <!-- /.form-group -->
@@ -151,9 +151,9 @@
                                             <select name="district" class="form-control select2" style="width: 100%;"
                                                 required>
                                                 <option value="" disabled selected>Districts</option>
-                                                @foreach ($districts as $district)
-                                                <option value="{{$district->id}}">{{$district->name}}</option>
-                                                @endforeach
+                                                {{--  @foreach ($districts as $district)  --}}
+                                                {{--  <option value="{{$district->id}}">{{$district->name}}</option>  --}}
+                                                {{--  @endforeach  --}}
                                             </select>
                                         </div>
                                         <!-- /.form-group -->
@@ -183,82 +183,6 @@
                             </div>
                             <!-- /.row -->
                         </form>
-                    </div>
-                    <div class="content-wapper">
-                        <div class="content-header mt-lg-4">
-                            <div class="container-fluid">
-                                <div class="row mb-2">
-                                    <div class="col-sm-6">
-                                        <h1 class="m-0">User List</h1>
-                                    </div><!-- /.col -->
-                                </div><!-- /.row -->
-                            </div><!-- /.container-fluid -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-header card-header-custom">
-                                    <h1 class="card-title font-weight-bold">User Information</h1>
-                                </div>
-                                <div class="card-body">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Role</th>
-                                                <th>District</th>
-                                                <th>Department</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($users as $user)
-                                            <tr>
-                                                <td>{{$user->name}}</td>
-                                                <td>{{$user->email}}</td>
-                                                <td>{{$user->role->name}}</td>
-                                                <td>{{$user->district->name}}</td>
-                                                <td>{{$user->department->name}}</td>
-                                                <td>
-                                                    @if ($user->deleted_at)
-                                                    <span>Deactivated</span>
-                                                    @elseif ($user->approved_at)
-                                                    <span>Active</span>
-                                                    @else
-                                                    <span>Not Verified</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <div class="text-center">
-                                                        <form method="POST" action="{{route('destroy.user', $user->id)}}">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <a href="{{ route('approve.user', $user->id) }}"
-                                                                class="btn btn-success @if($user->approved_at !== null && $user->deleted_at === null) disabled @endif">
-                                                                <i class="fas fa-check" style="color: white;"></i>
-                                                            </a>
-                                                            <a href="{{ route('EditUserList.sup') }}" type="button" class="btn btn-warning btn-edit">
-                                                                <i class="fas fa-pencil-alt" style="color: white;"></i>
-                                                            </a>
-                                                            <button onclick="return confirm('Are you sure?')" type="submit"
-                                                                class="btn btn-danger">
-                                                                <i class="fas fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>

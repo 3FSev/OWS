@@ -23,6 +23,7 @@ Route::middleware(['auth','superuser'])->group(function(){
     Route::get('sup-create-user', [SuperUserController::class, 'CreateUser'])->name('create.sup');
     Route::get('sup-unverified-user', [SuperUserController::class, 'UnverifiedUser'])->name('unverified.sup');
     Route::get('sup-user-list', [SuperUserController::class, 'UserList'])->name('userlist.sup');
+    Route::get('sup-edit-user', [SuperUserController::class, 'EditUserList'])->name('EditUserList.sup');
     Route::get('sup-manage-department', [SuperUserController::class, 'ManageDepartment'])->name('manageDept.sup');
     Route::post('update-department/{id}', [SuperUserController::class, 'updateDepartment'])->name('department.update');
     Route::get('sup-manage-districts', [SuperUserController::class, 'ManageDistricts'])->name('manageDist.sup');
