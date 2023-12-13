@@ -19,29 +19,21 @@
     <ul class="navbar-nav ml-auto">
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
+            <a class="nav-link" data-toggle="dropdown" href="#" id="notificationDropdownToggle">
                 <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
+                <span id="notificationBadge" class="badge badge-warning navbar-badge">{{ auth()->user()->unreadNotifications->count() }}</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">15 Notifications</span>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="notificationDropdown">
+                <span class="dropdown-item dropdown-header" id="notificationCount">{{ auth()->user()->unreadNotifications->count() }} Notifications</span>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                    <span class="float-right text-muted text-sm">3 mins</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-users mr-2"></i> 8 friend requests
-                    <span class="float-right text-muted text-sm">12 hours</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-file mr-2"></i> 3 new reports
-                    <span class="float-right text-muted text-sm">2 days</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        
+                @foreach (auth()->user()->unreadNotifications as $notification)
+                    <a href="{{ $notification->url }}" class="dropdown-item">
+                        <i class="fas fa-bell mr-2"></i> {{ $notification->description }}
+                        <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                @endforeach
             </div>
         </li>
         <li class="nav-item">
@@ -69,3 +61,42 @@
     </ul>
 </nav>
 <!-- /.navbar -->
+
+<script>
+    $(document).ready(function () {
+        updateNotifications();
+
+        function updateNotifications() {
+            // Fetch notifications via AJAX
+            $.get('/get-notifications', function (data) {
+                let notifications = data.notifications;
+                let badge = $('#notificationBadge');
+                let count = $('#notificationCount');
+                let dropdown = $('#notificationDropdown');
+
+                // Update badge count
+                badge.text(notifications.length);
+
+                // Update dropdown content
+                count.text(notifications.length + ' Notifications');
+                dropdown.empty();
+
+                if (notifications.length > 0) {
+                    dropdown.append('<div class="dropdown-divider"></div>');
+
+                    notifications.forEach(function (notification) {
+                        dropdown.append('<a href="' + notification.url + '" class="dropdown-item">' +
+                            '<i class="fas fa-bell mr-2"></i> ' + notification.description +
+                            '<span class="float-right text-muted text-sm">' + notification.created_at + '</span>' +
+                            '</a><div class="dropdown-divider"></div>');
+                    });
+                } else {
+                    dropdown.append('<span class="dropdown-item dropdown-header">No Notifications</span>');
+                }
+            });
+        }
+
+        // Call the updateNotifications function periodically
+        setInterval(updateNotifications, 60000); // Update every 60 seconds
+    });
+</script>

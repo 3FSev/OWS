@@ -74,4 +74,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Mrt::class);
     }
+
+    public function routeNotificationForDatabase()
+    {
+        return $this->id;
+    }
+
+    public function routeNotificationForMail()
+    {
+        return $this->email;
+    }
 }

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Models\Department;
-use App\Models\District;
-use App\Providers\RouteServiceProvider;
+use Log;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\District;
+use App\Models\Department;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\NewUserNotification;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -68,13 +70,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'district_id' => $data['district'],
             'department_id' => $data['department'],
             'password' => Hash::make($data['password']),
         ]);
+
+        // Notify superusers
+        $superusers = User::where('role_id', 3)->get();
+
+        foreach ($superusers as $superuser) {
+            try {
+                $superuser->notify(new NewUserNotification($user));
+                Log::info('Notification sent to superuser: ' . $superuser->id);
+            } catch (\Exception $e) {
+                Log::error('Error sending notification: ' . $e->getMessage());
+            }
+        }
+
+        // Return the created user
+        return $user;
     }
 
     public function showRegistrationForm()

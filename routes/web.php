@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SuperUserController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,3 +120,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', function () {
     return Redirect::to('login');
 });
+
+Route::get('/notifications', [NotificationController::class, 'index']);
+Route::get('/notifications/{id}/mark-as-read', [NotificationController::class, 'markAsRead']);

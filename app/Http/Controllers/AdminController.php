@@ -12,6 +12,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use BaconQrCode\Encoder\QrCode;
 use BaconQrCode\Renderer\Image\Png;
+use App\Notifications\NewRrNotification;
 
 class AdminController extends Controller
 {
@@ -226,6 +227,17 @@ class AdminController extends Controller
         $rr->supplier = $request->input('supplier');
         $rr->address = $request->input('address');
         $rr->save();
+
+        //---------- SEND NOTIFICATION -------------//
+        $usersToNotify = User::where('role_id', 4)->get();
+
+        foreach ($usersToNotify as $user) {
+            try {
+                $user->notify(new NewRrNotification($rr));
+            } catch (\Exception $e) {
+                \Log::error('Notification sending failed: ' . $e->getMessage());
+            }
+        }
 
         //---------- GET ITEM FROM FORM -------------///
         $names = $request->input('name');
