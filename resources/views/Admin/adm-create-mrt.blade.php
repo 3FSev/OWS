@@ -298,14 +298,16 @@
                                                     <td>{{$mrt->mrt_date}}</td>
                                                     <td>{{$mrt->created_by}}</td>
                                                     <td>
-                                                      @if($mrt->approved_at)
-                                                        <p>Approved by {{$mrt->approved_by}}</p>
-                                                        @if($mrt->recieved_at)
-                                                            <br><p>Recieved</p>
+                                                        @if($mrt->approved_at)
+                                                            <p>Approved by {{$mrt->approved_by}}</p>
+                                                            @if($mrt->received_at)
+                                                                <p>Received</p>
+                                                            @endif
+                                                        @elseif($mrt->rejected_at)
+                                                            <p>Rejected by {{$mrt->rejected_by}}</p>
+                                                        @else
+                                                            <p>Waiting for approval</p>
                                                         @endif
-                                                      @else
-                                                        <p>Waiting for approval</p>
-                                                      @endif
                                                     </td>
                                                 </tr>
                                                 @endforeach

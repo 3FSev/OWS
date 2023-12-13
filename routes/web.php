@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
@@ -59,12 +60,15 @@ Route::middleware(['auth','manager'])->group(function(){
     Route::get('/manager/man-mrt-req', [ManagerController::class, 'MRTrequest'])->name('MrtRequest.man');
     Route::get('/manager/mrt-review/{mrt_id}', [ManagerController::class, 'MRTreview'])->name('MrtReview.man');
     Route::get('/manager/mrt-approve/{mrt_id}', [ManagerController::class, 'MRTApprove'])->name('MrtApprove.man');
+    Route::get('/manager/mrt-reject/{mrt_id}', [ManagerController::class, 'MRTreject'])->name('MrtReject.man');
     Route::get('/manager/man-rr-req', [ManagerController::class, 'RRrequest'])->name('RRrequest.man');
     Route::get('/manager/man-rr-review/{rr_id}', [ManagerController::class, 'RR_review'])->name('RRreview.man');
     Route::get('/manager/man-acc-settings', [ManagerController::class, 'AccountSettings'])->name('AccSetting.man');   
     Route::get('/manager/man-change-pswd', [ManagerController::class, 'ChangePassword'])->name('ChangePswd.man');   
     Route::get('/manager/wiv-approve/{wiv_id}', [ManagerController::class, 'WIVapprove'])->name('WivApprove.man');
+    Route::get('/manager/wiv-reject/{wiv_id}', [ManagerController::class, 'WIVreject'])->name('WivReject.man');
     Route::get('/manager/rr-approve/{rr_id}', [ManagerController::class, 'RRapprove'])->name('RrApprove.man');
+    Route::get('/manager/rr-reject/{rr_id}', [ManagerController::class, 'RRreject'])->name('RrReject.man');
 });
 
 // <route for employee>
@@ -113,6 +117,10 @@ Route::middleware(['auth','admin'])->group(function(){
     Route::get('/generate-barcode/{item_id}', [AdminController::class, 'generateBarcode'])->name('generate.barcode');
 
     Route::delete('/admin/adm-item-list/{item_id}/destroy', [SuperUserController::class, 'destroy'])->name('destroy.item');
+});
+
+Route::middleware(['auth'])->group(function(){
+    Route::post('/update-password', [ChangePasswordController::class, 'updatePassword'])->name('change.acc.pass');
 });
 
 Auth::routes();

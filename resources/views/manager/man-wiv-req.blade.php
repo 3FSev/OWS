@@ -114,20 +114,22 @@
                     </thead>
                     <tbody>
                       @foreach ($wivs as $wiv)
-                        <td>{{$wiv->created_by}}</td>
-                        <td>{{$wiv->wiv_date}}</td>
-                        <td>{{$wiv->user->name}}</td>
-                        <td>{{$wiv->user->department->name}}</td>
-                        <td>{{$wiv->user->district->name}}</td>
-                        <td>{{$wiv->wiv_number}}</td>
-                        <td>
-                          <div class="text-center">
-                            <a href="{{ route('WivReview.man', $wiv->id) }}" class="btn btn-primary">
-                              View
-                              &nbsp;<i class="far fa-eye"></i>
-                            </a>                          
-                          </div>                      
-                        </td>
+                        <tr>
+                          <td>{{$wiv->created_by}}</td>
+                          <td>{{$wiv->wiv_date}}</td>
+                          <td>{{$wiv->user->name}}</td>
+                          <td>{{$wiv->user->department->name}}</td>
+                          <td>{{$wiv->user->district->name}}</td>
+                          <td>{{$wiv->wiv_number}}</td>
+                          <td>
+                            <div class="text-center">
+                              <a href="{{ route('WivReview.man', $wiv->id) }}" class="btn btn-primary">
+                                View
+                                &nbsp;<i class="far fa-eye"></i>
+                              </a>                          
+                            </div>                      
+                          </td>
+                        </tr>
                       @endforeach
                     </tbody>
                 </table>

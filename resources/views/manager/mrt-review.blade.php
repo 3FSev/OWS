@@ -174,7 +174,7 @@
                     <a href="{{ route('MrtApprove.man', $mrt->id) }}" class="btn btn-success toastApproveMRT">
                       <i class="fas fa-check"></i> Approve
                     </a>
-                    <a href="" class="btn btn-danger">
+                    <a href="{{ route('MrtReject.man', $mrt->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure?');">
                       <i class="fas fa-times"></i> Decline
                     </a>
                   </div>

@@ -2,7 +2,7 @@
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
-@include('admin/adm-navbar')
+@include('theme/navbar')
 
 <title>Create WIV</title>
 
@@ -296,10 +296,12 @@
                         <td>{{$wiv->created_by}}</td>
                         <td>
                           @if($wiv->approved_at)
-                          <p>Approved by {{$wiv->approved_by}}</p>
+                            <p>Approved by {{$wiv->approved_by}}</p>
                             @if($wiv->received_at)
-                                <p>Received</p>
+                              <p>Received</p>
                             @endif
+                          @elseif($wiv->rejected_at)
+                            <p>Rejected by {{$wiv->rejected_by}}</p>
                           @else
                             <p>Waiting for approval</p>
                           @endif
