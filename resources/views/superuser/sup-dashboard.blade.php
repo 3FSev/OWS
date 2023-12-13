@@ -64,14 +64,6 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{ route('restoreItems.sup') }}" class="nav-link ">
-            <i class="nav-icon fas fa-undo"></i>
-            <p>
-              Restore Data
-            </p>
-          </a>
-        </li>
     </nav>
     <!-- /.sidebar-menu -->
   </div>

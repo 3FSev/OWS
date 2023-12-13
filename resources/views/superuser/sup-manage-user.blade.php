@@ -245,10 +245,6 @@
                                                             <a href="{{ route('EditUserList.sup', $user->id) }}" type="button" class="btn btn-warning btn-edit">
                                                                 <i class="fas fa-pencil-alt" style="color: white;"></i>
                                                             </a>
-                                                            <button onclick="return confirm('Are you sure?')" type="submit"
-                                                                class="btn btn-danger">
-                                                                <i class="fas fa-trash"></i>
-                                                            </button>
                                                         </form>
                                                     </div>
                                                 </td>
