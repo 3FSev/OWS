@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('created_by', 255);
             $table->string('approved_by', 255)->nullable();
             $table->timestamp('approved_at')->nullable();
+            $table->timestamp('rejected_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
         });

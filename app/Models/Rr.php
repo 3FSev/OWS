@@ -38,6 +38,7 @@ class Rr extends Model
         'created_by',
         'approved_by',
         'approved_at',
+        'rejected_at',
     ];
 
     public function items()

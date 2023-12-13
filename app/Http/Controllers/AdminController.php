@@ -111,7 +111,9 @@ class AdminController extends Controller
     // manage wiv
     public function CreateWIV(){
         $users = User::where('role_id', 1)->whereNotNull('approved_at')->get();
-        $items = Item::where('quantity', '!=', 0)->get();
+        $items = Item::whereHas('rrs', function ($query) {
+            $query->whereNotNull('approved_at');
+        })->where('quantity', '!=', 0)->get();
         $rrs = Rr::all();
         $wivs = Wiv::all();
 
