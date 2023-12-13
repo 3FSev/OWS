@@ -1,7 +1,7 @@
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
-@include('theme/navbar')
+@include('manager/man-navbar')
 
 <title>Review MRT Request</title>
 
@@ -162,7 +162,7 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">RR Details Lists</h5>
+                  <h5 class="m-0 text-bold">RR Details</h5>
                 </div>     
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">

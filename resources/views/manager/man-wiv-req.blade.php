@@ -1,7 +1,7 @@
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
-@include('theme/navbar') 
+@include('manager/man-navbar')
 
 <title>WIV Request</title>
 
@@ -152,7 +152,7 @@
           <div class="card">
             <!-- /.card-header -->
             <div class="card-header card-header-custom">
-              <h5 class="m-0 text-bold">WIV Details ListSs</h5>
+              <h5 class="m-0 text-bold">WIV Details</h5>
             </div>     
             <div class="card-body">
               <table id="example2" class="table table-bordered table-hover">
