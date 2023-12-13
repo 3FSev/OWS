@@ -23,7 +23,8 @@ Route::middleware(['auth','superuser'])->group(function(){
     Route::get('sup-create-user', [SuperUserController::class, 'CreateUser'])->name('create.sup');
     Route::get('sup-unverified-user', [SuperUserController::class, 'UnverifiedUser'])->name('unverified.sup');
     Route::get('sup-user-list', [SuperUserController::class, 'UserList'])->name('userlist.sup');
-    Route::get('sup-edit-user', [SuperUserController::class, 'EditUserList'])->name('EditUserList.sup');
+    Route::get('sup-edit-user/{user_id}/edit', [SuperUserController::class, 'EditUserList'])->name('EditUserList.sup');
+    Route::post('sup-edit-user/{user_id}/update', [SuperUserController::class, 'EditUser'])->name('EditUser.sup');
     Route::get('sup-manage-department', [SuperUserController::class, 'ManageDepartment'])->name('manageDept.sup');
     Route::post('update-department/{id}', [SuperUserController::class, 'updateDepartment'])->name('department.update');
     Route::get('sup-manage-districts', [SuperUserController::class, 'ManageDistricts'])->name('manageDist.sup');
@@ -50,28 +51,25 @@ Route::middleware(['auth','superuser'])->group(function(){
 
 // <route for manager>
 Route::middleware(['auth','manager'])->group(function(){
-    Route::get('/man-dashboard', function () {
-        return view('manager.man-stock-list');
-    });
     Route::get('/manager/man-stock-list', [ManagerController::class, 'StockList'])->name('stockList.man');
     Route::get('/manager/man-edit-items', [ManagerController::class, 'EditItem'])->name('EditItem.man');
     Route::get('/manager/man-wiv-req', [ManagerController::class, 'WIVrequest'])->name('WivRequest.man');
     Route::get('/manager/wiv-review/{wiv_id}', [ManagerController::class, 'WIVreview'])->name('WivReview.man');
     Route::get('/manager/man-mrt-req', [ManagerController::class, 'MRTrequest'])->name('MrtRequest.man');
     Route::get('/manager/mrt-review/{mrt_id}', [ManagerController::class, 'MRTreview'])->name('MrtReview.man');
+    Route::get('/manager/mrt-approve/{mrt_id}', [ManagerController::class, 'MRTApprove'])->name('MrtApprove.man');
     Route::get('/manager/man-rr-req', [ManagerController::class, 'RRrequest'])->name('RRrequest.man');
-    Route::get('/manager/man-rr-review', [ManagerController::class, 'RR_review'])->name('RRreview.man');
+    Route::get('/manager/man-rr-review/{rr_id}', [ManagerController::class, 'RR_review'])->name('RRreview.man');
     Route::get('/manager/man-acc-settings', [ManagerController::class, 'AccountSettings'])->name('AccSetting.man');   
     Route::get('/manager/man-change-pswd', [ManagerController::class, 'ChangePassword'])->name('ChangePswd.man');   
     Route::get('/manager/wiv-approve/{wiv_id}', [ManagerController::class, 'WIVapprove'])->name('WivApprove.man');
+    Route::get('/manager/rr-approve/{rr_id}', [ManagerController::class, 'RRapprove'])->name('RrApprove.man');
 });
 
 // <route for employee>
 Route::middleware(['auth','employee'])->group(function(){
-    Route::get('/em-pending-wiv', function () {
-        return view('employee.em-pending-wiv');
-    });
-    Route::get('/employee/em-pending-wiv', [EmployeeController::class, 'PendingWIV'])->name('PendingWiv.em');   
+    Route::get('/employee/em-pending-wiv', [EmployeeController::class, 'PendingWIV'])->name('PendingWiv.em');
+    Route::get('/employee/accept-wiv/{wiv_id}', [EmployeeController::class, 'AcceptWIV'])->name('AcceptWiv.em');
     Route::get('/employee/em-pending-mrt', [EmployeeController::class, 'PendingRIV'])->name('PendingRiv.em');   
     Route::get('/employee/em-list', [EmployeeController::class, 'ListView'])->name('ListView.em');
     Route::get('/employee/em-item-req', [EmployeeController::class, 'ItemRequest'])->name('ItemReq.em');   
@@ -91,7 +89,7 @@ Route::middleware(['auth','admin'])->group(function(){
     Route::get('/admin/adm-rr-edit-list', [AdminController::class, 'EditRRList'])->name('EditRRList.adm');
     Route::get('/admin/adm-create-items-categories', [AdminController::class, 'CreateItemCategories'])->name('CreateItemCategories.adm');
     Route::get('/admin/adm-item-list', [AdminController::class, 'ItemList'])->name('ItemList.adm');
-    Route::get('/admin/adm-edit-item-list', [AdminController::class, 'EditItemList'])->name('EditItemList.adm');
+    Route::get('/admin/adm-edit-item-list/{item_id}', [AdminController::class, 'EditItemList'])->name('EditItemList.adm');
     Route::get('/admin/adm-create-wiv', [AdminController::class, 'CreateWIV'])->name('CreateWIV.adm');
     Route::get('/admin/adm-wiv-list', [AdminController::class, 'WIVList'])->name('WIVList.adm');
     Route::get('/admin/adm-create-mrt', [AdminController::class, 'CreateMRT'])->name('CreateMRT.adm');
@@ -108,6 +106,9 @@ Route::middleware(['auth','admin'])->group(function(){
     Route::post('admin-create-rr', [AdminController::class, 'storeRR'])->name('admin.create.rr');
     Route::post('admin-create-wiv', [AdminController::class, 'storeWIV'])->name('admin.create.wiv');
     Route::post('admin-create-mrt', [AdminController::class, 'storeMRT'])->name('admin.create.mrt');
+    Route::post('/admin/adm-update-item/{item_id}', [AdminController::class, 'UpdateItem'])->name('UpdateItem.adm');
+
+    Route::get('/generate-barcode/{item_id}', [AdminController::class, 'generateBarcode'])->name('generate.barcode');
 
     Route::delete('/admin/adm-item-list/{item_id}/destroy', [SuperUserController::class, 'destroy'])->name('destroy.item');
 });
@@ -115,3 +116,6 @@ Route::middleware(['auth','admin'])->group(function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return Redirect::to('login');
+});

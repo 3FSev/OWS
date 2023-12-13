@@ -105,51 +105,19 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Item Code</th>
                         <th>Item Name</th>
-                        <th>Status</th>
-                        <th>Quantity </th>
-                        <th>Unit</th>
                         <th>Category</th>
                         <th>Unit Cost</th>
-                        <th>Total Price</th>
-                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                            <a href="{{ route('EditItem.man') }}" class="btn btn-warning">
-                              <i class="icon-custom fas fa-pencil-alt" style="color: white;"></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                            <a href="{{ route('EditItem.man') }}" class="btn btn-warning">
-                              <i class="fas fa-pencil-alt" style="color: white;"></i>
-                            </a>
-                        </td>
-                      </tr>
+                      @foreach ($items as $item)
+                        <tr>
+                          <td>{{$item->name}}</td>
+                          <td>{{$item->category->name}}</td>
+                          <td>{{number_format($item->unit_cost, 2, '.',',')}}</td>
+                        </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

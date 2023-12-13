@@ -39,7 +39,7 @@ class Rr extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Item::class, 'item_rr')->withPivot('delivered', 'accepted');
+        return $this->belongsToMany(Item::class, 'item_rr');
     }
 
     public function generateUniqueIdentifier()

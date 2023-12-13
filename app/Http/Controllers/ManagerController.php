@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Mrt;
+use App\Models\Rr;
 use App\Models\Wiv;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,7 +14,9 @@ class ManagerController extends Controller
     //
     public function StockList()
     {
-        return view('manager.man-stock-list');
+        $items = Item::all();
+
+        return view('manager.man-stock-list', compact('items'));
     }
     public function EditItem()
     {
@@ -54,14 +58,32 @@ class ManagerController extends Controller
         return view('manager.mrt-review', compact('mrt'));
     }
 
-    public function RRrequest()
-    {
-        return view('manager.man-rr-request');
+    public function MrtApprove($mrt_id){
+        $mrt = Mrt::findOrFail($mrt_id);
+        $mrt->approved_at = now();
+        $mrt->save();
+
+        return redirect('manager.man-mrt-req');
     }
 
-    public function RR_review()
+    public function RRrequest()
     {
-        return view('manager.man-rr-review');
+        $rrs = Rr::whereNull('approved_at')->get();
+        return view('manager.man-rr-request', compact('rrs'));
+    }
+
+    public function RR_review($rr_id)
+    {
+        $rr = Rr::findOrFail($rr_id);
+        return view('manager.man-rr-review', compact('rr'));
+    }
+
+    public function RRapprove($rr_id){
+        $rr = Rr::findOrFail($rr_id);
+        $rr->approved_at = now();
+        $rr->save();
+
+        return redirect()->route('RRrequest.man')->with('success','');
     }
     
     public function AccountSettings()

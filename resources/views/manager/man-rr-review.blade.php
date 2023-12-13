@@ -99,7 +99,7 @@
                   <table class="table table-custom">
                     <thead class="thead-custom">
                       <tr class="tr-custom">
-                        <th class="th-custom" scope="col">Reference</th>
+                        <th class="th-custom" scope="col">RR</th>
                         <th class="th-custom" scope="col">RIV</th>
                         <th class="th-custom" scope="col">CS</th>
                         <th class="th-custom" scope="col">AOC</th>
@@ -112,136 +112,41 @@
                     </thead>
                     <tbody>
                       <!-- Add your table rows here -->
-                      <tr class="tr-rr">
-                        <td class="td-rr"><input class="form-control" type="text" placeholder=""></td>
-                        <td class="td-rr" ><input class="form-control" type="text" placeholder="sample"></td>
-                        <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                        <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                        <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                        <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                        <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                        <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                        <td class="td-rr"><input class="form-control" type="text" placeholder="sample"></td>
-                      </tr>
-                      <tr class="tr-rr">
-                        <td class="td-rr">
-                          <div class="input-group">
-                            <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker1">
-                            <div class="input-group-append" id="datepicker-icon1">
-                                <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon1"></i></span>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="td-rr">
-                          <div class="input-group">
-                            <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker2">
-                            <div class="input-group-append" id="datepicker-icon2">
-                                <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon2"></i></span>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="td-rr">
-                          <div class="input-group">
-                            <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker3">
-                            <div class="input-group-append" id="datepicker-icon3">
-                                <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon3"></i></span>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="td-rr">
-                          <div class="input-group">
-                            <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker4">
-                            <div class="input-group-append" id="datepicker-icon4">
-                                <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon4"></i></span>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="td-rr">
-                          <div class="input-group">
-                            <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker5">
-                            <div class="input-group-append" id="datepicker-icon5">
-                                <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon5"></i></span>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="td-rr">
-                          <div class="input-group">
-                            <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker6">
-                            <div class="input-group-append" id="datepicker-icon6">
-                                <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon6"></i></span>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="td-rr">
-                          <div class="input-group">
-                            <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker7">
-                            <div class="input-group-append" id="datepicker-icon7">
-                                <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon7"></i></span>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="td-rr">
-                          <div class="input-group">
-                            <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker8">
-                            <div class="input-group-append" id="datepicker-icon8">
-                                <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon8"></i></span>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="td-rr">
-                          <div class="input-group">
-                            <input type="text" class="form-control datepicker" placeholder="Date" id="datepicker9">
-                            <div class="input-group-append" id="datepicker-icon9">
-                                <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon9"></i></span>
-                            </div>
-                          </div>
-                        </td>
+                      <tr>
+                        <td>{{$rr->rr_number}}</td>
+                        <td>{{$rr->riv}}</td>
+                        <td>{{$rr->cs}}</td>
+                        <td>{{$rr->aoc}}</td>
+                        <td>{{$rr->po}}</td>
+                        <td>{{$rr->cv}}</td>
+                        <td>{{$rr->dr}}</td>
+                        <td>{{$rr->inv}}</td>
+                        <td>{{$rr->or}}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <div class="form-group d-flex justify-content-between align-items-center mt-4 mb-4">
                   <label class="mb-0">Supplier</label>
-                  <input class="form-control item-name-input" type="text">
+                  {{$rr->supplier}}
                   <label class="mb-0">Address</label>
-                  <input class="form-control item-name-input" type="text" >
+                  {{$rr->address}}
                 </div>
 
                 <table class="table table-custom">
                   <thead class="thead-custom ">
-                    <tr class="tr-custom">
-                      <th class="th-custom" scope="col">Item</th>
-                      <th class="th-custom" scope="col">Quantity</th>
-                      <th class="th-custom" scope="col">RIV</th>
-                      <th class="th-custom" scope="col">RIV Date</th>
-                      <th class="th-custom" scope="col">PO</th>
-                      <th class="th-custom" scope="col">PO Date</th>
-                      <th class="th-custom" scope="col">RR</th>
-                      <th class="th-custom" scope="col">RR Date</th>
+                    <tr>
+                      <th>Item</th>
+                      <th>Unit Cost</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- Add your table rows here -->
-                    <tr class="tr-custom">
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom" ><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled ></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                    </tr>
-                    <tr class="tr-custom">
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled ></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                      <td class="td-custom"><input class="form-control" type="text" placeholder="sample" disabled></td>
-                    </tr>
+                    @foreach ($rr->items as $item)
+                        <tr>
+                          <td>{{$item->name}}</td>
+                          <td>{{ number_format($item->unit_cost, 2, '.', ',') }}</td>
+                        </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>  
@@ -254,7 +159,7 @@
                 <i class="fas fa-arrow-left"></i> Back
               </a>
               <div>
-                <a href="#" class="btn btn-success toastApproveMRT">
+                <a href="{{ route('RrApprove.man', $rr->id) }}" class="btn btn-success toastApproveMRT">
                   <i class="fas fa-check"></i> Approve
                 </a>
                 <a href="" class="btn btn-danger">

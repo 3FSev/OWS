@@ -119,43 +119,42 @@
                         <th>WIV Number</th>
                         <th>Date</th>
                         <th>Item Name</th>
-                        <th>Quantity</th>
                         <th>Unit Cost</th>
                         <th>Total Cost</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                            <a class="btn btn-primary toastRecieveWIV">
-                              Recieve <i class="fas fa-check ml-2"></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                            <a class="btn btn-primary toastRecieveWIV">
-                              Recieve <i class="fas fa-check ml-2"></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
+                      @foreach ($wivs as $wiv)
+                        <tr>
+                          <td>{{$wiv->wiv_number}}</td>
+                          <td>{{$wiv->wiv_date}}</td>
+                          <td>
+                            @foreach ($wiv->items as $item)
+                                {{$item->name}}<br>
+                            @endforeach
+                          </td>
+                          <td>
+                            @php
+                                $totalCost = 0
+                            @endphp
+                            @foreach ($wiv->items as $item)
+                                {{number_format($item->unit_cost, 2, '.',',')}}<br>
+                                @php
+                                    $totalCost += $item->unit_cost
+                                @endphp
+                            @endforeach
+                          </td>
+                          <td>{{number_format($totalCost, 2, '.',',')}}</td>
+                          <td>
+                            <div class="text-center">
+                              <a href="{{route('AcceptWiv.em', $wiv->id)}}" class="btn btn-primary toastRecieveWIV">
+                                Recieve <i class="fas fa-check ml-2"></i>
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

@@ -105,6 +105,7 @@
                   <tr>
                     <th>Employee Name</th>
                     <th>Department</th>
+                    <th>District</th>
                     <th>MRT Number</th>
                     <th>MRT Date</th>
                     <th>Action</th>
@@ -115,6 +116,7 @@
                       <tr>
                         <td>{{$mrt->user->name}}</td>
                         <td>{{$mrt->user->department->name}}</td>
+                        <td>{{$mrt->user->district->name}}</td>
                         <td>{{$mrt->mrt_number}}</td>
                         <td>{{$mrt->mrt_date}}</td>
                         <td>

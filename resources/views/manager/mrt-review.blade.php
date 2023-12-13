@@ -148,18 +148,17 @@
                         <thead class="mrt-thead-custom">
                           <tr class="mrt-tr">
                             <th class="mrt-th" scope="col">Item Name</th>
-                            <th class="mrt-th" scope="col">Quantity</th>
+                            <th class="mrt-th" scope="col">Category</th>
                           </tr>
                         </thead>
                         <tbody>
                           <!-- Add your table rows here -->
                           @foreach ($mrt->items as $item)
-                              
+                            <tr class=" mrt-tr">
+                              <td class="mrt-td">{{$item->name}}</td>
+                              <td class="mrt-td">{{$item->category->name}}</td>
+                            </tr>
                           @endforeach
-                          <tr class=" mrt-tr">
-                            <td class="mrt-td">{{$item->name}}</td>
-                            <td class="mrt-td ">1</td>
-                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -168,11 +167,11 @@
               </div>
               <div class="form-group">
                 <div class="d-flex justify-content-between">
-                  <a href="{{ route('MrtRequest.man') }}" class="btn btn-primary">
+                  <a href="#" class="btn btn-primary">
                     <i class="fas fa-arrow-left"></i> Back
                   </a>
                   <div>
-                    <a href="#" class="btn btn-success toastApproveMRT">
+                    <a href="{{ route('MrtApprove.man', $mrt->id) }}" class="btn btn-success toastApproveMRT">
                       <i class="fas fa-check"></i> Approve
                     </a>
                     <a href="" class="btn btn-danger">

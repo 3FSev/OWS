@@ -101,7 +101,7 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead class="">
                       <tr>
-                        <th>Reference</th>
+                        <th>RR Number</th>
                         <th>RIV</th>
                         <th>CS</th>
                         <th>AOC</th>
@@ -115,27 +115,28 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- Add your table rows here -->
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>
-                          <div class="text-center">
-                          <a href="{{ route('RRreview.man') }}" class="btn btn-primary">
-                            View
-                            &nbsp;<i class="far fa-eye"></i>
-                          </a>
-                          </div>                      
-                        </td>
-                      </tr>
+                      @foreach ($rrs as $rr)
+                        <tr>
+                          <td>{{$rr->rr_number}}</td>
+                          <td>{{$rr->riv}}</td>
+                          <td>{{$rr->cs}}</td>
+                          <td>{{$rr->aoc}}</td>
+                          <td>{{$rr->po}}</td>
+                          <td>{{$rr->cv}}</td>
+                          <td>{{$rr->dr}}</td>
+                          <td>{{$rr->inv}}</td>
+                          <td>{{$rr->or}}</td>
+                          <td>{{$rr->rr_date}}</td>
+                          <td>
+                            <div class="text-center">
+                            <a href="{{ route('RRreview.man', $rr->id) }}" class="btn btn-primary">
+                              View
+                              &nbsp;<i class="far fa-eye"></i>
+                            </a>
+                            </div>                      
+                          </td>
+                        </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

@@ -20,7 +20,7 @@ class Admin
             return $next($request);
         }
         elseif(Auth::check() && Auth::user()->role_id == '4'){
-            return redirect('man-dashboard');
+            return redirect('manager/man-stock-list');
         }
         elseif(Auth::check() && Auth::user()->role_id == '3'){
             return redirect('sup-dashboard');

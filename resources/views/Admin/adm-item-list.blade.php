@@ -193,7 +193,7 @@
                           <td></td>
                           <td>{{$item->quantity}}</td>
                           <td>{{$item->category->name}}</td>
-                          <td>{{$item->unit_cost}}</td>
+                          <td>{{number_format($item->unit_cost, 2, '.',',')}}</td>
                           <td>
                             <form method="POST" action="{{route('destroy.item', $item->id)}}"></form>
                             @csrf
@@ -205,9 +205,9 @@
                                   <button type="submit"  class="btn btn-danger">
                                     <i class="fas fa-trash"></i>
                                   </button>
-                                  <a class="btn btn-primary">
-                                      <i class="fa-solid fa-print"></i>
-                                  </a>
+                                  <a class="btn btn-primary" href="{{ route('generate.barcode', $item->id) }}" target="_blank">
+                                    <i class="fa-solid fa-print"></i>
+                                </a>                                
                               </div>
                           </td>
                         </tr>

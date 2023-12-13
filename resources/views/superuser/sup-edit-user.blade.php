@@ -102,7 +102,7 @@
                         <div class="card-header card-header-custom">
                             <h3 class="card-title font-weight-bold">Edit User Information</h3>
                         </div>
-                        <form method="POST" action="{{route('superuser.create.user')}}" class="container-fluid"
+                        <form method="POST" action="{{route('EditUser.sup', $user->id)}}" class="container-fluid"
                             autocomplete="off">
                             @csrf
                             <!-- /.card-header -->
@@ -111,14 +111,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Full Name</label>
-                                            <input name="name" class="form-control" type="text" placeholder="Full Name"
+                                            <input name="name" class="form-control" type="text" value="{{$user->name}}"
                                                 required>
                                         </div>
                                         <!-- /.form-group -->
                                         <div class="form-group">
                                             <label>Email</label>
                                             <input name="email" type="email" class="form-control" style="width: 100%;"
-                                                placeholder="Email Address" required>
+                                                value="{{$user->email}}" required>
                                         </div>
 
                                         <div class="form-group">
@@ -126,8 +126,9 @@
                                             <label>Role</label>
                                             <select name="role" class="form-control select2" style="width: 100%;"
                                                 required>
-                                                <option value="" disabled selected>Role</option>
-                                                <option value="sample">Sample</option>                   
+                                                @foreach ($roles as $role) 
+                                                    <option value="{{$role->id}}" {{ $user->role->id == $role->id ? 'selected' : '' }}>{{$role->name}}</option> 
+                                                @endforeach               
                                             </select>
                                             </div>
                                         </div>
@@ -135,10 +136,9 @@
                                         <label>Department</label>
                                         <select name="department" class="form-control select2" style="width: 100%;"
                                             required>
-                                            <option value="" deisabled selected>Departments</option>
-                                            {{--  @foreach ($departments as $department)  --}}
-                                            {{--  <option value="{{$department->id}}">{{$department->name}}</option>  --}}
-                                            {{--  @endforeach  --}}
+                                             @foreach ($departments as $department) 
+                                                <option value="{{$department->id}}" {{ $user->department->id == $department->id ? 'selected' : '' }}>{{$department->name}}</option> 
+                                             @endforeach
                                         </select>
 
                                         <!-- /.form-group -->
@@ -150,10 +150,9 @@
                                             <label>Districts</label>
                                             <select name="district" class="form-control select2" style="width: 100%;"
                                                 required>
-                                                <option value="" disabled selected>Districts</option>
-                                                {{--  @foreach ($districts as $district)  --}}
-                                                {{--  <option value="{{$district->id}}">{{$district->name}}</option>  --}}
-                                                {{--  @endforeach  --}}
+                                                 @foreach ($districts as $district) 
+                                                    <option value="{{$district->id}}" {{ $user->district->id == $district->id ? 'selected' : '' }}>{{$district->name}}</option> 
+                                                 @endforeach 
                                             </select>
                                         </div>
                                         <!-- /.form-group -->
@@ -161,16 +160,16 @@
                                             <div class="form-group">
                                                 <label>Password</label>
                                                 <input name="password" type="Password" class="form-control"
-                                                    style="width: 100%;" placeholder="Password" required>
+                                                    style="width: 100%;" placeholder="Password">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Confirm Password</label>
                                             <input name="confirm_password" type="Password" class="form-control"
-                                                style="width: 100%;" placeholder="Password" required>
+                                                style="width: 100%;" placeholder="Password">
                                         </div>
                                         <!-- /.form-group -->
-                                    </div>                                   
+                                    </div>
                                     <!-- /.col -->
                                 </div>
                                 <div class="d-flex justify-content-center mt-8">

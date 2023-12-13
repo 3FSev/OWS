@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\District;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Mail\AccountApproved;
+use Illuminate\Support\Facades\Mail;
 
 class SuperUserController extends Controller
 {
@@ -38,9 +40,13 @@ class SuperUserController extends Controller
         $departments = Department::all();
         return view('superuser.sup-user-list', compact('users', 'roles', 'districts', 'departments'));
     }
-    public function EditUserList()
+    public function EditUserList($user_id)
     {
-        return view('superuser.sup-edit-user');
+        $user = User::findOrFail($user_id);
+        $roles = Role::all();
+        $districts = District::all();
+        $departments = Department::all();
+        return view('superuser.sup-edit-user', compact('user', 'roles', 'districts', 'departments'));
     }
     public function ManageDepartment()
     {
@@ -83,6 +89,8 @@ class SuperUserController extends Controller
         $user->password = bcrypt($validatedData['password']);
         $user->district_id = $validatedData['district'];
         $user->department_id = $validatedData['department'];
+        $user->role_id = $request->input('role');
+        $user->approved_at = now();
         $user->save();
 
         return redirect()->back()->with('success','User created successfully');
@@ -94,6 +102,31 @@ class SuperUserController extends Controller
         $department->save();
 
         return redirect()->back();
+    }
+
+    public function EditUser(Request $request, $user_id){
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'nullable|required|min:6',
+            'district' => 'required|exists:district,id',
+            'department' => 'required|exists:department,id',
+            'confirm_password' => 'required|same:password',
+        ]);
+
+        $user = User::findOrFail($user_id);
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        if ($request->filled('password')){
+            $user->password = bcrypt($validatedData['password']);
+        }
+        $user->district_id = $validatedData['district'];
+        $user->department_id = $validatedData['department'];
+        $user->role_id = $request->input('role');
+        $user->approved_at = now();
+        $user->save();
+
+        return redirect('sup-create-user');
     }
 
     public function storeDistrict(Request $request){
@@ -126,6 +159,7 @@ class SuperUserController extends Controller
            if ($user->approved_at === null) {
         // Update approved_at if it's null
         $user->update(['approved_at' => now()]);
+        Mail::to($user->email)->send(new AccountApproved());
         return redirect()->back()->with('success', 'User approved successfully.');
         }
         if ($user->deleted_at) {

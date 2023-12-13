@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Item;
-use App\Models\Mrt;
 use App\Models\Rr;
-use App\Models\User;
+use App\Models\Mrt;
 use App\Models\Wiv;
+use App\Models\Item;
+use App\Models\User;
+use BaconQrCode\Writer;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use BaconQrCode\Encoder\QrCode;
+use BaconQrCode\Renderer\Image\Png;
 
 class AdminController extends Controller
 {
@@ -44,8 +47,9 @@ class AdminController extends Controller
     // manage stock
     public function CreateRR(){
         $categories = Category::all();
+        $rrs = Rr::all();
 
-        return view('admin.adm-create-rr', compact('categories'));
+        return view('admin.adm-create-rr', compact('categories','rrs'));
     }
 
     public function RRList(){
@@ -65,9 +69,17 @@ class AdminController extends Controller
     public function CreateItemCategories(){
         return view('Admin.adm-create-items-categories');
     }
-    public function EditItemList(){
+    public function EditItemList($item_id){
+        $item = Item::findOrFail($item_id);
+        $category = Category::all();
 
-        return view('admin.adm-edit-item-list');
+        return view('admin.adm-edit-item-list', compact('item','category'));
+    }
+
+    public function UpdateItem(Request $request, $item_id){
+        dd($request);
+        $item = Item::findOrFail($item_id);
+        $item->name = $request->input('name');
     }
 
     // manage wiv
@@ -75,15 +87,16 @@ class AdminController extends Controller
         $users = User::where('role_id', 1)->whereNotNull('approved_at')->get();
         $items = Item::where('quantity', '!=', 0)->get();
         $rrs = Rr::all();
+        $wivs = Wiv::all();
 
-        return view('admin.adm-create-wiv', compact('users','items','rrs'));
+        return view('admin.adm-create-wiv', compact('users','items','rrs','wivs'));
     }
 
     public function storeWIV(Request $request){
         $wiv = new Wiv();
+        $wiv->generateUniqueIdentifier();
         $wiv->user_id = $request->input('user_id');
-        $wiv->wiv_number = $request->input('wiv_number');
-        $wiv->wiv_date = $request->input('wiv_date');
+        $wiv->wiv_date = now();
         $wiv->save();
 
         $items = $request->input('item_id');
@@ -106,7 +119,8 @@ class AdminController extends Controller
     // manage mrt
     public function CreateMRT(){
         $users = User::whereNotNull('approved_at')->where('role_id', 1)->get();
-        return view('admin.adm-create-mrt', compact('users'));
+        $mrts = Mrt::all();
+        return view('admin.adm-create-mrt', compact('users','mrts'));
     }
 
     public function storeMRT(Request $request){
@@ -140,7 +154,10 @@ class AdminController extends Controller
     public function getItemsForUser($userId)
     {
         // Get all WIVs associated with the user
-        $wivs = Wiv::where('user_id', $userId)->get();
+        $wivs = Wiv::where('user_id', $userId)
+                    ->whereNotNull('approved_at')
+                    ->whereNotNull('received_at')
+                    ->get();
 
         // Filter items with quantity equal to 1 in the pivot table
         $items = $wivs->flatMap(function ($wiv) {
@@ -239,6 +256,21 @@ class AdminController extends Controller
         $rrData = Item::find($item_id)->rrs->first();
 
         return response()->json($rrData);
+    }
+
+    public function generateBarcode($item_id)
+    {
+        // Fetch the item details based on the provided item ID
+        $item = Item::findOrFail($item_id);
+
+        // Create a QR code writer
+        $writer = new Writer(new Png());
+
+        // Generate the QR code using the item details (convert to JSON or use a specific attribute)
+        $qrCode = $writer->writeString($item->toJson());
+
+        return response($qrCode)
+            ->header('Content-Type', $writer->getContentType());
     }
 
  }

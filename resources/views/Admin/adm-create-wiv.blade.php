@@ -187,20 +187,11 @@
                     @endforeach
                   </select>
                 </div>
-                <div class="mb-3 col-md-3">
-                  <label for="wiv-number">WIV Number</label>
-                  <input class="form-control input-box-custom" type="text" name="wiv_number" required>
-                </div>
-                <div class="mb-3 col-md-3">
-                  <label for="wiv-date">WIV Date</label>
-                  <input class="form-control input-box-custom" type="date" name="wiv_date" required>
-                </div>
               </div>
               <table class="table table-custom mt-3 " id="items_table">
                 <thead class="thead-custom ">
                   <tr>
                     <th class="" scope="col">Item</th>
-                    <th class="wiv-th" scope="col">Quantity</th>
                     <th class="wiv-th" scope="col">RIV</th>
                     <th class="wiv-th" scope="col">RIV Date</th>
                     <th class="wiv-th" scope="col">PO</th>
@@ -221,13 +212,12 @@
                         @endforeach
                       </select>
                     </td>
-                    <td class=""><input class="form-control wiv-quantity" type="number" name="quantity[]" required></td>
-                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
-                    <td class="td-custom"><input class="form-control " type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control riv-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control riv-date-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control po-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control po-date-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control rr-input" type="text" disabled></td>
+                    <td class="td-custom"><input class="form-control rr-date-input" type="text" disabled></td>
                     <td class="c-mrt-td">
                       <div class="c-mrt-ac-btn">
                         <button class="btn btn-danger mt-1">
@@ -273,30 +263,46 @@
                       <th>Employee Name</th>
                       <th>District</th>
                       <th>Item Name</th>
-                      <th>Quantity</th>
                       <th>Amount</th>
+                      <th>Total Cost</th>
                       <th>Date</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($wivs as $wiv)
                     <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                    </tr>
+                        <td>{{$wiv->wiv_number}}</td>
+                        <td>{{$wiv->user->name}}</td>
+                        <td>{{$wiv->user->district->name}}</td>
+                        <td>@foreach ($wiv->items as $item)
+                            {{$item->name}}<br>
+                        @endforeach</td>
+                        <td>
+                          @php
+                              $totalCost = 0
+                          @endphp
+                          @foreach ($wiv->items as $item)
+                          {{number_format($item->unit_cost, 2, '.',',')}}<br>
+                          @php
+                              $totalCost += $item->unit_cost
+                          @endphp
+                      @endforeach</td>
+                      <td>{{number_format($totalCost, 2, '.', ',') }}</td>
+                        <td>{{$wiv->wiv_date}}</td>
+                        <td>
+                          @if($wiv->approved_at)
+                            @if($wiv->recieved_at)
+                              <p>Recieved</p>
+                            @else
+                              <p>Approved</p>
+                            @endif
+                          @else
+                            <p>Waiting for approval</p>
+                          @endif
+                        </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -332,8 +338,7 @@
         }
     });
 
-    // Use event delegation for the "Change" event on a parent element (e.g., the table)
-$('#items_table').on('change', '.item-select', function () {
+    $('#items_table').on('change', '.item-select', function () {
     var selectedItemId = $(this).val();
     var tableRow = $(this).closest('tr');
 
@@ -342,6 +347,7 @@ $('#items_table').on('change', '.item-select', function () {
         url: '/get-rr-data/' + selectedItemId,
         type: 'GET',
         success: function (data) {
+          console.log(data)
             // Populate the input fields with RR data
             tableRow.find('.riv-input').val(data.riv);
             tableRow.find('.riv-date-input').val(data.riv_date);

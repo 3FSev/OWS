@@ -181,6 +181,7 @@
                                         <table class="table table-custom">
                                             <thead class="thead-custom">
                                                 <tr class="tr-custom">
+                                                    <th class="th-custom" scope="col">RIV</th>
                                                     <th class="th-custom" scope="col">CS</th>
                                                     <th class="th-custom" scope="col">AOC</th>
                                                     <th class="th-custom" scope="col">PO</th>
@@ -193,6 +194,8 @@
                                             <tbody>
                                                 <!-- Add your table rows here -->
                                                 <tr class="tr-rr">
+                                                  <td class="td-rr"><input class="form-control" type="text"
+                                                    placeholder="Number" name="riv_number"></td>
                                                     <td class="td-rr"><input class="form-control" type="text"
                                                             placeholder="Number" name="cs_number"></td>
                                                     <td class="td-rr"><input class="form-control" type="text"
@@ -209,6 +212,16 @@
                                                             placeholder="Number" name="or_number"></td>
                                                 </tr>
                                                 <tr class="tr-rr">  
+                                                  <td class="td-rr">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control datepicker"
+                                                            placeholder="Date" id="datepicker3"  name="riv_date">
+                                                        <div class="input-group-append" id="datepicker-icon3">
+                                                            <span class="input-group-text"><i class="fa fa-calendar"
+                                                                    id="datepicker-icon3"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                                     <td class="td-rr">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control datepicker"
@@ -285,9 +298,9 @@
                                     </div>
                                     <div class="form-group d-flex justify-content-between align-items-center mt-4 mb-4">
                                         <label class="mb-0">Supplier</label>
-                                        <input class="form-control item-name-input" type="text" name="supplier">
+                                        <input class="form-control item-name-input" type="text" name="supplier" required>
                                         <label class="mb-0">Address</label>
-                                        <input class="form-control item-name-input" type="text" name="address">
+                                        <input class="form-control item-name-input" type="text" name="address" required>
                                     </div>
                                     <div>
                                         <table class="table table-custom" id="items_table">
@@ -363,36 +376,33 @@
                                   <tr>
                                     <th>RR Number</th>
                                     <th>Date</th>
+                                    <th>Item List</th>
                                     <th>Supplier</th>
                                     <th>Address</th>
-                                    <th>Action</th>
+                                    <th>Status</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  {{--  @foreach ($recieving_reports as $rr)  --}}
-                                  <tr>
-                                    <td>
-                                        {{--  {{$rr->rr_number}}  --}}
-                                    </td>
-                                    <td>
-                                        {{--  {{$rr->rr_date}}  --}}
-
-                                    </td>
-                                    <td>
-                                        {{--  {{$rr->supplier}}  --}}
-                                    </td>
-                                    <td>
-                                        {{--  {{$rr->address}}  --}}
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <a href="{{ route('EditRRList.adm') }}" class="btn btn-warning">
-                                                <i class="fas fa-pencil-alt text-white"></i>
-                                              </a>
-                                        </div>
-                                    </td>
-                                  </tr>
-                                  {{--  @endforeach  --}}
+                                  @foreach ($rrs as $rr)
+                                      <tr>
+                                        <td>{{$rr->rr_number}}</td>
+                                        <td>{{$rr->rr_date}}</td>
+                                        <td>
+                                          @foreach ($rr->items as $item)
+                                              {{$item->name}}<br>
+                                          @endforeach
+                                        </td>
+                                        <td>{{$rr->supplier}}</td>
+                                        <td>{{$rr->address}}</td>
+                                        <td>
+                                          @if($rr->approved_at)
+                                            <p>Approved</p>
+                                          @else
+                                            <p>Waiting for approval</p>
+                                          @endif
+                                        </td>
+                                      </tr>
+                                  @endforeach
                                 </tbody>
                               </table>
                             </div>

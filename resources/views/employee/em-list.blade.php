@@ -115,27 +115,25 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
+                        <th>Particular</th>
                         <th>WIV Number</th>
                         <th>Date</th>
-                        <th>Particular</th>
-                        <th>Details</th>
                         <th>Category</th>
-                        <th>Qty Unit</th>
                         <th>Unit Cost</th>
-                        <th>Total Cost</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                      </tr>
+                      @foreach ($wivs as $wiv)
+                          @foreach ($wiv->items as $item)
+                          <tr>
+                            <td>{{$item->name}}</td>
+                            <td>{{$wiv->wiv_number}}</td>
+                            <td>{{$wiv->wiv_date}}</td>
+                            <td>{{$item->category->name}}</td>
+                            <td>{{number_format( $item->unit_cost, 2, '.',',')}}</td>
+                          </tr>
+                          @endforeach
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

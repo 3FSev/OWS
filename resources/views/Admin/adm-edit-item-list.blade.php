@@ -174,44 +174,33 @@
                 <div class="card-header card-header-custom">
                   <h5 class="m-0 text-bold">Item Information</h5>
                 </div>
+                <form method="POST" action="{{route('UpdateItem.adm', $item->id)}}" class="container-fluid"
+                  autocomplete="off">
+                  @csrf
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="col-form-label-md">Item Code</label>
-                        <input class="form-control" type="text" placeholder="Item Code">
-                      </div>
-                      <div class="form-group">
                         <label class="col-form-label-md">Item Name</label>
-                        <input class="form-control" type="text" placeholder="Item Name">
-                      </div>
-                      <div class="form-group">
-                        <label class="col-form-label-md">Status</label>
-                        <input class="form-control" type="text" placeholder="Status ">
+                        <input class="form-control" type="text" name="name" value="{{$item->name}}">
                       </div>
                       <div class="form-group">
                         <label class="col-form-label-md">Quantity</label>
-                        <input class="form-control" type="text" placeholder="Quantity">
+                        <input class="form-control" type="text" name="quantity" value="{{$item->qauntity}}">
                       </div>
                     </div>
-
                     <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="col-form-label-md">Unit</label>
-                        <input class="form-control" type="text" placeholder="Unit">
-                      </div>
                       <div class="form-group">
                         <label class="col-form-label-md">Category</label>
                         <select class="form-control">
-                          <option value="unit">Sample 1</option>
-                          <option value="category1">Sample 2</option>
-                          <option value="category2">Sample 3</option>
-                          <option value="category2">Sample 4</option>
+                          @foreach ($category as $cat)
+                              <option value="$cat->id" {{ $item->category->id == $cat->id ? 'selected' : '' }}>{{$cat->name}}</option>
+                          @endforeach
                         </select>
                       </div>
                       <div class="form-group">
                         <label class="col-form-label-md">Unit Cost</label>
-                        <input class="form-control" type="text" placeholder="Unit Cost">
+                        <input class="form-control" type="text" name="unit_cost" value="{{$item->unit_cost}}">
                       </div>
                     </div>
                   </div>
@@ -225,14 +214,15 @@
                     </a>
                   </div>
                   <div class="col-md-6 text-right">
-                    <a href="#" class="btn btn-success toastEditItem">
+                    <button type="submit" class="btn btn-success toastEditItem">
                       <i class="fas fa-check"></i> Update
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
              <!-- /.card-body -->
             </div>
+          </form>
           </div>
         </div><!-- /.container-fluid -->
     </div><!-- /.container-fluid -->

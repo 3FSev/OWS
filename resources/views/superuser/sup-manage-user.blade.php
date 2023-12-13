@@ -126,8 +126,9 @@
                                                 <label>Role</label>
                                                 <select name="role" class="form-control select2" style="width: 100%;"
                                                 required>
-                                                <option value="" disabled selected>Role</option>
-                                                <option value="sample">Sample<option>                   
+                                                @foreach ($roles as $role)
+                                                    <option value="{{$role->id}}">{{$role->name}}</option>
+                                                @endforeach
                                             </select>
                                             </div>
                                         </div>
@@ -241,7 +242,7 @@
                                                                 class="btn btn-success @if($user->approved_at !== null && $user->deleted_at === null) disabled @endif">
                                                                 <i class="fas fa-check" style="color: white;"></i>
                                                             </a>
-                                                            <a href="{{ route('EditUserList.sup') }}" type="button" class="btn btn-warning btn-edit">
+                                                            <a href="{{ route('EditUserList.sup', $user->id) }}" type="button" class="btn btn-warning btn-edit">
                                                                 <i class="fas fa-pencil-alt" style="color: white;"></i>
                                                             </a>
                                                             <button onclick="return confirm('Are you sure?')" type="submit"

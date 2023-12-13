@@ -20,7 +20,7 @@ class SuperUserMiddleware
             return $next($request);
         }
         elseif(Auth::check() && Auth::user()->role_id == '4'){
-            return redirect('man-dashboard');
+            return redirect('manager/man-stock-list');
         }
         else{
             return redirect('home');
