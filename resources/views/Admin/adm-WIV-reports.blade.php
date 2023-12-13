@@ -1,7 +1,7 @@
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
-@include('theme/navbar')
+@include('admin/adm-navbar')
 
 <title>WIV Reports</title>
 
@@ -156,7 +156,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              {{--  <h1 class="m-0">Warehouse Issued Voucher Report</h1>  --}}
+              <h1 class="m-0">Warehouse Issued Voucher Report</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -172,15 +172,25 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-header ">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h1 class="card-title text-bold">Warehouse Issued Voucher Report</h1>
+                  <div class="d-flex justify-content-center align-items-center">
+                    {{--  <h1 class="card-title text-bold">Warehouse Issued Voucher Report</h1>  --}}
                     <div class="card-tools">
-                      <button type="button" class="btn btn-primary m-1">
-                        <i class="fa-solid fa-print mr-2 text-white"></i>
-                        <span>Print</span>
-                      </button>
+                        <form class="form-inline mb-0">
+                            <div class="form-group mr-2">
+                                <label for="byMonth" class="mr-2">By Month:</label>
+                                <input type="month" class="form-control" id="byMonth">
+                            </div>
+                            <div class="form-group mr-2">
+                                <label for="byYear" class="mr-2">By Year:</label>
+                                <input type="number" class="form-control" id="byYear" placeholder="YYYY">
+                            </div>
+                            <button type="button" class="btn btn-primary m-1">
+                                <i class="fa-solid fa-print mr-2 text-white"></i>
+                                <span>Print</span>
+                            </button>
+                        </form>
                     </div>
-                  </div>
+                </div>
                 </div>
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">

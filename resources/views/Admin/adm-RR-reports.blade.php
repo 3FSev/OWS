@@ -1,7 +1,7 @@
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
-@include('theme/navbar')
+@include('admin/adm-navbar')
 
 <title>MRT Reports</title>
 
@@ -156,7 +156,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              {{--  <h1 class="m-0">Material Return Ticket</h1>  --}}
+              <h1 class="m-0">Material Return Ticket</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -169,32 +169,41 @@
           <!-- Small boxes (Stat box) -->
           <div class="row">
             <div class="col-12">
-              <div class="card ">
+              <div class="card">
                 <!-- /.card-header -->
-                <div class="card-header">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h1 class="card-title text-bold">Recieving Report</h1>
+                <div class="card-header ">
+                  <div class="d-flex justify-content-center align-items-center">
+                    {{--  <h1 class="card-title text-bold">Warehouse Issued Voucher Report</h1>  --}}
                     <div class="card-tools">
-                      <button type="button" class="btn btn-primary m-1">
-                        <i class="fa-solid fa-print mr-2 text-white"></i>
-                        <span>Print</span>
-                      </button>
+                        <form class="form-inline mb-0">
+                            <div class="form-group mr-2">
+                                <label for="byMonth" class="mr-2">By Month:</label>
+                                <input type="month" class="form-control" id="byMonth">
+                            </div>
+                            <div class="form-group mr-2">
+                                <label for="byYear" class="mr-2">By Year:</label>
+                                <input type="number" class="form-control" id="byYear" placeholder="YYYY">
+                            </div>
+                            <button type="button" class="btn btn-primary m-1">
+                                <i class="fa-solid fa-print mr-2 text-white"></i>
+                                <span>Print</span>
+                            </button>
+                        </form>
                     </div>
-                  </div>
+                </div>
                 </div>
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Item Name</th>
-                        <th>Unit</th>
-                        <th>Delivered</th>
-                        <th>Acceptance</th>
-                        <th>Unit Cost</th>
-                        <th>External Cost</th>
-                        <th>Freigth Cost</th>
+                        <th>WIV Number</th>
+                        <th>Employee Name</th>
+                        <th>Department</th>
+                        <th>Item Description</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
                         <th>Total Cost</th>
-                        <th>Date</th>
+                        <th>Date Issuance</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -207,10 +216,8 @@
                         <td>Sample</td>
                         <td>Sample</td>
                         <td>Sample</td>
-                        <td>Sample</td>
                       </tr>
                       <tr>
-                        <td>Sample</td>
                         <td>Sample</td>
                         <td>Sample</td>
                         <td>Sample</td>
