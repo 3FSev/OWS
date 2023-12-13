@@ -189,7 +189,7 @@
                     <tbody>
                       @foreach ($items as $item)
                         <tr>
-                          <td><a href="{{ route('ItemHistory.adm', $item->id) }}">{{$item->name}}</a></td>
+                          <td><a class="item-list-link" href="{{ route('ItemHistory.adm', $item->id) }}">{{$item->name}}</a></td>
                           <td>{{$item->status}}</td>
                           <td>{{$item->quantity}}</td>
                           <td>{{$item->category->name}}</td>
