@@ -164,16 +164,18 @@
                                     </div>
                                     <!-- /.col -->
                                 </div>
-                                <div class="d-flex justify-content-center mt-8">
-                                    <button type="button" class="btn btn-outline-dark">Reset</button>
-                                    <span class="mx-3"></span>
-
-                                    <button type="submit" class="btn btn-success">Submit</button>
-                                </div> 
-                                <!-- /.row -->
                             </div>
-                            <!-- /.row -->
                         </form>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between  mt-8">
+                            <a href="{{ route('create.sup') }}" class="btn btn-primary">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </a>
+                            <div>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div> 
                     </div>
                     <!-- /.card-body -->
                 </div>

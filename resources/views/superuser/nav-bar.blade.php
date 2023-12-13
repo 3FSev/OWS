@@ -46,13 +46,21 @@
                 <i class="fas fa-user"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                    <i class="fas fa-sign-out-alt" style="color: grey;"></i>
+                <a href="{{ route('ChangePswd.man') }}" class="dropdown-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-lock" style="color: grey;"></i>
+                        <span class="ml-2">Change Password</span>
+                    </div>
                 </a>
-
+                
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-sign-out-alt" style="color: grey;"></i>
+                        <span class="ml-2">{{ __('Logout') }}</span>
+                    </div>
+                </a>
+                
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
