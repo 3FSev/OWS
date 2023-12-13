@@ -12503,7 +12503,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 .brand-link .brand-link {
   padding: 0;
   border-bottom: none;
-}
+} 
 .brand-text{
   font-size: 17px;
   color:white;
@@ -53112,8 +53112,10 @@ a.text-muted:hover {
 .mrt-table-custom th:nth-child(2),
 .mrt-table-custom td:nth-child(2),
 .mrt-table-custom th:nth-child(3),
-.mrt-table-custom td:nth-child(3) {
-    width: 90px;
+.mrt-table-custom td:nth-child(3),
+.mrt-table-custom th:nth-child(4),
+.mrt-table-custom td:nth-child(4) {
+    width: 120px;
 }
 
 .c-mrt-td {

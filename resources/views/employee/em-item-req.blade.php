@@ -1,7 +1,7 @@
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
-@include('theme/navbar')
+@include('employee/em-navbar')
 
 <title>Item Request</title>
 

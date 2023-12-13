@@ -1,7 +1,7 @@
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
-@include('theme/navbar')
+@include('admin/adm-navbar')
 
 <title>Create WIV</title>
 
@@ -193,6 +193,7 @@
                                                 <thead class="mrt-thead-custom">
                                                     <tr class="">
                                                         <th class="" scope="col">Item Name</th>
+                                                        <th class="" scope="col">Status</th>
                                                         <th class="c-mrt-th" scope="col">Usable</th>
                                                         <th class="c-mrt-th" scope="col">Action</th>
                                                     </tr>
@@ -203,6 +204,11 @@
                                                         <td class="c-mrt-td">
                                                             <select class="form-control" id="itemsSelect" name="items[]"
                                                                 required></select>
+                                                        </td>
+                                                        <td class="c-mrt-td">
+                                                            <div class="c-mrt-ac">
+                                                                <input type="text" class="form-control">
+                                                            <div>
                                                         </td>
                                                         <td class="c-mrt-td">
                                                             <div class="c-mrt-ac">
