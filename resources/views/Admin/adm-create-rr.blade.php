@@ -379,6 +379,7 @@
                                     <th>Item List</th>
                                     <th>Supplier</th>
                                     <th>Address</th>
+                                    <th>Created by</th>
                                     <th>Status</th>
                                   </tr>
                                 </thead>
@@ -394,9 +395,10 @@
                                         </td>
                                         <td>{{$rr->supplier}}</td>
                                         <td>{{$rr->address}}</td>
+                                        <td>{{$rr->created_by}}</td>
                                         <td>
                                           @if($rr->approved_at)
-                                            <p>Approved</p>
+                                            <p>Approved by {{$rr->approved_by}}</p>
                                           @else
                                             <p>Waiting for approval</p>
                                           @endif

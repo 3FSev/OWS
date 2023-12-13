@@ -189,8 +189,8 @@
                     <tbody>
                       @foreach ($items as $item)
                         <tr>
-                          <td><a href="{{ route('ItemHistory.adm') }}">{{$item->name}}</a></td>
-                          <td>Status</td>
+                          <td><a href="{{ route('ItemHistory.adm', $item->id) }}">{{$item->name}}</a></td>
+                          <td>{{$item->status}}</td>
                           <td>{{$item->quantity}}</td>
                           <td>{{$item->category->name}}</td>
                           <td>{{number_format($item->unit_cost, 2, '.',',')}}</td>
@@ -207,7 +207,7 @@
                                   </button>
                                   <a class="btn btn-primary" href="{{ route('generate.barcode', $item->id) }}" target="_blank">
                                     <i class="fa-solid fa-print"></i>
-                                </a>                                
+                                </a>
                               </div>
                           </td>
                         </tr>

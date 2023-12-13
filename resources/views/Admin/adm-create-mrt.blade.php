@@ -260,6 +260,7 @@
                                                     <th>Unit Cost</th>
                                                     <th>Total Cost</th>
                                                     <th>Date</th>
+                                                    <th>Created by</th>
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
@@ -281,20 +282,20 @@
                                                         $totalCost = 0;
                                                         @endphp
                                                         @foreach ($mrt->items as $item)
-                                                        {{number_format($item->unit_cost, 2, '.', ',')}}<br>
-                                                        @php
-                                                        $totalCost += $item->unit_cost;
-                                                        @endphp
+                                                            {{number_format($item->unit_cost, 2, '.', ',')}}<br>
+                                                            @php
+                                                                $totalCost += $item->unit_cost;
+                                                            @endphp
                                                         @endforeach
                                                     </td>
                                                     <td> {{number_format($totalCost, 2, '.', ',') }}</td>
                                                     <td>{{$mrt->mrt_date}}</td>
+                                                    <td>{{$mrt->created_by}}</td>
                                                     <td>
                                                       @if($mrt->approved_at)
+                                                        <p>Approved by {{$mrt->approved_by}}</p>
                                                         @if($mrt->recieved_at)
-                                                          <p>Recieved</p>
-                                                        @else
-                                                          <p>Approved</p>
+                                                            <br><p>Recieved</p>
                                                         @endif
                                                       @else
                                                         <p>Waiting for approval</p>

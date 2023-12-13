@@ -17,6 +17,8 @@ return new class extends Migration
             $table->timestamp('received_at')->nullable();
             $table->date('mrt_date');
             $table->unsignedBigInteger('user_id');
+            $table->string('created_by', 255);
+            $table->string('approved_by', 255)->nullable();
             $table->timestamp('approved_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');

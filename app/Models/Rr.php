@@ -35,6 +35,9 @@ class Rr extends Model
         'inv_date',
         'or',
         'or_date',
+        'created_by',
+        'approved_by',
+        'approved_at',
     ];
 
     public function items()

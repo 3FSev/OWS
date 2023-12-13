@@ -261,11 +261,13 @@
                     <tr>
                       <th>WIV Number</th>
                       <th>Employee Name</th>
+                      <th>Department</th>
                       <th>District</th>
                       <th>Item Name</th>
                       <th>Amount</th>
                       <th>Total Cost</th>
                       <th>Date</th>
+                      <th>Created by</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -274,6 +276,7 @@
                     <tr>
                         <td>{{$wiv->wiv_number}}</td>
                         <td>{{$wiv->user->name}}</td>
+                        <td>{{$wiv->user->department->name}}</td>
                         <td>{{$wiv->user->district->name}}</td>
                         <td>@foreach ($wiv->items as $item)
                             {{$item->name}}<br>
@@ -287,15 +290,15 @@
                           @php
                               $totalCost += $item->unit_cost
                           @endphp
-                      @endforeach</td>
+                        @endforeach</td>
                       <td>{{number_format($totalCost, 2, '.', ',') }}</td>
                         <td>{{$wiv->wiv_date}}</td>
+                        <td>{{$wiv->created_by}}</td>
                         <td>
                           @if($wiv->approved_at)
-                            @if($wiv->recieved_at)
-                              <p>Recieved</p>
-                            @else
-                              <p>Approved</p>
+                          <p>Approved by {{$wiv->approved_by}}</p>
+                            @if($wiv->received_at)
+                                <p>Received</p>
                             @endif
                           @else
                             <p>Waiting for approval</p>

@@ -102,21 +102,24 @@
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
-                  <tr>
-                    <th>Employee Name</th>
-                    <th>Department</th>
-                    <th>WIV Number</th>
-                    <th>WIV Date</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($wivs as $wiv)
-                      <tr>
+                    <tr>
+                      <th>Submitted by</th>
+                      <th>Submitted at</th>
+                      <th>Assign to</th>
+                      <th>Department</th>
+                      <th>District</th>
+                      <th>WIV Number</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($wivs as $wiv)
+                        <td>{{$wiv->created_by}}</td>
+                        <td>{{$wiv->wiv_date}}</td>
                         <td>{{$wiv->user->name}}</td>
                         <td>{{$wiv->user->department->name}}</td>
+                        <td>{{$wiv->user->district->name}}</td>
                         <td>{{$wiv->wiv_number}}</td>
-                        <td>{{$wiv->wiv_date}}</td>
                         <td>
                           <div class="text-center">
                             <a href="{{ route('WivReview.man', $wiv->id) }}" class="btn btn-primary">
@@ -125,9 +128,8 @@
                             </a>                          
                           </div>                      
                         </td>
-                      </tr>
-                    @endforeach
-                  </tbody>
+                      @endforeach
+                    </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
@@ -158,24 +160,27 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Employee Name</th>
+                  <th>Submitted by</th>
+                  <th>Submitted at</th>
+                  <th>Assigned to</th>
                   <th>Department</th>
+                  <th>District</th>
                   <th>WIV Number</th>
-                  <th>WIV Date</th>
                   <th>Approved By</th>
                   <th>Date Approved</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                      <td>sample</td>
-                      <td>sample</td>
-                      <td>sample</td>
-                      <td>sample</td>
-                      <td>sample</td>
-                      <td>sample</td>
-                    </tr>
-
+                  @foreach ($approvedWivs as $wiv)
+                    <td>{{$wiv->created_by}}</td>
+                    <td>{{$wiv->wiv_date}}</td>
+                    <td>{{$wiv->user->name}}</td>
+                    <td>{{$wiv->user->department->name}}</td>
+                    <td>{{$wiv->user->district->name}}</td>
+                    <td>{{$wiv->wiv_number}}</td>
+                    <td>{{$wiv->approved_by}}</td>
+                    <td>{{$wiv->approved_at}}</td>
+                  @endforeach
                 </tbody>
               </table>
             </div>

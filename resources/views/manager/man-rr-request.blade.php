@@ -101,6 +101,7 @@
                   <table id="example1" class="table table-bordered table-hover">
                     <thead class="">
                       <tr>
+                        <th>Submitted by</th>
                         <th>RR Number</th>
                         <th>RIV</th>
                         <th>CS</th>
@@ -117,6 +118,7 @@
                     <tbody>
                       @foreach ($rrs as $rr)
                         <tr>
+                          <td>{{$rr->created_by}}</td>
                           <td>{{$rr->rr_number}}</td>
                           <td>{{$rr->riv}}</td>
                           <td>{{$rr->cs}}</td>
@@ -168,6 +170,8 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
+                      <th>Submitted by</th>
+                      <th>Submitted at</th>
                       <th>RR Number</th>
                       <th>RIV</th>
                       <th>CS</th>
@@ -177,26 +181,28 @@
                       <th>DR</th>
                       <th>Inv</th>
                       <th>OR</th>
-                      <th>Date</th>
                       <th>Approved By</th>
                       <th>Date Approved</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                          <td>sample</td>
-                        </tr>
+                      @foreach ($approvedRrs as $rr)
+                      <tr>
+                          <td>{{$rr->created_by}}</td>
+                          <td>{{$rr->rr_date}}</td>
+                          <td>{{$rr->rr_number}}</td>
+                          <td>{{$rr->riv}}</td>
+                          <td>{{$rr->cs}}</td>
+                          <td>{{$rr->aoc}}</td>
+                          <td>{{$rr->po}}</td>
+                          <td>{{$rr->cv}}</td>
+                          <td>{{$rr->dr}}</td>
+                          <td>{{$rr->inv}}</td>
+                          <td>{{$rr->or}}</td>
+                          <td>{{$rr->approved_by}}</td>
+                          <td>{{$rr->approved_at}}</td>
+                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

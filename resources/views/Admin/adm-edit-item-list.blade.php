@@ -186,21 +186,25 @@
                       </div>
                       <div class="form-group">
                         <label class="col-form-label-md">Quantity</label>
-                        <input class="form-control" type="text" name="quantity" value="{{$item->qauntity}}">
+                        <input class="form-control" type="text" name="quantity" value="{{ $item->quantity }}">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="col-form-label-md">Category</label>
-                        <select class="form-control">
+                        <select class="form-control" name="category">
                           @foreach ($category as $cat)
-                              <option value="$cat->id" {{ $item->category->id == $cat->id ? 'selected' : '' }}>{{$cat->name}}</option>
+                              <option value="{{$cat->id}}" {{ $item->category->id == $cat->id ? 'selected' : '' }}>{{$cat->name}}</option>
                           @endforeach
                         </select>
                       </div>
                       <div class="form-group">
                         <label class="col-form-label-md">Unit Cost</label>
                         <input class="form-control" type="text" name="unit_cost" value="{{$item->unit_cost}}">
+                      </div>
+                      <div class="form-group">
+                        <label class="col-form-label-md">Status</label>
+                        <input class="form-control" type="text" name="status" value="{{$item->status}}">
                       </div>
                     </div>
                   </div>

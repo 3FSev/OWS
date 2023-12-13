@@ -11,14 +11,14 @@ class Item extends Model
 
     protected $table = 'items';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'name',
         'description',
         'quantity',
         'category_id',
-        'item_status_id',
+        'status',
         'unit_cost',
         'freight',
         'extended_cost',

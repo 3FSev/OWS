@@ -19,6 +19,8 @@ class Mrt extends Model
         'received_at',
         'mrt_date',
         'user_id',
+        'created_by',
+        'approved_by',
         'approved_at',
     ];
 

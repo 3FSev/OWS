@@ -12,6 +12,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use BaconQrCode\Encoder\QrCode;
 use BaconQrCode\Renderer\Image\Png;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewRrNotification;
 
 class AdminController extends Controller
@@ -63,12 +64,27 @@ class AdminController extends Controller
         return view('admin.adm-rr-edit-list');
     }
     public function ItemList(){
-        $items = Item::all();
+        $items = Item::whereHas('rrs', function ($query) {
+            $query->whereNotNull('approved_at');
+        })->get();
 
         return view('admin.adm-item-list', compact('items'));
     }
-    public function ItemHistory(){
-        return view('admin.adm-item-history');
+    public function ItemHistory($item_id){
+        $item = Item::findOrFail($item_id);
+
+        $wivs = Wiv::whereNotNull('approved_at')->whereHas('items', function ($query) use ($item_id) {
+            $query->where('item_id', $item_id);
+        })->get();
+
+        $mrts = Mrt::whereNotNull('approved_at')->whereHas('items', function ($query) use ($item_id){
+            $query->where('item_id', $item_id);
+        })->get();
+
+        $combinedRecords = $wivs->merge($mrts);
+
+
+        return view('admin.adm-item-history', compact('item','wivs','mrts'));
     }
     public function CreateItemCategories(){
         return view('Admin.adm-create-items-categories');
@@ -81,9 +97,15 @@ class AdminController extends Controller
     }
 
     public function UpdateItem(Request $request, $item_id){
-        dd($request);
         $item = Item::findOrFail($item_id);
         $item->name = $request->input('name');
+        $item->quantity = $request->input('quantity');
+        $item->category_id = $request->input('category');
+        $item->unit_cost = $request->input('unit_cost');
+        $item->status = $request->input('status');
+        $item->save();
+
+        return redirect('/admin/adm-item-list');
     }
 
     // manage wiv
@@ -97,10 +119,13 @@ class AdminController extends Controller
     }
 
     public function storeWIV(Request $request){
+        $user = Auth::user();
+
         $wiv = new Wiv();
         $wiv->generateUniqueIdentifier();
         $wiv->user_id = $request->input('user_id');
         $wiv->wiv_date = now();
+        $wiv->created_by = $user->name;
         $wiv->save();
 
         $items = $request->input('item_id');
@@ -128,10 +153,13 @@ class AdminController extends Controller
     }
 
     public function storeMRT(Request $request){
+        $user = Auth::user();
+
         $mrt = new Mrt();
         $mrt->generateUniqueIdentifier();
         $mrt->mrt_date = now();
         $mrt->user_id = $request->input('user_id');
+        $mrt->created_by = $user->name;
         $mrt->save();
 
         // Attach items to MRT with usable status
@@ -206,6 +234,7 @@ class AdminController extends Controller
     }
 
     public function storeRR(Request $request){
+        $user = Auth::user();
         //---------- GET RR AND SAVE TO DATABASE ---------//
         $rr = new Rr();
         $rr->generateUniqueIdentifier();
@@ -229,18 +258,19 @@ class AdminController extends Controller
         $rr->or_date = date('Y-m-d', strtotime($request->input('or_date')));
         $rr->supplier = $request->input('supplier');
         $rr->address = $request->input('address');
+        $rr->created_by = $user->name;
         $rr->save();
 
         //---------- SEND NOTIFICATION -------------//
-        $usersToNotify = User::where('role_id', 4)->get();
+        // $usersToNotify = User::where('role_id', 4)->get();
 
-        foreach ($usersToNotify as $user) {
-            try {
-                $user->notify(new NewRrNotification($rr));
-            } catch (\Exception $e) {
-                \Log::error('Notification sending failed: ' . $e->getMessage());
-            }
-        }
+        // foreach ($usersToNotify as $user) {
+        //     try {
+        //         $user->notify(new NewRrNotification($rr));
+        //     } catch (\Exception $e) {
+        //         \Log::error('Notification sending failed: ' . $e->getMessage());
+        //     }
+        // }
 
         //---------- GET ITEM FROM FORM -------------///
         $names = $request->input('name');
@@ -257,7 +287,6 @@ class AdminController extends Controller
             $item->extended_cost = $extendedCosts[$key];
             $item->freight = $freightCosts[$key];
             $item->category_id = $categories[$key];
-            $item->item_status_id = '1';
             $item->save();
 
             $rr->items()->attach($item);

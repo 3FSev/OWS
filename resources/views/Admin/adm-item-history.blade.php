@@ -182,11 +182,23 @@
                         <th>Date</th>
                       </tr>
                     </thead>
-                    <tbody>    
+                    <tbody>
+                      <tr>
+                        <td>Item added to warehouse</td>
+                        <td>{{$item->created_at}}</td>
+                      </tr>
+                      @foreach ($wivs as $wiv)
                         <tr>
-                            <td>Sample</td>
-                            <td>Sample</td>
+                          <td>Item assigned to {{$wiv->user->name}}</td>
+                          <td>{{$wiv->wiv_date}}</td>
                         </tr>
+                      @endforeach
+                      @foreach ($mrts as $mrt)
+                        <tr>
+                          <td>Item retuned by {{$mrt->user->name}}</td>
+                          <td>{{$mrt->mrt_date}}</td>
+                        </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

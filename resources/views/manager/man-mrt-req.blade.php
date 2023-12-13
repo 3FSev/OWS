@@ -103,22 +103,24 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
+                    <th>Submitted by</th>
+                    <th>Submitted at</th>
                     <th>Employee Name</th>
                     <th>Department</th>
                     <th>District</th>
                     <th>MRT Number</th>
-                    <th>MRT Date</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                     @foreach ($mrts as $mrt)
                       <tr>
+                        <td>{{$mrt->created_by}}</td>
+                        <td>{{$mrt->mrt_date}}</td>
                         <td>{{$mrt->user->name}}</td>
                         <td>{{$mrt->user->department->name}}</td>
                         <td>{{$mrt->user->district->name}}</td>
                         <td>{{$mrt->mrt_number}}</td>
-                        <td>{{$mrt->mrt_date}}</td>
                         <td>
                           <div class="text-center">
                           <a href="{{ route('MrtReview.man', $mrt->id) }}" class="btn btn-primary">
@@ -160,25 +162,29 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th>Submitted by</th>
+                  <th>Submitted at</th>
                   <th>Employee Name</th>
                   <th>Department</th>
                   <th>District</th>
                   <th>MRT Number</th>
-                  <th>MRT Date</th>
                   <th>Approved By</th>
                   <th>Date Approved</th>
                 </tr>
                 </thead>
                 <tbody>
+                  @foreach ($approvedMrts as $mrt)
                     <tr>
-                      <td>sample</td>
-                      <td>sample</td>
-                      <td>sample</td>
-                      <td>sample</td>
-                      <td>sample</td>
-                      <td>sample</td>
-                      <td>sample</td>
+                      <td>{{$mrt->created_by}}</td>
+                      <td>{{$mrt->mrt_date}}</td>
+                      <td>{{$mrt->user->name}}</td>
+                      <td>{{$mrt->user->department->name}}</td>
+                      <td>{{$mrt->user->district->name}}</td>
+                      <td>{{$mrt->mrt_number}}</td>
+                      <td>{{$mrt->approved_by}}</td>
+                      <td>{{$mrt->approved_at}}</td>
                     </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
