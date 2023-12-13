@@ -3,7 +3,7 @@
 @include('theme/preloader')
 @include('theme/navbar')
 
-<title>Item List</title>
+<title>History of Item</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -156,7 +156,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Item List</h1>
+              <h1 class="m-0">History of Item</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -178,47 +178,32 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Item Name</th>
                         <th>Status</th>
-                        <th>Quantity</th>
-                        <th>Category</th>
-                        <th>Unit Cost</th>
-                        <th>Action</th>
+                        <th>Date</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      @foreach ($items as $item)
+                    <tbody>    
                         <tr>
-                          <td><a href="{{ route('ItemHistory.adm') }}">{{$item->name}}</a></td>
-                          <td>Status</td>
-                          <td>{{$item->quantity}}</td>
-                          <td>{{$item->category->name}}</td>
-                          <td>{{number_format($item->unit_cost, 2, '.',',')}}</td>
-                          <td>
-                            <form method="POST" action="{{route('destroy.item', $item->id)}}"></form>
-                            @csrf
-                            @method('DELETE')
-                              <div class="text-center">
-                                  <a href="{{route('EditItemList.adm', $item->id)}}" class="btn btn-warning">
-                                      <i class="fas fa-pencil-alt text-white"></i>
-                                  </a>
-                                  <button type="submit"  class="btn btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                  </button>
-                                  <a class="btn btn-primary" href="{{ route('generate.barcode', $item->id) }}" target="_blank">
-                                    <i class="fa-solid fa-print"></i>
-                                </a>                                
-                              </div>
-                          </td>
+                            <td>Sample</td>
+                            <td>Sample</td>
                         </tr>
-                      @endforeach
                     </tbody>
                   </table>
                 </div>
                 <!-- /.card-body -->
               </div>
             </div>
-          </div><!-- /.container-fluid -->
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <a href="{{ route('ItemList.adm') }}" class="btn btn-primary">
+                  <i class="fas fa-arrow-left mr-1"></i> Back
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->

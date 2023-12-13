@@ -67,6 +67,9 @@ class AdminController extends Controller
 
         return view('admin.adm-item-list', compact('items'));
     }
+    public function ItemHistory(){
+        return view('admin.adm-item-history');
+    }
     public function CreateItemCategories(){
         return view('Admin.adm-create-items-categories');
     }

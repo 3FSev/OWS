@@ -170,16 +170,20 @@
                     <thead>
                       <tr>
                         <th>Item Name</th>
+                        <th>Status</th>
                         <th>Description</th>
                         <th>Cost</th>
+                        <th>Date Issued</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($items as $item)
                       <tr>
                           <td>{{$item->name}}</td>
+                          <td>Sample</td>
                           <td>{{$item->description}}</td>
                           <td>{{$item->unit_cost}}</td>
+                          <td>Sample</td>
                       </tr>
                       @endforeach
                     </tbody>

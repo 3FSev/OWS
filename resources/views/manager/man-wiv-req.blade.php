@@ -100,7 +100,7 @@
                 <h5 class="m-0 text-bold">WIV Request Details</h5>
               </div>     
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example1" class="table table-bordered table-hover">
                   <thead>
                   <tr>
                     <th>Employee Name</th>
@@ -133,7 +133,57 @@
               <!-- /.card-body -->
             </div>
           </div>
-      </div><!-- /.container-fluid -->
+      </div>
+
+      <div class="content-wapper">
+        <div class="content-header mt-lg-4">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Approved WIV List</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-header card-header-custom">
+              <h5 class="m-0 text-bold">WIV Details ListSs</h5>
+            </div>     
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Employee Name</th>
+                  <th>Department</th>
+                  <th>WIV Number</th>
+                  <th>WIV Date</th>
+                  <th>Approved By</th>
+                  <th>Date Approved</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td>sample</td>
+                      <td>sample</td>
+                      <td>sample</td>
+                      <td>sample</td>
+                      <td>sample</td>
+                      <td>sample</td>
+                    </tr>
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -142,6 +192,17 @@
 </div>
 </body>
 <script>
+  $(function () { 
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
   $(function () { 
     $('#example2').DataTable({
       "paging": true,

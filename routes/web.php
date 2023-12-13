@@ -90,6 +90,7 @@ Route::middleware(['auth','admin'])->group(function(){
     Route::get('/admin/adm-rr-edit-list', [AdminController::class, 'EditRRList'])->name('EditRRList.adm');
     Route::get('/admin/adm-create-items-categories', [AdminController::class, 'CreateItemCategories'])->name('CreateItemCategories.adm');
     Route::get('/admin/adm-item-list', [AdminController::class, 'ItemList'])->name('ItemList.adm');
+    Route::get('/admin/adm-item-history', [AdminController::class, 'ItemHistory'])->name('ItemHistory.adm');
     Route::get('/admin/adm-edit-item-list/{item_id}', [AdminController::class, 'EditItemList'])->name('EditItemList.adm');
     Route::get('/admin/adm-create-wiv', [AdminController::class, 'CreateWIV'])->name('CreateWIV.adm');
     Route::get('/admin/adm-wiv-list', [AdminController::class, 'WIVList'])->name('WIVList.adm');

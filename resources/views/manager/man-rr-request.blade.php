@@ -98,7 +98,7 @@
                   <h5 class="m-0 text-bold">RR Request Details</h5>
                 </div>     
                 <div class="card-body">
-                  <table id="example2" class="table table-bordered table-hover">
+                  <table id="example1" class="table table-bordered table-hover">
                     <thead class="">
                       <tr>
                         <th>RR Number</th>
@@ -144,6 +144,66 @@
               </div>
             </div>
           </div>
+
+          <div class="content-wapper">
+            <div class="content-header mt-lg-4">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Approved RR List</h1>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <!-- /.card-header -->
+                <div class="card-header card-header-custom">
+                  <h5 class="m-0 text-bold">RR Details Lists</h5>
+                </div>     
+                <div class="card-body">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                      <th>RR Number</th>
+                      <th>RIV</th>
+                      <th>CS</th>
+                      <th>AOC</th>
+                      <th>PO</th>
+                      <th>CV</th>
+                      <th>DR</th>
+                      <th>Inv</th>
+                      <th>OR</th>
+                      <th>Date</th>
+                      <th>Approved By</th>
+                      <th>Date Approved</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                          <td>sample</td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+            </div>
+        </div>
         </div>
     </div><!-- /.container-fluid -->
   </div><!-- /.container-fluid -->
@@ -154,6 +214,17 @@
   </div>
 </body>
 <script>
+  $(function() {
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
   $(function() {
     $('#example2').DataTable({
       "paging": true,
