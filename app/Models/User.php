@@ -80,6 +80,11 @@ class User extends Authenticatable
         return $this->hasMany(Mrt::class);
     }
 
+    public function activities()
+    {
+        return $this->hasMany(UserActivity::class);
+    }
+
     public function routeNotificationForDatabase()
     {
         return $this->id;

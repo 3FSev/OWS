@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SuperUserController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,6 @@ Route::middleware(['approved','auth','employee'])->group(function(){
     Route::get('/employee/em-list', [EmployeeController::class, 'ListView'])->name('ListView.em');
     Route::get('/employee/em-item-req', [EmployeeController::class, 'ItemRequest'])->name('ItemReq.em');   
     Route::get('/employee/em-return-item-req', [EmployeeController::class, 'ReturnItemReq'])->name('ReturnItemReq.em');
-    
     Route::post('/employee/send-item-req', [EmployeeController::class, 'sendReqItem'])->name('em.request.item');
     Route::post('/employee/send-return-req', [EmployeeController::class, 'sendReqReturn'])->name('em.request.return');
 });
@@ -130,8 +130,8 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Auth::routes();
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
     return Redirect::to('login');
 });

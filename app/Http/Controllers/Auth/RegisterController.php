@@ -12,6 +12,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\NewUserNotification;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -70,6 +71,36 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'district' => 'required|numeric',
+            'department' => 'required|numeric',
+            'password' => [
+                'required',
+                'string',
+                'min:6',
+                'confirmed', // You may add 'confirmed' rule if you have password confirmation field in your form
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]+$/',
+            ],
+        ];
+        
+        // Define custom validation messages
+        $messages = [
+            'password.regex' => 'The password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.',
+        ];
+        
+        // Validate the input data
+        $validator = Validator::make($data, $rules, $messages);
+        
+        // Check if the validation fails
+        if ($validator->fails()) {
+            dd($validator->errors());
+            // Throw a validation exception
+            throw ValidationException::withMessages($validator->errors()->toArray());
+        }
+        
+        // If validation passes, create the user
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],

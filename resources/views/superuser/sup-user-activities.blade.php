@@ -101,32 +101,25 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                      <th>User id</th>
+                      <th>User Name</th>
                       <th>Department</th>
+                      <th>District</th>
                       <th>Activity</th>
+                      <th>Date</th>
                       <th>Time</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>           
-                    </tr>
-                    <tr>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td>
-                      <td>Sample</td> 
-                      </td>
-                    </tr>
+                      @foreach ($activities as $activity)
+                          <tr>
+                            <td>{{$activity->users->name}}</td>
+                            <td>{{$activity->users->department->name}}</td>
+                            <td>{{$activity->users->district->name}}</td>
+                            <td>{{$activity->name}}</td>
+                            <td>{{ $activity->created_at->format('M-d-y') }}</td>
+                            <td>{{ $activity->created_at->format('H:i:s') }}</td>
+                          </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

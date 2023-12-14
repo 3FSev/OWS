@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\UserActivity;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -37,5 +38,18 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        // Create a new entry in the user_activities table
+        UserActivity::create([
+            'user_id' => $user->id,
+            'name' => 'Logged in',
+        ]);
+
+        // You can add more custom logic here if needed
+
+        return redirect()->intended($this->redirectPath());
     }
 }

@@ -22,8 +22,11 @@ class SuperUserMiddleware
         elseif(Auth::check() && Auth::user()->role_id == '4'){
             return redirect('manager/man-stock-list');
         }
+        elseif(Auth::check() && Auth::user()->role_id == '2'){
+            return redirect('admin/adm-dashboard');
+        }
         else{
-            return redirect('home');
+            return redirect('employee/em-pending-wiv');
         }
     }
 }

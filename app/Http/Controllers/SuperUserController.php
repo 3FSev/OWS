@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\District;
 use App\Models\Department;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use App\Mail\AccountApproved;
 use Illuminate\Support\Facades\Mail;
@@ -65,7 +66,9 @@ class SuperUserController extends Controller
     }
     public function UserActivities()
     {
-        return view('superuser.sup-user-activities');
+        $activities = UserActivity::latest()->get();
+
+        return view('superuser.sup-user-activities', compact('activities'));
     }
     public function RestoreData()
     {
