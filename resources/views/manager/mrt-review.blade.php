@@ -167,7 +167,7 @@
               </div>
               <div class="form-group">
                 <div class="d-flex justify-content-between">
-                  <a href="#" class="btn btn-primary">
+                  <a href="{{ route('MrtRequest.man') }}" class="btn btn-primary">
                     <i class="fas fa-arrow-left"></i> Back
                   </a>
                   <div>
