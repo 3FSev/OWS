@@ -22,6 +22,7 @@ use App\Http\Controllers\NotificationController;
 // <route for superuser>
 Route::middleware(['auth','superuser'])->group(function(){
     Route::get('sup-dashboard', [SuperUserController::class, 'Dashboard'])->name('dashboard.sup');
+    Route::get('sup-change-password', [SuperUserController::class, 'ChangePassword'])->name('ChangePassword.sup');
     Route::get('sup-create-user', [SuperUserController::class, 'CreateUser'])->name('create.sup');
     Route::get('sup-unverified-user', [SuperUserController::class, 'UnverifiedUser'])->name('unverified.sup');
     Route::get('sup-user-list', [SuperUserController::class, 'UserList'])->name('userlist.sup');
@@ -74,6 +75,7 @@ Route::middleware(['auth','manager'])->group(function(){
 // <route for employee>
 Route::middleware(['auth','employee'])->group(function(){
     Route::get('/employee/em-pending-wiv', [EmployeeController::class, 'PendingWIV'])->name('PendingWiv.em');
+    Route::get('/employee/em-change-password', [EmployeeController::class, 'ChangePassword'])->name('ChangePassword.em');
     Route::get('/employee/accept-wiv/{wiv_id}', [EmployeeController::class, 'AcceptWIV'])->name('AcceptWiv.em');
     Route::get('/employee/em-pending-mrt', [EmployeeController::class, 'PendingRIV'])->name('PendingRiv.em');   
     Route::get('/employee/em-list', [EmployeeController::class, 'ListView'])->name('ListView.em');
@@ -87,6 +89,7 @@ Route::middleware(['auth','admin'])->group(function(){
         return view('admin.adm-dashboard');
     });
     Route::get('/admin/adm-dashboard', [AdminController::class, 'Dashboard'])->name('Dashboard.adm');
+    Route::get('/admin/adm-change-password', [AdminController::class, 'ChangePassword'])->name('ChangePassword.adm');   
     Route::get('/admin/adm-employee', [AdminController::class, 'Employee'])->name('Employee.adm');
     Route::get('/admin/adm-accountable-items/{user_id}', [AdminController::class, 'AccountableItems'])->name('AccountableItems.adm');
     Route::get('/admin/adm-create-rr', [AdminController::class, 'CreateRR'])->name('CreateRR.adm');

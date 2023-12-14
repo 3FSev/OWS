@@ -10,6 +10,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Mail\AccountApproved;
 use Illuminate\Support\Facades\Mail;
+use PhpParser\Node\Expr\FuncCall;
 
 class SuperUserController extends Controller
 {
@@ -18,6 +19,10 @@ class SuperUserController extends Controller
         $verefied_count = User::whereNotNull('approved_at')->count();
         $unverefied_count = User::whereNull('approved_at')->count();
         return view('superuser.sup-dashboard', compact('verefied_count', 'unverefied_count'));
+    }
+
+    public function ChangePassword(){
+        return view('superuser.sup-change-password');
     }
     public function CreateUser()
     {
