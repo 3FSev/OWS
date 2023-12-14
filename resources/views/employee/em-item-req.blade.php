@@ -118,7 +118,7 @@
                       </button>
                     </div>
                     <div class="modal fade" id="modal-default">
-                      <div class="modal-dialog">
+                      <div class="modal-dialog modal-md">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h4 class="modal-title">Item Request</h4>
@@ -128,22 +128,28 @@
                           </div>
                           <div class="modal-body">
                             <div class="form-row">
-                              <div class="form-group">
-                                <label class="col-form-label-md item-name-input ">Item Name</label>
-                                <select class="form-control item-name-input mt-3">
-                                  <option value="sample1">Sample 1</option>
-                                  <option value="sample2">Sample 2</option>
-                                </select>
-                                <select class="form-control item-name-input mt-3">
-                                  <option value="sample1">Sample 1</option>
-                                  <option value="sample2">Sample 2</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label class="col-form-label-md quantity-input">Quantity</label>
-                                <input class="form-control quantity-input mt-3" type="number" value="0">
-                                <input class="form-control quantity-input mt-3" type="number" value="0">
-                              </div>
+                              <table class="table table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th class="text-center">Item Name</th>
+                                    <th class="text-center">Quantity</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <select class="form-control mt-3">
+                                      <option value="sample1">Sample 1</option>
+                                      <option value="sample2">Sample 2</option>
+                                    </select>
+                                  </td>
+                                    <td>
+                                      <div class="d-flex justify-content-center align-items-center">
+                                        <input class="form-control quantity-input mt-3" type="number" value="0">
+                                      </div>
+                                  </tr>
+                                </tbody>
+                              </table>
                             </div>
                           </div>
                           <div class="modal-footer form-group text-right m-0">
