@@ -398,9 +398,14 @@
                                         <td>{{$rr->created_by}}</td>
                                         <td>
                                           @if($rr->approved_at)
-                                            <p>Approved by {{$rr->approved_by}}</p>
+                                              <p>Approved by {{$rr->approved_by}}</p>
+                                              @if($rr->received_at)
+                                                <p>Received</p>
+                                              @endif
+                                          @elseif($rr->rejected_at)
+                                              <p>Rejected by {{$rr->rejected_by}}</p>
                                           @else
-                                            <p>Waiting for approval</p>
+                                              <p>Waiting for approval</p>
                                           @endif
                                         </td>
                                       </tr>

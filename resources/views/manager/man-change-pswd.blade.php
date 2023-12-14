@@ -99,20 +99,22 @@
               <!-- /.card-header -->
               <div class="card-header card-header-custom">
                 <h5 class="m-0 text-bold">Password Details</h5>
-              </div>     
+              </div>
+              <form method="POST" action="{{route('change.acc.pass')}}" autocomplete="off">
+                @csrf
               <div class="card-body">
                 <!-- /.form-group -->
                 <div class="form-group">
-                    <label>Old Password</label>
-                    <input class="form-control" type="text" placeholder="Old Password">
+                    <label>Current Password</label>
+                    <input class="form-control" type="password" name="current_password" placeholder="Current Password">
                 </div>
                 <div class="form-group">
                     <label>New Password</label>
-                    <input type="email" class="form-control" style="width: 100%;" placeholder="Email Address">
+                    <input type="password" class="form-control" style="width: 100%;" name="new_password" placeholder="New Password">
                 </div>
                 <div class="form-group">
                     <label>Confirm Password</label>
-                    <input type="Password" class="form-control" style="width: 100%;" placeholder="Password">
+                    <input type="password" class="form-control" style="width: 100%;" name="confirm_password" placeholder="Confirm Password">
                 </div>
                 <!-- /.form-group -->
                 <div class="d-flex justify-content-end mt-5">
@@ -122,6 +124,7 @@
               </div>
               <!-- /.card-body -->
             </div>
+          </form>
           </div><!-- /.container-fluid -->
       </div>
     </section>

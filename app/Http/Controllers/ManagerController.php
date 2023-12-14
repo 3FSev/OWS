@@ -57,10 +57,27 @@ class ManagerController extends Controller
         return redirect()->route('WivRequest.man')->with('success','');
     }
 
+    public function WIVreject($wiv_id)
+    {
+        $user = Auth::user();
+
+        $wiv = Wiv::findOrFail($wiv_id);
+        $wiv->rejected_by = $user->name;
+        $wiv->rejected_at = Carbon::now();
+        $wiv->save();
+
+        foreach($wiv->items as $item){
+            $item->quantity = 1;
+            $item->save();
+        }
+
+        return redirect()->route('WivRequest.man')->with('success','');
+    }
+
 
     public function MRTrequest()
     {
-        $mrts = Mrt::whereNull('approved_at')->get();
+        $mrts = Mrt::whereNull('approved_at')->whereNull('rejected_at')->get();
         $approvedMrts = Mrt::whereNotNull('approved_at')->get();
         return view('manager.man-mrt-req', compact('mrts','approvedMrts'));
     }
@@ -89,9 +106,31 @@ class ManagerController extends Controller
         return redirect('manager.man-mrt-req');
     }
 
+    public function MrtReject($mrt_id){
+        $user = Auth::user();
+    
+        $mrt = Mrt::findOrFail($mrt_id);
+        $mrt->rejected_by = $user->name;
+        $mrt->rejected_at = now();
+        $mrt->save();
+    
+        $itemsInMrt = $mrt->items;
+    
+        foreach ($itemsInMrt as $item) {
+            $wiv = Wiv::where('user_id', $mrt->user_id)->first();
+    
+            if ($wiv && $wiv->items->contains($item->id)) {
+                $wiv->items()->updateExistingPivot($item->id, ['quantity' => 1]);
+            }
+        }
+    
+        return redirect('manager.man-mrt-req');
+    }
+    
+
     public function RRrequest()
     {
-        $rrs = Rr::whereNull('approved_at')->get();
+        $rrs = Rr::whereNull('approved_at')->whereNull('rejected_at')->get();
         $approvedRrs = Rr::whereNotNull('approved_at')->get();
         return view('manager.man-rr-request', compact('rrs','approvedRrs'));
     }
@@ -109,6 +148,25 @@ class ManagerController extends Controller
         $rr->approved_at = now();
         $rr->approved_by = $user->name;
         $rr->save();
+
+        return redirect()->route('RRrequest.man')->with('success','');
+    }
+
+    public function RRreject($rr_id){
+        $user = Auth::user();
+
+        $rr = Rr::findOrFail($rr_id);
+        $rr->rejected_at = now();
+        $rr->rejected_by = $user->name;
+        $rr->save();
+
+        $items = $rr->items;
+
+        foreach($items as $item){
+            $item->status = "rejected";
+            $item->quantity = 0;
+            $item->save();
+        }
 
         return redirect()->route('RRrequest.man')->with('success','');
     }

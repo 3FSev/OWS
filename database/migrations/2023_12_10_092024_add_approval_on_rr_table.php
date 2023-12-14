@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('rr', function (Blueprint $table) {
             $table->date('approved_at')->nullable();
             $table->timestamp('rejected_at')->nullable();
+            $table->string('rejected_by', 255)->nullable();
         });
     }
 

@@ -155,17 +155,16 @@
                   </table>
                 </div>
               </div>
-              
               <div class="form-group">
                 <div class="d-flex justify-content-between">
                   <a href="{{ route('WivRequest.man') }}" class="btn btn-primary">
                     <i class="fas fa-arrow-left"></i> Back
                   </a>
                   <div>
-                    <a href="{{ route('WivApprove.man', $wiv->id) }}" class="btn btn-success mr-2 toastApproveWiv">
+                    <a href="{{ route('WivApprove.man', $wiv->id) }}" class="btn btn-success mr-2">
                       <i class="fas fa-check"></i> Approve
                     </a>
-                    <a href="" class="btn btn-danger">
+                    <a href="{{ route('WivReject.man', $wiv->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure?');">
                       <i class="fas fa-times"></i> Decline
                     </a>
                   </div>

@@ -149,8 +149,8 @@
                     @endforeach
                   </tbody>
                 </table>
-              </div>  
-              </div>            
+              </div>
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -162,12 +162,12 @@
                 <a href="{{ route('RrApprove.man', $rr->id) }}" class="btn btn-success toastApproveMRT">
                   <i class="fas fa-check"></i> Approve
                 </a>
-                <a href="" class="btn btn-danger">
+                <a href="{{ route('RrReject.man', $rr->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure?');">
                   <i class="fas fa-times"></i> Decline
                 </a>
               </div>
             </div>
-          </div>          
+          </div>
         </div>
     </div><!-- /.container-fluid -->
   </div><!-- /.container-fluid -->

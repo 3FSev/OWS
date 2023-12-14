@@ -23,6 +23,7 @@ class Mrt extends Model
         'approved_by',
         'approved_at',
         'rejected_at',
+        'rejected_by',
     ];
 
     public function user()
