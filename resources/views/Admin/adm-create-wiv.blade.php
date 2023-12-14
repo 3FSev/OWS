@@ -2,7 +2,7 @@
 <html>
 @include('theme/plugins-theme')
 @include('theme/preloader')
-@include('theme/navbar')
+@include('admin/adm-navbar')
 
 <title>Create WIV</title>
 
