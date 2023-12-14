@@ -51,7 +51,13 @@ class EmployeeController extends Controller
     }
     public function ReturnItemReq()
     {
-        return view('employee.em-return-item-req');
+        $user = Auth::id();
+        $wivs = Wiv::where('user_id', $user)
+            ->whereNotNull('approved_at')
+            ->whereNotNull('received_at')
+            ->get();
+
+        return view('employee.em-return-item-req', compact('wivs'));
     }
 
     public function sendReqItem(Request $request){
