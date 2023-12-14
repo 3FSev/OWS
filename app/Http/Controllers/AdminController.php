@@ -7,13 +7,16 @@ use App\Models\Mrt;
 use App\Models\Wiv;
 use App\Models\Item;
 use App\Models\User;
+use App\Models\Request;
 use BaconQrCode\Writer;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use BaconQrCode\Encoder\QrCode;
 use BaconQrCode\Renderer\Image\Png;
 use Illuminate\Support\Facades\Auth;
+use BaconQrCode\Renderer\ImageRenderer;
 use App\Notifications\NewRrNotification;
+use BaconQrCode\Renderer\Image\Png as PngRenderer;
+
 
 class AdminController extends Controller
 {
@@ -211,8 +214,9 @@ class AdminController extends Controller
 
     // manage request
     public function ItemRequest(){
+        $requests = Request::all();
 
-        return view('admin.adm-item-request');
+        return view('admin.adm-item-request', compact('requests'));
     }
     public function ReturnItemRequest(){
 
@@ -311,16 +315,19 @@ class AdminController extends Controller
     public function generateBarcode($item_id)
     {
         // Fetch the item details based on the provided item ID
-        $item = Item::findOrFail($item_id);
+    $item = Item::findOrFail($item_id);
 
-        // Create a QR code writer
-        $writer = new Writer(new Png());
+    // Create a QR code renderer
+    $renderer = new ImageRenderer(new PngRenderer());
 
-        // Generate the QR code using the item details (convert to JSON or use a specific attribute)
-        $qrCode = $writer->writeString($item->toJson());
+    // Create a QR code writer
+    $writer = new Writer($renderer);
 
-        return response($qrCode)
-            ->header('Content-Type', $writer->getContentType());
+    // Generate the QR code using the item details (convert to JSON or use a specific attribute)
+    $qrCode = $writer->writeString($item->toJson());
+
+    return response($qrCode)
+        ->header('Content-Type', 'image/png');
     }
 
  }

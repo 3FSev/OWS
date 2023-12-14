@@ -114,9 +114,7 @@
                           <div class="modal-body">
                             <form method="POST" action="{{route('em.request.item')}}" autocomplete="off">
                               @csrf
-
                               <div class="form-row">
-                                
                                 <table class="table table-bordered table-hover">
                                   <thead>
                                       <tr>
@@ -126,9 +124,9 @@
                                   <tbody>
                                       <tr>
                                           <td>
-                                              <select name="your_select_name" class="form-control mb-2">
-                                                  <option value="option1">Option 1</option>
-                                                  <!-- Add more options as needed -->
+                                              <select name="type" class="form-control mb-2">
+                                                  <option value="Request Item">Request Item</option>
+                                                  <option value="Return Item Request">Return Item Request</option>
                                               </select>
                                               <textarea name="details" cols="30" rows="10" class="form-control"></textarea>
                                           </td>
@@ -162,7 +160,8 @@
                     <thead>
                       <tr>
                         <th>Date Requested</th>
-                        <th>Details</th>
+                        <th>Particulars</th>
+                        <th>Request Type</th>
                         <th>Status</th>
                       </tr>
                     </thead>
@@ -171,6 +170,7 @@
                       <tr>
                         <td>{{$request->created_at}}</td>
                         <td>{{$request->details}}</td>
+                        <td>{{$request->request_type}}</td>
                         <td>{{$request->request_status}}</td>
                       </tr>
                       @endforeach
