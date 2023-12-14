@@ -64,7 +64,7 @@ class EmployeeController extends Controller
         $user = auth()->user();
 
         $request = $user->requests()->create([
-            'request_type' => 'Request Item',
+            'request_type' => $request->input('type'),
             'details' => $request->input('details'),
             'request_status' => 'Waiting for approval',
         ]);

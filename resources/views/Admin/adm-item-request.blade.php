@@ -142,7 +142,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Item Request</h1>
+              <h1 class="m-0">Employee Request</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -164,37 +164,23 @@
                     <table id="example2" class="table table-bordered table-hover">
                       <thead>
                           <tr>
-                              <th>WIV Number</th>
-                              <th>Employee Name</th>
-                              <th>District</th>
+                              <th>Sent by</th>
                               <th>Department</th>
-                              <th>Quantity</th>
-                              <th>Status</th>
-                              <th>Total Cost</th>
-                              <th>Date</th>
+                              <th>District</th>
+                              <th>Request Type</th>
+                              <th>Particulars</th>
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                          </tr>
-                          <tr>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                          </tr>
+                        @foreach ($requests as $request)
+                            <tr>
+                                <td>{{ $request->user->name }}</td>
+                                <td>{{ $request->user->department->name }}</td>
+                                <td>{{ $request->user->district->name }}</td>
+                                <td>{{ $request->request_type }}</td>
+                                <td>{{ $request->details }}</td>
+                            </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -203,89 +189,6 @@
               </div>
             </div>
           </div>
-          
-          <div class="content-wapper">
-            <div class="content-header mt-lg-4">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Item Returned Request</h1>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-        </div>
-
-          <div class="row " >
-            <div class="col-12">
-              <div class="card">
-                <!-- /.card-header -->
-                {{--  <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">Return Item Request</h5>
-                </div>  --}}
-                <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover">
-                      <thead>
-                          <tr>
-                            <th>MRT Number</th>
-                            <th>Employee Name</th>
-                            <th>Item Description</th>
-                            <th>Quantity</th>
-                            <th>Item Name</th>
-                            <th>Category</th>
-                            <th>Total Cost</th>
-                            <th>Unit</th>
-                            <th>Return Date</th>
-                            <th>Action</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>
-                                <div class="text-center">
-                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
-                                  {{--  Review &nbsp; --}}
-                                   <i class="far fa-eye"></i>
-                                  </a>
-                                </div>  
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>Sample</td>
-                              <td>
-                                <div class="text-center">
-                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
-                                  {{--  Review&nbsp;< --}}
-                                 <i class="far fa-eye"></i>
-                                  </a>
-                                </div>
-                              </td>
-                          </tr>
-                      </tbody>
-                    </table>
-                  </div>
-              </div>
-                <!-- /.card-body -->
-              </div>
-            </div>
-          </div><!-- /.container-fluid -->
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
