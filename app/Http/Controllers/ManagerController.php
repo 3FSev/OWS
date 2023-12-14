@@ -120,7 +120,7 @@ class ManagerController extends Controller
     
     public function ChangePassword()
     {
-        return view('manager.man-change-pswd');
+        return view('manager.man-change-password');
     }
 
 }

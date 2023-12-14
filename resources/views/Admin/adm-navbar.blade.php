@@ -36,7 +36,7 @@
           <i class="fas fa-user"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right">
-        <a href="{{ route('ChangePswd.man') }}" class="dropdown-item d-flex justify-content-between align-items-center">
+        <a href="{{ route('ChangePassword.adm') }}" class="dropdown-item d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <i class="fas fa-lock" style="color: grey;"></i>
                 <span class="ml-2">Change Password</span>

@@ -23,6 +23,10 @@ class AdminController extends Controller
         return view('admin.adm-dashboard');
     }
 
+    public function ChangePassword(){
+        return view('Admin.adm-change-password');
+    }
+
     public function Employee(){
         $users = User::whereNotNull('approved_at')->get();
 

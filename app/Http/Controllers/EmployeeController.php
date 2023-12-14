@@ -20,6 +20,9 @@ class EmployeeController extends Controller
         return view('employee.em-pending-wiv', compact('wivs'));
     }
 
+    public function ChangePassword(){
+        return view('employee.em-change-password');
+    }
     public function AcceptWIV($wiv_id){
         $wiv = Wiv::findOrFail($wiv_id);
         $wiv->received_at = now();
