@@ -3,7 +3,7 @@
 @include('theme/preloader')
 @include('manager/man-navbar')
 
-<title>Stock List</title>
+<title>Item History</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -83,7 +83,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Stock List</h1>
+              <h1 class="m-0">Item History</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -99,47 +99,43 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">Item Details</h5>
+                  <h5 class="m-0 text-bold">Item History Details</h5>
                 </div>
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Item Name</th>
-                        <th>Category</th>
-                        <th>Unit Cost</th>
+                        <th>Status</th>
+                        <th>Date</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($items as $item)
+                      <tr>
+                        <td>Item added to warehouse</td>
+                        <td>Sample</td>
+                      </tr>
+                     
                         <tr>
-                          <td><a class="item-list-link" href="{{ route('ItemHistory.man', $item->id) }}">{{$item->name}}</a></td>
-                          <td>{{$item->status}}</td>
-                          <td>{{$item->quantity}}</td>
-                          <td>{{$item->category->name}}</td>
-                          <td>{{number_format($item->unit_cost, 2, '.',',')}}</td>
-                          <td>
-                            <form method="POST" action="{{route('destroy.item', $item->id)}}"></form>
-                            @csrf
-                            @method('DELETE')
-                              <div class="text-center">
-                                  <a href="{{route('EditItemList.adm', $item->id)}}" class="btn btn-warning">
-                                      <i class="fas fa-pencil-alt text-white"></i>
-                                  </a>
-                                  <button type="submit"  class="btn btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                  </button>
-                                  <a class="btn btn-primary" href="{{ route('generate.barcode', $item->id) }}" target="_blank">
-                                    <i class="fa-solid fa-print"></i>
-                                </a>
-                              </div>
-                          </td>
+                          <td>Item assigned to sample</td>
+                          <td>sample</td>
                         </tr>
-                      @endforeach
+                        <tr>
+                          <td>Item retuned by sample</td>
+                          <td>sample</td>
+                        </tr>
                     </tbody>
                   </table>
                 </div>
                 <!-- /.card-body -->
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <a href="{{ route('stockList.man') }}" class="btn btn-primary">
+                      <i class="fas fa-arrow-left mr-1"></i> Back
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div><!-- /.container-fluid -->
