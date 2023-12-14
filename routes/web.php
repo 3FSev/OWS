@@ -56,6 +56,7 @@ Route::middleware(['auth','superuser'])->group(function(){
 // <route for manager>
 Route::middleware(['auth','manager'])->group(function(){
     Route::get('/manager/man-stock-list', [ManagerController::class, 'StockList'])->name('stockList.man');
+    Route::get('/manager/man-item-history', [ManagerController::class, 'ItemHistory'])->name('ItemHistory.man');
     Route::get('/manager/man-edit-items', [ManagerController::class, 'EditItem'])->name('EditItem.man');
     Route::get('/manager/man-wiv-req', [ManagerController::class, 'WIVrequest'])->name('WivRequest.man');
     Route::get('/manager/wiv-review/{wiv_id}', [ManagerController::class, 'WIVreview'])->name('WivReview.man');

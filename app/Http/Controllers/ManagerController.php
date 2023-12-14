@@ -21,6 +21,11 @@ class ManagerController extends Controller
 
         return view('manager.man-stock-list', compact('items'));
     }
+
+    public function ItemHistory(){
+        return view('manager.man-item-history');
+    }
+
     public function EditItem()
     {
         return view('manager.man-edit-items');
