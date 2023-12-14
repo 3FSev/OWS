@@ -137,9 +137,9 @@
                                 <tbody>
                                   <tr>
                                     <td>
-                                      <div class="d-flex justify-content-center align-items-center">
-                                        <input class="form-control" type="text">
-                                      </div>
+                                      <select class="form-control">
+                                        <option value="sample1">Sample 1</option>
+                                        <option value="sample2">Sample 2</option>
                                     </select>
                                   </td>
                                     <td>
