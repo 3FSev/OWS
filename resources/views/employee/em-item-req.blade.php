@@ -114,21 +114,28 @@
                           <div class="modal-body">
                             <form method="POST" action="{{route('em.request.item')}}" autocomplete="off">
                               @csrf
+
                               <div class="form-row">
+                                
                                 <table class="table table-bordered table-hover">
                                   <thead>
-                                    <tr>
-                                      <th class="text-center">Request Details</th>
-                                    </tr>
+                                      <tr>
+                                          <th class="text-center">Request Details</th>
+                                      </tr>
                                   </thead>
                                   <tbody>
-                                    <tr>
-                                      <td>
-                                        <textarea name="details" cols="30" rows="10" class="form-control"></textarea>
-                                      </td>
-                                    </tr>
+                                      <tr>
+                                          <td>
+                                              <select name="your_select_name" class="form-control mb-2">
+                                                  <option value="option1">Option 1</option>
+                                                  <!-- Add more options as needed -->
+                                              </select>
+                                              <textarea name="details" cols="30" rows="10" class="form-control"></textarea>
+                                          </td>
+                                      </tr>
                                   </tbody>
-                                </table>
+                              </table>
+                              
                               </div>
                             </div>
                             <div class="modal-footer form-group text-right m-0">
