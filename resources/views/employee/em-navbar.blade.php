@@ -11,20 +11,22 @@
   <ul class="navbar-nav ml-auto">
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="far fa-bell"></i>
-        <span class="badge badge-warning navbar-badge">15</span>
-      </a>
-      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <span class="dropdown-item dropdown-header">4 Notifications</span>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-envelope mr-2"></i> 4 new messages
-          <span class="float-right text-muted text-sm">3 mins</span>
+        <a class="nav-link" data-toggle="dropdown" href="#" id="notificationDropdownToggle">
+            <i class="far fa-bell"></i>
+            <span id="notificationBadge" class="badge badge-warning navbar-badge">{{ auth()->user()->unreadNotifications->count() }}</span>
         </a>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item dropdown-footer">View</a>
-      </div>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="notificationDropdown">
+            <span class="dropdown-item dropdown-header" id="notificationCount">{{ auth()->user()->unreadNotifications->count() }} Notifications</span>
+            <div class="dropdown-divider"></div>
+    
+            @foreach (auth()->user()->unreadNotifications as $notification)
+                <a href="{{ $notification->url }}" class="dropdown-item">
+                    <i class="fas fa-bell mr-2"></i> {{ $notification->description }}
+                    <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                </a>
+                <div class="dropdown-divider"></div>
+            @endforeach
+        </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-widget="fullscreen" href="#" role="button">
