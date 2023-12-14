@@ -12,7 +12,7 @@ class Mrt extends Model
 
     protected $table = 'mrt';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'mrt_number',

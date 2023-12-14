@@ -12,7 +12,7 @@ class Rr extends Model
 
     protected $table = 'rr';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'rr_number',

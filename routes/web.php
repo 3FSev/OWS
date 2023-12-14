@@ -73,14 +73,17 @@ Route::middleware(['auth','manager'])->group(function(){
 });
 
 // <route for employee>
-Route::middleware(['auth','employee'])->group(function(){
+Route::middleware(['approved','auth','employee'])->group(function(){
     Route::get('/employee/em-pending-wiv', [EmployeeController::class, 'PendingWIV'])->name('PendingWiv.em');
     Route::get('/employee/em-change-password', [EmployeeController::class, 'ChangePassword'])->name('ChangePassword.em');
     Route::get('/employee/accept-wiv/{wiv_id}', [EmployeeController::class, 'AcceptWIV'])->name('AcceptWiv.em');
     Route::get('/employee/em-pending-mrt', [EmployeeController::class, 'PendingRIV'])->name('PendingRiv.em');   
     Route::get('/employee/em-list', [EmployeeController::class, 'ListView'])->name('ListView.em');
     Route::get('/employee/em-item-req', [EmployeeController::class, 'ItemRequest'])->name('ItemReq.em');   
-    Route::get('/employee/em-return-item-req', [EmployeeController::class, 'ReturnItemReq'])->name('ReturnItemReq.em');   
+    Route::get('/employee/em-return-item-req', [EmployeeController::class, 'ReturnItemReq'])->name('ReturnItemReq.em');
+    
+    Route::post('/employee/send-item-req', [EmployeeController::class, 'sendReqItem'])->name('em.request.item');
+    Route::post('/employee/send-return-req', [EmployeeController::class, 'sendReqReturn'])->name('em.request.return');
 });
 
 // <route for Admin>

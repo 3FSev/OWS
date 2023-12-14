@@ -12,7 +12,7 @@ class Wiv extends Model
 
     protected $table = 'wiv';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function items()
     {
