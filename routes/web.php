@@ -55,6 +55,7 @@ Route::middleware(['auth','superuser'])->group(function(){
 // <route for manager>
 Route::middleware(['auth','manager'])->group(function(){
     Route::get('/manager/man-stock-list', [ManagerController::class, 'StockList'])->name('stockList.man');
+    Route::get('/manager/man-item-history', [ManagerController::class, 'ItemHistory'])->name('ItemHistory.man');
     Route::get('/manager/man-edit-items', [ManagerController::class, 'EditItem'])->name('EditItem.man');
     Route::get('/manager/man-wiv-req', [ManagerController::class, 'WIVrequest'])->name('WivRequest.man');
     Route::get('/manager/wiv-review/{wiv_id}', [ManagerController::class, 'WIVreview'])->name('WivReview.man');
@@ -81,7 +82,6 @@ Route::middleware(['approved','auth','employee'])->group(function(){
     Route::get('/employee/em-list', [EmployeeController::class, 'ListView'])->name('ListView.em');
     Route::get('/employee/em-item-req', [EmployeeController::class, 'ItemRequest'])->name('ItemReq.em');   
     Route::get('/employee/em-return-item-req', [EmployeeController::class, 'ReturnItemReq'])->name('ReturnItemReq.em');
-    
     Route::post('/employee/send-item-req', [EmployeeController::class, 'sendReqItem'])->name('em.request.item');
     Route::post('/employee/send-return-req', [EmployeeController::class, 'sendReqReturn'])->name('em.request.return');
 });
