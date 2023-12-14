@@ -215,10 +215,10 @@
                                                   <td class="td-rr">
                                                     <div class="input-group">
                                                         <input type="text" class="form-control datepicker"
-                                                            placeholder="Date" id="datepicker3"  name="riv_date">
-                                                        <div class="input-group-append" id="datepicker-icon3">
+                                                            placeholder="Date" id="datepicker1"  name="riv_date">
+                                                        <div class="input-group-append" id="datepicker-icon1">
                                                             <span class="input-group-text"><i class="fa fa-calendar"
-                                                                    id="datepicker-icon3"></i></span>
+                                                                    id="datepicker-icon1"></i></span>
                                                         </div>
                                                     </div>
                                                 </td>
