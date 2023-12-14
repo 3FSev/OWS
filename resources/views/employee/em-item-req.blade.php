@@ -58,21 +58,12 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-thumbs-up nav-icon "></i>
+              <a href="{{ route('ItemReq.em') }}" class="nav-link active">
+                <i class="nav-icon fas fa-thumbs-up nav-icon"></i>
                 <p>
-                  Send Request 
-                  <i class="fas fa-angle-left right"></i>
+                 Send Request
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('ItemReq.em') }}" class="nav-link active">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Item Request</p>
-                  </a>
-                </li>
-              </ul>
             </li>
           </ul>
         </nav>
