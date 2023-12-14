@@ -91,13 +91,13 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link ">
+              <a  href="{{ route('ItemRequest.adm') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
                 <p>
-                  Manage Request    
-                  <i class="fas fa-angle-left right"></i>
+                  Manage Request            
                 </p>
               </a>
+            </li>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('ItemRequest.adm') }}" class="nav-link ">

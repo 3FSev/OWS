@@ -92,28 +92,13 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">
-                                <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
-                                <p>
-                                    Manage Request
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
+                            <a  href="{{ route('ItemRequest.adm') }}" class="nav-link">
+                              <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
+                              <p>
+                                Manage Request            
+                              </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('ItemRequest.adm') }}" class="nav-link">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Item Request</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <p>Return Item Request</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                          </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie nav-icon"></i>

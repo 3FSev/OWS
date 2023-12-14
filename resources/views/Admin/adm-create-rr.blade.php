@@ -92,27 +92,12 @@
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link">
+                  <a  href="{{ route('ItemRequest.adm') }}" class="nav-link">
                     <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
                     <p>
-                      Manage Request    
-                      <i class="fas fa-angle-left right"></i>
+                      Manage Request            
                     </p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{ route('ItemRequest.adm') }}" class="nav-link">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <p>Item Request</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <p>Return Item Request</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
                 <li class="nav-item">
                   <a href="" class="nav-link">
@@ -214,13 +199,15 @@
                                                 <tr class="tr-rr">  
                                                   <td class="td-rr">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control datepicker"
-                                                            placeholder="Date" id="datepicker1"  name="riv_date">
-                                                        <div class="input-group-append" id="datepicker-icon1">
-                                                            <span class="input-group-text"><i class="fa fa-calendar"
-                                                                    id="datepicker-icon1"></i></span>
-                                                        </div>
-                                                    </div>
+                                                      <input type="text" class="form-control datepicker" 
+                                                          placeholder="Date" id="datepicker1" name="riv_date" 
+                                                          data-date-format="yyyy-mm-dd" 
+                                                          data-date-start-date="{{ now()->toDateString() }}">
+                                                      <div class="input-group-append" id="datepicker-icon1">
+                                                          <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon1"></i></span>
+                                                      </div>
+                                                  </div>
+                                                  
                                                 </td>
                                                     <td class="td-rr">
                                                         <div class="input-group">

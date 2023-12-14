@@ -92,27 +92,12 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active">
+              <a  href="{{ route('ItemRequest.adm') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-file-lines nav-icon"></i>
                 <p>
-                  Manage Request    
-                  <i class="fas fa-angle-left right"></i>
+                  Manage Request            
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('ItemRequest.adm') }}" class="nav-link active">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Item Request</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('ReturnItemRequest.adm') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Return Item Request</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
               <a href="" class="nav-link">
@@ -168,7 +153,7 @@
       <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
-          <div class="row">
+          <div class="row mb-4">
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
@@ -209,6 +194,89 @@
                               <td>Sample</td>
                               <td>Sample</td>
                               <td>Sample</td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+                <!-- /.card-body -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="content-wapper">
+            <div class="content-header mt-lg-4">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Item Returned Request</h1>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+        </div>
+
+          <div class="row " >
+            <div class="col-12">
+              <div class="card">
+                <!-- /.card-header -->
+                {{--  <div class="card-header card-header-custom">
+                  <h5 class="m-0 text-bold">Return Item Request</h5>
+                </div>  --}}
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                      <thead>
+                          <tr>
+                            <th>MRT Number</th>
+                            <th>Employee Name</th>
+                            <th>Item Description</th>
+                            <th>Quantity</th>
+                            <th>Item Name</th>
+                            <th>Category</th>
+                            <th>Total Cost</th>
+                            <th>Unit</th>
+                            <th>Return Date</th>
+                            <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>
+                                <div class="text-center">
+                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
+                                  {{--  Review &nbsp; --}}
+                                   <i class="far fa-eye"></i>
+                                  </a>
+                                </div>  
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>Sample</td>
+                              <td>
+                                <div class="text-center">
+                                  <a href="{{ route('ReviewReturnItemRequest.adm') }}" class="btn btn-primary m-0">
+                                  {{--  Review&nbsp;< --}}
+                                 <i class="far fa-eye"></i>
+                                  </a>
+                                </div>
+                              </td>
                           </tr>
                       </tbody>
                     </table>
