@@ -113,42 +113,58 @@
                     <tbody>
                       <!-- Add your table rows here -->
                       <tr>
-                        <td>{{$rr->rr_number}}</td>
-                        <td>{{$rr->riv}}</td>
-                        <td>{{$rr->cs}}</td>
-                        <td>{{$rr->aoc}}</td>
-                        <td>{{$rr->po}}</td>
-                        <td>{{$rr->cv}}</td>
-                        <td>{{$rr->dr}}</td>
-                        <td>{{$rr->inv}}</td>
-                        <td>{{$rr->or}}</td>
+                        <td class="text-center">{{$rr->rr_number}}</td>
+                        <td class="text-center">{{$rr->riv}}</td>
+                        <td class="text-center">{{$rr->cs}}</td>
+                        <td class="text-center">{{$rr->aoc}}</td>
+                        <td class="text-center">{{$rr->po}}</td>
+                        <td class="text-center">{{$rr->cv}}</td>
+                        <td class="text-center">{{$rr->dr}}</td>
+                        <td class="text-center" >{{$rr->inv}}</td>
+                        <td class="text-center">{{$rr->or}}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <div class="form-group d-flex justify-content-between align-items-center mt-4 mb-4">
-                  <label class="mb-0">Supplier</label>
-                  {{$rr->supplier}}
-                  <label class="mb-0">Address</label>
-                  {{$rr->address}}
-                </div>
 
-                <table class="table table-custom">
-                  <thead class="thead-custom ">
-                    <tr>
-                      <th>Item</th>
-                      <th>Unit Cost</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($rr->items as $item)
+                <div class="col-9 mx-auto">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="form-group">
+                      <div class="row">
+                          <div>
+                              <label class="mb-0">Supplier:</label>
+                              {{$rr->supplier}}
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="row">
+                          <div>
+                              <label class="mb-0">Address:</label>
+                              {{$rr->address}}
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+
+                    <table class="table table-bordered">
+                      <thead class="thead-custom">
                         <tr>
-                          <td>{{$item->name}}</td>
-                          <td>{{ number_format($item->unit_cost, 2, '.', ',') }}</td>
+                          <th>Item</th>
+                          <th>Unit Cost</th>
                         </tr>
-                    @endforeach
-                  </tbody>
-                </table>
+                      </thead>
+                      <tbody>
+                        @foreach ($rr->items as $item)
+                            <tr>
+                              <td>{{$item->name}}</td>
+                              <td>{{ number_format($item->unit_cost, 2, '.', ',') }}</td>
+                            </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               </div>
             </div>
