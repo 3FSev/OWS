@@ -35,6 +35,7 @@ return new class extends Migration
             $table->date('or_date')->nullable();
             $table->string('created_by', 255);
             $table->string('approved_by', 255)->nullable();
+            $table->timestamps();
         });
     }
 

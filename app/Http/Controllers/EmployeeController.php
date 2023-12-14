@@ -46,11 +46,29 @@ class EmployeeController extends Controller
     }
     public function ItemRequest()
     {
-        return view('employee.em-item-req');
+        $user = auth()->user();
+        return view('employee.em-item-req', compact('user'));
     }
     public function ReturnItemReq()
     {
         return view('employee.em-return-item-req');
+    }
+
+    public function sendReqItem(Request $request){
+        $user = auth()->user();
+
+        $request = $user->requests()->create([
+            'request_type' => 'Request Item',
+            'details' => $request->input('details'),
+            'request_status' => 'Waiting for approval',
+        ]);
+
+
+        return redirect()->back();
+    }
+
+    public function sendReqReturn(Request $request){
+        
     }
     
 }

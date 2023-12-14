@@ -127,42 +127,36 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            <div class="form-row">
-                              <table class="table table-bordered table-hover">
-                                <thead>
-                                  <tr>
-                                    <th class="text-center">Item Name</th>
-                                    <th class="text-center">Quantity</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>
-                                      <input type="text" class="form-control">
-                                    </select>
-                                  </td>
-                                    <td>
-                                      <div class="d-flex justify-content-center align-items-center">
-                                        <input class="form-control quantity-input" type="number" value="0">
-                                      </div>
-                                  </tr>
-                                </tbody>
-                              </table>
+                            <form method="POST" action="{{route('em.request.item')}}" autocomplete="off">
+                              @csrf
+                              <div class="form-row">
+                                <table class="table table-bordered table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th class="text-center">Request Details</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <textarea name="details" cols="30" rows="10" class="form-control"></textarea>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
                             </div>
-                          </div>
-                          <div class="modal-footer form-group text-right m-0">
-                            <div class="d-flex justify-content-end">
-                              <a href="" class="btn btn-primary mr-2">
-                                <i class="fas fa-plus-circle"></i> Add
-                              </a>
-                              <a href="#" class="btn btn-success mr-2 toastItemRequest">
-                                <i class="fas fa-check"></i> Confirm
-                              </a>
-                              <a href="#" class="btn btn-danger">
-                                <i class="fas fa-times"></i> Reset
-                              </a>
+                            <div class="modal-footer form-group text-right m-0">
+                              <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-success mr-2">
+                                  <i class="fas fa-check"></i> Confirm
+                                </button>
+                                <a href="#" class="btn btn-danger">
+                                  <i class="fas fa-times"></i> Reset
+                                </a>
+                              </div>
                             </div>
-                          </div>
+                            </form>
                         </div>
                         <!-- /.modal-content -->
                       </div>
@@ -175,23 +169,19 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>WIV Number</th>
-                        <th>Date</th>
-                        <th>Item Name</th>
-                        <th>Quantity</th>
-                        <th>Unit Cost</th>
-                        <th>Total Cost</th>
+                        <th>Date Requested</th>
+                        <th>Details</th>
+                        <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($user->requests as $request)
                       <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
+                        <td>{{$request->created_at}}</td>
+                        <td>{{$request->details}}</td>
+                        <td>{{$request->request_status}}</td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

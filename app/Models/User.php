@@ -65,6 +65,11 @@ class User extends Authenticatable
         return $this->belongsTo(District::class);
     }
 
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
+    }
+
     public function wivs()
     {
         return $this->hasMany(Wiv::class);

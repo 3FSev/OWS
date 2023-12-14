@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Jobs\DeleteExpiredRRs;
+use App\Jobs\DeleteExpiredMRTs;
+use App\Jobs\DeleteExpiredWIVs;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -12,7 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->job(new DeleteExpiredWIVs)->daily();
+        $schedule->job(new DeleteExpiredMRTs)->daily();
+        $schedule->job(new DeleteExpiredRRs)->daily();
     }
 
     /**
