@@ -61,7 +61,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-thumbs-up nav-icon"></i>
                 <p>
-                  Request Approval
+                  Send Request
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -70,12 +70,6 @@
                   <a href="{{ route('ItemReq.em') }}" class="nav-link">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <p>Item Request</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('ReturnItemReq.em') }}" class="nav-link">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <p>Returned Item Request</p>
                   </a>
                 </li>
               </ul>
@@ -109,7 +103,7 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">Pending WIV List</h5>
+                  <h5 class="m-0 text-bold">Pending MRT List</h5>
                 </div>
                 <div class="card-body">
                   <table id="example2" class="table table-bordered table-hover">

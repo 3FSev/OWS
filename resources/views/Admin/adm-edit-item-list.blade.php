@@ -188,8 +188,6 @@
                         <label class="col-form-label-md">Quantity</label>
                         <input class="form-control" type="text" name="quantity" value="{{ $item->quantity }}">
                       </div>
-                    </div>
-                    <div class="col-md-6">
                       <div class="form-group">
                         <label class="col-form-label-md">Category</label>
                         <select class="form-control" name="category">
@@ -198,6 +196,8 @@
                           @endforeach
                         </select>
                       </div>
+                    </div>
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label class="col-form-label-md">Unit Cost</label>
                         <input class="form-control" type="text" name="unit_cost" value="{{$item->unit_cost}}">
