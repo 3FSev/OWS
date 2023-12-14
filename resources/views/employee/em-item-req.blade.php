@@ -148,7 +148,7 @@
                           </div>
                           <div class="modal-footer form-group text-right m-0">
                             <div class="d-flex justify-content-end">
-                              <a href="{{ route('MrtRequest.man') }}" class="btn btn-primary mr-2">
+                              <a href="" class="btn btn-primary mr-2">
                                 <i class="fas fa-plus-circle"></i> Add
                               </a>
                               <a href="#" class="btn btn-success mr-2 toastItemRequest">

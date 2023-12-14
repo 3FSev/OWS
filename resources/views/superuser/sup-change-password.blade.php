@@ -162,51 +162,70 @@
               </div>     
               <div class="card-body">
                 <!-- /.form-group -->
-                <Label>Password</Label>
-                <div class="input-group mb-3">
-                  <input id="password" type="password"
-                    class="form-control input-field @error('password') is-invalid @enderror" name="password"
-                    placeholder="Password" required autocomplete="new-password">
-                  <div class="input-group-append">
-                    <div class="input-group-text">
-                      <span toggle="##password-field" class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                <form method="POST" action="{{route('change.acc.pass')}}" class="container-fluid" autocomplete="off">
+                  @csrf
+                  <Label>Current Password</Label>
+                  <div class="input-group mb-3">
+                    <input id="password" type="password"
+                      class="form-control input-field @error('password') is-invalid @enderror" name="current_password"
+                      placeholder="Password" required autocomplete="new-password">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span toggle="##password-field" class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                      </div>
+                    </div>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                  <Label>New Password</Label>
+                  <div class="input-group mb-3">
+                    <input id="password" type="password"
+                      class="form-control input-field @error('password') is-invalid @enderror" name="new_password"
+                      placeholder="Password" required autocomplete="new-password">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span toggle="##password-field" class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                      </div>
+                    </div>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                  
+                  <label for="">Confirm Password</label>
+                  <div class="input-group mb-5">
+                    <input id="password-confirm" type="password" class="form-control input-field"
+                      name="confirm_password" placeholder="Confirm Password" required
+                      autocomplete="new-password">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span toggle="#password-field"
+                          class="fa fa-fw field-icon toggle-password-confirm fa-eye"></span>
+                      </div>
                     </div>
                   </div>
-                  @error('password')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                  @enderror
                 </div>
-                
-                <label for="">Confirm Password</label>
-                <div class="input-group mb-5">
-                  <input id="password-confirm" type="password" class="form-control input-field"
-                    name="password_confirmation" placeholder="Confirm Password" required
-                    autocomplete="new-password">
-                  <div class="input-group-append">
-                    <div class="input-group-text">
-                      <span toggle="#password-field"
-                        class="fa fa-fw field-icon toggle-password-confirm fa-eye"></span>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <a href="{{ route('stockList.man') }}" class="btn btn-default">
+                        Cancel
+                      </a>
+                    </div>
+                    <div class="col-md-6 text-right">
+                      <button type="submit" class="btn btn-success ">
+                       <span class="m-2">Save</span>
+                      </button>
                     </div>
                   </div>
                 </div>
-              </div>
-              </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                    <a href="{{ route('dashboard.sup') }}" class="btn btn-default">
-                      Cancel
-                    </a>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <a href="#" class="btn btn-success ">
-                     <span class="m-2">Save</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+                </form>
               </div>
               <!-- /.card-body -->
             </div>
