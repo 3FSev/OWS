@@ -142,10 +142,10 @@
                                         <option value="sample2">Sample 2</option>
                                     </select>
                                   </td>
-                                    <td>
-                                      <div class="d-flex justify-content-center align-items-center">
-                                        <input class="form-control quantity-input" type="number" value="0">
-                                      </div>
+                                    <td class="d-flex justify-content-center">
+                                        <button type="submit"  class="btn btn-danger">
+                                          <i class="fas fa-trash"></i>
+                                        </button>
                                   </tr>
                                 </tbody>
                               </table>
