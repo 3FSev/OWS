@@ -22,7 +22,18 @@ class ManagerController extends Controller
         return view('manager.man-stock-list', compact('items'));
     }
 
-    public function ItemHistory(){
+    public function ItemHistory($item_id){
+        $item = Item::findOrFail($item_id);
+
+        $wivs = Wiv::whereNotNull('approved_at')->whereHas('items', function ($query) use ($item_id) {
+            $query->where('item_id', $item_id);
+        })->get();
+
+        $mrts = Mrt::whereNotNull('approved_at')->whereHas('items', function ($query) use ($item_id){
+            $query->where('item_id', $item_id);
+        })->get();
+
+        $combinedRecords = $wivs->merge($mrts);
         return view('manager.man-item-history');
     }
 

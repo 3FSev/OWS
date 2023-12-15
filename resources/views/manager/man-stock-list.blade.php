@@ -106,8 +106,10 @@
                     <thead>
                       <tr>
                         <th>Item Name</th>
+                        <th>Status</th>
                         <th>Category</th>
                         <th>Unit Cost</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -115,7 +117,6 @@
                         <tr>
                           <td><a class="item-list-link" href="{{ route('ItemHistory.man', $item->id) }}">{{$item->name}}</a></td>
                           <td>{{$item->status}}</td>
-                          <td>{{$item->quantity}}</td>
                           <td>{{$item->category->name}}</td>
                           <td>{{number_format($item->unit_cost, 2, '.',',')}}</td>
                           <td>
@@ -126,12 +127,6 @@
                                   <a href="{{route('EditItemList.adm', $item->id)}}" class="btn btn-warning">
                                       <i class="fas fa-pencil-alt text-white"></i>
                                   </a>
-                                  <button type="submit"  class="btn btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                  </button>
-                                  <a class="btn btn-primary" href="{{ route('generate.barcode', $item->id) }}" target="_blank">
-                                    <i class="fa-solid fa-print"></i>
-                                </a>
                               </div>
                           </td>
                         </tr>

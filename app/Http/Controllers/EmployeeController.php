@@ -72,9 +72,4 @@ class EmployeeController extends Controller
 
         return redirect()->back();
     }
-
-    public function sendReqReturn(Request $request){
-        
-    }
-    
 }

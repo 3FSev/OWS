@@ -28,19 +28,26 @@ class DeleteExpiredWIVs implements ShouldQueue
      */
     public function handle(): void
     {
-        // Delete WIV records older than 7 days
-        if (Wiv::whereNotNull('approved_at')->orWhereNotNull('rejected_at')->exists()) {
-            Log::info('Deletion of old WIV records stopped because approved_at or rejected_at is not null.');
-            return;
-        }
+         // Find WIV records older than 7 days
+         $limitDate = now()->subDays(7);
+         
+         $expiredWivs = Wiv::where('created_at', '<', $limitDate)
+         ->whereNull('approved_at')
+         ->whereNull('rejected_at')
+         ->get();
 
-        $limitDate = now()->subDays(7);
+     foreach ($expiredWivs as $wiv) {
+         // Set the quantity for each item associated with the WIV
+         foreach ($wiv->items as $item) {
+             // You can set the quantity to any specific value you want
+             $item->update(['quantity' => 1]);
+         }
 
-        Wiv::where('created_at', '<', $limitDate)
-            ->whereNull('approved_at')
-            ->whereNull('rejected_at')
-            ->delete();
+         // Detach all items related to the WIV
+         $wiv->items()->detach();
 
-        Log::info('Deleted old WIV records.');
+         // Delete the WIV record
+         $wiv->delete();
+     }
     }
 }

@@ -45,6 +45,7 @@ class DeleteExpiredRRs implements ShouldQueue
             // Set all quantities of associated items to 0
             foreach ($rr->items as $item) {
                 $item->update(['quantity' => 0]);
+                $item->update(['status' => 'Request Expired']);
             }
 
             // Set status to "Request expired"
@@ -52,9 +53,6 @@ class DeleteExpiredRRs implements ShouldQueue
 
             // Detach items from the pivot table
             $rr->items()->detach();
-
-            // Delete the RR record
-            $rr->delete();
 
             Log::info("Expired pending RR record: {$rr->id}");
         }

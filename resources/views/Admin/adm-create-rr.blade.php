@@ -207,7 +207,6 @@
                                                           <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon1"></i></span>
                                                       </div>
                                                   </div>
-                                                  
                                                 </td>
                                                     <td class="td-rr">
                                                         <div class="input-group">

@@ -95,7 +95,6 @@ class RegisterController extends Controller
         
         // Check if the validation fails
         if ($validator->fails()) {
-            dd($validator->errors());
             // Throw a validation exception
             throw ValidationException::withMessages($validator->errors()->toArray());
         }

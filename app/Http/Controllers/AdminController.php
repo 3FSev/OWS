@@ -7,9 +7,9 @@ use App\Models\Mrt;
 use App\Models\Wiv;
 use App\Models\Item;
 use App\Models\User;
-use App\Models\Request;
 use BaconQrCode\Writer;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use BaconQrCode\Encoder\QrCode;
 use BaconQrCode\Renderer\Image\Png;
 use Illuminate\Support\Facades\Auth;
@@ -230,8 +230,9 @@ class AdminController extends Controller
 
     // manage reports
     public function WIVReports(){
+        $wivs = Wiv::whereNotNull('approved_at')->whereNotNull('received_at')->get();
 
-        return view('admin.adm-WIV-reports');
+        return view('admin.adm-WIV-reports', compact('wivs'));
     }
 
     public function MRTReports(){

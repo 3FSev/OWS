@@ -182,36 +182,40 @@
                     <thead>
                       <tr>
                         <th>WIV Number</th>
+                        <th>Date Issuance</th>
                         <th>Employee Name</th>
                         <th>Department</th>
-                        <th>Item Description</th>
+                        <th>District</th>
+                        <th>Particulars</th>
                         <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Total Cost</th>
-                        <th>Date Issuance</th>
+                        <th>Unit Cost</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                      </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                      </tr>
+                      @foreach ($wivs as $wiv)
+                          <tr>
+                            <td>{{$wiv->wiv_number}}</td>
+                            <td>{{ \Carbon\Carbon::parse($wiv->wiv_date)->format('M-d-y') }}</td>
+                            <td>{{$wiv->user->name}}</td>
+                            <td>{{$wiv->user->department->name}}</td>
+                            <td>{{$wiv->user->district->name}}</td>
+                            <td>
+                              @foreach ($wiv->items as $item)
+                                {{$item->name}}<br>
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach ($wiv->items as $item)
+                                {{$item->category->name}}<br>
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach ($wiv->items as $item)
+                                {{$item->unit_cost}}<br>
+                              @endforeach
+                            </td>
+                          </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

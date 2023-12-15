@@ -141,7 +141,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">History of Item</h1>
+              <h1 class="m-0">History of {{$item->name}}</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -165,23 +165,27 @@
                       <tr>
                         <th>Status</th>
                         <th>Date</th>
+                        <th>Time</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>Item added to warehouse</td>
-                        <td>{{$item->created_at}}</td>
+                        <td>{{$item->created_at->format('M-d-y')}}</td>
+                        <td>{{$item->created_at->format('H:i:s')}}</td>
                       </tr>
                       @foreach ($wivs as $wiv)
                         <tr>
                           <td>Item assigned to {{$wiv->user->name}}</td>
-                          <td>{{$wiv->wiv_date}}</td>
+                          <td>{{$wiv->created_at->format('M-d-y')}}</td>
+                          <td>{{$wiv->created_at->format('H:i:s')}}</td>
                         </tr>
                       @endforeach
                       @foreach ($mrts as $mrt)
                         <tr>
                           <td>Item retuned by {{$mrt->user->name}}</td>
-                          <td>{{$mrt->mrt_date}}</td>
+                          <td>{{$mrt->created_at->format('M-d-y')}}</td>
+                          <td>{{$mrt->created_at->format('H:i:s')}}</td>
                         </tr>
                       @endforeach
                     </tbody>
