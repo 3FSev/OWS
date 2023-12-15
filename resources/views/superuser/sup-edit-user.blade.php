@@ -165,18 +165,18 @@
                                     <!-- /.col -->
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="form-group">
-                        <div class="d-flex justify-content-between  mt-8">
-                            <a href="{{ route('create.sup') }}" class="btn btn-primary">
-                                <i class="fas fa-arrow-left"></i> Back
-                            </a>
-                            <div>
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
+                         </div>
+                         <div class="form-group">
+                            <div class="d-flex justify-content-between  mt-8">
+                                <a href="{{ route('create.sup') }}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-left"></i> Back
+                                </a>
+                                <div>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div> 
                         </div> 
-                    </div>
+                    </form>
                     <!-- /.card-body -->
                 </div>
         </div>

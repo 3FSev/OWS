@@ -199,19 +199,28 @@
                                                 <tr class="tr-rr">  
                                                   <td class="td-rr">
                                                     <div class="input-group">
-                                                      <input type="text" class="form-control datepicker" 
-                                                          placeholder="Date" id="datepicker1" name="riv_date" 
-                                                          data-date-format="yyyy-mm-dd" 
-                                                          data-date-start-date="{{ now()->toDateString() }}">
+                                                      <input type="text" class="form-control datepicker"
+                                                          placeholder="Date" id="datepicker1"  name="cs_date">
                                                       <div class="input-group-append" id="datepicker-icon1">
-                                                          <span class="input-group-text"><i class="fa fa-calendar" id="datepicker-icon1"></i></span>
+                                                          <span class="input-group-text"><i class="fa fa-calendar"
+                                                                  id="datepicker-icon1"></i></span>
                                                       </div>
                                                   </div>
                                                 </td>
                                                     <td class="td-rr">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control datepicker"
-                                                                placeholder="Date" id="datepicker3"  name="cs_date">
+                                                                placeholder="Date" id="datepicker2"  name="cs_date">
+                                                            <div class="input-group-append" id="datepicker-icon2">
+                                                                <span class="input-group-text"><i class="fa fa-calendar"
+                                                                        id="datepicker-icon2"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="td-rr">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control datepicker"
+                                                                placeholder="Date" id="datepicker3"  name="aoc_date">
                                                             <div class="input-group-append" id="datepicker-icon3">
                                                                 <span class="input-group-text"><i class="fa fa-calendar"
                                                                         id="datepicker-icon3"></i></span>
@@ -221,7 +230,7 @@
                                                     <td class="td-rr">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control datepicker"
-                                                                placeholder="Date" id="datepicker4"  name="aoc_date">
+                                                                placeholder="Date" id="datepicker4"  name="po_date">
                                                             <div class="input-group-append" id="datepicker-icon4">
                                                                 <span class="input-group-text"><i class="fa fa-calendar"
                                                                         id="datepicker-icon4"></i></span>
@@ -231,7 +240,7 @@
                                                     <td class="td-rr">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control datepicker"
-                                                                placeholder="Date" id="datepicker5"  name="po_date">
+                                                                placeholder="Date" id="datepicker5"  name="cv_date">
                                                             <div class="input-group-append" id="datepicker-icon5">
                                                                 <span class="input-group-text"><i class="fa fa-calendar"
                                                                         id="datepicker-icon5"></i></span>
@@ -241,7 +250,7 @@
                                                     <td class="td-rr">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control datepicker"
-                                                                placeholder="Date" id="datepicker6"  name="cv_date">
+                                                                placeholder="Date" id="datepicker6" name="dr_date">
                                                             <div class="input-group-append" id="datepicker-icon6">
                                                                 <span class="input-group-text"><i class="fa fa-calendar"
                                                                         id="datepicker-icon6"></i></span>
@@ -251,7 +260,7 @@
                                                     <td class="td-rr">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control datepicker"
-                                                                placeholder="Date" id="datepicker7" name="dr_date">
+                                                                placeholder="Date" id="datepicker7"  name="inv_date">
                                                             <div class="input-group-append" id="datepicker-icon7">
                                                                 <span class="input-group-text"><i class="fa fa-calendar"
                                                                         id="datepicker-icon7"></i></span>
@@ -261,20 +270,10 @@
                                                     <td class="td-rr">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control datepicker"
-                                                                placeholder="Date" id="datepicker8"  name="inv_date">
+                                                                placeholder="Date" id="datepicker8"  name="or_date">
                                                             <div class="input-group-append" id="datepicker-icon8">
                                                                 <span class="input-group-text"><i class="fa fa-calendar"
                                                                         id="datepicker-icon8"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="td-rr">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control datepicker"
-                                                                placeholder="Date" id="datepicker9"  name="or_date">
-                                                            <div class="input-group-append" id="datepicker-icon9">
-                                                                <span class="input-group-text"><i class="fa fa-calendar"
-                                                                        id="datepicker-icon9"></i></span>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -410,96 +409,6 @@
         <!-- /.content-wrapper -->
     </div>
     <script>
-        $(document).ready(function () {
-            // Initialize the date picker
-            $('#datepicker1').datepicker({
-                autoclose: true
-            });
-            $('#datepicker-icon1').on('click', function () {
-                $('#datepicker1').datepicker('show');
-            });
-        });
-
-        $(document).ready(function () {
-            // Initialize the date picker
-            $('#datepicker2').datepicker({
-                autoclose: true
-            });
-            $('#datepicker-icon2').on('click', function () {
-                $('#datepicker2').datepicker('show');
-            });
-        });
-
-        $(document).ready(function () {
-            // Initialize the date picker
-            $('#datepicker3').datepicker({
-                autoclose: true
-            });
-            $('#datepicker-icon3').on('click', function () {
-                $('#datepicker3').datepicker('show');
-            });
-        });
-
-        $(document).ready(function () {
-            // Initialize the date picker
-            $('#datepicker4').datepicker({
-                autoclose: true
-            });
-            $('#datepicker-icon4').on('click', function () {
-                $('#datepicker4').datepicker('show');
-            });
-        });
-
-        $(document).ready(function () {
-            // Initialize the date picker
-            $('#datepicker5').datepicker({
-                autoclose: true
-            });
-            $('#datepicker-icon5').on('click', function () {
-                $('#datepicker5').datepicker('show');
-            });
-        });
-
-        $(document).ready(function () {
-            // Initialize the date picker
-            $('#datepicker6').datepicker({
-                autoclose: true
-            });
-            $('#datepicker-icon6').on('click', function () {
-                $('#datepicker6').datepicker('show');
-            });
-        });
-
-        $(document).ready(function () {
-            // Initialize the date picker
-            $('#datepicker7').datepicker({
-                autoclose: true
-            });
-            $('#datepicker-icon7').on('click', function () {
-                $('#datepicker7').datepicker('show');
-            });
-        });
-
-        $(document).ready(function () {
-            // Initialize the date picker
-            $('#datepicker8').datepicker({
-                autoclose: true
-            });
-            $('#datepicker-icon8').on('click', function () {
-                $('#datepicker8').datepicker('show');
-            });
-        });
-
-        $(document).ready(function () {
-            // Initialize the date picker
-            $('#datepicker9').datepicker({
-                autoclose: true
-            });
-            $('#datepicker-icon9').on('click', function () {
-                $('#datepicker9').datepicker('show');
-            });
-        });
-
 
 
         $('#addRow').click(function () {
