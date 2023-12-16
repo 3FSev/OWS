@@ -157,14 +157,23 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-header ">
-                  <div class="d-flex justify-content-end align-items-center m-0">       
+                  
+                  <div class="d-flex justify-content-center align-items-center">
                     <div class="card-tools">
-                        <form class="form-inline mb-0">
-                          <label for="byMonth" class="mr-2">By Month:</label>
-                            <div class="form-group ">
-                                <input type="month" class="form-control" id="byMonth">
-                            </div>
-                        </form>
+                      <form class="form-inline mb-0">
+                        <div class="form-group mr-2">
+                            <label for="byMonth" class="mr-2">By Month:</label>
+                            <input type="month" class="form-control" id="byMonth">
+                        </div>
+                        <div class="form-group mr-2">
+                            <label for="byYear" class="mr-2">By Year:</label>
+                            <input type="number" class="form-control" id="byYear" placeholde  r="YYYY">
+                        </div>
+                        <button type="button" class="btn btn-primary m-1">
+                            <i class="fa-solid fa-print mr-2 text-white"></i>
+                            <span>Print</span>
+                        </button>
+                    </form>
                     </div>
                 </div>
                 </div>

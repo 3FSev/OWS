@@ -141,7 +141,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Material Return Ticket</h1>
+              <h1 class="m-0">Receiving Report</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -157,15 +157,24 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-header ">
-                  <div class="d-flex justify-content-end align-items-center m-0">
+                  <div class="d-flex justify-content-center align-items-center">
+                    {{--  <h1 class="card-title text-bold">Warehouse Issued Voucher Report</h1>  --}}
                     <div class="card-tools">
-                      <form class="form-inline mb-0">
-                        <label for="byMonth" class="mr-2">By Month:</label>
-                          <div class="form-group ">
-                              <input type="month" class="form-control" id="byMonth">
-                          </div>
-                      </form>
-                  </div>
+                        <form class="form-inline mb-0">
+                            <div class="form-group mr-2">
+                                <label for="byMonth" class="mr-2">By Month:</label>
+                                <input type="month" class="form-control" id="byMonth">
+                            </div>
+                            <div class="form-group mr-2">
+                                <label for="byYear" class="mr-2">By Year:</label>
+                                <input type="number" class="form-control" id="byYear" placeholde  r="YYYY">
+                            </div>
+                            <button type="button" class="btn btn-primary m-1">
+                                <i class="fa-solid fa-print mr-2 text-white"></i>
+                                <span>Print</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
                 </div>
                 <div class="card-body">
