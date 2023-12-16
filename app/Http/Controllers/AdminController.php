@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmployeeRequest;
 use App\Models\Rr;
 use App\Models\Mrt;
 use App\Models\Wiv;
@@ -214,7 +215,7 @@ class AdminController extends Controller
 
     // manage request
     public function ItemRequest(){
-        $requests = Request::all();
+        $requests = EmployeeRequest::all();
 
         return view('admin.adm-item-request', compact('requests'));
     }

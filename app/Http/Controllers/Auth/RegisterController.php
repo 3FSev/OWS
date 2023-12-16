@@ -109,16 +109,17 @@ class RegisterController extends Controller
         ]);
 
         // Notify superusers
-        // $superusers = User::where('role_id', 3)->get();
+        $superusers = User::where('role_id', 3)->get();
 
-        // foreach ($superusers as $superuser) {
-        //     try {
-        //         $superuser->notify(new NewUserNotification($user));
-        //         Log::info('Notification sent to superuser: ' . $superuser->id);
-        //     } catch (\Exception $e) {
-        //         Log::error('Error sending notification: ' . $e->getMessage());
-        //     }
-        // }
+        foreach ($superusers as $superuser) {
+            try {
+                Log::info('Processing user ID: ' . $superuser->id);
+                $superuser->notify(new NewUserNotification($user));
+                Log::info('Notification sent to superuser: ' . $superuser->id);
+            } catch (\Exception $e) {
+                Log::error('Error sending notification: ' . $e->getMessage());
+            }
+        }
 
         // Return the created user
         return $user;
