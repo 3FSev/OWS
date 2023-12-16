@@ -156,27 +156,6 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                <div class="card-header ">
-                  <div class="d-flex justify-content-center align-items-center">
-                    {{--  <h1 class="card-title text-bold">Warehouse Issued Voucher Report</h1>  --}}
-                    <div class="card-tools">
-                        <form class="form-inline mb-0">
-                            <div class="form-group mr-2">
-                                <label for="byMonth" class="mr-2">By Month:</label>
-                                <input type="month" class="form-control" id="byMonth">
-                            </div>
-                            <div class="form-group mr-2">
-                                <label for="byYear" class="mr-2">By Year:</label>
-                                <input type="number" class="form-control" id="byYear" placeholde  r="YYYY">
-                            </div>
-                            <button type="button" class="btn btn-primary m-1">
-                                <i class="fa-solid fa-print mr-2 text-white"></i>
-                                <span>Print</span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                </div>
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-hover">
                     <thead>
