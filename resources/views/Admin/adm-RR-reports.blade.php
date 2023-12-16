@@ -157,28 +157,19 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-header ">
-                  <div class="d-flex justify-content-center align-items-center">
-                    {{--  <h1 class="card-title text-bold">Warehouse Issued Voucher Report</h1>  --}}
+                  <div class="d-flex justify-content-end align-items-center m-0">
                     <div class="card-tools">
-                        <form class="form-inline mb-0">
-                            <div class="form-group mr-2">
-                                <label for="byMonth" class="mr-2">By Month:</label>
-                                <input type="month" class="form-control" id="byMonth">
-                            </div>
-                            <div class="form-group mr-2">
-                                <label for="byYear" class="mr-2">By Year:</label>
-                                <input type="number" class="form-control" id="byYear" placeholder="YYYY">
-                            </div>
-                            <button type="button" class="btn btn-primary m-1">
-                                <i class="fa-solid fa-print mr-2 text-white"></i>
-                                <span>Print</span>
-                            </button>
-                        </form>
-                    </div>
+                      <form class="form-inline mb-0">
+                        <label for="byMonth" class="mr-2">By Month:</label>
+                          <div class="form-group ">
+                              <input type="month" class="form-control" id="byMonth">
+                          </div>
+                      </form>
+                  </div>
                 </div>
                 </div>
                 <div class="card-body">
-                  <table id="example2" class="table table-bordered table-hover">
+                  <table id="example1" class="table table-bordered table-hover">
                     <thead>
                       <tr>
                         <th>WIV Number</th>
@@ -226,11 +217,34 @@
   </div>
 </body>
 <script>
-  $(function() {
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": [
+        {
+          extend: 'pdf',
+          title: 'Warehouse Issued Voucher Report',
+          filename: 'wiv_report',
+        },
+        {
+          extend: 'excel',
+          title: 'Warehouse Issued Voucher Report',
+          filename: 'wiv_report',
+        },
+        {
+          extend: 'print',
+          title: 'Warehouse Issued Voucher Reports',
+          filename: 'wiv_report',
+        },
+      ]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  
     $('#example2').DataTable({
       "paging": true,
-      "lengthChange": true,
-      "searching": true,
+      "lengthChange": false,
+      "searching": false,
       "ordering": true,
       "info": true,
       "autoWidth": false,
