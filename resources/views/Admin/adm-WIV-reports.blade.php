@@ -156,22 +156,6 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                <div class="card-header ">
-                  <div class="d-flex justify-content-center align-items-center">
-                    <div class="card-tools">
-                      <form class="form-inline mb-0" id="filter-form">
-                          <div class="form-group mr-2">
-                              <label for="byMonth" class="mr-2">By Month:</label>
-                              <input type="month" class="form-control" id="byMonth">
-                          </div>
-                          <button type="button" class="btn btn-primary m-1">
-                              <i class="fa-solid fa-print mr-2 text-white"></i>
-                              <span>Print</span>
-                          </button>
-                      </form>
-                  </div>
-                </div>
-                </div>
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-hover">
                     <thead>
@@ -246,7 +230,10 @@
           title: 'Warehouse Issued Voucher Reports',
           filename: 'wiv_report',
         },
-      ]
+      ],
+      "language": {
+        "search": "Filter"
+      }
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   
     $('#example2').DataTable({
@@ -259,7 +246,6 @@
       "responsive": true,
     });
   });
-  
 </script>
 
 </html>
