@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EmployeeRequest;
 use App\Models\Rr;
+use Carbon\Carbon;
 use App\Models\Mrt;
 use App\Models\Wiv;
 use App\Models\Item;
@@ -11,6 +11,7 @@ use App\Models\User;
 use BaconQrCode\Writer;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\EmployeeRequest;
 use BaconQrCode\Encoder\QrCode;
 use BaconQrCode\Renderer\Image\Png;
 use Illuminate\Support\Facades\Auth;
@@ -330,6 +331,24 @@ class AdminController extends Controller
 
     return response($qrCode)
         ->header('Content-Type', 'image/png');
+    }
+
+    public function getData(Request $request)
+    {
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        // Parse the month and year into a Carbon instance
+        $date = Carbon::createFromFormat('Y-m', $year . '-' . $month);
+
+        // Your logic to filter data based on $month and $year
+        // Fetch data from your database based on the selected month and year
+        $filteredData = Wiv::whereMonth('created_at', $date->month)
+            ->whereYear('created_at', $date->year)
+            ->get();
+
+        // Return the filtered data as JSON
+        return response()->json($filteredData);
     }
 
  }

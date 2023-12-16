@@ -9,9 +9,10 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NewUserNotification extends Notification
+class NewUserNotification extends Notification implements ShouldQueue
 {
     use Queueable;
+    protected $user;
 
     /**
      * Create a new notification instance.
@@ -28,7 +29,7 @@ class NewUserNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail', 'database'];
+        return ['mail'];
     }
 
     /**
@@ -54,8 +55,7 @@ class NewUserNotification extends Notification
         Log::info('toArray method called in NewUserNotification');
 
         return [
-            'message' => 'A new user has registered!',
-            'action_url' => url('/sup-create-user'),
+
         ];
     }
 }
