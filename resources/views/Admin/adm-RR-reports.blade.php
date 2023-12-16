@@ -141,7 +141,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Material Return Ticket</h1>
+              <h1 class="m-0">Receiving Report</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -167,7 +167,7 @@
                             </div>
                             <div class="form-group mr-2">
                                 <label for="byYear" class="mr-2">By Year:</label>
-                                <input type="number" class="form-control" id="byYear" placeholder="YYYY">
+                                <input type="number" class="form-control" id="byYear" placeholde  r="YYYY">
                             </div>
                             <button type="button" class="btn btn-primary m-1">
                                 <i class="fa-solid fa-print mr-2 text-white"></i>
@@ -178,7 +178,7 @@
                 </div>
                 </div>
                 <div class="card-body">
-                  <table id="example2" class="table table-bordered table-hover">
+                  <table id="example1" class="table table-bordered table-hover">
                     <thead>
                       <tr>
                         <th>WIV Number</th>
@@ -226,11 +226,34 @@
   </div>
 </body>
 <script>
-  $(function() {
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": [
+        {
+          extend: 'pdf',
+          title: 'Warehouse Issued Voucher Report',
+          filename: 'wiv_report',
+        },
+        {
+          extend: 'excel',
+          title: 'Warehouse Issued Voucher Report',
+          filename: 'wiv_report',
+        },
+        {
+          extend: 'print',
+          title: 'Warehouse Issued Voucher Reports',
+          filename: 'wiv_report',
+        },
+      ]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  
     $('#example2').DataTable({
       "paging": true,
-      "lengthChange": true,
-      "searching": true,
+      "lengthChange": false,
+      "searching": false,
       "ordering": true,
       "info": true,
       "autoWidth": false,
