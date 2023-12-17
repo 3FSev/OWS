@@ -29,13 +29,21 @@
                 
                 @foreach(auth()->user()->notifications()->unread()->get() as $notification)
                     <a href="{{ $notification->url }}" class="dropdown-item" onclick="markNotificationAsRead('{{ $notification->id }}')">
-                        <i class="fas fa-bell mr-2"></i> {{ $notification->message }}
-                        <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <i class="fas fa-bell mr-2"></i>
+                                {{ $notification->message }}
+                                <div class="text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</div>
+                            </div>
+                        </div>
                     </a>
-                    <div class="dropdown-divider"></div>
                 @endforeach
+                
+                <div class="dropdown-divider"></div>
             </div>
         </li>
+        
+        
     
         <!-- Other navbar items -->
         <!-- ... -->
