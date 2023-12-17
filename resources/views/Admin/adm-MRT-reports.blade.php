@@ -175,36 +175,44 @@
                     <thead>
                       <tr>
                         <th>MRT Number</th>
+                        <th>Date Created</th>
+                        <th>Prepared By</th>
+                        <th>Approved By</th>
                         <th>Employee Name</th>
                         <th>Department</th>
-                        <th>Item Description</th>
-                        <th>Quantity</th>
-                        <th>Total Cost</th>
-                        <th>Status</th>
-                        <th>Date Issuance</th>  
+                        <th>District</th>
+                        <th>Particulars</th>
+                        <th>Category</th>
+                        <th>Unit Cost</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                      </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                      </tr>
+                      @foreach ($mrts as $mrt)
+                          <tr>
+                            <td>{{$mrt->mrt_number}}</td>
+                            <td>{{ \Carbon\Carbon::parse($mrt->mrt_date)->format('M-d-y') }}</td>
+                            <td>{{$mrt->created_by}}</td>
+                            <td>{{$mrt->approved_by}}</td>
+                            <td>{{$mrt->user->name}}</td>
+                            <td>{{$mrt->user->department->name}}</td>
+                            <td>{{$mrt->user->district->name}}</td>
+                            <td>
+                              @foreach ($mrt->items as $item)
+                                  {{$item->name}}<br>
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach ($mrt->items as $item)
+                                  {{$item->category->name}}<br>
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach ($mrt->items as $item)
+                                  {{$item->unit_cost}}<br>
+                              @endforeach
+                            </td>
+                          </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

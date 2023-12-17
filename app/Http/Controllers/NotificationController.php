@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
+
 
 class NotificationController extends Controller
 {
@@ -15,9 +17,16 @@ class NotificationController extends Controller
 
     public function markAsRead($id)
     {
-        // Mark a specific notification as read
-        auth()->user()->unreadNotifications->where('id', $id)->markAsRead();
+        // Find the notification by ID and mark it as read
+        $notification = Notification::find($id);
 
-        return response()->json(['message' => 'Notification marked as read.']);
+        if ($notification) {
+            $notification->markAsRead();
+            return response()->json(['status' => 'success']);
+        }
+
+        return response()->json(['status' => 'error', 'message' => 'Notification not found.']);
     }
+
+
 }

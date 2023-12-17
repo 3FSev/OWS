@@ -6,6 +6,7 @@ use Log;
 use App\Models\User;
 use App\Models\District;
 use App\Models\Department;
+use App\Models\Notification;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
@@ -111,14 +112,19 @@ class RegisterController extends Controller
         // Notify superusers
         $superusers = User::where('role_id', 3)->get();
 
+        // Notify superusers
+        $superusers = User::where('role_id', 3)->get();
+
         foreach ($superusers as $superuser) {
-            try {
-                Log::info('Processing user ID: ' . $superuser->id);
-                $superuser->notify(new NewUserNotification($user));
-                Log::info('Notification sent to superuser: ' . $superuser->id);
-            } catch (\Exception $e) {
-                Log::error('Error sending notification: ' . $e->getMessage());
-            }
+            $notification = new Notification([
+                'user_id' => $superuser->id,
+                'message' => 'A new user has registered!',
+                'url' => url('/sup-create-user'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
+
+             $superuser->notify(new NewUserNotification($user));
         }
 
         // Return the created user

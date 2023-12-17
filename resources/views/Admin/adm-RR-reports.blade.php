@@ -160,37 +160,39 @@
                   <table id="example1" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>WIV Number</th>
-                        <th>Employee Name</th>
-                        <th>Department</th>
-                        <th>Item Description</th>
+                        <th>RR Number</th>
+                        <th>Date Created</th>
+                        <th>Prepared By</th>
+                        <th>Approved By</th>
+                        <th>Particulars</th>
                         <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Total Cost</th>
-                        <th>Date Issuance</th>
+                        <th>Unit Cost</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                      </tr>
-                      <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                      </tr>
+                      @foreach ($rrs as $rr)
+                          <tr>
+                            <td>{{$rr->rr_number}}</td>
+                            <td>{{ \Carbon\Carbon::parse($rr->rr_date)->format('M-d-y') }}</td>
+                            <td>{{$rr->created_by}}</td>
+                            <td>{{$rr->approved_by}}</td>
+                            <td>
+                              @foreach ($rr->items as $item)
+                                  {{$item->name}}<br>
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach ($rr->items as $item)
+                                  {{$item->category->name}}<br>
+                              @endforeach
+                            </td>
+                            <td>
+                              @foreach ($rr->items as $item)
+                                  {{$item->unit_cost}}<br>
+                              @endforeach
+                            </td>
+                          </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

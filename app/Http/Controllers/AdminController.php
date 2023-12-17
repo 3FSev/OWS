@@ -238,12 +238,14 @@ class AdminController extends Controller
     }
 
     public function MRTReports(){
+        $mrts = Mrt::whereNotNull('approved_at')->whereNotNull('received_at')->get();
 
-        return view('admin.adm-MRT-reports');
+        return view('admin.adm-MRT-reports', compact('mrts'));
     }
     public function RRReports(){
+        $rrs = Rr::whereNotNull('approved_at')->get();
 
-        return view('admin.adm-RR-reports');
+        return view('admin.adm-RR-reports', compact('rrs'));
     }
 
     public function storeRR(Request $request){
@@ -333,22 +335,5 @@ class AdminController extends Controller
         ->header('Content-Type', 'image/png');
     }
 
-    public function getData(Request $request)
-    {
-        $month = $request->input('month');
-        $year = $request->input('year');
-
-        // Parse the month and year into a Carbon instance
-        $date = Carbon::createFromFormat('Y-m', $year . '-' . $month);
-
-        // Your logic to filter data based on $month and $year
-        // Fetch data from your database based on the selected month and year
-        $filteredData = Wiv::whereMonth('created_at', $date->month)
-            ->whereYear('created_at', $date->year)
-            ->get();
-
-        // Return the filtered data as JSON
-        return response()->json($filteredData);
-    }
 
  }

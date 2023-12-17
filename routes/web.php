@@ -138,4 +138,4 @@ Route::get('/', function () {
 });
 
 Route::get('/notifications', [NotificationController::class, 'index']);
-Route::get('/notifications/{id}/mark-as-read', [NotificationController::class, 'markAsRead']);
+Route::post('/mark-notification-as-read/{id}', [NotificationController::class, 'markAsRead']);

@@ -162,6 +162,8 @@
                       <tr>
                         <th>WIV Number</th>
                         <th>Date Issuance</th>
+                        <th>Prepared By</th>
+                        <th>Approved By</th>
                         <th>Employee Name</th>
                         <th>Department</th>
                         <th>District</th>
@@ -175,6 +177,8 @@
                           <tr>
                             <td>{{$wiv->wiv_number}}</td>
                             <td>{{ \Carbon\Carbon::parse($wiv->wiv_date)->format('M-d-y') }}</td>
+                            <td>{{$wiv->created_by}}</td>
+                            <td>{{$wiv->approved_by}}</td>
                             <td>{{$wiv->user->name}}</td>
                             <td>{{$wiv->user->department->name}}</td>
                             <td>{{$wiv->user->district->name}}</td>

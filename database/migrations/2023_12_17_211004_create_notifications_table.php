@@ -12,12 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notifications', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('type');
-            $table->uuidMorphs('notifiable');
-            $table->text('data');
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->text('message');
+            $table->string('url')->nullable();
+            $table->string('triggered_by')->nullable();
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

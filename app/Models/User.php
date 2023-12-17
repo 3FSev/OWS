@@ -83,6 +83,11 @@ class User extends Authenticatable
         return $this->hasMany(UserActivity::class);
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
     public function routeNotificationForDatabase()
     {
         return $this->id;

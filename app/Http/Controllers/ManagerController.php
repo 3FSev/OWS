@@ -66,7 +66,7 @@ class ManagerController extends Controller
         $wiv->save();
 
         foreach($wiv->items as $item){
-            $item->status = "Assigned to {{$wiv->user->name}}";
+            $item->status = "Assigned to {$wiv->user->name}";
             $item->save();
         }
 
