@@ -169,6 +169,7 @@
                               <th>District</th>
                               <th>Request Type</th>
                               <th>Particulars</th>
+                              <th>Action</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -179,6 +180,18 @@
                                 <td>{{ $request->user->district->name }}</td>
                                 <td>{{ $request->request_type }}</td>
                                 <td>{{ $request->details }}</td>
+                                <td>
+                                  <div class="text-center">
+                                      <a href=""
+                                            class="btn btn-success">
+                                            <i class="fas fa-check" style="color: white;"></i>
+                                        </a>
+                                        <a href="#" type="button" class="btn btn-danger">
+                                            <i class="fas fa-times fa-lg" style="color: white;"></i>
+                                        </a>
+                                    </form>
+                                </div>
+                                </td>
                             </tr>
                         @endforeach
                       </tbody>
