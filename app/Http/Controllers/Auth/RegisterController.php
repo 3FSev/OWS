@@ -81,7 +81,7 @@ class RegisterController extends Controller
                 'required',
                 'string',
                 'min:6',
-                'confirmed', // You may add 'confirmed' rule if you have password confirmation field in your form
+                'confirmed',
                 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]+$/',
             ],
         ];
@@ -94,13 +94,10 @@ class RegisterController extends Controller
         // Validate the input data
         $validator = Validator::make($data, $rules, $messages);
         
-        // Check if the validation fails
         if ($validator->fails()) {
-            // Throw a validation exception
             throw ValidationException::withMessages($validator->errors()->toArray());
         }
         
-        // If validation passes, create the user
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -109,8 +106,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        // Notify superusers
-        $superusers = User::where('role_id', 3)->get();
 
         // Notify superusers
         $superusers = User::where('role_id', 3)->get();

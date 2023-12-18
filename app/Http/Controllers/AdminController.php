@@ -10,6 +10,7 @@ use App\Models\Item;
 use App\Models\User;
 use BaconQrCode\Writer;
 use App\Models\Category;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\EmployeeRequest;
 use BaconQrCode\Encoder\QrCode;
@@ -148,6 +149,19 @@ class AdminController extends Controller
             $wiv->items()->attach($item);
         }
 
+        $managers = User::where('role_id', 4)->get();
+        $user = Auth::user();
+
+        foreach ($managers as $manager) {
+            $notification = new Notification([
+                'user_id' => $manager->id,
+                'message' => "{$user->name} has sent a new WIV request",
+                'url' => url('/manager/man-wiv-req'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
+        }
+
         return redirect()->back();
     }
 
@@ -189,6 +203,19 @@ class AdminController extends Controller
             if ($usable) {
                 $item->update(['quantity' => 1]);
             }
+        }
+
+        $managers = User::where('role_id', 4)->get();
+        $user = Auth::user();
+
+        foreach ($managers as $manager) {
+            $notification = new Notification([
+                'user_id' => $manager->id,
+                'message' => "{$user->name} has sent a new MRT request",
+                'url' => url('/manager/man-mrt-req'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
         }
 
         return redirect()->back();
@@ -305,6 +332,19 @@ class AdminController extends Controller
             $item->save();
 
             $rr->items()->attach($item);
+        }
+
+        $managers = User::where('role_id', 4)->get();
+        $user = Auth::user();
+
+        foreach ($managers as $manager) {
+            $notification = new Notification([
+                'user_id' => $manager->id,
+                'message' => "$user->name has sent a new RR request",
+                'url' => url('/manager/man-rr-req'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
         }
 
         return redirect()->back();

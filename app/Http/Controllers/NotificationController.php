@@ -9,7 +9,6 @@ class NotificationController extends Controller
 {
     public function index()
     {
-        // Fetch unread notifications for the authenticated user
         $notifications = auth()->user()->unreadNotifications;
 
         return response()->json(['notifications' => $notifications]);
@@ -17,7 +16,6 @@ class NotificationController extends Controller
 
     public function markAsRead($id)
     {
-        // Find the notification by ID and mark it as read
         $notification = Notification::find($id);
 
         if ($notification) {

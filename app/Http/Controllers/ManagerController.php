@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use App\Models\Mrt;
 use App\Models\Wiv;
 use App\Models\Item;
+use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -70,6 +72,19 @@ class ManagerController extends Controller
             $item->save();
         }
 
+        $admins = User::where('role_id', 2)->get();
+        $user = Auth::user();
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "Request for (WIV{$wiv->wiv_number}) has been approved by {$user->name}",
+                'url' => url('/admin-create-wiv'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
+        }
+
         return redirect()->route('WivRequest.man')->with('success','');
     }
 
@@ -85,6 +100,19 @@ class ManagerController extends Controller
         foreach($wiv->items as $item){
             $item->quantity = 1;
             $item->save();
+        }
+
+        $admins = User::where('role_id', 2)->get();
+        $user = Auth::user();
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "Request for (WIV{$wiv->wiv_number}) has been rejected by {$user->name}",
+                'url' => url('/admin-create-wiv'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
         }
 
         return redirect()->route('WivRequest.man')->with('success','');
@@ -119,6 +147,19 @@ class ManagerController extends Controller
             }
         }
 
+        $admins = User::where('role_id', 2)->get();
+        $user = Auth::user();
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "Request for (MRT{$mrt->mrt_number}) has been approved by {$user->name}",
+                'url' => url('/admin-create-mrt'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
+        }
+
         return redirect('manager.man-mrt-req');
     }
 
@@ -138,6 +179,19 @@ class ManagerController extends Controller
             if ($wiv && $wiv->items->contains($item->id)) {
                 $wiv->items()->updateExistingPivot($item->id, ['quantity' => 1]);
             }
+        }
+
+        $admins = User::where('role_id', 2)->get();
+        $user = Auth::user();
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "Request for (MRT{$mrt->mrt_number}) has been rejected by {$user->name}",
+                'url' => url('/admin-create-mrt'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
         }
     
         return redirect('manager.man-mrt-req');
@@ -164,6 +218,19 @@ class ManagerController extends Controller
         $rr->approved_at = now();
         $rr->approved_by = $user->name;
         $rr->save();
+        
+        $admins = User::where('role_id', 2)->get();
+        $user = Auth::user();
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "Request for (RR {$rr->rr_number}) has been approved by {$user->name}",
+                'url' => url('/admin/adm-create-rr'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
+        }
 
         return redirect()->route('RRrequest.man')->with('success','');
     }
@@ -182,6 +249,19 @@ class ManagerController extends Controller
             $item->status = "rejected";
             $item->quantity = 0;
             $item->save();
+        }
+
+        $admins = User::where('role_id', 2)->get();
+        $user = Auth::user();
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "Request for (RR{$rr->rr_number}) has been rejected by {$user->name}",
+                'url' => url('/admin-create-rr'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
         }
 
         return redirect()->route('RRrequest.man')->with('success','');

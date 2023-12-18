@@ -11,23 +11,23 @@
   <ul class="navbar-nav ml-auto">
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#" id="notificationDropdownToggle">
-            <i class="far fa-bell"></i>
-            <span id="notificationBadge" class="badge badge-warning navbar-badge">{{ auth()->user()->unreadNotifications->count() }}</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="notificationDropdown">
-            <span class="dropdown-item dropdown-header" id="notificationCount">{{ auth()->user()->unreadNotifications->count() }} Notifications</span>
-            <div class="dropdown-divider"></div>
-    
-            @foreach (auth()->user()->unreadNotifications as $notification)
-                <a href="{{ $notification->url }}" class="dropdown-item">
-                    <i class="fas fa-bell mr-2"></i> {{ $notification->description }}
-                    <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
-                </a>
-                <div class="dropdown-divider"></div>
-            @endforeach
-        </div>
-    </li>
+      <a class="nav-link" data-toggle="dropdown" href="#" id="notificationDropdownToggle">
+          <i class="far fa-bell"></i>
+          <span id="notificationBadge" class="badge badge-warning navbar-badge">{{ auth()->user()->unreadNotifications->count() }}</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" id="notificationDropdown">
+          <span class="dropdown-item dropdown-header" id="notificationCount">{{ auth()->user()->unreadNotifications->count() }} Notifications</span>
+          <div class="dropdown-divider"></div>
+          
+          @foreach(auth()->user()->notifications()->unread()->get() as $notification)
+              <a href="{{ $notification->url }}" class="dropdown-item" onclick="markNotificationAsRead('{{ $notification->id }}')">
+                  <i class="fas fa-bell mr-2"></i> {{ $notification->message }}
+                  <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+              </a>
+              <div class="dropdown-divider"></div>
+          @endforeach
+      </div>
+  </li>
     
     <li class="nav-item">
       <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -62,3 +62,19 @@
   </ul>
 </nav>
 <!-- /.navbar -->
+<script>
+  function markNotificationAsRead(notificationId) {
+      // Make an AJAX request to mark the notification as read
+      $.ajax({
+          url: '/mark-notification-as-read/' + notificationId,
+          method: 'POST',
+          data: {
+              _token: '{{ csrf_token() }}',
+          },
+          success: function () {
+              // Update the badge count
+              $('#notificationBadge').text(parseInt($('#notificationBadge').text()) - 1);
+          },
+      });
+  }
+</script>

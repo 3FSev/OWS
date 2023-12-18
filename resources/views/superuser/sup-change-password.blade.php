@@ -69,7 +69,7 @@
 <title>Dashboard</title>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-  @include('superuser/nav-bar')
+  @include('theme/nav-bar')
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-green elevation-4">
   <!-- Brand Logo -->
