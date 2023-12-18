@@ -242,6 +242,9 @@
                                                                 class="btn btn-success @if($user->approved_at !== null && $user->deleted_at === null) disabled @endif">
                                                                 <i class="fas fa-check" style="color: white;"></i>
                                                             </a>
+                                                            <a href="#" class="btn btn-danger">
+                                                                <i class="fas fa-ban deactivated-icon" style="color: white;"></i>
+                                                            </a>
                                                             <a href="{{ route('EditUserList.sup', $user->id) }}" type="button" class="btn btn-warning btn-edit">
                                                                 <i class="fas fa-pencil-alt" style="color: white;"></i>
                                                             </a>
