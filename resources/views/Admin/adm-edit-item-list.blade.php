@@ -203,7 +203,7 @@
                     </a>
                   </div>
                   <div class="col-md-6 text-right">
-                    <button type="submit" class="btn btn-success toastEditItem">
+                    <button type="submit" class="btn btn-success">
                       <i class="fas fa-check"></i> Update
                     </button>
                   </div>

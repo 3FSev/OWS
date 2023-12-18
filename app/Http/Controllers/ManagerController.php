@@ -85,7 +85,7 @@ class ManagerController extends Controller
             $notification->save();
         }
 
-        return redirect()->route('WivRequest.man')->with('success','');
+        return redirect()->route('WivRequest.man')->with('success','Warehouse Issued Voucher approved successfully!');
     }
 
     public function WIVreject($wiv_id)
@@ -115,7 +115,7 @@ class ManagerController extends Controller
             $notification->save();
         }
 
-        return redirect()->route('WivRequest.man')->with('success','');
+        return redirect()->route('WivRequest.man')->with('error','Warehouse Issued Voucher rejected successfully!');
     }
 
 
@@ -160,7 +160,7 @@ class ManagerController extends Controller
             $notification->save();
         }
 
-        return redirect('manager.man-mrt-req');
+        return redirect('manager.man-mrt-req')->with('success', ' Material Return Ticket approved successfully!');
     }
 
     public function MrtReject($mrt_id){
@@ -194,7 +194,7 @@ class ManagerController extends Controller
             $notification->save();
         }
     
-        return redirect('manager.man-mrt-req');
+        return redirect('manager.man-mrt-req')->with('error','Material Return Ticket rejected successfully!');
     }
     
 
@@ -232,7 +232,7 @@ class ManagerController extends Controller
             $notification->save();
         }
 
-        return redirect()->route('RRrequest.man')->with('success','');
+        return redirect()->route('RRrequest.man')->with('success','Receiving Report successfully approved!');
     }
 
     public function RRreject($rr_id){
@@ -264,7 +264,7 @@ class ManagerController extends Controller
             $notification->save();
         }
 
-        return redirect()->route('RRrequest.man')->with('success','');
+        return redirect()->route('RRrequest.man')->with('error','Receiving Report rejected successfully!');
     }
     
     public function AccountSettings()

@@ -28,7 +28,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item ">
-              <a href="{{ route('Dashboard.adm') }}" class="nav-link">
+              <a href="{{ route('Dashboard.adm') }}" class="nav-link ">
                 <i class="nav-icon fas fa-home nav-icon"></i>
                 <p>
                   Dashboard
@@ -43,23 +43,6 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{{ route('ItemList.adm') }}" class="nav-link">
-                <i class="nav-icon fas fa-box-archive nav-icon"></i>
-                <p>
-                  Manage Stock
-                </p>
-              </a>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('CreateRR.adm') }}" class="nav-link">
-                <i class="nav-icon fas fa-file nav-icon"></i>
-                <p>
-                  Manage RR
-                </p>
-              </a>
-            </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('CreateWIV.adm') }}" class="nav-link">
@@ -69,7 +52,6 @@
                 </p>
               </a>
             </li>
-
             <li class="nav-item">
               <a  href="{{ route('CreateMRT.adm') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-ticket-simple nav-icon"></i>
@@ -77,6 +59,36 @@
                   Manage MRT
                 </p>
               </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('ItemList.adm') }}" class="nav-link">
+                <i class="nav-icon fas fa-box-archive nav-icon"></i>
+                <p>
+                  Manage Stock
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('CreateRR.adm') }}" class="nav-link ">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>Receiving Report</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('CreateItemCategories.adm') }}" class="nav-link ">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>Create Category</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('ItemList.adm') }}" class="nav-link ">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p>Item List</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
               <a  href="{{ route('ItemRequest.adm') }}" class="nav-link">
