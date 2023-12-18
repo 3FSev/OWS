@@ -26,8 +26,6 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
                             <a href="{{ route('dashboard.sup') }}" class="nav-link">
                                 <i class="nav-icon fas fa-home nav-icon"></i>
@@ -90,6 +88,23 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
+                    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span style="color: white" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    
+                    @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span style="color: white" aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="card card-default">
                         <div class="card-header card-header-custom">
                             <h3 class="card-title font-weight-bold">Edit User Information</h3>

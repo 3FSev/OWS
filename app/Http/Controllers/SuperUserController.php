@@ -109,7 +109,7 @@ class SuperUserController extends Controller
         $department->name = $request->input('department');
         $department->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Department created successfully!');
     }
 
     public function EditUser(Request $request, $user_id){
@@ -142,7 +142,7 @@ class SuperUserController extends Controller
         $district->name = $request->input('district');
         $district->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success','District created successfully!');
     }
 
     public function updateDistrict(Request $request, $id){
@@ -181,21 +181,21 @@ class SuperUserController extends Controller
     {
         $user = User::findOrFail($user_id);
         $user->delete();
-        return redirect()->back()->with('warning','User deleted successfully');
+        return redirect()->back()->with('warning','User deleted successfully!');
     }
 
     public function destroyDepartment($department_id)
     {
         $department = Department::findOrFail($department_id);
         $department->delete();
-        return redirect()->back()->with('warning','Department deleted successfully');
+        return redirect()->back()->with('success','Department deleted successfully!');
     }
 
     public function destroyDistrict($district_id)
     {
         $district = District::findOrFail($district_id);
         $district->delete();
-        return redirect()->back()->with('warning','District deleted successfully');
+        return redirect()->back()->with('success','District deleted successfully!');
     }
 
     public function restore($user_id)
