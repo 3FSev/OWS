@@ -14,9 +14,8 @@ use Illuminate\Http\Request;
 use App\Models\EmployeeRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\NewRrNotification;
-use Endroid\QrCode\QrCode;
-use Endroid\QrCode\ErrorCorrectionLevel;
-use Endroid\QrCode\Encoding\Encoding;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\File;
 
 
 
@@ -300,7 +299,7 @@ class AdminController extends Controller
         $admins = User::whereIn('role_id', [2, 3])->get();
         $rrs = Rr::whereNotNull('approved_at')->get();
 
-        return view('admin.adm-RR-reports', compact('rrs','managers','admins'));
+        return view('admin.adm-RR-reports', compact('rrs'));
     }
 
     public function storeRR(Request $request){
@@ -390,14 +389,12 @@ class AdminController extends Controller
         // Construct the URL based on the specified route
         $url = route('ItemHistory.adm', ['item_id' => $item_id]);
 
-        // Create a QrCode instance
-        $qrCode = new QrCode($url);
+        // Generate the QR code
+        $qrCode = QrCode::size(300)->generate($url);
 
-        // Set error correction level
-        $qrCode->setErrorCorrection('low');
-
-        // Return the raw binary image data in the response
-        return response($qrCode->writeString())->header('Content-Type', $qrCode->getContentType());
+        // Output the QR code as an image
+        header('Content-Type: image/png');
+        echo $qrCode;
     }
 
 
