@@ -156,17 +156,17 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header text-center">
-                  <form class="form-inline mb-0 d-inline-flex align-items-center">
-                    <div class="form-group">
-                      <label class="m-1">Date range:</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">
-                            <i class="far fa-calendar-alt"></i>
-                          </span>
-                        </div>
-                        <input type="text" class="form-control float-right" id="reservation">
-                      </div>
+                  <form class="form-inline mb-0 align-items-center">
+                    <div class="form-group mr-2">
+                      <label class="mr-2">Date Range</labels>
+                    </div>
+                    <div class="form-group mr-2">
+                      <p for="fromDate" class="mr-2 my-auto">From:</p>
+                      <input type="date" class="form-control" id="fromDate">
+                    </div>
+                    <div class="form-group mr-2 align-items-center">
+                      <p for="toDate" class="mr-2 my-auto">To:</p>
+                      <input type="date" class="form-control" id="toDate">
                     </div>
                       <div class="form-group m-2 ">
                         <label class="m-1">Prepared By:</label>
@@ -212,7 +212,7 @@
                       @foreach ($wivs as $wiv)
                           <tr>
                             <td>{{$wiv->wiv_number}}</td>
-                            <td>{{ \Carbon\Carbon::parse($wiv->wiv_date)->format('m-d-y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($wiv->wiv_date)->format('m/d/Y') }}</td>
                             <td>{{$wiv->created_by}}</td>
                             <td>{{$wiv->approved_by}}</td>
                             <td>{{$wiv->user->name}}</td>
@@ -267,7 +267,7 @@
           extend: 'excel',
           title: 'Warehouse Issued Voucher Report',
           filename: 'wiv_report',
-          messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
           messageBottom: 'Printed By: Sample Name',
         },
         {
@@ -281,7 +281,7 @@
       "language": {
         "search": "Filter"
       },
-    });
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
     // Handle change event for admin-select
     $('.admin-select').on('change', function () {
@@ -294,6 +294,29 @@
       var selectedManagers = $(this).val();
       table.column(3).search(selectedManagers.join('|'), true, false).draw();
     });
+
+    // Handle date range event
+    $('#fromDate, #toDate').on('change', function () {
+      var fromDate = $('#fromDate').val();
+      var toDate = $('#toDate').val();
+
+      fromDate = fromDate ? moment(fromDate, 'YYYY-MM-DD').format('YYYY-MM-DD') : '';
+      toDate = toDate ? moment(toDate, 'YYYY-MM-DD').format('YYYY-MM-DD') : '';
+
+      // Perform date range search
+      table.draw(); // Clear previous search
+      if (fromDate && toDate) {
+        $.fn.dataTable.ext.search.push(
+          function (settings, data, dataIndex) {
+            var date = moment(data[1], 'MM/DD/YYYY');
+            return date.isBetween(moment(fromDate), moment(toDate), null, '[]');
+          }
+        );
+      }
+      table.draw();
+      $.fn.dataTable.ext.search.pop();
+    });
+
 
     // DataTable initialization for example2
     $('#example2').DataTable({
@@ -322,7 +345,7 @@
       timePicker: true,
       timePickerIncrement: 30,
       locale: {
-        format: 'MM/DD/YYYY hh:mm A'
+        format: 'MM/DD/YYYY'
       }
     });
   });

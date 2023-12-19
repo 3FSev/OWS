@@ -289,14 +289,18 @@ class AdminController extends Controller
     }
 
     public function MRTReports(){
+        $managers = User::whereIn('role_id', [3, 4])->get();
+        $admins = User::whereIn('role_id', [2, 3])->get();
         $mrts = Mrt::whereNotNull('approved_at')->whereNotNull('received_at')->get();
 
-        return view('admin.adm-MRT-reports', compact('mrts'));
+        return view('admin.adm-MRT-reports', compact('mrts','managers','admins'));
     }
     public function RRReports(){
+        $managers = User::whereIn('role_id', [3, 4])->get();
+        $admins = User::whereIn('role_id', [2, 3])->get();
         $rrs = Rr::whereNotNull('approved_at')->get();
 
-        return view('admin.adm-RR-reports', compact('rrs'));
+        return view('admin.adm-RR-reports', compact('rrs','managers','admins'));
     }
 
     public function storeRR(Request $request){

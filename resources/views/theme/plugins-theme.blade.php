@@ -4,6 +4,7 @@
 <!-- Include the AdminLTE CSS and a newer version of Font Awesome (from a CDN) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <!-- Example: Font Awesome v6.4.0 -->
 
 <!-- Include the AdminLTE JavaScript (if needed) -->
@@ -102,3 +103,4 @@
 <script src="{{ asset('plugins/password-show-hide/password-show-hide.js') }}"></script>
 <!-- Datepicker -->
 <script src="{{ asset('plugins/datepicker/datepicker.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>

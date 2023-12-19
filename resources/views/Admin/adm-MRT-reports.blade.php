@@ -171,40 +171,38 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header text-center">
-                  <form class="form-inline mb-0 d-inline-flex align-items-center">
-                    <div class="form-group">
-                      <label class="m-1">Date range:</label>
+                  <form class="form-inline mb-0 align-items-center">
+                    <div class="form-group mr-2">
+                      <label class="mr-2">Date Range</labels>
+                    </div>
+                    <div class="form-group mr-2">
+                      <p for="date" class="mr-2 my-auto">From:</p>
+                      <input type="date" class="form-control" id="date">
+                    </div>
+                    <div class="form-group mr-2 align-items-center">
+                      <p for="date" class="mr-2 my-auto">To:</p>
+                      <input type="date" class="form-control" id="date">
+                    </div>
+                    <div class="form-group m-2 ">
+                      <label class="m-1">Prepared By:</label>
                       <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">
-                            <i class="far fa-calendar-alt"></i>
-                          </span>
-                        </div>
-                        <input type="text" class="form-control float-right" id="reservation">
+                        <select class="form-control select2 admin-select" name="admin-select" multiple="multiple" data-placeholder="Select prepared by" style="width: 200px;">
+                          @foreach ($admins as $admin)
+                              <option>{{$admin->name}}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
-                      <div class="form-group m-2 ">
-                        <label class="m-1">Prepaired By:</label>
-                        <div class="input-group">
-                          <select class="form-control select2 " multiple="multiple" data-placeholder="Select a State" style="width: 200px;">
-                            <option>Manager</option>
-                            <option>Admin</option>
-                            <option>Manager</option>
-                            <option>Admin</option>
-                            <option>Manager</option>
-                            <option>Admin</option>
-                          </select>
-                        </div>
+                    <div class="form-group">
+                      <label class="m-1">Approved By:</label>
+                      <div class="input-group">
+                        <select class="form-control select2 manager-select" name="manager-select" multiple="multiple" data-placeholder="Select approved by" style="width: 200px;">
+                          @foreach ($managers as $manager)
+                              <option>{{$manager->name}}</option>
+                          @endforeach
+                        </select>
                       </div>
-                      <div class="form-group">
-                        <label class="m-1">Approved By:</label>
-                        <div class="input-group">
-                          <select class="form-control select2 " multiple="multiple" data-placeholder="Select a State" style="width: 200px;">
-                            <option>Manager</option>
-                            <option>Admin</option>
-                          </select>
-                        </div>
-                      </div>
+                    </div>
                   </form>
                 </div>
                 <div class="card-body">
@@ -227,7 +225,7 @@
                       @foreach ($mrts as $mrt)
                           <tr>
                             <td>{{$mrt->mrt_number}}</td>
-                            <td>{{ \Carbon\Carbon::parse($mrt->mrt_date)->format('M-d-y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($mrt->mrt_date)->format('m/d/Y') }}</td>
                             <td>{{$mrt->created_by}}</td>
                             <td>{{$mrt->approved_by}}</td>
                             <td>{{$mrt->user->name}}</td>
@@ -296,6 +294,40 @@
         "search": "Filter"
       },
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+    // Handle change event for admin-select
+    $('.admin-select').on('change', function () {
+      var selectedAdmins = $(this).val();
+      table.column(2).search(selectedAdmins.join('|'), true, false).draw();
+    });
+
+    // Handle change event for manager-select
+    $('.manager-select').on('change', function () {
+      var selectedManagers = $(this).val();
+      table.column(3).search(selectedManagers.join('|'), true, false).draw();
+    });
+
+    // Handle date range event
+    $('#fromDate, #toDate').on('change', function () {
+      var fromDate = $('#fromDate').val();
+      var toDate = $('#toDate').val();
+
+      fromDate = fromDate ? moment(fromDate, 'YYYY-MM-DD').format('YYYY-MM-DD') : '';
+      toDate = toDate ? moment(toDate, 'YYYY-MM-DD').format('YYYY-MM-DD') : '';
+
+      // Perform date range search
+      table.draw(); // Clear previous search
+      if (fromDate && toDate) {
+        $.fn.dataTable.ext.search.push(
+          function (settings, data, dataIndex) {
+            var date = moment(data[1], 'MM/DD/YYYY');
+            return date.isBetween(moment(fromDate), moment(toDate), null, '[]');
+          }
+        );
+      }
+      table.draw();
+      $.fn.dataTable.ext.search.pop();
+    });
   
   $('#example2').DataTable({
     "paging": true,
@@ -314,17 +346,6 @@
       $('.select2bs4').select2({
         theme: 'bootstrap4'
       })
-  
-      $('#reservation').daterangepicker()
-      //Date range picker with time picker
-      $('#reservationtime').daterangepicker({
-        timePicker: true,
-        timePickerIncrement: 30,
-        locale: {
-          format: 'MM/DD/YYYY hh:mm A'
-        }
-      })
-      
 });
 
 </script>
