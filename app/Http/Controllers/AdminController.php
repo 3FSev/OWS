@@ -8,17 +8,17 @@ use App\Models\Mrt;
 use App\Models\Wiv;
 use App\Models\Item;
 use App\Models\User;
-use BaconQrCode\Writer;
 use App\Models\Category;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\EmployeeRequest;
-use BaconQrCode\Encoder\QrCode;
-use BaconQrCode\Renderer\Image\Png;
 use Illuminate\Support\Facades\Auth;
-use BaconQrCode\Renderer\ImageRenderer;
 use App\Notifications\NewRrNotification;
-use BaconQrCode\Renderer\Image\Png as PngRenderer;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\Encoding\Encoding;
+
+
 
 
 class AdminController extends Controller
@@ -281,9 +281,11 @@ class AdminController extends Controller
 
     // manage reports
     public function WIVReports(){
+        $managers = User::whereIn('role_id', [3, 4])->get();
+        $admins = User::whereIn('role_id', [2, 3])->get();
         $wivs = Wiv::whereNotNull('approved_at')->whereNotNull('received_at')->get();
 
-        return view('admin.adm-WIV-reports', compact('wivs'));
+        return view('admin.adm-WIV-reports', compact('wivs','managers','admins'));
     }
 
     public function MRTReports(){
@@ -381,21 +383,19 @@ class AdminController extends Controller
 
     public function generateBarcode($item_id)
     {
-        // Fetch the item details based on the provided item ID
-    $item = Item::findOrFail($item_id);
+        // Construct the URL based on the specified route
+        $url = route('ItemHistory.adm', ['item_id' => $item_id]);
 
-    // Create a QR code renderer
-    $renderer = new ImageRenderer(new PngRenderer());
+        // Create a QrCode instance
+        $qrCode = new QrCode($url);
 
-    // Create a QR code writer
-    $writer = new Writer($renderer);
+        // Set error correction level
+        $qrCode->setErrorCorrection('low');
 
-    // Generate the QR code using the item details (convert to JSON or use a specific attribute)
-    $qrCode = $writer->writeString($item->toJson());
-
-    return response($qrCode)
-        ->header('Content-Type', 'image/png');
+        // Return the raw binary image data in the response
+        return response($qrCode->writeString())->header('Content-Type', $qrCode->getContentType());
     }
+
 
 
  }

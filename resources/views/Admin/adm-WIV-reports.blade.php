@@ -169,24 +169,22 @@
                       </div>
                     </div>
                       <div class="form-group m-2 ">
-                        <label class="m-1">Prepaired By:</label>
+                        <label class="m-1">Prepared By:</label>
                         <div class="input-group">
-                          <select class="form-control select2 " multiple="multiple" data-placeholder="Select a State" style="width: 200px;">
-                            <option>Manager</option>
-                            <option>Admin</option>
-                            <option>Manager</option>
-                            <option>Admin</option>
-                            <option>Manager</option>
-                            <option>Admin</option>
+                          <select class="form-control select2 admin-select" name="admin-select" multiple="multiple" data-placeholder="Select prepared by" style="width: 200px;">
+                            @foreach ($admins as $admin)
+                                <option>{{$admin->name}}</option>
+                            @endforeach
                           </select>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="m-1">Approved By:</label>
                         <div class="input-group">
-                          <select class="form-control select2 " multiple="multiple" data-placeholder="Select a State" style="width: 200px;">
-                            <option>Manager</option>
-                            <option>Admin</option>
+                          <select class="form-control select2 manager-select" name="manager-select" multiple="multiple" data-placeholder="Select approved by" style="width: 200px;">
+                            @foreach ($managers as $manager)
+                                <option>{{$manager->name}}</option>
+                            @endforeach
                           </select>
                         </div>
                       </div>
@@ -214,7 +212,7 @@
                       @foreach ($wivs as $wiv)
                           <tr>
                             <td>{{$wiv->wiv_number}}</td>
-                            <td>{{ \Carbon\Carbon::parse($wiv->wiv_date)->format('M-d-y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($wiv->wiv_date)->format('m-d-y') }}</td>
                             <td>{{$wiv->created_by}}</td>
                             <td>{{$wiv->approved_by}}</td>
                             <td>{{$wiv->user->name}}</td>
@@ -251,39 +249,53 @@
   </div>
 </body>
 <script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-        "buttons": [
-          {
-            extend: 'pdf',
-            title: 'Warehouse Issued Voucher Report',
-            filename: 'wiv_report',
-            messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-            messageBottom: 'Printed By: Eubert Novencido',
-          },
-          {
-            extend: 'excel',
-            title: 'Warehouse Issued Voucher Report',
-            filename: 'wiv_report',
-            messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
-            messageBottom: 'Printed By: Sample Name',
-          },
-          {
-            extend: 'print',
-            title: 'Warehouse Issued Voucher Reports',
-            filename: 'wiv_report',
-            messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
-            messageBottom: 'Printed By: Sample Name',
-          },
-        ],
-        "language": {
-          "search": "Filter"
+  $(function () {
+    // DataTable initialization
+    var table = $("#example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": [
+        {
+          extend: 'pdf',
+          title: 'Warehouse Issued Voucher Report',
+          filename: 'wiv_report',
+          messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageBottom: 'Printed By: Eubert Novencido',
         },
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    
+        {
+          extend: 'excel',
+          title: 'Warehouse Issued Voucher Report',
+          filename: 'wiv_report',
+          messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageBottom: 'Printed By: Sample Name',
+        },
+        {
+          extend: 'print',
+          title: 'Warehouse Issued Voucher Reports',
+          filename: 'wiv_report',
+          messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageBottom: 'Printed By: Sample Name',
+        },
+      ],
+      "language": {
+        "search": "Filter"
+      },
+    });
+
+    // Handle change event for admin-select
+    $('.admin-select').on('change', function () {
+      var selectedAdmins = $(this).val();
+      table.column(2).search(selectedAdmins.join('|'), true, false).draw();
+    });
+
+    // Handle change event for manager-select
+    $('.manager-select').on('change', function () {
+      var selectedManagers = $(this).val();
+      table.column(3).search(selectedManagers.join('|'), true, false).draw();
+    });
+
+    // DataTable initialization for example2
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
@@ -294,26 +306,27 @@
       "responsive": true,
     });
 
-    //Initialize Select2 Elements
-    $('.select2').select2()
+    // Initialize Select2 Elements
+    $('.select2').select2();
 
-    //Initialize Select2 Elements
+    // Initialize Select2 Elements
     $('.select2bs4').select2({
       theme: 'bootstrap4'
-    })
+    });
 
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
+    // Date range picker initialization
+    $('#reservation').daterangepicker();
+
+    // Date range picker with time picker initialization
     $('#reservationtime').daterangepicker({
       timePicker: true,
       timePickerIncrement: 30,
       locale: {
         format: 'MM/DD/YYYY hh:mm A'
       }
-    })
-  
+    });
   });
-
 </script>
+
 
 </html>

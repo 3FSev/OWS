@@ -204,7 +204,7 @@
                                   <button type="submit"  class="btn btn-danger">
                                     <i class="fas fa-trash"></i>
                                   </button>
-                                  <a class="btn btn-primary" href="{{ route('generate.barcode', $item->id) }}" target="_blank">
+                                  <a class="btn btn-primary" href="{{ route('generate.barcode', $item->id) }}">
                                     <i class="fa-solid fa-print"></i>
                                 </a>
                               </div>
@@ -237,6 +237,18 @@
       "responsive": true,
     });
   });
+
+  function printQRCode(event) {
+    event.preventDefault();
+
+    // Open the generated QR code in a new tab
+    var newTab = window.open(event.currentTarget.href, '_blank');
+
+    newTab.onload = function() {
+        // Trigger the print action in the new tab
+        newTab.print();
+    };
+  }
 </script>
 
 </html>
