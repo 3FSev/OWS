@@ -268,6 +268,25 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function RejectItemRequest($request_id){
+        $manager = Auth::user();
+        
+        $itemRequest = EmployeeRequest::where('id', $request_id)->first();
+        $itemRequest->request_status = "Rejected by {$manager->name}";
+        $itemRequest->save();
+
+        
+        $notification = new Notification([
+            'user_id' => $itemRequest->user_id,
+            'message' => "Request for item has been rejected by {$manager->name}",
+            'url' => url('/employee/em-item-req'),
+            'triggered_by' => $manager->id,
+        ]);
+        $notification->save();
+
+        return redirect()->back();
+    }
+
     public function ReturnItemRequest(){
 
         return view('admin.adm-return-item-req');

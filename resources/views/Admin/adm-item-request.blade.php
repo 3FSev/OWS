@@ -201,7 +201,7 @@
                                             class="btn btn-success">
                                             <i class="fas fa-check" style="color: white;"></i>
                                         </a>
-                                        <a href="#" type="button" class="btn btn-danger">
+                                        <a href="{{route('RejectItemRequest.adm', $request->id)}}" type="button" class="btn btn-danger">
                                             <i class="fas fa-times fa-lg" style="color: white;"></i>
                                         </a>
                                     </form>
