@@ -301,26 +301,29 @@ class AdminController extends Controller
 
     // manage reports
     public function WIVReports(){
+        $user = Auth::user();
         $managers = User::whereIn('role_id', [3, 4])->get();
         $admins = User::whereIn('role_id', [2, 3])->get();
         $wivs = Wiv::whereNotNull('approved_at')->whereNotNull('received_at')->get();
 
-        return view('admin.adm-WIV-reports', compact('wivs','managers','admins'));
+        return view('admin.adm-WIV-reports', compact('wivs','managers','admins','user'));
     }
 
     public function MRTReports(){
+        $user = Auth::user();
         $managers = User::whereIn('role_id', [3, 4])->get();
         $admins = User::whereIn('role_id', [2, 3])->get();
         $mrts = Mrt::whereNotNull('approved_at')->whereNotNull('received_at')->get();
 
-        return view('admin.adm-MRT-reports', compact('mrts','managers','admins'));
+        return view('admin.adm-MRT-reports', compact('mrts','managers','admins','user'));
     }
     public function RRReports(){
+        $user = Auth::user();
         $managers = User::whereIn('role_id', [3, 4])->get();
         $admins = User::whereIn('role_id', [2, 3])->get();
         $rrs = Rr::whereNotNull('approved_at')->get();
 
-        return view('admin.adm-RR-reports', compact('rrs'));
+        return view('admin.adm-RR-reports', compact('rrs','managers','admins','user'));
     }
 
     public function storeRR(Request $request){
