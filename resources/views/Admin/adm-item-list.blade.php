@@ -201,9 +201,6 @@
                                   <a href="{{route('EditItemList.adm', $item->id)}}" class="btn btn-warning">
                                       <i class="fas fa-pencil-alt text-white"></i>
                                   </a>
-                                  <button type="submit"  class="btn btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                  </button>
                                   <a class="btn btn-primary" href="{{ route('generate.barcode', $item->id) }}" onclick="printQRCode(event)">
                                     <i class="fa-solid fa-print"></i>
                                 </a>
