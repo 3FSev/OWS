@@ -200,6 +200,8 @@ class AdminController extends Controller
                 $wiv->pivot->update(['quantity' => 0]);
             }
 
+            $item->update(['status' => $request->input('status')]);
+
             //If usable is true, set the item's quantity to 1
             if ($usable) {
                 $item->update(['quantity' => 1]);

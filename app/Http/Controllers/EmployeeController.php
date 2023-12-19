@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mrt;
 use App\Models\Wiv;
 use App\Models\User;
 use App\Models\Notification;
@@ -31,11 +32,52 @@ class EmployeeController extends Controller
         $wiv->received_at = now();
         $wiv->save();
 
+        $admins = User::where('role_id', 2)->get();
+        $user = Auth::user();
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "{$user->name} has receive Wiv({$wiv->mrt_number})",
+                'url' => url('/manager/man-wiv-req'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
+        }
+
         return redirect()->back();
     }
     public function PendingRIV()
     {
-        return view('employee.em-pending-mrt');
+        $user = Auth::user()->id;
+        $mrts = Mrt::whereNotNull('approved_at')
+            ->whereNull('received_at')
+            ->where('user_id', $user)
+            ->get();
+
+        
+        return view('employee.em-pending-mrt', compact('mrts'));
+    }
+
+    public function AcceptMRT($mrt_id){
+        $mrt = Mrt::findOrFail($mrt_id);
+        $mrt->received_at = now();
+        $mrt->save();
+
+        $admins = User::where('role_id', 2)->get();
+        $user = Auth::user();
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "{$user->name} has receive MRT({$mrt->mrt_number})",
+                'url' => url('/manager/man-mrt-req'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
+        }
+
+        return redirect()->back();
     }
     public function ListView()
     {

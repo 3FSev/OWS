@@ -109,14 +109,36 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($mrts as $mrt)
                       <tr>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
+                        <td>{{$mrt->mrt_number}}</td>
+                        <td>{{$mrt->mrt_date}}</td>
+                        <td>
+                          @foreach ($mrt->items as $item)
+                              {{$item->name}}<br>
+                          @endforeach
+                        </td>
+                        <td>
+                          @php
+                              $totalCost = 0
+                          @endphp
+                          @foreach ($mrt->items as $item)
+                              {{number_format($item->unit_cost, 2, '.',',')}}<br>
+                              @php
+                                  $totalCost += $item->unit_cost
+                              @endphp
+                          @endforeach
+                        </td>
+                        <td>{{number_format($totalCost, 2, '.',',')}}</td>
+                        <td>
+                          <div class="text-center">
+                            <a href="{{route('AcceptMrt.em', $mrt->id)}}" class="btn btn-primary toastRecieveWIV">
+                              Recieve <i class="fas fa-check ml-2"></i>
+                            </a>
+                          </div>
+                        </td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

@@ -80,6 +80,7 @@ Route::middleware(['approved','auth','employee'])->group(function(){
     Route::get('/employee/em-change-password', [EmployeeController::class, 'ChangePassword'])->name('ChangePassword.em');
     Route::get('/employee/accept-wiv/{wiv_id}', [EmployeeController::class, 'AcceptWIV'])->name('AcceptWiv.em');
     Route::get('/employee/em-pending-mrt', [EmployeeController::class, 'PendingRIV'])->name('PendingRiv.em');   
+    Route::get('/employee/accept-mrt/{mrt_id}', [EmployeeController::class, 'AcceptMRT'])->name('AcceptMrt.em');
     Route::get('/employee/em-list', [EmployeeController::class, 'ListView'])->name('ListView.em');
     Route::get('/employee/em-item-req', [EmployeeController::class, 'ItemRequest'])->name('ItemReq.em');   
     Route::get('/employee/em-return-item-req', [EmployeeController::class, 'ReturnItemReq'])->name('ReturnItemReq.em');

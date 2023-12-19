@@ -176,12 +176,12 @@
                       <label class="mr-2">Date Range</labels>
                     </div>
                     <div class="form-group mr-2">
-                      <p for="date" class="mr-2 my-auto">From:</p>
-                      <input type="date" class="form-control" id="date">
+                      <p for="fromDate" class="mr-2 my-auto">From:</p>
+                      <input type="date" class="form-control" id="fromDate">
                     </div>
                     <div class="form-group mr-2 align-items-center">
-                      <p for="date" class="mr-2 my-auto">To:</p>
-                      <input type="date" class="form-control" id="date">
+                      <p for="toDate" class="mr-2 my-auto">To:</p>
+                      <input type="date" class="form-control" id="toDate">
                     </div>
                     <div class="form-group m-2 ">
                       <label class="m-1">Prepared By:</label>
@@ -265,88 +265,91 @@
   $(function () {
     // DataTable initialization
     var table = $("#example1").DataTable({
-      "responsive": true,
-      "lengthChange": false,
-      "autoWidth": false,
-      "buttons": [
-        {
-          extend: 'pdf',
-          title: 'Warehouse Issued Voucher Report',
-          filename: 'wiv_report',
-          messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-          messageBottom: 'Printed By: Eubert Novencido',
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": [
+            {
+                extend: 'pdf',
+                title: 'Warehouse Issued Voucher Report',
+                filename: 'wiv_report',
+                messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+                messageBottom: 'Printed By: Eubert Novencido',
+            },
+            {
+                extend: 'excel',
+                title: 'Warehouse Issued Voucher Report',
+                filename: 'wiv_report',
+                messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+                messageBottom: 'Printed By: Sample Name',
+            },
+            {
+                extend: 'print',
+                title: 'Warehouse Issued Voucher Reports',
+                filename: 'wiv_report',
+                messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
+                messageBottom: 'Printed By: Sample Name',
+            },
+        ],
+        "language": {
+            "search": "Filter"
         },
-        {
-          extend: 'excel',
-          title: 'Warehouse Issued Voucher Report',
-          filename: 'wiv_report',
-          messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-          messageBottom: 'Printed By: Sample Name',
-        },
-        {
-          extend: 'print',
-          title: 'Warehouse Issued Voucher Reports',
-          filename: 'wiv_report',
-          messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
-          messageBottom: 'Printed By: Sample Name',
-        },
-      ],
-      "language": {
-        "search": "Filter"
-      },
     });
+
+    // Append buttons container to a specific location
+    table.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+    // Initialize Select2 Elements after appending buttons container
+    $('.select2').select2();
 
     // Handle change event for admin-select
     $('.admin-select').on('change', function () {
-      var selectedAdmins = $(this).val();
-      table.column(2).search(selectedAdmins.join('|'), true, false).draw();
+        var selectedAdmins = $(this).val();
+        table.column(2).search(selectedAdmins.join('|'), true, false).draw();
     });
 
     // Handle change event for manager-select
     $('.manager-select').on('change', function () {
-      var selectedManagers = $(this).val();
-      table.column(3).search(selectedManagers.join('|'), true, false).draw();
+        var selectedManagers = $(this).val();
+        table.column(3).search(selectedManagers.join('|'), true, false).draw();
     });
 
     // Handle date range event
     $('#fromDate, #toDate').on('change', function () {
-      var fromDate = $('#fromDate').val();
-      var toDate = $('#toDate').val();
+        var fromDate = $('#fromDate').val();
+        var toDate = $('#toDate').val();
 
-      fromDate = fromDate ? moment(fromDate, 'YYYY-MM-DD').format('YYYY-MM-DD') : '';
-      toDate = toDate ? moment(toDate, 'YYYY-MM-DD').format('YYYY-MM-DD') : '';
+        fromDate = fromDate ? moment(fromDate, 'YYYY-MM-DD').format('YYYY-MM-DD') : '';
+        toDate = toDate ? moment(toDate, 'YYYY-MM-DD').format('YYYY-MM-DD') : '';
 
-      // Perform date range search
-      table.draw(); // Clear previous search
-      if (fromDate && toDate) {
-        $.fn.dataTable.ext.search.push(
-          function (settings, data, dataIndex) {
-            var date = moment(data[1], 'MM/DD/YYYY');
-            return date.isBetween(moment(fromDate), moment(toDate), null, '[]');
-          }
-        );
-      }
-      table.draw();
-      $.fn.dataTable.ext.search.pop();
+        // Perform date range search
+        table.draw(); // Clear previous search
+        if (fromDate && toDate) {
+            $.fn.dataTable.ext.search.push(
+                function (settings, data, dataIndex) {
+                    var date = moment(data[1], 'MM/DD/YYYY');
+                    return date.isBetween(moment(fromDate), moment(toDate), null, '[]');
+                }
+            );
+        }
+        table.draw();
+        $.fn.dataTable.ext.search.pop();
     });
 
     // DataTable initialization for example2
     $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
     });
 
     // Initialize Select2 Elements
-    $('.select2').select2();
-
-    // Initialize Select2 Elements
     $('.select2bs4').select2({
-      theme: 'bootstrap4'
+        theme: 'bootstrap4'
     });
 
     // Date range picker initialization
@@ -354,13 +357,13 @@
 
     // Date range picker with time picker initialization
     $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'MM/DD/YYYY hh:mm A'
+        }
     });
-  });
+});
 </script>
 
 </html>

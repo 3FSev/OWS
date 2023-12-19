@@ -209,7 +209,7 @@
                                                         </td>
                                                         <td class="c-mrt-td">
                                                             <div class="c-mrt-ac">
-                                                                <input type="text" class="form-control">
+                                                                <input type="text" class="form-control" name="status[]">
                                                             <div>
                                                         </td>
                                                         <td class="c-mrt-td">

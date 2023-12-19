@@ -160,6 +160,14 @@ class ManagerController extends Controller
             $notification->save();
         }
 
+        $notification = new Notification([
+            'user_id' => $mrt->user_id,
+            'message' => "A new MRT request has been received",
+            'url' => url('/employee/em-pending-mrt'),
+            'triggered_by' => $user->id,
+        ]);
+        $notification->save();
+
         return redirect('manager.man-mrt-req')->with('success', ' Material Return Ticket approved successfully!');
     }
 
