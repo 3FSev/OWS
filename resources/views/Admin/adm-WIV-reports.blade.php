@@ -156,22 +156,22 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header text-center">
-                  <form class="form-inline mb-0 d-inline-flex align-items-center">
-                    <div class="form-group">
-                      <label class="m-1">Date range:</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">
-                            <i class="far fa-calendar-alt"></i>
-                          </span>
-                        </div>
-                        <input type="text" class="form-control float-right" id="reservation">
-                      </div>
+                  <form class="form-inline mb-0 align-items-center">
+                    <div class="form-group mr-2">
+                      <label class="mr-2">Date Range</labels>
+                    </div>
+                    <div class="form-group mr-2">
+                      <p for="date" class="mr-2 my-auto">From:</p>
+                      <input type="date" class="form-control" id="date">
+                    </div>
+                    <div class="form-group mr-2 align-items-center">
+                      <p for="date" class="mr-2 my-auto">To:</p>
+                      <input type="date" class="form-control" id="date">
                     </div>
                       <div class="form-group m-2 ">
                         <label class="m-1">Prepaired By:</label>
                         <div class="input-group">
-                          <select class="form-control select2 " multiple="multiple" data-placeholder="Select a State" style="width: 200px;">
+                          <select class="form-control select2 " multiple="multiple" data-placeholder="Select a State" style="width: 150px;">
                             <option>Manager</option>
                             <option>Admin</option>
                             <option>Manager</option>
@@ -184,7 +184,7 @@
                       <div class="form-group">
                         <label class="m-1">Approved By:</label>
                         <div class="input-group">
-                          <select class="form-control select2 " multiple="multiple" data-placeholder="Select a State" style="width: 200px;">
+                          <select class="form-control select2 " multiple="multiple" data-placeholder="Select a State" style="width: 150px;">
                             <option>Manager</option>
                             <option>Admin</option>
                           </select>
@@ -303,14 +303,6 @@
     })
 
     $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
   
   });
 
