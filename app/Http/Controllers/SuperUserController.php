@@ -113,23 +113,15 @@ class SuperUserController extends Controller
     }
 
     public function EditUser(Request $request, $user_id){
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users',
-            'password' => 'nullable|required|min:6',
-            'district' => 'required|exists:district,id',
-            'department' => 'required|exists:department,id',
-            'confirm_password' => 'required|same:password',
-        ]);
 
         $user = User::findOrFail($user_id);
-        $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'];
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
         if ($request->filled('password')){
-            $user->password = bcrypt($validatedData['password']);
+            $user->password = bcrypt($request->input('password'));
         }
-        $user->district_id = $validatedData['district'];
-        $user->department_id = $validatedData['department'];
+        $user->district_id = $request->input('district');;
+        $user->department_id = $request->input('department');;
         $user->role_id = $request->input('role');
         $user->approved_at = now();
         $user->save();

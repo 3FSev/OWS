@@ -48,8 +48,6 @@ class LoginController extends Controller
             'name' => 'Logged in',
         ]);
 
-        // You can add more custom logic here if needed
-
         return redirect()->intended($this->redirectPath());
     }
 }

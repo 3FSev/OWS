@@ -109,7 +109,8 @@ Route::middleware(['auth','admin'])->group(function(){
     Route::get('/get-items-for-user/{user}', [AdminController::class, 'getItemsForUser']);
     Route::get('/admin/adm-mrt-list', [AdminController::class, 'MRTList'])->name('MRTList.adm');
     Route::get('/admin/adm-item-request', [AdminController::class, 'ItemRequest'])->name('ItemRequest.adm');
-    Route::get('/admin/adm-return-item-req', [AdminController::class, 'ReturnItemRequest'])->name('ReturnItemRequest.adm');
+    Route::get('/admin/adm-item-request/{request_id}/approved', [AdminController::class, 'ApprovedItemRequest'])->name('ApprovedItemRequest.adm');
+    Route::get('/admin/adm-return-item-req', [AdminController::class, 'ApprovedItemRequest'])->name('ReturnItemRequest.adm');
     Route::get('/admin/adm-review-return-item-req', [AdminController::class, 'ReviewReturnItemRequest'])->name('ReviewReturnItemRequest.adm');
     Route::get('/admin/adm-WIV-reports', [AdminController::class, 'WIVReports'])->name('WIVReports.adm');
     Route::get('/admin/adm-MRT-reports', [AdminController::class, 'MRTReports'])->name('MRTReports.adm');

@@ -182,7 +182,7 @@
                                 <td>{{ $request->details }}</td>
                                 <td>
                                   <div class="text-center">
-                                      <a href=""
+                                      <a href="{{route('ApprovedItemRequest.adm', $request->id)}}"
                                             class="btn btn-success">
                                             <i class="fas fa-check" style="color: white;"></i>
                                         </a>

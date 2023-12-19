@@ -28,7 +28,6 @@ class DeleteExpiredWIVs implements ShouldQueue
      */
     public function handle(): void
     {
-         // Find WIV records older than 7 days
          $limitDate = now()->subDays(7);
          
          $expiredWivs = Wiv::where('created_at', '<', $limitDate)
@@ -39,7 +38,6 @@ class DeleteExpiredWIVs implements ShouldQueue
      foreach ($expiredWivs as $wiv) {
          // Set the quantity for each item associated with the WIV
          foreach ($wiv->items as $item) {
-             // You can set the quantity to any specific value you want
              $item->update(['quantity' => 1]);
          }
 

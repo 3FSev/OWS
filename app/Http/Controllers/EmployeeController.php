@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wiv;
+use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewUserNotification;
 
 class EmployeeController extends Controller
 {
@@ -68,6 +71,19 @@ class EmployeeController extends Controller
             'details' => $request->input('details'),
             'request_status' => 'Waiting for approval',
         ]);
+
+        // Notification
+        $managers = User::where('role_id', 3)->get();
+
+        foreach ($managers as $manager) {
+            $notification = new Notification([
+                'user_id' => $manager->id,
+                'message' => 'A new user has registered!',
+                'url' => url('/sup-create-user'),
+                'triggered_by' => $user->id,
+            ]);
+            $notification->save();
+        }
 
 
         return redirect()->back();

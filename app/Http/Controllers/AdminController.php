@@ -97,7 +97,8 @@ class AdminController extends Controller
         return view('admin.adm-item-history', compact('item','wivs','mrts'));
     }
     public function CreateItemCategories(){
-        return view('Admin.adm-create-items-categories');
+        $categories = Category::all();
+        return view('Admin.adm-create-items-categories', compact('categories'));
     }
     public function EditItemList($item_id){
         $item = Item::findOrFail($item_id);
@@ -243,10 +244,30 @@ class AdminController extends Controller
 
     // manage request
     public function ItemRequest(){
-        $requests = EmployeeRequest::all();
+        $requests = EmployeeRequest::where('request_status', 'Waiting for approval')->get();
 
         return view('admin.adm-item-request', compact('requests'));
     }
+
+    public function ApprovedItemRequest($request_id){
+        $manager = Auth::user();
+        
+        $itemRequest = EmployeeRequest::where('id', $request_id)->first();
+        $itemRequest->request_status = "Approved by {$manager->name}";
+        $itemRequest->save();
+
+        
+        $notification = new Notification([
+            'user_id' => $itemRequest->user_id,
+            'message' => "Request for item has been approved by {$manager->name}",
+            'url' => url('/employee/em-item-req'),
+            'triggered_by' => $manager->id,
+        ]);
+        $notification->save();
+
+        return redirect()->back();
+    }
+
     public function ReturnItemRequest(){
 
         return view('admin.adm-return-item-req');

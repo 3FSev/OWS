@@ -29,7 +29,6 @@ class DeleteExpiredMRTs implements ShouldQueue
      */
     public function handle(): void
     {
-        // Check if approved_at or rejected_at is not null and prevent deletion
         if (Mrt::whereNotNull('approved_at')->orWhereNotNull('rejected_at')->exists()) {
             Log::info('Deletion of old MRT records stopped because approved_at or rejected_at is not null.');
             return;
@@ -41,7 +40,6 @@ class DeleteExpiredMRTs implements ShouldQueue
        $expiredMRTs = Mrt::where('created_at', '<', $limitDate)->get();
 
        foreach ($expiredMRTs as $mrt) {
-           // Revert changes to item quantities
            foreach ($mrt->items as $item) {
                $item->increment('quantity', 1);
            }

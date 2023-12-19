@@ -28,7 +28,6 @@ class DeleteExpiredRRs implements ShouldQueue
      */
     public function handle(): void
     {
-        // Check if approved_at or rejected_at is not null and prevent deletion
         if (Rr::whereNotNull('approved_at')->orWhereNotNull('rejected_at')->exists()) {
             Log::info('Deletion of old RR records stopped because approved_at or rejected_at is not null.');
             return;

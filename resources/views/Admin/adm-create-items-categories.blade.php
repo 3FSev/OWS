@@ -205,23 +205,25 @@
                       </tr>
                       </thead>
                       <tbody>
+                        @foreach ($categories as $category)
                         <tr data-id="">
-                            <td>Sample</td>
-                            <td>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-warning btn-edit" data-toggle="modal" data-target="#modal-edit">
-                                        <i class="fas fa-pencil-alt" style="color: white;"></i>
+                          <td>{{$category->name}}</td>
+                          <td>
+                              <div class="text-center">
+                                  <button type="button" class="btn btn-warning btn-edit" data-toggle="modal" data-target="#modal-edit">
+                                      <i class="fas fa-pencil-alt" style="color: white;"></i>
+                                  </button>
+                                  <form method="POST" action="" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button onclick="return confirm('Are You Sure')" type="submit" class="btn btn-danger">
+                                        <i class="fas fa-trash"></i>
                                     </button>
-                                    <form method="POST" action="" style="display:inline;">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button onclick="return confirm('Are You Sure')" type="submit" class="btn btn-danger">
-                                          <i class="fas fa-trash"></i>
-                                      </button>
-                                  </form>
-                                </div>
-                            </td>
-                        </tr>
+                                </form>
+                              </div>
+                          </td>
+                      </tr>
+                        @endforeach
                         {{--  @endforeach  --}}
                       </tbody>
                     </table>
