@@ -252,22 +252,22 @@ $(function () {
         "buttons": [
             {
                 extend: 'pdf',
-                title: 'Warehouse Issued Voucher Report',
+                title: 'Receiving Reports',
                 filename: 'wiv_report',
                 messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
                 messageBottom: 'Printed By: ' + userName,
             },
             {
                 extend: 'excel',
-                title: 'Warehouse Issued Voucher Report',
-                filename: 'wiv_report',
+                title: 'Receiving Reports',
+                filename: 'rr_report',
                 messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
                 messageBottom: 'Printed By: ' + userName,
             },
             {
                 extend: 'print',
-                title: 'Warehouse Issued Voucher Reports',
-                filename: 'wiv_report',
+                title: 'Receiving Reports',
+                filename: 'rr_report',
                 messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
                 messageBottom: 'Printed By: ' + userName,
             },
