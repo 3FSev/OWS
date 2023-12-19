@@ -53142,3 +53142,7 @@ a.text-muted:hover {
 .item-list-link.clicked {
   color: blue;
 }
+
+.custom-label{
+  font-weight: normal;
+}

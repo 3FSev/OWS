@@ -153,13 +153,28 @@
       <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
+          @if(session('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ session('success') }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span style="color: white" aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          @endif
+          
+          @if(session('error'))
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  {{ session('error') }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span style="color: white" aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+          @endif
+          
           <div class="row mb-4">
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                {{--  <div class="card-header card-header-custom">
-                  <h5 class="m-0 text-bold">Item Request</h5>
-                </div>  --}}
                 <div class="card-body">
                     <table id="example2" class="table table-bordered table-hover">
                       <thead>

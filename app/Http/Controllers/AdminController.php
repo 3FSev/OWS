@@ -116,7 +116,8 @@ class AdminController extends Controller
         $item->status = $request->input('status');
         $item->save();
 
-        return redirect('/admin/adm-item-list');
+        return redirect('/admin/adm-item-list')->with('success', 'The item has been updated successfully!');
+
     }
 
     // manage wiv
@@ -163,7 +164,7 @@ class AdminController extends Controller
             $notification->save();
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'WIV created successfully!');
     }
 
     public function WIVList(){
@@ -175,7 +176,7 @@ class AdminController extends Controller
     public function CreateMRT(){
         $users = User::whereNotNull('approved_at')->where('role_id', 1)->get();
         $mrts = Mrt::all();
-        return view('admin.adm-create-mrt', compact('users','mrts'));
+        return view('admin.adm-create-mrt', compact('users','mrts'))->with('success','MRT created successfully!');
     }
 
     public function storeMRT(Request $request){
@@ -368,7 +369,7 @@ class AdminController extends Controller
             $notification->save();
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'WIV created successfully!');
     }
 
     public function getRRData($item_id)

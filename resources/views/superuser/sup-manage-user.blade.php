@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('theme/plugins-theme')
-
+@include('theme/nav-bar')
 <title>Manage Users</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        @include('theme/nav-bar')
+
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-green elevation-4" {{--  style="background-color: #285430"  --}}>
             <!-- Brand Logo -->
@@ -68,14 +68,6 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('restoreItems.sup') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-undo"></i>
-                                <p>
-                                    Restore Data
-                                </p>
-                            </a>
-                        </li>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -98,6 +90,23 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
+                    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span style="color: white" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+                
+                @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span style="color: white" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                     <div class="card card-default">
                         <div class="card-header card-header-custom">
                             <h3 class="card-title font-weight-bold">Create New User</h3>

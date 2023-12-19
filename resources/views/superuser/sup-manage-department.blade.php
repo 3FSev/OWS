@@ -8,9 +8,7 @@
 <div class="wrapper">
   @include('theme/nav-bar')
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-green elevation-4"
-   {{--  style="background-color: #285430"  --}}
-   >
+  <aside class="main-sidebar sidebar-dark-green elevation-4">
     <!-- Brand Logo -->
     <div class="d-flex align-items-center">
       <a href="#" class="brand-link" style="display: flex; align-items: center;">
@@ -94,6 +92,24 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('success') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" style="color: white;">&times;</span>
+          </button>
+        </div>
+        @endif
+
+        @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ session('error') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" style="color: white;">&times;</span>
+          </button>
+        </div>
+        @endif
+
         <div class="row">
             <div class="col-12">
               <div class="card">

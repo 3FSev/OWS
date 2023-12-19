@@ -20,7 +20,7 @@ class EmployeeController extends Controller
             ->whereNull('received_at')
             ->where('user_id', $user)
             ->get();
-        return view('employee.em-pending-wiv', compact('wivs'));
+        return view('employee.em-pending-wiv', compact('wivs'))->with('success','Item successfully received');
     }
 
     public function ChangePassword(){
@@ -86,6 +86,7 @@ class EmployeeController extends Controller
         }
 
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Your requested item is successfully in process!');
+        // ->with('success', 'Your returned item is successfully in process!')
     }
 }

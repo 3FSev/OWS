@@ -170,6 +170,21 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
+                <div class="card-header text-center">
+                  <form class="form-inline mb-0 d-inline-flex align-items-center">
+                    <div class="form-group mr-2">
+                      <label class="mr-2">Date Range</labels>
+                    </div>
+                    <div class="form-group mr-5">
+                      <p for="date" class="mr-2 my-auto">From:</p>
+                      <input type="date" class="form-control" id="date">
+                    </div>
+                    <div class="form-group mr-2 align-items-center">
+                      <p for="date" class="mr-2 my-auto">To:</p>
+                      <input type="date" class="form-control" id="date">
+                    </div>
+                  </form>
+                </div>
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-hover">
                     <thead>
@@ -235,35 +250,42 @@
       "buttons": [
         {
           extend: 'pdf',
-          title: 'Warehouse Issued Voucher Report',
-          filename: 'wiv_report',
+          title: 'Material Returned Ticket Report',
+          filename: 'riv_report',
+          messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageBottom: 'Printed By: Sample Name',
         },
         {
           extend: 'excel',
-          title: 'Warehouse Issued Voucher Report',
-          filename: 'wiv_report',
+          title: 'Material Returned Ticket Report',
+          filename: 'riv_report',
+          messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageBottom: 'Printed By: Sample Name',
         },
         {
           extend: 'print',
-          title: 'Warehouse Issued Voucher Reports',
-          filename: 'wiv_report',
+          title: 'Material Returned Ticket Report',
+          filename: 'riv_report',
+          messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageBottom: 'Printed By: Sample Name',
         },
       ],
       "language": {
         "search": "Filter"
-      }
+      },
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+  $('#example2').DataTable({
+    "paging": true,
+    "lengthChange": false,
+    "searching": false,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
+    "responsive": true,
   });
+});
+
 </script>
 
 </html>

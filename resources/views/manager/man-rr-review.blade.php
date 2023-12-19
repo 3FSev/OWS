@@ -91,6 +91,25 @@
       <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
+          
+          @if(session('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ session('success') }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span style="color: white" aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          @endif
+          
+          @if(session('error'))
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  {{ session('error') }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span style="color: white" aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+          @endif
+
           <div class="row">
             <div class="col-12">
             <div class="card">
@@ -175,7 +194,7 @@
                 <i class="fas fa-arrow-left"></i> Back
               </a>
               <div>
-                <a href="{{ route('RrApprove.man', $rr->id) }}" class="btn btn-success toastApproveMRT">
+                <a href="{{ route('RrApprove.man', $rr->id) }}" class="btn btn-success">
                   <i class="fas fa-check"></i> Approve
                 </a>
                 <a href="{{ route('RrReject.man', $rr->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure?');">
