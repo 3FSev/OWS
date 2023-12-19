@@ -190,6 +190,7 @@
                       </div>
                   </form>
                 </div>
+
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-hover">
@@ -211,7 +212,7 @@
                       @foreach ($wivs as $wiv)
                           <tr>
                             <td>{{$wiv->wiv_number}}</td>
-                            <td>{{ \Carbon\Carbon::parse($wiv->wiv_date)->format('m/d/Y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($wiv->wiv_date)->format('m/d/y') }}</td>
                             <td>{{$wiv->created_by}}</td>
                             <td>{{$wiv->approved_by}}</td>
                             <td>{{$wiv->user->name}}</td>
@@ -280,7 +281,7 @@
       "language": {
         "search": "Filter"
       },
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
 
     // Handle change event for admin-select
     $('.admin-select').on('change', function () {
@@ -316,7 +317,6 @@
       $.fn.dataTable.ext.search.pop();
     });
 
-
     // DataTable initialization for example2
     $('#example2').DataTable({
       "paging": true,
@@ -344,7 +344,7 @@
       timePicker: true,
       timePickerIncrement: 30,
       locale: {
-        format: 'MM/DD/YYYY'
+        format: 'MM/DD/YYYY hh:mm A'
       }
     });
   });

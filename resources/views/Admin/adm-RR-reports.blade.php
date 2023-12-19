@@ -242,40 +242,41 @@
   </div>
 </body>
 <script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-        "buttons": [
-          {
-            extend: 'pdf',
-            title: 'Receiving Report',
-            filename: 'rr_report',
-            messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-            messageBottom: 'Printed By: Sample Name',
-          },
-          {
-            extend: 'excel',
-            title: 'Receiving Report',
-            filename: 'riv_report',
-            messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
-            messageBottom: 'Printed By: Sample Name',
-          },
-          {
-            extend: 'print',
-            title: 'Receiving Report',
-            filename: 'rr_report',
-            messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
-            messageBottom: 'Printed By: Sample Name',
-          },
-        ],
-        "language": {
-          "search": "Filter"
+  $(function () {
+    // DataTable initialization
+    var table = $("#example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": [
+        {
+          extend: 'pdf',
+          title: 'Warehouse Issued Voucher Report',
+          filename: 'wiv_report',
+          messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageBottom: 'Printed By: Eubert Novencido',
         },
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        {
+          extend: 'excel',
+          title: 'Warehouse Issued Voucher Report',
+          filename: 'wiv_report',
+          messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageBottom: 'Printed By: Sample Name',
+        },
+        {
+          extend: 'print',
+          title: 'Warehouse Issued Voucher Reports',
+          filename: 'wiv_report',
+          messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
+          messageBottom: 'Printed By: Sample Name',
+        },
+      ],
+      "language": {
+        "search": "Filter"
+      },
+    });
 
-      // Handle change event for admin-select
+    // Handle change event for admin-select
     $('.admin-select').on('change', function () {
       var selectedAdmins = $(this).val();
       table.column(2).search(selectedAdmins.join('|'), true, false).draw();
@@ -308,26 +309,38 @@
       table.draw();
       $.fn.dataTable.ext.search.pop();
     });
-  
-  $('#example2').DataTable({
-    "paging": true,
-    "lengthChange": false,
-    "searching": false,
-    "ordering": true,
-    "info": true,
-    "autoWidth": false,
-    "responsive": true,
+
+    // DataTable initialization for example2
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+
+    // Initialize Select2 Elements
+    $('.select2').select2();
+
+    // Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    });
+
+    // Date range picker initialization
+    $('#reservation').daterangepicker();
+
+    // Date range picker with time picker initialization
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    });
   });
-      //Initialize Select2 Elements
-      $('.select2').select2()
-
-      //Initialize Select2 Elements
-      $('.select2bs4').select2({
-        theme: 'bootstrap4'
-      })
-  
-});
-
 </script>
 
 </html>
