@@ -156,10 +156,11 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                <div class="card-header text-center">
-                  <form class="form-inline mb-0 align-items-center">
-                    <div class="form-group mr-2">
-                      <label class="mr-2">Date Range</labels>
+                <div class="card-header">
+                  <div class="row d-flex justify-content-center align-item-center">
+                    <div class="form-group mr-2 my-auto">
+                      <label class="mr-2 my-0"></label>
+                      <label class="mr-2 my-0">Date Range</label>
                     </div>
                     <div class="form-group mr-2">
                       <p for="fromDate" class="mr-2 my-auto">From:</p>
@@ -169,27 +170,29 @@
                       <p for="toDate" class="mr-2 my-auto">To:</p>
                       <input type="date" class="form-control" id="toDate">
                     </div>
-                    <div class="form-group m-2 ">
-                      <label class="m-1">Prepared By:</label>
+                    <div class="form-group mr-2">
+                      <p class="m-1">Prepared By:</p>
                       <div class="input-group">
-                        <select class="form-control select2 admin-select" name="admin-select" multiple="multiple" data-placeholder="Select prepared by" style="width: 200px;">
+                        <select class="duallistbox select2 admin-select" name="admin-select" multiple="multiple"
+                          data-placeholder="Select prepared by" style="width: 250px;">
                           @foreach ($admins as $admin)
-                              <option>{{$admin->name}}</option>
+                          <option>{{$admin->name}}</option>
                           @endforeach
                         </select>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label class="m-1">Approved By:</label>
+                    <div class="form-group ml-2">
+                      <p class="m-1">Approved By:</p>
                       <div class="input-group">
-                        <select class="form-control select2 manager-select" name="manager-select" multiple="multiple" data-placeholder="Select approved by" style="width: 200px;">
+                        <select class="duallistbox select2 manager-select" name="manager-select" multiple="multiple"
+                          data-placeholder="Select approved by" style="width: 250px;">
                           @foreach ($managers as $manager)
-                              <option>{{$manager->name}}</option>
+                          <option>{{$manager->name}}</option>
                           @endforeach
                         </select>
                       </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
                 <div class="card-body">
                   <table id="example1" class="table table-bordered table-hover">
