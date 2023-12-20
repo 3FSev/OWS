@@ -109,7 +109,6 @@
                         <th>Status</th>
                         <th>Category</th>
                         <th>Unit Cost</th>
-                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -119,16 +118,6 @@
                           <td>{{$item->status}}</td>
                           <td>{{$item->category->name}}</td>
                           <td>{{number_format($item->unit_cost, 2, '.',',')}}</td>
-                          <td>
-                            <form method="POST" action="{{route('destroy.item', $item->id)}}"></form>
-                            @csrf
-                            @method('DELETE')
-                              <div class="text-center">
-                                  <a href="{{route('EditItemList.adm', $item->id)}}" class="btn btn-warning">
-                                      <i class="fas fa-pencil-alt text-white"></i>
-                                  </a>
-                              </div>
-                          </td>
                         </tr>
                       @endforeach
                     </tbody>
