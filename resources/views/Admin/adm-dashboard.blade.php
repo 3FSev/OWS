@@ -155,8 +155,8 @@
             <div class="col-lg-3 col-6">
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>150</h3>
-                  <p>Employee List</p>
+                  <h3>{{$users}}</h3>
+                  <p>Employee</p>
                 </div>
                 <a href="{{ route('Employee.adm') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
@@ -165,8 +165,8 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
-                  <p>Total Items</p>
+                  <h3>{{$items}}</h3>
+                  <p>Items in stock</p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-box"></i>
@@ -177,7 +177,7 @@
             <div class="col-lg-3 col-6">
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <h3>{{$wiv}}</h3>
                   <p>Pending WIV Request</p>
                 </div>
                 <div class="icon">
@@ -190,7 +190,7 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>65</h3>
+                  <h3>{{$mrt}}</h3>
                   <p>Pending MRT Request</p>
                 </div>
                 <div class="icon">

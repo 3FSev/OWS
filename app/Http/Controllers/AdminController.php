@@ -24,8 +24,12 @@ class AdminController extends Controller
 {
     //
     public function Dashboard(){
+        $users = User::whereNotNull('approved_at')->where('role_id', 1)->count();
+        $mrt = Mrt::whereNull('approved_at')->whereNull('rejected_at')->count();
+        $wiv = Wiv::whereNull('approved_at')->whereNull('rejected_at')->count();
+        $items = Item::where('quantity', 1)->count();
 
-        return view('admin.adm-dashboard');
+        return view('admin.adm-dashboard', compact('users','wiv','mrt','items'));
     }
 
     public function ChangePassword(){
