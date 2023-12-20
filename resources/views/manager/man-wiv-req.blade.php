@@ -193,6 +193,7 @@
                 </thead>
                 <tbody>
                   @foreach ($approvedWivs as $wiv)
+                  <tr>
                     <td>{{$wiv->created_by}}</td>
                     <td>{{$wiv->wiv_date}}</td>
                     <td>{{$wiv->user->name}}</td>
@@ -201,6 +202,7 @@
                     <td>{{$wiv->wiv_number}}</td>
                     <td>{{$wiv->approved_by}}</td>
                     <td>{{$wiv->approved_at}}</td>
+                  </tr>
                   @endforeach
                 </tbody>
               </table>
@@ -219,7 +221,11 @@
 </body>
 <script>
   $(function () { 
-    $('#example1').DataTable({
+
+  });
+
+  $(function () { 
+    $('#example2').DataTable({
       "paging": true,
       "lengthChange": true,
       "searching": true,
@@ -228,9 +234,8 @@
       "autoWidth": false,
       "responsive": true,
     });
-  });
-  $(function () { 
-    $('#example2').DataTable({
+
+        $('#example1').DataTable({
       "paging": true,
       "lengthChange": true,
       "searching": true,

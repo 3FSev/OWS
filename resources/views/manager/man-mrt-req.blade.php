@@ -119,7 +119,7 @@
                 <h5 class="m-0 text-bold">MRT Request Details</h5>
               </div>     
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example1" class="table table-bordered table-hover">
                   <thead>
                   <tr>
                     <th>Submitted by</th>
@@ -220,6 +220,16 @@
 </body>
 <script>
   $(function () { 
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": true,
