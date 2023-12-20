@@ -2195,7 +2195,7 @@ DataTable.Api.register( 'buttons.info()', function ( title, message, time ) {
 		$('#datatables_buttons_info').remove();
 	}
 
-	title = title ? '<h2>'+title+'</h2>' : '';
+	// title = title ? '<h2>'+title+'</h2>' : '';
 
 	_fadeIn(
 		$('<div id="datatables_buttons_info" class="dt-button-info"/>')
@@ -2237,6 +2237,7 @@ DataTable.Api.register( 'buttons.exportInfo()', function ( conf ) {
 		filename: _filename( conf ),
 		title: _title( conf ),
 		messageTop: _message(this, conf.message || conf.messageTop, 'top'),
+		messageLeft: _message(this, conf.message || conf.messageLeft, 'topleft'),
 		messageBottom: _message(this, conf.messageBottom, 'bottom')
 	};
 } );

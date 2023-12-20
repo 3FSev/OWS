@@ -260,26 +260,57 @@
         "lengthChange": false,
         "autoWidth": false,
         "buttons": [
-            {
-                extend: 'pdf',
-                title: 'Warehouse Issued Voucher Report',
-                filename: 'wiv_report',
-                messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-                messageBottom: 'Printed By: ' + userName,
-            },
+          {
+            extend: 'pdf',
+            title: 'Warehouse Issued Voucher Report',
+            filename: 'wiv_report',
+            messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+            messageBottom: 'Prepaired By: ' + userName,
+            customize: function(doc) {
+                // Add centered and spaced header text
+                doc.header = function() {
+                    return {
+                        columns: [
+                            {
+                                alignment: 'center',
+                                text: 'ORIENTAL MINDORO ELECTRIC COOPERATIVE, INC.',
+                                style: 'header'
+                            }
+                        ],
+                        margin: [0, 20, 0, 0] // [left, top, right, bottom]
+                    };
+                };
+            }
+        },
+      
             {
                 extend: 'excel',
                 title: 'Warehouse Issued Voucher Report',
                 filename: 'wiv_report',
                 messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-                messageBottom: 'Printed By: ' + userName,
+                messageBottom: 'Prepaired By: ' + userName,
             },
             {
                 extend: 'print',
                 title: 'Warehouse Issued Voucher Reports',
                 filename: 'wiv_report',
-                messageBottom: 'Date Printed: ' + new Date().toLocaleDateString(),
-                messageBottom: 'Printed By: ' + userName,
+                messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+                messageBottom: 'Prepaired By: ' + userName,
+                customize: function(doc) {
+                  // Add centered and spaced header text
+                  doc.header = function() {
+                      return {
+                          columns: [
+                              {
+                                  alignment: 'center',
+                                  text: 'ORIENTAL MINDORO ELECTRIC COOPERATIVE, INC.',
+                                  style: 'header2'
+                              }
+                          ],
+                          margin: [0, 20, 0, 0] // [left, top, right, bottom]
+                      };
+                  };
+              }
             },
         ],
         "language": {

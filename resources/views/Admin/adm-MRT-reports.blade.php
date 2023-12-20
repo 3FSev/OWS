@@ -273,13 +273,28 @@
         "lengthChange": false,
         "autoWidth": false,
         "buttons": [
-            {
-                extend: 'pdf',
-                title: 'Material Returned Ticket Report',
-                filename: 'mrt_report',
-                messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-                messageBottom: 'Printed By: ' + userName,
-            },
+          {
+            extend: 'pdf',
+            title: 'Material Returned Ticket Report',
+            filename: 'mrt_report',
+            messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+            messageBottom: 'Prepaired By: ' + userName,
+            customize: function(doc) {
+                // Add centered and spaced header text
+                doc.header = function() {
+                    return {
+                        columns: [
+                            {
+                                alignment: 'center',
+                                text: 'ORIENTAL MINDORO ELECTRIC COOPERATIVE, INC.',
+                                style: 'header'
+                            }
+                        ],
+                        margin: [0, 20, 0, 0] // [left, top, right, bottom]
+                    };
+                };
+            }
+        },
             {
                 extend: 'excel',
                 title: 'Material Returned Ticket Report',

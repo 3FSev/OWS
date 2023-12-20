@@ -253,13 +253,28 @@ $(function () {
         "lengthChange": false,
         "autoWidth": false,
         "buttons": [
-            {
-                extend: 'pdf',
-                title: 'Receiving Reports',
-                filename: 'wiv_report',
-                messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-                messageBottom: 'Printed By: ' + userName,
-            },
+          {
+            extend: 'pdf',
+            title: 'Receiving Reports',
+            filename: 'rr_report',
+            messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+            messageBottom: 'Prepaired By: ' + userName,
+            customize: function(doc) {
+                // Add centered and spaced header text
+                doc.header = function() {
+                    return {
+                        columns: [
+                            {
+                                alignment: 'center',
+                                text: 'ORIENTAL MINDORO ELECTRIC COOPERATIVE, INC.',
+                                style: 'header'
+                            }
+                        ],
+                        margin: [0, 20, 0, 0] // [left, top, right, bottom]
+                    };
+                };
+            }
+        },
             {
                 extend: 'excel',
                 title: 'Receiving Reports',
