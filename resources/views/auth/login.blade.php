@@ -1,5 +1,5 @@
 <html lang="en">
-@include('theme\login-register-theme')
+@include('theme/login-register-theme')
 <body>
     <div class="container login-container">
         <form method="POST" action="{{ route('login') }}">
