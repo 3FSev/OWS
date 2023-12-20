@@ -156,12 +156,9 @@
               <div class="small-box bg-danger">
                 <div class="inner">
                   <h3>150</h3>
-                  <p>Total Items</p>
+                  <p>Employee List</p>
                 </div>
-                <div class="icon">
-                  <i class="fas fa-box-archive"></i>
-                </div>
-                <a href="{{ route('ItemList.adm') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('Employee.adm') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -169,24 +166,24 @@
               <div class="small-box bg-warning">
                 <div class="inner">
                   <h3>44</h3>
-                  <p>WIV Request</p>
+                  <p>Total Items</p>
                 </div>
                 <div class="icon">
-                  <i class="icon fa-solid fa-ticket"></i>
+                  <i class="fas fa-box"></i>
                 </div>
-                <a href="{{ route('ItemRequest.adm') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('ItemList.adm') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <div class="col-lg-3 col-6">
               <div class="small-box bg-info">
                 <div class="inner">
                   <h3>53<sup style="font-size: 20px">%</sup></h3>
-                  <p>MRT Request</p>
+                  <p>Pending WIV Request</p>
                 </div>
                 <div class="icon">
-                  <i class="icon-custom fa-solid fa-ticket-simple"></i>
+                  <i class="fas fa-envelope"></i>
                 </div>
-                <a href="{{ route('ReturnItemRequest.adm') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('ItemRequest.adm') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -194,12 +191,12 @@
               <div class="small-box bg-success">
                 <div class="inner">
                   <h3>65</h3>
-                  <p>Report List</p>
+                  <p>Pending MRT Request</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+                  <i class="fas fa-envelope"></i>
                 </div>
-                <a href="{{ route('WIVReports.adm') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('ItemRequest.adm') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
           </div>
