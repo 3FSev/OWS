@@ -31,11 +31,6 @@ class DeleteExpiredMRTs implements ShouldQueue
      */
     public function handle(): void
     {
-        if (Mrt::whereNotNull('approved_at')->orWhereNotNull('rejected_at')->exists()) {
-            Log::info('Deletion of old MRT records stopped because approved_at or rejected_at is not null.');
-            return;
-        }
-
 
        // Delete MRT records older than 7 days
        $admins = User::where('role_id', 2)->get();
@@ -51,7 +46,7 @@ class DeleteExpiredMRTs implements ShouldQueue
            $mrt->items()->detach();
 
            // Delete the MRT record
-           $mrt->rejected_at = now();
+           $mrt->expired_at = now();
 
            foreach ($admins as $admin) {
             $notification = new Notification([

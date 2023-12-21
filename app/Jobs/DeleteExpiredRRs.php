@@ -64,7 +64,7 @@ class DeleteExpiredRRs implements ShouldQueue
                 $notification->save();
             }
 
-            $rr->rejected_at = now();
+            $rr->expired_at = now();
         }
 
     }

@@ -48,7 +48,7 @@ class DeleteExpiredWIVs implements ShouldQueue
          $wiv->items()->detach();
 
          // Delete the WIV record
-         $wiv->rejected_at = now();
+         $wiv->expired_at = now();
 
         foreach ($admins as $admin) {
             $notification = new Notification([
