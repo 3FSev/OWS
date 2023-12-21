@@ -46,7 +46,7 @@ class ManagerController extends Controller
     //
     public function WIVrequest()
     {
-        $wivs = Wiv::whereNull('approved_at')->whereNull('rejected_at')->get();
+        $wivs = Wiv::whereNull('approved_at')->whereNull('rejected_at')->whereNull('expired_at')->get();
         $approvedWivs = Wiv::whereNotNull('approved_at')->get();
 
         return view('manager.man-wiv-req', compact('wivs','approvedWivs'));
@@ -121,7 +121,7 @@ class ManagerController extends Controller
 
     public function MRTrequest()
     {
-        $mrts = Mrt::whereNull('approved_at')->whereNull('rejected_at')->get();
+        $mrts = Mrt::whereNull('approved_at')->whereNull('rejected_at')->whereNull('expired_at')->get();
         $approvedMrts = Mrt::whereNotNull('approved_at')->get();
         return view('manager.man-mrt-req', compact('mrts','approvedMrts'));
     }

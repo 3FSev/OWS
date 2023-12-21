@@ -3,6 +3,8 @@
 namespace App\Jobs;
 
 use App\Models\Mrt;
+use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\SerializesModels;
@@ -36,6 +38,7 @@ class DeleteExpiredMRTs implements ShouldQueue
 
 
        // Delete MRT records older than 7 days
+       $admins = User::where('role_id', 2)->get();
        $limitDate = now()->subDays(7);
        $expiredMRTs = Mrt::where('created_at', '<', $limitDate)->get();
 
@@ -48,7 +51,17 @@ class DeleteExpiredMRTs implements ShouldQueue
            $mrt->items()->detach();
 
            // Delete the MRT record
-           $mrt->delete();
+           $mrt->rejected_at = now();
+
+           foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "Request for (RR{$mrt->mrt_number}) has expired",
+                'url' => url('/admin-create-mrt'),
+                'triggered_by' => '',
+            ]);
+            $notification->save();
+        }
        }
     }
 }

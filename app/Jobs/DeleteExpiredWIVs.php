@@ -3,6 +3,8 @@
 namespace App\Jobs;
 
 use App\Models\Wiv;
+use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\SerializesModels;
@@ -29,6 +31,7 @@ class DeleteExpiredWIVs implements ShouldQueue
     public function handle(): void
     {
          $limitDate = now()->subDays(7);
+         $admins = User::where('role_id', 2)->get();
          
          $expiredWivs = Wiv::where('created_at', '<', $limitDate)
          ->whereNull('approved_at')
@@ -45,7 +48,17 @@ class DeleteExpiredWIVs implements ShouldQueue
          $wiv->items()->detach();
 
          // Delete the WIV record
-         $wiv->delete();
+         $wiv->rejected_at = now();
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "Request for (WIV{$wiv->mrt_number}) has expired",
+                'url' => url('/admin-create-mrt'),
+                'triggered_by' => '',
+            ]);
+            $notification->save();
+        }
      }
     }
 }

@@ -304,6 +304,8 @@
                             @endif
                           @elseif($wiv->rejected_at)
                             <p>Rejected by {{$wiv->rejected_by}}</p>
+                          @elseif($wiv->expired_at)
+                            <p>Request has expired</p>
                           @else
                             <p>Waiting for approval</p>
                           @endif

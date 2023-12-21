@@ -307,6 +307,8 @@
                                                             @endif
                                                         @elseif($mrt->rejected_at)
                                                             <p>Rejected by {{$mrt->rejected_by}}</p>
+                                                        @elseif($mrt->expired_at)
+                                                            <p>Request has expired</p>
                                                         @else
                                                             <p>Waiting for approval</p>
                                                         @endif

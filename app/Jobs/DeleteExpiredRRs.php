@@ -3,6 +3,8 @@
 namespace App\Jobs;
 
 use App\Models\Rr;
+use App\Models\User;
+use App\Models\Notification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\SerializesModels;
@@ -34,6 +36,7 @@ class DeleteExpiredRRs implements ShouldQueue
         }
 
         // Get RR records that are pending (not approved or rejected) and created more than 7 days ago
+        $admins = User::where('role_id', 2)->get();
         $limitDate = now()->subDays(7);
         $pendingRRs = Rr::whereNull('approved_at')
             ->whereNull('rejected_at')
@@ -54,6 +57,18 @@ class DeleteExpiredRRs implements ShouldQueue
             $rr->items()->detach();
 
             Log::info("Expired pending RR record: {$rr->id}");
+
+            foreach ($admins as $admin) {
+                $notification = new Notification([
+                    'user_id' => $admin->id,
+                    'message' => "Request for (RR{$rr->rr_number}) has expired",
+                    'url' => url('/admin-create-mrt'),
+                    'triggered_by' => '',
+                ]);
+                $notification->save();
+            }
+
+            $rr->rejected_at = now();
         }
 
     }
