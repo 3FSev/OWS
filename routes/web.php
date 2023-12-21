@@ -90,9 +90,6 @@ Route::middleware(['approved','auth','employee'])->group(function(){
 
 // <route for Admin>
 Route::middleware(['auth','admin'])->group(function(){
-    Route::get('/adm-dashboard', function () {
-        return view('admin.adm-dashboard');
-    });
     Route::get('/admin/adm-dashboard', [AdminController::class, 'Dashboard'])->name('Dashboard.adm');
     Route::get('/admin/adm-change-password', [AdminController::class, 'ChangePassword'])->name('ChangePassword.adm');   
     Route::get('/admin/adm-employee', [AdminController::class, 'Employee'])->name('Employee.adm');
