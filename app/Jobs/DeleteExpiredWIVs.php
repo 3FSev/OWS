@@ -36,6 +36,7 @@ class DeleteExpiredWIVs implements ShouldQueue
          $expiredWivs = Wiv::where('created_at', '<', $limitDate)
          ->whereNull('approved_at')
          ->whereNull('rejected_at')
+         ->whereNull('expired_at')
          ->get();
 
      foreach ($expiredWivs as $wiv) {
@@ -48,7 +49,7 @@ class DeleteExpiredWIVs implements ShouldQueue
          $wiv->items()->detach();
 
          // Delete the WIV record
-         $wiv->expired_at = now();
+         $wiv->update(['expired_at' => now()]);
 
         foreach ($admins as $admin) {
             $notification = new Notification([

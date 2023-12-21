@@ -29,43 +29,42 @@ class DeleteExpiredRRs implements ShouldQueue
      * Execute the job.
      */
     public function handle(): void
-    {
+{
+    // Get RR records that are pending (not approved or rejected) and created more than 7 days ago
+    $admins = User::where('role_id', 2)->get();
+    $limitDate = now()->subDays(7);
+    $pendingRRs = Rr::whereNull('approved_at')
+        ->whereNull('rejected_at')
+        ->whereNull('expired_at')
+        ->where('created_at', '<', $limitDate)
+        ->get();
 
-        // Get RR records that are pending (not approved or rejected) and created more than 7 days ago
-        $admins = User::where('role_id', 2)->get();
-        $limitDate = now()->subDays(7);
-        $pendingRRs = Rr::whereNull('approved_at')
-            ->whereNull('rejected_at')
-            ->where('created_at', '<', $limitDate)
-            ->get();
-
-        foreach ($pendingRRs as $rr) {
-            // Set all quantities of associated items to 0
-            foreach ($rr->items as $item) {
-                $item->update(['quantity' => 0]);
-                $item->update(['status' => 'Request Expired']);
-            }
-
-            // Set status to "Request expired"
-            $rr->update(['status' => 'Request expired']);
-
-            // Detach items from the pivot table
-            $rr->items()->detach();
-
-            Log::info("Expired pending RR record: {$rr->id}");
-
-            foreach ($admins as $admin) {
-                $notification = new Notification([
-                    'user_id' => $admin->id,
-                    'message' => "Request for (RR{$rr->rr_number}) has expired",
-                    'url' => url('/admin-create-mrt'),
-                    'triggered_by' => '',
-                ]);
-                $notification->save();
-            }
-
-            $rr->expired_at = now();
+    foreach ($pendingRRs as $rr) {
+        // Set all quantities of associated items to 0
+        foreach ($rr->items as $item) {
+            $item->update(['quantity' => 0, 'status' => 'Request Expired']);
         }
 
+        // Set status to "Request expired"
+        $rr->update(['status' => 'Request expired']);
+
+        // Detach items from the pivot table
+        $rr->items()->detach();
+
+        // Update expired_at
+        $rr->update(['expired_at' => now()]);
+
+        Log::info("Expired pending RR record: {$rr->id}");
+
+        foreach ($admins as $admin) {
+            $notification = new Notification([
+                'user_id' => $admin->id,
+                'message' => "Request for (RR{$rr->rr_number}) has expired",
+                'url' => url('/admin-create-mrt'),
+                'triggered_by' => '',
+            ]);
+            $notification->save();
+        }
+    }
     }
 }

@@ -35,7 +35,11 @@ class DeleteExpiredMRTs implements ShouldQueue
        // Delete MRT records older than 7 days
        $admins = User::where('role_id', 2)->get();
        $limitDate = now()->subDays(7);
-       $expiredMRTs = Mrt::where('created_at', '<', $limitDate)->get();
+       $expiredMRTs = Mrt::where('created_at', '<', $limitDate)
+        ->whereNull('approved_at')
+        ->whereNull('rejected_at')
+        ->whereNull('expired_at')
+        ->get();
 
        foreach ($expiredMRTs as $mrt) {
            foreach ($mrt->items as $item) {
@@ -46,7 +50,7 @@ class DeleteExpiredMRTs implements ShouldQueue
            $mrt->items()->detach();
 
            // Delete the MRT record
-           $mrt->expired_at = now();
+           $mrt->update(['expired_at' => now()]);
 
            foreach ($admins as $admin) {
             $notification = new Notification([
