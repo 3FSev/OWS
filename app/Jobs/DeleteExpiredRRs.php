@@ -30,10 +30,6 @@ class DeleteExpiredRRs implements ShouldQueue
      */
     public function handle(): void
     {
-        if (Rr::whereNotNull('approved_at')->orWhereNotNull('rejected_at')->exists()) {
-            Log::info('Deletion of old RR records stopped because approved_at or rejected_at is not null.');
-            return;
-        }
 
         // Get RR records that are pending (not approved or rejected) and created more than 7 days ago
         $admins = User::where('role_id', 2)->get();
