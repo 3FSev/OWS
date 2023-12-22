@@ -38,7 +38,7 @@ class EmployeeController extends Controller
         foreach ($admins as $admin) {
             $notification = new Notification([
                 'user_id' => $admin->id,
-                'message' => "{$user->name} has receive Wiv({$wiv->mrt_number})",
+                'message' => "{$user->name} has receive Wiv({$wiv->wiv_number})",
                 'url' => url('/manager/man-wiv-req'),
                 'triggered_by' => $user->id,
             ]);

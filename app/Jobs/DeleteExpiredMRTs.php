@@ -50,7 +50,8 @@ class DeleteExpiredMRTs implements ShouldQueue
            $mrt->items()->detach();
 
            // Delete the MRT record
-           $mrt->update(['expired_at' => now()]);
+           $mrt->expired_at = now();
+           $mrt->save();
 
            foreach ($admins as $admin) {
             $notification = new Notification([
