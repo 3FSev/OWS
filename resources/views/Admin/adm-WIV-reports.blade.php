@@ -262,47 +262,55 @@
         "autoWidth": false,
         "buttons": [
           {
-              extend: 'pdf',
-              title: 'Warehouse Issued Voucher Report',
-              filename: 'wiv_report',
-              messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-              customize: function(doc) {
-                  // Add centered and spaced header text
-                  
-                  doc.header = function() {
-                      return {
-                          columns: [
-                              {
-                                  alignment: 'center',
-                                  text: 'ORIENTAL MINDORO ELECTRIC COOPERATIVE, INC.',
-                                  style: 'header'
-                              }
-                          ],
-                          margin: [0, 20, 0, 0] // [left, top, right, bottom]
-                      };
-                  };
-      
-                  // Add centered and spaced footer text with "Printed by" and "Approved by"
-                  doc.footer = function(currentPage, pageCount) {
-                      return {
-                          columns: [
-                              {
-                                  alignment: 'center',
-                                  bold: true,
-                                  text: 'Printed by: ' + userName,
-                                  style: 'footer'
-                              },
-                              {
-                                  alignment: 'center',
-                                  bold: true,
-                                  text: 'Approved by:'+ approveByName,
-                                  style: 'footer'
-                              }
-                          ],
-                          margin: [0, 20, 0, 20], // [left, top, right, bottom]
-                      };
-                  };
-              }
+            extend: 'pdf',
+            title: 'Warehouse Issued Voucher Report',
+            filename: 'wiv_report',
+            messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+            customize: function (doc) {
+                // Add centered and spaced header text
+                doc.header = function () {
+                    return {
+                        columns: [
+                            {
+                                alignment: 'center',
+                                text: 'ORIENTAL MINDORO ELECTRIC COOPERATIVE, INC.',
+                                style: 'header'
+                            }
+                        ],
+                        margin: [0, 20, 0, 0]
+                    };
+                };
+            
+                // Add centered and spaced footer text with "Printed by" and "Approved by"
+                doc.footer = function (currentPage, pageCount) {
+                    if (currentPage < pageCount) {
+                        return {
+                            columns: [],
+                            margin: [0, 20, 0, 20]
+                        };
+                    } else {
+                        // Add "Printed by" and "Approved by" on the last page
+                        return {
+                            columns: [
+                                {
+                                    alignment: 'center',
+                                    bold: true,
+                                    text: 'Printed by: ' + userName,
+                                    style: 'footer'
+                                },
+                                {
+                                    alignment: 'center',
+                                    bold: true,
+                                    text: 'Approved by: ' + approveByName,
+                                    style: 'footer'
+                                }
+                            ],
+                            margin: [0, 20, 0, 20]
+                        };
+                    }
+                };
+            }
+            
           },
       
             {
