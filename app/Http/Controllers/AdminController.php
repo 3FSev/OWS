@@ -33,7 +33,7 @@ class AdminController extends Controller
     }
 
     public function ChangePassword(){
-        return view('Admin.adm-change-password');
+        return view('admin.adm-change-password');
     }
 
     public function Employee(){
@@ -101,7 +101,7 @@ class AdminController extends Controller
     }
     public function CreateItemCategories(){
         $categories = Category::all();
-        return view('Admin.adm-create-items-categories', compact('categories'));
+        return view('admin.adm-create-items-categories', compact('categories'));
     }
     public function EditItemList($item_id){
         $item = Item::findOrFail($item_id);
