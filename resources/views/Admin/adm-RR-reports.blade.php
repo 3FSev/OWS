@@ -258,7 +258,7 @@ $(function () {
             title: 'Receiving Reports',
             filename: 'rr_report',
             messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-            messageBottom: 'Prepaired By: ' + userName,
+            messageBottom: 'Printed By: ' + userName,
             customize: function(doc) {
                 // Add centered and spaced header text
                 doc.header = function() {

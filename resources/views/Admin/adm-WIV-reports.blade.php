@@ -265,7 +265,7 @@
             title: 'Warehouse Issued Voucher Report',
             filename: 'wiv_report',
             messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-            messageBottom: 'Prepaired By: ' + userName,
+            messageBottom: 'Printed By: ' + userName,
             customize: function(doc) {
                 // Add centered and spaced header text
                 doc.header = function() {
@@ -288,14 +288,14 @@
                 title: 'Warehouse Issued Voucher Report',
                 filename: 'wiv_report',
                 messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-                messageBottom: 'Prepaired By: ' + userName,
+                messageBottom: 'Printed By: ' + userName,
             },
             {
                 extend: 'print',
                 title: 'Warehouse Issued Voucher Reports',
                 filename: 'wiv_report',
                 messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-                messageBottom: 'Prepaired By: ' + userName,
+                messageBottom: 'Printed By: ' + userName,
                 customize: function(doc) {
                   // Add centered and spaced header text
                   doc.header = function() {
