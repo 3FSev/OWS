@@ -248,19 +248,20 @@
 $(function () {
     // DataTable initialization
     var userName = "{{ $user->name }}";
+    var approveByName = "{{ $user->name }}";
     var table = $("#example1").DataTable({
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
         "buttons": [
           {
-            extend: 'pdf',
-            title: 'Receiving Reports',
-            filename: 'rr_report',
-            messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
-            messageBottom: 'Printed By: ' + userName,
-            customize: function(doc) {
+              extend: 'pdf',
+              title: 'Receiving Reports',
+              filename: 'rr_report',
+              messageTop: 'Date Printed: ' + new Date().toLocaleDateString(),
+              customize: function(doc) {
                 // Add centered and spaced header text
+                
                 doc.header = function() {
                     return {
                         columns: [
@@ -273,8 +274,29 @@ $(function () {
                         margin: [0, 20, 0, 0] // [left, top, right, bottom]
                     };
                 };
+    
+                // Add centered and spaced footer text with "Printed by" and "Approved by"
+                doc.footer = function(currentPage, pageCount) {
+                    return {
+                        columns: [
+                            {
+                                alignment: 'center',
+                                bold: true,
+                                text: 'Printed by: ' + userName,
+                                style: 'footer'
+                            },
+                            {
+                                alignment: 'center',
+                                bold: true,
+                                text: 'Approved by:'+ approveByName,
+                                style: 'footer'
+                            }
+                        ],
+                        margin: [0, 20, 0, 20], // [left, top, right, bottom]
+                    };
+                };
             }
-        },
+          },
             {
                 extend: 'excel',
                 title: 'Receiving Reports',
