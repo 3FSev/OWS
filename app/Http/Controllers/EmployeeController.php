@@ -56,7 +56,7 @@ class EmployeeController extends Controller
             ->get();
 
         
-        return view('employee.em-pending-mrt', compact('mrts'));
+        return view('employee.em-pending-mrt', compact('mrts'))->with('success');
     }
 
     public function AcceptMRT($mrt_id){
@@ -77,7 +77,7 @@ class EmployeeController extends Controller
             $notification->save();
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Your mrt request is successfully in recieved!');
     }
     public function ListView()
     {
