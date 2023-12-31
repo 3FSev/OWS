@@ -168,7 +168,7 @@ class ManagerController extends Controller
         ]);
         $notification->save();
 
-        return redirect('manager.man-mrt-req')->with('success', ' Material Return Ticket approved successfully!');
+        return redirect()->route('MrtRequest.man')->with('success', ' Material Return Ticket approved successfully!');
     }
 
     public function MrtReject($mrt_id){
@@ -202,7 +202,7 @@ class ManagerController extends Controller
             $notification->save();
         }
     
-        return redirect('manager.man-mrt-req')->with('error','Material Return Ticket rejected successfully!');
+        return redirect()->route('MrtRequest.man')->with('error','Material Return Ticket rejected successfully!');
     }
     
 
