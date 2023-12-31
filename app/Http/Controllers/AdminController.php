@@ -421,7 +421,7 @@ class AdminController extends Controller
         $qrCode = QrCode::size(300)->generate($url);
 
         // Output the QR code as an image
-        header('Content-Type: image/png');
+       // header('Content-Type: image/png');
         echo $qrCode;
     }
 

@@ -3,7 +3,7 @@
 @include('theme/preloader')
 @include('admin/adm-navbar')
 
-<title>Create WIV</title>
+<title>Create MRT</title>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -27,7 +27,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item ">
                             <a href="{{ route('Dashboard.adm') }}" class="nav-link ">
                                 <i class="nav-icon fas fa-home nav-icon"></i>
@@ -247,82 +247,83 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
 
-                        <div class="row my-9 mb-4">
-                            <div class="col-12">
-                                <div class="card">
-                                    <!-- /.card-header -->
-                                    <div class="card-header card-header-custom">
-                                        <h5 class="m-0 text-bold">MRT list</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <table id="example2" class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>MRT Number</th>
-                                                    <th>Employee Name</th>
-                                                    <th>Department</th>
-                                                    <th>District</th>
-                                                    <th>Item Name</th>
-                                                    <th>Category</th>
-                                                    <th>Unit Cost</th>
-                                                    <th>Total Cost</th>
-                                                    <th>Date</th>
-                                                    <th>Created by</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($mrts as $mrt)
-                                                <tr>
-                                                    <td>{{$mrt->mrt_number}}</td>
-                                                    <td>{{$mrt->user->name}}</td>
-                                                    <td>{{$mrt->user->department->name}}</td>
-                                                    <td>{{$mrt->user->district->name}}</td>
-                                                    <td>@foreach ($mrt->items as $item)
-                                                        {{$item->name}}<br>
-                                                        @endforeach</td>
-                                                    <td>@foreach ($mrt->items as $item)
-                                                        {{$item->category->name}}<br>
-                                                        @endforeach</td>
-                                                    <td>
-                                                        @php
-                                                        $totalCost = 0;
-                                                        @endphp
-                                                        @foreach ($mrt->items as $item)
-                                                            {{number_format($item->unit_cost, 2, '.', ',')}}<br>
-                                                            @php
-                                                                $totalCost += $item->unit_cost;
-                                                            @endphp
-                                                        @endforeach
-                                                    </td>
-                                                    <td> {{number_format($totalCost, 2, '.', ',') }}</td>
-                                                    <td>{{$mrt->mrt_date}}</td>
-                                                    <td>{{$mrt->created_by}}</td>
-                                                    <td>
-                                                        @if($mrt->approved_at)
-                                                            <p>Approved by {{$mrt->approved_by}}</p>
-                                                            @if($mrt->received_at)
-                                                                <p>Received</p>
-                                                            @endif
-                                                        @elseif($mrt->rejected_at)
-                                                            <p>Rejected by {{$mrt->rejected_by}}</p>
-                                                        @elseif($mrt->expired_at)
-                                                            <p>Request has expired</p>
-                                                        @else
-                                                            <p>Waiting for approval</p>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                    <div class="row my-9">
+                        <div class="col-12">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-header card-header-custom">
+                                    <h5 class="m-0 text-bold">MRT list</h5>
                                 </div>
-                                <!-- /.card-body -->
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>MRT Number</th>
+                                                <th>Employee Name</th>
+                                                <th>Department</th>
+                                                <th>District</th>
+                                                <th>Item Name</th>
+                                                <th>Category</th>
+                                                <th>Unit Cost</th>
+                                                <th>Total Cost</th>
+                                                <th>Date</th>
+                                                <th>Created by</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($mrts as $mrt)
+                                            <tr>
+                                                <td>{{$mrt->mrt_number}}</td>
+                                                <td>{{$mrt->user->name}}</td>
+                                                <td>{{$mrt->user->department->name}}</td>
+                                                <td>{{$mrt->user->district->name}}</td>
+                                                <td>@foreach ($mrt->items as $item)
+                                                    {{$item->name}}<br>
+                                                    @endforeach</td>
+                                                <td>@foreach ($mrt->items as $item)
+                                                    {{$item->category->name}}<br>
+                                                    @endforeach</td>
+                                                <td>
+                                                    @php
+                                                    $totalCost = 0;
+                                                    @endphp
+                                                    @foreach ($mrt->items as $item)
+                                                        {{number_format($item->unit_cost, 2, '.', ',')}}<br>
+                                                        @php
+                                                            $totalCost += $item->unit_cost;
+                                                        @endphp
+                                                    @endforeach
+                                                </td>
+                                                <td> {{number_format($totalCost, 2, '.', ',') }}</td>
+                                                <td>{{$mrt->mrt_date}}</td>
+                                                <td>{{$mrt->created_by}}</td>
+                                                <td>
+                                                    @if($mrt->approved_at)
+                                                        <p>Approved by {{$mrt->approved_by}}</p>
+                                                        @if($mrt->received_at)
+                                                            <p>Received</p>
+                                                        @endif
+                                                    @elseif($mrt->rejected_at)
+                                                        <p>Rejected by {{$mrt->rejected_by}}</p>
+                                                    @elseif($mrt->expired_at)
+                                                        <p>Request has expired</p>
+                                                    @else
+                                                        <p>Waiting for approval</p>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+                            <!-- /.card-body -->
                         </div>
-                    </div><!-- /.container-fluid -->
+                    </div>
+                </div>
             </section>
             <!-- /.content -->
         </div>
