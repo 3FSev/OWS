@@ -79,7 +79,7 @@ class ManagerController extends Controller
             $notification = new Notification([
                 'user_id' => $admin->id,
                 'message' => "Request for (WIV{$wiv->wiv_number}) has been approved by {$user->name}",
-                'url' => url('/admin-create-wiv'),
+                'url' => url('/admin/adm-create-wiv'),
                 'triggered_by' => $user->id,
             ]);
             $notification->save();
@@ -109,7 +109,7 @@ class ManagerController extends Controller
             $notification = new Notification([
                 'user_id' => $admin->id,
                 'message' => "Request for (WIV{$wiv->wiv_number}) has been rejected by {$user->name}",
-                'url' => url('/admin-create-wiv'),
+                'url' => url('/admin/adm-create-wiv'),
                 'triggered_by' => $user->id,
             ]);
             $notification->save();
@@ -154,7 +154,7 @@ class ManagerController extends Controller
             $notification = new Notification([
                 'user_id' => $admin->id,
                 'message' => "Request for (MRT{$mrt->mrt_number}) has been approved by {$user->name}",
-                'url' => url('/admin-create-mrt'),
+                'url' => url('/admin/adm-create-mrt'),
                 'triggered_by' => $user->id,
             ]);
             $notification->save();
@@ -196,7 +196,7 @@ class ManagerController extends Controller
             $notification = new Notification([
                 'user_id' => $admin->id,
                 'message' => "Request for (MRT{$mrt->mrt_number}) has been rejected by {$user->name}",
-                'url' => url('/admin-create-mrt'),
+                'url' => url('/admin/adm-create-mrt'),
                 'triggered_by' => $user->id,
             ]);
             $notification->save();
