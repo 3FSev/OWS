@@ -231,7 +231,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group text-right">
-                                        <div class="d-flex justify-content-end">
+                                        <div class="d-flex justify-content-end  align-items-center mr-2">
                                             <a href="#" class="btn btn-primary mr-2" id="addRow">
                                                 <i class="fas fa-plus-circle mr-1"></i> Add
                                             </a>
