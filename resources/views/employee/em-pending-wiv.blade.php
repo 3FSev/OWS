@@ -153,7 +153,7 @@
                           <td>
                             <div class="text-center">
                               <a href="{{route('AcceptWiv.em', $wiv->id)}}" class="btn btn-primary toastRecieveWIV">
-                                Recieve <i class="fas fa-check ml-2"></i>
+                                Receive <i class="fas fa-check ml-2"></i>
                               </a>
                             </div>
                           </td>
