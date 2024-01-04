@@ -248,7 +248,7 @@
 $(function () {
     // DataTable initialization
     var userName = "{{ $user->name }}";
-    var approveByName = "{{ $user->name }}";
+    var approveByName = "{{ $manager->name }}";
     var table = $("#example1").DataTable({
         "responsive": true,
         "lengthChange": false,
