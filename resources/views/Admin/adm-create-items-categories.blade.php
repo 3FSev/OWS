@@ -231,7 +231,7 @@
                       <div class="modal-dialog">
                           <div class="modal-content">
                               <div class="modal-header">
-                                  <h4 class="modal-title">Edit District Name</h4>
+                                  <h4 class="modal-title">Edit Category Name</h4>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                   </button>
@@ -240,7 +240,7 @@
                                 @csrf
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label class="col-form-label-md">District Name</label>
+                                        <label class="col-form-label-md">Category Name</label>
                                         <input name="districtName" id="districtNameInput" class="form-control" type="text" placeholder="District Name">
                                     </div>
                                 </div>
