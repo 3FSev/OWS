@@ -166,19 +166,51 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <label>Password</label>
+                                        <div class="input-group mb-3">
+                                            <input id="password" type="password"
+                                                class="form-control input-field @error('password') is-invalid @enderror"
+                                                name="password" placeholder="Password" required
+                                                autocomplete="new-password">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span toggle="#password"
+                                                        class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                                                </div>
+                                            </div>
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <label>Confirm Password</label>
+                                        <div class="input-group mb-3">
+                                            <input id="password-confirm" type="password"
+                                                class="form-control input-field @error('password') is-invalid @enderror"
+                                                name="confirm_password" placeholder="confirm password" required
+                                                autocomplete="new-password">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span toggle="#password-confirm"
+                                                        class="fa fa-fw field-icon toggle-password-confirm fa-eye"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <!-- /.form-group -->
-                                        <div class="form-group">
+                                        {{--  <div class="form-group">
                                             <div class="form-group">
                                                 <label>Password</label>
                                                 <input name="password" type="Password" class="form-control"
                                                     style="width: 100%;" placeholder="Password" required>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
+                                        </div>  --}}
+                                        {{--  <div class="form-group">
                                             <label>Confirm Password</label>
                                             <input name="confirm_password" type="Password" class="form-control"
                                                 style="width: 100%;" placeholder="Password" required>
-                                        </div>
+                                        </div>  --}}
                                         <!-- /.form-group -->
                                     </div>                                   
                                     <!-- /.col -->
