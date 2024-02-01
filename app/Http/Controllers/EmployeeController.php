@@ -87,7 +87,7 @@ class EmployeeController extends Controller
                     ->where('user_id', $user)
                     ->get();
 
-        return view('employee.em-List', compact('wivs'));
+        return view('employee.em-list', compact('wivs'));
     }
     public function ItemRequest()
     {
